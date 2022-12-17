@@ -1,0 +1,102 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		function generate_urls_centers(min, max) {
+			var urls = [];
+
+			for (var i = min; i <= max; i++) {
+				var url = `https://www.educacion.gob.es/ruct/listacentros?codigoCentro=&prop_ads=&d-443487-p=${i}&cccaa=&textoCodigoCentro=&actual=centros&consulta=1&descripcionCentro=&codigoUniversidad=&action:listacentros=Consultar`;
+				urls.push(url)
+			}
+			return urls;
+		}
+		
+		function extract_codes_for_centers(urls_centers) {
+			var uni_centers = {};
+			var promises = [];
+			
+			for (var i = 0; i < urls_centers.length; i++) {
+				promises.push($.ajax({
+					url: "https://www.bmsalamanca.com/others/dondeteesperan/corsnavigator.php",
+					data: { 
+						'url': urls_centers[i]
+					},
+					method: "POST"
+				})
+				.then(function(data) {
+					
+					var uni_codes = $('table#centro tr td', data).filter(':nth-child(1)');
+					var center_codes = $('table#centro tr td', data).filter(':nth-child(3)');
+
+					var uni_codes_per_page = String(uni_codes.text().trim().replace(/\s+/g, ' ')).split(" ");
+					var center_codes_per_page = String(center_codes.text().trim().replace(/\s+/g, ' ')).split(" ");
+					for (var i = 0; i < uni_codes_per_page.length; i++) {
+						if (uni_centers[uni_codes_per_page[i]] == undefined) {
+							uni_centers[uni_codes_per_page[i]] = [];
+						}
+						uni_centers[uni_codes_per_page[i]].push(center_codes_per_page[i]);
+					}
+				}));
+			}
+
+			return Promise.all(promises)
+			.then(responseList => {
+				return uni_centers;
+			});
+		}
+
+		function build_center_url(uni, center) {
+			return `https://www.educacion.gob.es/ruct/centro.action?codigoUniversidad=${uni}&codigoCentro=${center}&actual=centros`;
+		}
+
+		function extract_municipality(uni_centers) {
+			var promises = [];
+
+			var municipality_centers = {};
+			for (const [uni, centers] of Object.entries(uni_centers)) {
+
+				for (var i = 0; i < centers.length; i++) {
+					promises.push($.ajax({
+						url: "https://www.bmsalamanca.com/others/dondeteesperan/corsnavigator.php",
+						data: { 
+							'url': build_center_url(uni, centers[i])
+						},
+						method: "POST"
+					})
+					.then(function(data) {
+						
+						var municipality = $("label[for='dmunic'] span:nth-child(2)", data).text();
+						var uni_name = $('h2 strong', data).text();
+						
+						if (municipality_centers[municipality] == undefined) {
+							municipality_centers[municipality] = [];
+						}
+						if (!municipality_centers[municipality].includes(uni_name)) {
+							municipality_centers[municipality].push(uni_name);
+						}
+					}));
+				}
+			}
+
+			return Promise.all(promises)
+			.then(responseList => {
+				console.log(municipality_centers);
+				return municipality_centers;
+			});
+
+		}
+
+
+		urls_centers = generate_urls_centers(1, 3);
+		uni_centers = [];
+		extract_codes_for_centers(urls_centers).then((data) => {
+			uni_centers = data;
+			console.log(uni_centers);
+			extract_municipality(uni_centers);
+		})
+	</script>
+</head>
+<body></body>
+</html>
