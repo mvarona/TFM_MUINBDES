@@ -54,7 +54,7 @@
 		function extract_municipality(uni_centers) {
 			var promises = [];
 
-			var municipality_centers = {};
+			var municipality_unis = {};
 			for (const [uni, centers] of Object.entries(uni_centers)) {
 
 				for (var i = 0; i < centers.length; i++) {
@@ -70,11 +70,11 @@
 						var municipality = $("label[for='dmunic'] span:nth-child(2)", data).text();
 						var uni_name = $('h2 strong', data).text();
 						
-						if (municipality_centers[municipality] == undefined) {
-							municipality_centers[municipality] = [];
+						if (municipality_unis[municipality] == undefined) {
+							municipality_unis[municipality] = [];
 						}
-						if (!municipality_centers[municipality].includes(uni_name)) {
-							municipality_centers[municipality].push(uni_name);
+						if (!municipality_unis[municipality].includes(uni_name)) {
+							municipality_unis[municipality].push(uni_name);
 						}
 					}));
 				}
@@ -82,20 +82,32 @@
 
 			return Promise.all(promises)
 			.then(responseList => {
-				console.log(municipality_centers);
-				return municipality_centers;
+				return municipality_unis;
+			});
+
+		}
+
+		function convert_uni_municipality_to_csv(dict) {
+			console.log(dict);
+			document.write("municipio,universidades,num_universidades<br/>");
+			Object.keys(dict).map(function(k) {
+				document.write(k + "," + dict[k].join(";") + "," + dict[k].length + "<br/>");
 			});
 
 		}
 
 
-		urls_centers = generate_urls_centers(1, 3);
-		uni_centers = [];
+		var urls_centers = generate_urls_centers(1, 198);
+		var uni_centers = [];
+		var municipality_unis = [];
 		extract_codes_for_centers(urls_centers).then((data) => {
 			uni_centers = data;
 			console.log(uni_centers);
-			extract_municipality(uni_centers);
-		})
+			extract_municipality(uni_centers).then((data) => {
+				uni_municipality = data;
+				convert_uni_municipality_to_csv(uni_municipality);
+			});
+		});
 	</script>
 </head>
 <body></body>
