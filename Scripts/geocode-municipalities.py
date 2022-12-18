@@ -16,14 +16,12 @@ def geocode_municipalities(df):
 
 	province = urllib.parse.quote(df['provincia'])
 	url = "http://api.positionstack.com/v1/forward?access_key=" + os.environ.get('POSITIONSTACK_ACCESS_KEY') + "&query=" + municipality + "," + province
-
-	resp = requests.get(url=url)
-	data = resp.json()
-
 	lat = 0
 	lon = 0
-	
+
 	try:
+		resp = requests.get(url=url)
+		data = resp.json()
 		lat = data['data'][0]['latitude']
 		lon = data['data'][0]['longitude']
 	except:
