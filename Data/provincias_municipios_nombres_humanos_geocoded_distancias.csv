@@ -218,7 +218,7 @@ Ibi,Alicante,Ibi,38.618356,-0.580273,41.713074999999996
 Jacarilla,Alicante,Jacarilla,38.060975,-0.867996,64.358512
 Jávea/Xàbia,Alicante,Jávea/Xàbia,38.785694,0.150464,88.177954
 Jijona/Xixona,Alicante,Jijona/Xixona,38.532651,-0.506731,27.145925
-Llíber,Alicante,Llíber,38.74272,0.006,76.543447
+Llíber,Alicante,Llíber,38.74272,-0.006,76.543447
 Lorcha/Orxa (l'),Alicante,L' Lorcha/Orxa,38.360892,-0.486281,94
 Millena,Alicante,Millena,38.73082,-0.36274,71.41637300000001
 Monforte del Cid,Alicante,Monforte del Cid,38.379799,-0.722666,25.104011
@@ -881,7 +881,7 @@ Bagà,Barcelona,Bagà,42.251064,1.865122,6434.552544302434
 Balenyà,Barcelona,Balenyà,41.813418,2.234902,6485.548082590206
 Balsareny,Barcelona,Balsareny,41.862399,1.874544,6456.992567313192
 Barberà del Vallès,Barcelona,Barberà del Vallès,41.517308,2.125243,6494.440943031199
-Barcelona,Barcelona,Barcelona,42.341855,-79.596068,0.0
+Barcelona,Barcelona,Barcelona,41.3825,2.176944,0.0
 Begues,Barcelona,Begues,41.333881,1.916065,6489.7977338063565
 Bellprat,Barcelona,Bellprat,41.51695,1.43333,6444.711198563368
 Berga,Barcelona,Berga,42.101496,1.844016,6441.404119008721
@@ -984,7 +984,7 @@ Marganell,Barcelona,Marganell,41.63388,1.80427,6464.808328192358
 Martorell,Barcelona,Martorell,41.481731,1.916816,6481.481755544951
 Martorelles,Barcelona,Martorelles,41.529028,2.231623,6501.4115150942935
 Masies de Roda (Le)s,Barcelona,Le Masies de Rodas,42.01944,2.23546,6473.969750024068
-Masies de Voltregà (Le)s,Barcelona,Le Masies de Voltregàs,0.0,0.0,9155.83490685205
+Masies de Voltregà (Le)s,Barcelona,Le Masies de Voltregàs,42.024167,2.236111,9155.83490685205
 Masnou (El),Barcelona,El Masnou,41.482393,2.312081,6509.832580936778
 Masquefa,Barcelona,Masquefa,41.500363,1.812874,6472.956239543933
 Matadepera,Barcelona,Matadepera,41.616911,2.012558,6480.7174133246135
@@ -1229,7 +1229,7 @@ Campillo de Aranda,Burgos,Campillo de Aranda,41.609055,-3.731442,94.967629
 Campolara,Burgos,Campolara,42.11953,-3.4274,45.376965
 Canicosa de la Sierra,Burgos,Canicosa de la Sierra,41.93673,-3.04089,87.120018
 Cantabrana,Burgos,Cantabrana,42.342869,-3.694385,0.166918
-Carazo,Burgos,Carazo,11.744469,-86.252568,8531.95420096425
+Carazo,Burgos,Carazo,41.969444,-3.353889,65.4
 Carcedo de Bureba,Burgos,Carcedo de Bureba,42.57818,-3.4983,43.938036999999994
 Carcedo de Burgos,Burgos,Carcedo de Burgos,42.285798,-3.639468,12.172099
 Cardeñadijo,Burgos,Cardeñadijo,42.30217,-3.66779,8.405828999999999
@@ -1300,7 +1300,7 @@ Hontangas,Burgos,Hontangas,41.58216,-3.7955,101.580681
 Hontoria de la Cantera,Burgos,Hontoria de la Cantera,42.18879,-3.64251,21.52941
 Hontoria de Valdearados,Burgos,Hontoria de Valdearados,41.74488,-3.51983,90.370432
 Hontoria del Pinar,Burgos,Hontoria del Pinar,41.84838,-3.16245,81.420344
-Hormazas (La)s,Burgos,La Hormazass,25.06817,-98.86556,8577.533615413182
+Hormazas (Las),Burgos,Las Hormazas,42.5275,-3.926667,48.6
 Hornillos del Camino,Burgos,Hornillos del Camino,42.33863,-3.9256,33.923557
 Horra (La),Burgos,La Horra,41.74139,-3.8756,78.64778600000001
 Hortigüela,Burgos,Hortigüela,42.06842,-3.42578,45.151516
@@ -1402,7 +1402,7 @@ Quintanilla del Agua y Tordueles,Burgos,Quintanilla del Agua y Tordueles,42.0513
 Quintanilla del Coco,Burgos,Quintanilla del Coco,41.98333,-3.51667,64.387968
 Quintanilla San García,Burgos,Quintanilla San García,42.5485,-3.19321,56.793176
 Quintanilla Vivar,Burgos,Quintanilla Vivar,42.41585,-3.68849,9.244454
-Quintanillas (La)s,Burgos,La Quintanillass,25.06817,-98.86556,8577.533615413182
+Quintanillas (Las),Burgos,Las Quintanillas,42.3725,-3.843889,15.9
 Rabanera del Pinar,Burgos,Rabanera del Pinar,41.89375,-3.19665,77.49085099999999
 Rábanos,Burgos,Rábanos,42.31971,-3.27029,42.534157
 Rabé de las Calzadas,Burgos,Rabé de las Calzadas,42.34065,-3.83414,20.930234
@@ -1534,7 +1534,7 @@ Villaverde del Monte,Burgos,Villaverde del Monte,42.16075,-3.81421,27.373325
 Villaverde-Mogina,Burgos,Villaverde-Mogina,42.16041,-4.05024,43.571648
 Villayerno Morquillas,Burgos,Villayerno Morquillas,42.397322,-3.639835,9.363273999999999
 Villazopeque,Burgos,Villazopeque,42.19845,-4.01688,37.507068
-Villegas,Burgos,Villegas,24.85,-98.71667,8581.993214308473
+Villegas,Burgos,Villegas,42.469444,-4.015278,46
 Villoruebo,Burgos,Villoruebo,42.16874,-3.44159,47.234356
 Viloria de Rioja,Burgos,Viloria de Rioja,42.42608,-3.10056,53.848114
 Vilviestre del Pinar,Burgos,Vilviestre del Pinar,41.95033,-3.07803,80.767023
@@ -2509,7 +2509,7 @@ Colomers,Girona,Colomers,42.08333,2.98333,25.440557000000002
 Corçà,Girona,Corçà,41.987952,3.015748,28.747041
 Cornellà del Terri,Girona,Cornellà del Terri,42.08333,2.81667,24.864036
 Crespià,Girona,Crespià,42.18333,2.8,36.329877999999994
-Cruïlles (Mo)nells i Sant Sadurní de l'Heura,Girona,Mo Cruïllesnells i Sant Sadurní de l'Heura,66.322298,14.157211,2799.3429379156964
+Cruïlles Monells i Sant Sadurní de l'Heura,Girona,Cruïlles Monells i Sant Sadurní de l'Heura,41.956395,2.991304,30.8
 Darnius,Girona,Darnius,42.367006,2.831775,63.559663
 Das,Girona,Das,42.380134,1.859472,162.71953299999998
 Escala (L'),Girona,L' Escala,41.97268,2.818698,47
@@ -4318,7 +4318,7 @@ Brunete,Madrid,Brunete,40.405974,-3.99932,8003.546439855917
 Buitrago del Lozoya,Madrid,Buitrago del Lozoya,40.990507,-3.638194,8044.080574664465
 Bustarviejo,Madrid,Bustarviejo,40.859006,-3.709813,8035.791314391683
 Cabanillas de la Sierra,Madrid,Cabanillas de la Sierra,40.829503,-3.628712,8042.021308512736
-Cabrera (La),Madrid,La Cabrera,19.55367,-69.90762,1706.4316378195185
+Cabrera (La),Madrid,La Cabrera,40.863889,-3.613333,67
 Cadalso de los Vidrios,Madrid,Cadalso de los Vidrios,40.301907,-4.438665,7964.838056223431
 Camarma de Esteruelas,Madrid,Camarma de Esteruelas,40.551604,-3.376523,8058.244592692478
 Campo Real,Madrid,Campo Real,40.339517,-3.380458,8054.293907183494
@@ -4367,7 +4367,7 @@ Loeches,Madrid,Loeches,40.389372,-3.413884,8052.338361331283
 Lozoya,Madrid,Lozoya,40.955628,-3.797283,8030.241836402526
 Lozoyuela-Navas-Sieteiglesias,Madrid,Lozoyuela-Navas-Sieteiglesias,40.92154,-3.61554,8044.742200744576
 Madarcos,Madrid,Madarcos,41.03658,-3.57508,8050.137811074037
-Madrid,Madrid,Madrid,4.73244,-74.26419,0.0
+Madrid,Madrid,Madrid,40.416667,-3.7025,0.0
 Majadahonda,Madrid,Majadahonda,40.472038,-3.863603,8016.08809388711
 Manzanares el Real,Madrid,Manzanares el Real,40.731149,-3.87025,8020.147566274226
 Meco,Madrid,Meco,40.551481,-3.327936,8062.30885034217
@@ -4423,7 +4423,7 @@ San Sebastián de los Reyes,Madrid,San Sebastián de los Reyes,40.554265,-3.6307
 Santa María de la Alameda,Madrid,Santa María de la Alameda,40.59492,-4.25772,7985.353982508123
 Santorcaz,Madrid,Santorcaz,40.47176,-3.23462,8068.770618626692
 Santos de la Humosa (Los),Madrid,Los Santos de la Humosa,40.503177,-3.251893,8067.8548226525445
-Serna del Monte (La),Madrid,La Serna del Monte,46.063607,13.234186,9440.665233545718
+Serna del Monte (La),Madrid,La Serna del Monte,41.031389,-3.624722,88
 Serranillos del Valle,Madrid,Serranillos del Valle,40.206565,-3.878773,8010.128565631932
 Sevilla la Nueva,Madrid,Sevilla la Nueva,40.347706,-4.027518,8000.142022159038
 Somosierra,Madrid,Somosierra,41.13269,-3.58237,8051.236267081201
@@ -6734,7 +6734,7 @@ Segura de los Baños,Teruel,Segura de los Baños,40.94088,-0.95111,8521.14191380
 Seno,Teruel,Seno,40.81225,-0.33816,8570.408079191342
 Singra,Teruel,Singra,40.65508,-1.31158,8486.568179245634
 Terriente,Teruel,Terriente,40.29741,-1.50399,8464.768622293223
-Teruel,Teruel,Teruel,2.74193,-75.56738,0.0
+Teruel,Teruel,Teruel,40.343611,-1.107222,0.0
 Toril y Masegoso,Teruel,Toril y Masegoso,40.229652,-1.506548,8463.481178826009
 Tormón,Teruel,Tormón,40.20266,-1.35406,8475.90725224178
 Tornos,Teruel,Tornos,40.96046,-1.433865,8481.213216078748
@@ -6947,7 +6947,7 @@ Sotillo de las Palomas,Toledo,Sotillo de las Palomas,40.10359,-4.82736,6390.1444
 Talavera de la Reina,Toledo,Talavera de la Reina,39.965696,-4.823851,6397.952815187528
 Tembleque,Toledo,Tembleque,39.694554,-3.50457,6510.857169179154
 Toboso (El),Toledo,El Toboso,39.513676,-2.996615,6558.6472729448915
-Toledo,Toledo,Toledo,41.66394,-83.55521,0.0
+Toledo,Toledo,Toledo,39.866667,-4.033333,0.0
 Torralba de Oropesa,Toledo,Torralba de Oropesa,39.93384,-5.15404,6375.141033670648
 Torre de Esteban Hambrán (La),Toledo,La Torre de Esteban Hambrán,40.169034,-4.214673,6431.954920962369
 Torrecilla de la Jara,Toledo,Torrecilla de la Jara,39.70425,-4.77186,6416.183775810463
