@@ -18,12 +18,13 @@ def get_kms_capital_province(df_municipalities, df_capital_provinces, df_municip
 	municipality_lat = df_municipalities['lat']
 	municipality_lon = df_municipalities['lon']
 
-	capital_lat = df_municipalities_geocoded[df_municipalities_geocoded['municipio_nombre_humano'] == capital]['lat'].astype(float).values[0]
-	capital_lon = df_municipalities_geocoded[df_municipalities_geocoded['municipio_nombre_humano'] == capital]['lon'].astype(float).values[0]
-
-	url = "http://169.254.20.42:8080/otp/routers/default/plan?fromPlace=" + str(municipality_lat) + "," + str(municipality_lon) + "&toPlace=" + str(capital_lat) + "," + str(capital_lon) + "&time=12%3A16pm&date=07-20-2022&mode=CAR&arriveBy=false&showIntermediateStops=true&locale=es"
-	
 	try:
+		
+		capital_lat = df_municipalities_geocoded[df_municipalities_geocoded['municipio_nombre_humano'] == capital]['lat'].astype(float).values[0]
+		capital_lon = df_municipalities_geocoded[df_municipalities_geocoded['municipio_nombre_humano'] == capital]['lon'].astype(float).values[0]
+
+		url = "http://192.168.1.70:8080/otp/routers/default/plan?fromPlace=" + str(municipality_lat) + "," + str(municipality_lon) + "&toPlace=" + str(capital_lat) + "," + str(capital_lon) + "&time=12%3A16pm&date=07-20-2022&mode=CAR&arriveBy=false&showIntermediateStops=true&locale=es"
+
 		resp = requests.get(url=url)
 		data = resp.json()
 		if (municipality_lat == capital_lat and municipality_lon == capital_lon):
@@ -33,7 +34,7 @@ def get_kms_capital_province(df_municipalities, df_capital_provinces, df_municip
 	except:
 
 		try:
-			url = "http://169.254.20.42:8080/otp/routers/default/plan?fromPlace=" + str(municipality_lat) + "," + str(municipality_lon) + "&toPlace=" + str(capital_lat) + "," + str(capital_lon) + "&time=12%3A16pm&date=07-20-2022&mode=FLEX_DIRECT&arriveBy=false&showIntermediateStops=true&locale=es"
+			url = "http://192.168.1.70:8080/otp/routers/default/plan?fromPlace=" + str(municipality_lat) + "," + str(municipality_lon) + "&toPlace=" + str(capital_lat) + "," + str(capital_lon) + "&time=12%3A16pm&date=07-20-2022&mode=FLEX_DIRECT&arriveBy=false&showIntermediateStops=true&locale=es"
 
 			resp = requests.get(url=url)
 			data = resp.json()
@@ -56,7 +57,7 @@ def main(argv):
 
 	municipalities = sys.argv[1]
 	capital_provinces = sys.argv[2]
-	new_filename = os.path.splitext(municipalities)[0] + "_distances" + ".csv"
+	new_filename = os.path.splitext(municipalities)[0] + "_distances_2" + ".csv"
 	df_municipalities = pd.read_csv(municipalities)
 	df_capital_provinces = pd.read_csv(capital_provinces)
 
