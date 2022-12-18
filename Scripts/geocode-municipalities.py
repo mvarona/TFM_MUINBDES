@@ -15,7 +15,7 @@ def geocode_municipalities(df):
 		municipality = municipality.split("/")[0]
 
 	province = urllib.parse.quote(df['provincia'])
-	url = "http://api.positionstack.com/v1/forward?access_key=" + os.environ.get('POSITIONSTACK_ACCESS_KEY') + "&query=" + municipality + "," + province
+	url = "http://api.positionstack.com/v1/forward?access_key=" + os.environ.get('POSITIONSTACK_ACCESS_KEY') + "&query=" + municipality + "," + province + ",España"
 	lat = 0
 	lon = 0
 

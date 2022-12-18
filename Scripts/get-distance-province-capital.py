@@ -16,7 +16,7 @@ def get_kms_capital_province(df_municipalities, df_capital_provinces, df_municip
 	
 	municipality_lat = df_municipalities['lat']
 	municipality_lon = df_municipalities['lon']
-	print(capital)
+
 	capital_lat = df_municipalities_geocoded[df_municipalities_geocoded['municipio_nombre_humano'] == capital]['lat'].astype(float).values[0]
 	capital_lon = df_municipalities_geocoded[df_municipalities_geocoded['municipio_nombre_humano'] == capital]['lon'].astype(float).values[0]
 
@@ -30,7 +30,18 @@ def get_kms_capital_province(df_municipalities, df_capital_provinces, df_municip
 		else:
 			kms = data['plan']['itineraries'][0]['walkDistance'] / 1000
 	except:
-		print("Error con municipio: " + municipality + "(" + str(municipality_lat) + "," + str(municipality_lon) + ")")
+
+		try:
+			url = "http://169.254.20.42:8080/otp/routers/default/plan?fromPlace=" + str(municipality_lat) + "," + str(municipality_lon) + "&toPlace=" + str(capital_lat) + "," + str(capital_lon) + "&time=12%3A16pm&date=07-20-2022&mode=FLEX_DIRECT&arriveBy=false&showIntermediateStops=true&locale=es"
+
+			resp = requests.get(url=url)
+			data = resp.json()
+			if (municipality_lat == capital_lat and municipality_lon == capital_lon):
+				kms = 0
+			else:
+				kms = data['plan']['itineraries'][0]['walkDistance'] / 1000
+		except:
+			print("Error con municipio: " + municipality + "(" + str(municipality_lat) + "," + str(municipality_lon) + ")")
 
 	return kms
 
