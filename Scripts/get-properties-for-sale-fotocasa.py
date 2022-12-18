@@ -38,30 +38,21 @@ def get_m2_sales(df):
 
 	try:
 
-		url = "https://www.idealista.com/venta-viviendas/" + municipality + "-" + province + "/"
-
-		payload={}
-		headers = {
-		  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15',
-		  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-		  'Accept-Language': 'es-es',
-		  'Connection': 'keep-alive',
-		  'Accept-Encoding': 'gzip, deflate, br',
-		  'Host': 'www.idealista.com',
-		  'Cookie': 'datadome=.2ABvM6eQ8jU6wlW~.tsd2WKYOe1-yI4tgFQYMNvbU9A4GxMKHf_xuFWnOTcSAWUnGp64AM60.rX_pYIoLO_OPoYR18.Zey8OTChYua9B3JU8d4W8nYnPdwzWfn717Yo; SESSION=c08d7f5cd41fbac0~d1abb91b-0300-4bed-88d5-fee1dc69716f; contactd1abb91b-0300-4bed-88d5-fee1dc69716f="{\'email\':null,\'phone\':null,\'phonePrefix\':null,\'friendEmails\':null,\'name\':null,\'message\':null,\'message2Friends\':null,\'maxNumberContactsAllow\':10,\'defaultMessage\':true}"; cookieSearch-1="/venta-viviendas/' + municipality + "-" + province + '/:1659232666165"; userUUID=baaec429-66be-420d-a45d-d5b91cb7b8cb'
-		}
-
-		response = requests.request("GET", url, headers=headers, data=payload)
+		url = "https://www.fotocasa.es/es/comprar/viviendas/" + municipality + "/todas-las-zonas/l"
+		
+		response = requests.request("GET", url)
 		content = BeautifulSoup(response.text, 'lxml')
 
 		num_regex = r"[0-9]+"
-		num_txt = content.select("h1#h1-container")[0].text.replace(".", "")
+		num_txt = content.select(".re-SearchTitle-count")[0].text.replace(".", "")
+		 
 		num_properties = re.findall(num_regex, num_txt)[0]
 
-		prices_txt = content.select(".item-price")
+		prices_txt = content.select(".re-CardPrice")
+		
 		prices = map(clean_price, prices_txt)
 		
-		m2_txt = content.select(".item-detail")
+		m2_txt = content.select(".re-CardFeatures-feature")
 		m2 = filter(filter_m2, m2_txt)
 		m2 = map(clean_m2, m2)
 
@@ -90,7 +81,7 @@ def get_num_properties(pair):
 
 def main(argv):
 	if (len(sys.argv) < 2):
-		print('Uso: python3 get-properties-for-sale.py filename.csv')
+		print('Uso: python3 get-properties-for-sale-fotocasa.py filename.csv')
 		sys.exit(2)
 	filename = sys.argv[1]
 	new_filename = os.path.splitext(filename)[0] + "_properties_2" + ".csv"
