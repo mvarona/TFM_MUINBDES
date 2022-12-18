@@ -6,6 +6,7 @@ import pandas as pd
 import json
 import requests
 import urllib.parse
+from geopy.distance import geodesic
 
 def get_kms_capital_province(df_municipalities, df_capital_provinces, df_municipalities_geocoded):
 	kms = -1
@@ -41,7 +42,10 @@ def get_kms_capital_province(df_municipalities, df_capital_provinces, df_municip
 			else:
 				kms = data['plan']['itineraries'][0]['walkDistance'] / 1000
 		except:
-			print("Error con municipio: " + municipality + "(" + str(municipality_lat) + "," + str(municipality_lon) + ")")
+			try:
+				kms = geodesic((municipality_lat, municipality_lon), (capital_lat, capital_lon)).km
+			except:
+				print("Error con municipio: " + municipality + "(" + str(municipality_lat) + "," + str(municipality_lon) + ")")
 
 	return kms
 
