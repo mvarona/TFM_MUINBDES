@@ -49,10 +49,13 @@ def get_m2_sales(df):
 		num_properties = re.findall(num_regex, num_txt)[0]
 
 		prices_txt = content.select(".re-CardPrice")
-		
+
 		prices = map(clean_price, prices_txt)
 		
 		m2_txt = content.select(".re-CardFeatures-feature")
+		if len(m2_txt) == 0:
+			m2_txt = content.select(".re-CardFeaturesWithIcons-feature-icon--surface")
+
 		m2 = filter(filter_m2, m2_txt)
 		m2 = map(clean_m2, m2)
 
@@ -64,7 +67,22 @@ def get_m2_sales(df):
 			price_m2 = prices_per_m2.mean()
 			price_m2 = str(round(price_m2, 2))
 
-		time.sleep(2)
+		if len(prices_list) < len(m2_list):
+			len_prices = len(prices_list)
+			m2_list = m2_list[:len_prices]
+			prices_per_m2 = np.array(prices_list) / np.array(m2_list)
+			price_m2 = prices_per_m2.mean()
+			price_m2 = str(round(price_m2, 2))
+
+		if len(prices_list) > len(m2_list):
+			len_m2 = len(m2_list)
+			prices_list = prices_list[:len_m2]
+			prices_per_m2 = np.array(prices_list) / np.array(m2_list)
+			price_m2 = prices_per_m2.mean()
+			price_m2 = str(round(price_m2, 2))
+			
+			
+			time.sleep(1)
 		
 	except:
 		print("Error en municipio: " + df['municipio_nombre_humano'] + " (" + municipality + ")")

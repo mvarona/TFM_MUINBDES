@@ -93,7 +93,7 @@ def main(argv):
 		print('Uso: python3 get-properties-for-sale.py filename.csv')
 		sys.exit(2)
 	filename = sys.argv[1]
-	new_filename = os.path.splitext(filename)[0] + "_properties_2" + ".csv"
+	new_filename = os.path.splitext(filename)[0] + "_properties_3" + ".csv"
 	df = pd.read_csv(filename)
 
 	df['precio_m2_venta_num_casas_venta'] = df.apply(get_m2_sales, axis=1)
