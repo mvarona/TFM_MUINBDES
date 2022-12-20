@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-from bs4 import BeautifulSoup
 import sys
 import os
 import pandas as pd
@@ -12,24 +11,23 @@ import numpy as np
 import time
 
 def get_price_m2_sales(df_municipalities, df_provinces):
-
 	province = df_municipalities['provincia']
-	price = df_provinces[df_provinces['provincia'] == province]['precio_m2_venta']
+	price = df_provinces[df_provinces['provincia'] == province]['precio_m2_venta'].astype(float).values[0]
 	return price
 
 def get_avg_sales(df_municipalities, df_provinces):
 	province = df_municipalities['provincia']
-	price = df_provinces[df_provinces['provincia'] == province]['precio_medio_venta']
+	price = df_provinces[df_provinces['provincia'] == province]['precio_medio_venta'].astype(int).values[0]
 	return price
 
 def get_price_m2_rent(df_municipalities, df_provinces):
 	province = df_municipalities['provincia']
-	price = df_provinces[df_provinces['provincia'] == province]['precio_m2_alquiler']
+	price = df_provinces[df_provinces['provincia'] == province]['precio_m2_alquiler'].astype(float).values[0]
 	return price
 
 def get_avg_rent(df_municipalities, df_provinces):
 	province = df_municipalities['provincia']
-	price = df_provinces[df_provinces['provincia'] == province]['precio_medio_alquiler']
+	price = df_provinces[df_provinces['provincia'] == province]['precio_medio_alquiler'].astype(int).values[0]
 	return price
 
 def main(argv):
