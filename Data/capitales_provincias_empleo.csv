@@ -1,9 +1,9 @@
 provincia,capital,tasa_actividad,tasa_paro,tasa_empleo,num_empleos
 A Coruña,A Coruña,53.86,10.92,47.98,1466
 Albacete,Albacete,58.07,12.41,50.86,532
-Alicante/Alacant,Alicante/Alacant,57.08,14.13,49.01,1773
+Alicante,Alicante/Alacant,57.08,14.13,49.01,1773
 Almería,Almería,61.31,15.39,51.87,655
-Araba/Álava,Vitoria-Gasteiz,57.62,9.42,52.19,777
+Álava,Vitoria-Gasteiz,57.62,9.42,52.19,777
 Asturias,Oviedo,48.86,11.36,43.31,929
 Ávila,Ávila,52.78,14.86,44.94,374
 Badajoz,Badajoz,56.60,16.14,47.46,534
@@ -13,7 +13,7 @@ Burgos,Burgos,58.94,9.70,53.23,677
 Cáceres,Cáceres,54.28,17.78,44.63,452
 Cádiz,Cádiz,55.05,21.70,43.10,804
 Cantabria,Santander,54.81,8.17,50.33,817
-Castellón/Castelló,Castellón de la Plana,57.36,10.55,51.31,929
+Castellón,Castellón de la Plana,57.36,10.55,51.31,929
 Ceuta,Ceuta,60.44,22.75,46.69,329
 Ciudad Real,Ciudad Real,55.64,17.10,46.12,496
 Córdoba,Córdoba,55.02,20.67,43.64,562
@@ -47,7 +47,7 @@ Soria,Soria,60.40,7.32,55.98,393
 Tarragona,Tarragona,56.53,10.63,50.52,1234
 Teruel,Teruel,57.96,9.07,52.70,425
 Toledo,Toledo,62.04,14.93,52.77,789
-Valencia/València,Valencia,59.18,12.36,51.87,3312
+Valencia,Valencia,59.18,12.36,51.87,3312
 Valladolid,Valladolid,54.49,9.35,49.39,947
 Zamora,Zamora,50.28,12.10,44.20,388
 Zaragoza,Zaragoza,59.30,8.50,54.26,1632
