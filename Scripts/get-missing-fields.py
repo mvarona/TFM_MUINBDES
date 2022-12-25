@@ -29,7 +29,7 @@ def complete_df(incomplete_municipalities, incomplete_fields_fn, new_filename, m
 	with open(new_filename,'a') as f:
 		i = 0
 		for municipality_to_add in municipalities_to_add:
-			new_row = municipalities_to_add[i] + "," + provinces_to_add[i] + "," + municipalities_human_names_to_add[i] + "," + prices_to_add[i] + "," + num_properties_to_add[i]	+ "\n"
+			new_row = municipalities_to_add[i] + "," + provinces_to_add[i] + "," + str(0) + "\n"
 			f.write(new_row)
 			i += 1
 		f.close()
