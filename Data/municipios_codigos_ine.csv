@@ -279,7 +279,7 @@ Alconchel de Ariza,Zaragoza,Alconchel de Ariza,50015
 Alconchel de la Estrella,Cuenca,Alconchel de la Estrella,16012
 Alconera,Badajoz,Alconera,6008
 Alcóntar,Almería,Alcóntar,4008
-Alcora (l'),Castellón,L' Alcora,12005
+Alcora (L'),Castellón,L' Alcora,12005
 Alcorcón,Madrid,Alcorcón,28007
 Alcorisa,Teruel,Alcorisa,44014
 Alcoroches,Guadalajara,Alcoroches,19013
@@ -292,8 +292,8 @@ Alcubilla de Nogales,Zamora,Alcubilla de Nogales,49004
 Alcubillas,Ciudad Real,Alcubillas,13008
 Alcublas,Valencia,Alcublas,46018
 Alcúdia,Illes Balears,Alcúdia,7003
-Alcúdia (l'),Valencia,L' Alcúdia,46019
-Alcúdia de Crespins (l'),Valencia,L' Alcúdia de Crespins,46020
+Alcúdia (L'),Valencia,L' Alcúdia,46019
+Alcúdia de Crespins (L'),Valencia,L' Alcúdia de Crespins,46020
 Alcudia de Monteagud,Almería,Alcudia de Monteagud,4009
 Alcudia de Veo,Castellón,Alcudia de Veo,12006
 Alcuéscar,Cáceres,Alcuéscar,10010
@@ -378,7 +378,7 @@ Alfaro,La Rioja,Alfaro,26011
 Alfarp,Valencia,Alfarp,46026
 Alfarràs,Lleida,Alfarràs,25013
 Alfarrasí,Valencia,Alfarrasí,46027
-Alfàs del Pi (l'),Alicante,L' Alfàs del Pi,3011
+Alfàs del Pi (L'),Alicante,L' Alfàs del Pi,3011
 Alfauir,Valencia,Alfauir,46023
 Alfés,Lleida,Alfés,25014
 Alfondeguilla,Castellón,Alfondeguilla,12007
@@ -536,8 +536,8 @@ Alpera,Albacete,Alpera,2010
 Alpicat,Lleida,Alpicat,25023
 Alpuente,Valencia,Alpuente,46036
 Alpujarra de la Sierra,Granada,Alpujarra de la Sierra,18904
-Alqueria d'Asnar (l'),Alicante,L' Alqueria d'Asnar,3017
-Alqueria de la Comtessa (l'),Valencia,L' Alqueria de la Comtessa,46037
+Alqueria d'Asnar (L'),Alicante,L' Alqueria d'Asnar,3017
+Alqueria de la Comtessa (L'),Valencia,L' Alqueria de la Comtessa,46037
 Alqueries (les)/Alquerías del Niño Perdido,Castellón,les Alqueries/Alquerías del Niño Perdido,12901
 Alquézar,Huesca,Alquézar,22024
 Alquife,Granada,Alquife,18018
@@ -831,7 +831,7 @@ Atienza,Guadalajara,Atienza,19044
 Atxondo,Bizkaia,Atxondo,48091
 Atzeneta d'Albaida,Valencia,Atzeneta d'Albaida,46003
 Atzeneta del Maestrat,Castellón,Atzeneta del Maestrat,12001
-Atzúbia (l'),Alicante,L' Atzúbia,3001
+Atzúbia (L'),Alicante,L' Atzúbia,3001
 Aulesti,Bizkaia,Aulesti,48070
 Auñón,Guadalajara,Auñón,19045
 Auritz/Burguete,Navarra,Auritz/Burguete,31058
@@ -1931,7 +1931,7 @@ Castell (Es),Illes Balears,es Castell,7064
 Castell de Cabres,Castellón,Castell de Cabres,12037
 Castell de Castells,Alicante,Castell de Castells,3054
 Castell de Guadalest (el),Alicante,el Castell de Guadalest,3075
-Castell de l'Areny,Barcelona,Castell de l'Areny,8057
+Castell de L'Areny,Barcelona,Castell de L'Areny,8057
 Castell de Mur,Lleida,Castell de Mur,25904
 Castell-Platja d'Aro,Girona,Castell-Platja d'Aro,17048
 Castellanos de Castro,Burgos,Castellanos de Castro,9079
@@ -2415,7 +2415,7 @@ Crevillent,Alicante,Crevillent,3059
 Cristina,Badajoz,Cristina,6041
 Cristóbal,Salamanca,Cristóbal,37112
 Crivillén,Teruel,Crivillén,44087
-Cruïlles Monells i Sant Sadurní de l'Heura,Girona,Cruïlles Monells i Sant Sadurní de l'Heura,17901
+Cruïlles Monells i Sant Sadurní de L'Heura,Girona,Cruïlles Monells i Sant Sadurní de L'Heura,17901
 Cuacos de Yuste,Cáceres,Cuacos de Yuste,10068
 Cuadros,León,Cuadros,24061
 Cualedro,Ourense,Cualedro,32028
@@ -2566,14 +2566,14 @@ Elduain,Gipuzkoa,Elduain,20031
 Elgeta,Gipuzkoa,Elgeta,20033
 Elgoibar,Gipuzkoa,Elgoibar,20032
 Elgorriaga,Navarra,Elgorriaga,31087
-Eliana (l'),Valencia,L' Eliana,46116
+Eliana (L'),Valencia,L' Eliana,46116
 Eljas,Cáceres,Eljas,10072
 Elorrio,Bizkaia,Elorrio,48032
 Elvillar/Bilar,Álava,Elvillar/Bilar,1023
 Embid,Guadalajara,Embid,19109
 Embid de Ariza,Zaragoza,Embid de Ariza,50096
 Emperador,Valencia,Emperador,46117
-Encina (La),Salamanca,La Encina,37120
+Encina (La),Salamanca,La Encina,37119
 Encina de San Silvestre,Salamanca,Encina de San Silvestre,37120
 Encinacorba,Zaragoza,Encinacorba,50098
 Encinas,Segovia,Encinas,40071
@@ -2592,7 +2592,7 @@ Enériz/Eneritz,Navarra,Enériz/Eneritz,31089
 Enguera,Valencia,Enguera,46118
 Enguídanos,Cuenca,Enguídanos,16082
 Enix,Almería,Enix,4041
-Ènova (l'),Valencia,L' Ènova,46119
+Ènova (L'),Valencia,L' Ènova,46119
 Entrala,Zamora,Entrala,49061
 Entrambasaguas,Cantabria,Entrambasaguas,39028
 Entrena,La Rioja,Entrena,26059
@@ -3844,7 +3844,7 @@ Lora de Estepa,Sevilla,Lora de Estepa,41054
 Lora del Río,Sevilla,Lora del Río,41055
 Loranca de Tajuña,Guadalajara,Loranca de Tajuña,19160
 Lorca,Murcia,Lorca,30024
-Lorcha/Orxa (l'),Alicante,L' Lorcha/Orxa,3084
+Lorcha/Orxa (L'),Alicante,L' Lorcha/Orxa,3084
 Loriguilla,Valencia,Loriguilla,46148
 Lorquí,Murcia,Lorquí,30025
 Losa (La),Segovia,La Losa,40113
@@ -4069,8 +4069,8 @@ Masegosa,Cuenca,Masegosa,16123
 Masegoso,Albacete,Masegoso,2047
 Masegoso de Tajuña,Guadalajara,Masegoso de Tajuña,19172
 Maside,Ourense,Maside,32045
-Masies de Roda (Le)s,Barcelona,Le Masies de Rodas,8116
-Masies de Voltregà (Le)s,Barcelona,Le Masies de Voltregàs,8117
+Masies de Roda (Les),Barcelona,Le Masies de Rodas,8116
+Masies de Voltregà (Les),Barcelona,Le Masies de Voltregàs,8117
 Masllorenç,Tarragona,Masllorenç,43079
 Masnou (El),Barcelona,El Masnou,8118
 Masó (La),Tarragona,La Masó,43080
@@ -4777,7 +4777,7 @@ Olivares de Júcar,Cuenca,Olivares de Júcar,16139
 Olivella,Barcelona,Olivella,8148
 Olivenza,Badajoz,Olivenza,6095
 Ollauri,La Rioja,Ollauri,26111
-Olleria (l'),Valencia,L' Olleria,46183
+Olleria (L'),Valencia,L' Olleria,46183
 Olmeda de Cobeta,Guadalajara,Olmeda de Cobeta,19201
 Olmeda de Jadraque (La),Guadalajara,La Olmeda de Jadraque,19202
 Olmeda de la Cuesta,Cuenca,Olmeda de la Cuesta,16140
@@ -6868,7 +6868,7 @@ Torre de Esgueva,Valladolid,Torre de Esgueva,47169
 Torre de Esteban Hambrán (La),Toledo,La Torre de Esteban Hambrán,45171
 Torre de Fontaubella (La),Tarragona,La Torre de Fontaubella,43151
 Torre de Juan Abad,Ciudad Real,Torre de Juan Abad,13084
-Torre de l'Espanyol (La),Tarragona,La Torre de l'Espanyol,43152
+Torre de L'Espanyol (La),Tarragona,La Torre de L'Espanyol,43152
 Torre de las Arcas,Teruel,Torre de las Arcas,44224
 Torre de Miguel Sesmero,Badajoz,Torre de Miguel Sesmero,6131
 Torre de Peñafiel,Valladolid,Torre de Peñafiel,47170
@@ -7381,7 +7381,7 @@ Valverde del Majano,Segovia,Valverde del Majano,40216
 Valverde-Enrique,León,Valverde-Enrique,24190
 Valverdejo,Cuenca,Valverdejo,16237
 Valverdón,Salamanca,Valverdón,37342
-Vandellòs i l'Hospitalet de l'Infant,Tarragona,Vandellòs i l'Hospitalet de l'Infant,43162
+Vandellòs i L'Hospitalet de L'Infant,Tarragona,Vandellòs i L'Hospitalet de L'Infant,43162
 Vansa i Fórnols (La),Lleida,La Vansa i Fórnols,25909
 Vara de Rey,Cuenca,Vara de Rey,16238
 Veciana,Barcelona,Veciana,8297
@@ -7534,7 +7534,7 @@ Vilanova d'Alcolea,Castellón,Vilanova d'Alcolea,12132
 Vilanova d'Escornalbou,Tarragona,Vilanova d'Escornalbou,43167
 Vilanova de Arousa,Pontevedra,Vilanova de Arousa,36061
 Vilanova de Bellpuig,Lleida,Vilanova de Bellpuig,25248
-Vilanova de l'Aguda,Lleida,Vilanova de l'Aguda,25249
+Vilanova de L'Aguda,Lleida,Vilanova de L'Aguda,25249
 Vilanova de la Barca,Lleida,Vilanova de la Barca,25254
 Vilanova de Meià,Lleida,Vilanova de Meià,25250
 Vilanova de Prades,Tarragona,Vilanova de Prades,43168
