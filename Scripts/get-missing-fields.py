@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2022
+# Returns a CSV merged with the fields of another file
+
 import sys
 import os
 import pandas as pd
@@ -14,7 +19,7 @@ def complete_df(incomplete_municipalities, incomplete_fields_fn, new_filename, m
 	municipalities_human_names_to_add = []
 	
 	i = 0
-	for municipality in municipalities:
+	for municipality in municipalities_human_names:
 		if municipality not in incomplete_municipalities:
 			municipalities_to_add.append(municipality)
 			provinces_to_add.append(provinces[i])
@@ -29,7 +34,7 @@ def complete_df(incomplete_municipalities, incomplete_fields_fn, new_filename, m
 	with open(new_filename,'a') as f:
 		i = 0
 		for municipality_to_add in municipalities_to_add:
-			new_row = municipalities_to_add[i] + "," + provinces_to_add[i] + "," + str(0) + "\n"
+			new_row = municipalities_human_names_to_add[i] + "," + str(0) + "\n"
 			f.write(new_row)
 			i += 1
 		f.close()
