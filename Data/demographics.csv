@@ -538,7 +538,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 18904,Alpujarra de la Sierra,Granada,Andalucía,Alpujarra de la Sierra,1,1,952,68.53,13.89
 3017,Alqueria d'Asnar (L'),Alicante,Comunidad Valenciana,L' Alqueria d'Asnar,1,3,498,1.08,459.54
 46037,Alqueria de la Comtessa (L'),Valencia,Comunidad Valenciana,L' Alqueria de la Comtessa,1,0,1481,2.15,687.78
-12901,Alqueries (les)/Alquerías del Niño Perdido,Castellón,Comunidad Valenciana,les Alqueries/Alquerías del Niño Perdido,1,2,4539,12.61,359.97
+12901,Alqueries (Les)/Alquerías del Niño Perdido,Castellón,Comunidad Valenciana,Les Alqueries/Alquerías del Niño Perdido,1,2,4539,12.61,359.97
 22024,Alquézar,Huesca,Aragón,Alquézar,2,1,338,32.36,10.45
 18018,Alquife,Granada,Andalucía,Alquife,1,1,561,12.19,46.02
 4015,Alsodux,Almería,Andalucía,Alsodux,1,2,131,20.1,6.52
@@ -1169,7 +1169,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 46067,Benissanó,Valencia,Comunidad Valenciana,Benissanó,1,0,2334,2.25,1037.33
 46068,Benissoda,Valencia,Comunidad Valenciana,Benissoda,1,0,441,4.04,109.16
 46069,Benissuera,Valencia,Comunidad Valenciana,Benissuera,1,0,183,2.12,86.35
-3042,Benitachell/Poble Nou de Benitatxell (el),Alicante,Comunidad Valenciana,El Benitachell/Poble Nou de Benitatxell,1,3,4447,12.65,351.44
+3042,Benitachell/Poble Nou de Benitatxell (El),Alicante,Comunidad Valenciana,El Benitachell/Poble Nou de Benitatxell,1,3,4447,12.65,351.44
 4026,Benitagla,Almería,Andalucía,Benitagla,1,2,59,6.4,9.22
 4027,Benizalón,Almería,Andalucía,Benizalón,1,2,263,31.97,8.23
 12029,Benlloc,Castellón,Comunidad Valenciana,Benlloc,1,2,1075,43.52,24.7
@@ -1621,7 +1621,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 24032,Campazas,León,Castilla y León,Campazas,2,1,113,20.88,5.41
 17036,Campdevànol,Girona,Cataluña,Campdevànol,1,1,3225,32.65,98.77
 17037,Campelles,Girona,Cataluña,Campelles,1,1,149,18.71,7.96
-3050,Campello (el),Alicante,Comunidad Valenciana,el Campello,1,3,29013,55.27,524.95
+3050,Campello (El),Alicante,Comunidad Valenciana,El Campello,1,3,29013,55.27,524.95
 1017,Campezo/Kanpezu,Álava,País Vasco,Campezo/Kanpezu,2,2,1081,85.36,12.66
 21018,Campillo (El),Huelva,Andalucía,El Campillo,1,0,1996,90.72,22.0
 47031,Campillo (El),Valladolid,Castilla y León,El Campillo,3,0,219,32.8,6.68
@@ -1643,7 +1643,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 17038,Campllong,Girona,Cataluña,Campllong,1,1,533,8.49,62.78
 22074,Campo,Huesca,Aragón,Campo,2,1,459,22.86,20.08
 13028,Campo de Criptana,Ciudad Real,Castilla-La Mancha,Campo de Criptana,3,2,13229,303.39,43.6
-3051,Campo de Mirra/Camp de Mirra (el),Alicante,Comunidad Valenciana,El Campo de Mirra/Camp de Mirra,1,3,429,21.82,19.66
+3051,Campo de Mirra/Camp de Mirra (El),Alicante,Comunidad Valenciana,El Campo de Mirra/Camp de Mirra,1,3,429,21.82,19.66
 37077,Campo de Peñaranda (El),Salamanca,Castilla y León,El Campo de Peñaranda,0,2,249,45.2,5.51
 40039,Campo de San Pedro,Segovia,Castilla y León,Campo de San Pedro,3,1,250,37.57,6.65
 24033,Campo de Villavidel,León,Castilla y León,Campo de Villavidel,2,1,211,13.97,15.1
@@ -1927,10 +1927,10 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 22082,Castejón del Puente,Huesca,Aragón,Castejón del Puente,2,1,345,25.43,13.57
 44066,Castel de Cabra,Teruel,Aragón,Castel de Cabra,2,1,95,29.44,3.23
 22085,Castelflorite,Huesca,Aragón,Castelflorite,2,1,103,34.76,2.96
-7064,Castell (Es),Illes Balears,Islas Baleares,es Castell,1,2,7530,11.63,647.46
+7064,Castell (Es),Illes Balears,Islas Baleares,Es Castell,1,2,7530,11.63,647.46
 12037,Castell de Cabres,Castellón,Comunidad Valenciana,Castell de Cabres,1,2,22,30.71,0.72
 3054,Castell de Castells,Alicante,Comunidad Valenciana,Castell de Castells,1,3,425,45.93,9.25
-3075,Castell de Guadalest (el),Alicante,Comunidad Valenciana,el Castell de Guadalest,1,3,243,15.96,15.23
+3075,Castell de Guadalest (El),Alicante,Comunidad Valenciana,El Castell de Guadalest,1,3,243,15.96,15.23
 8057,Castell de l'Areny,Barcelona,Cataluña,Castell de l'Areny,1,2,72,24.92,2.89
 25904,Castell de Mur,Lleida,Cataluña,Castell de Mur,2,1,169,62.41,2.71
 17048,Castell-Platja d'Aro,Girona,Cataluña,Castell-Platja d'Aro,1,1,11455,21.68,528.48
@@ -2401,7 +2401,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 42069,Covaleda,Soria,Castilla y León,Covaleda,3,1,1621,104.36,15.53
 9113,Covarrubias,Burgos,Castilla y León,Covarrubias,2,2,539,41.63,12.95
 36013,Covelo,Pontevedra,Galicia,Covelo,1,3,2455,134.7,18.23
-12050,Coves de Vinromà (les),Castellón,Comunidad Valenciana,les Coves de Vinromà,1,2,1792,136.44,13.13
+12050,Coves de Vinromà (Les),Castellón,Comunidad Valenciana,Les Coves de Vinromà,1,2,1792,136.44,13.13
 3058,Cox,Alicante,Comunidad Valenciana,Cox,1,3,7427,16.71,444.46
 13037,Cózar,Ciudad Real,Castilla-La Mancha,Cózar,3,2,923,64.99,14.2
 40902,Cozuelos de Fuentidueña,Segovia,Castilla y León,Cozuelos de Fuentidueña,3,1,120,15.24,7.88
@@ -2788,15 +2788,15 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 47063,Fompedraza,Valladolid,Castilla y León,Fompedraza,3,0,103,16.39,6.28
 26062,Foncea,La Rioja,La Rioja,Foncea,2,2,98,22.72,4.31
 25093,Fondarella,Lleida,Cataluña,Fondarella,2,1,781,5.35,145.96
-3077,Fondó de les Neus (el)/Hondón de las Nieves,Alicante,Comunidad Valenciana,el Fondó de les Neus/Hondón de las Nieves,1,3,2634,68.85,38.26
+3077,Fondó de les Neus (El)/Hondón de las Nieves,Alicante,Comunidad Valenciana,El Fondó de les Neus/Hondón de las Nieves,1,3,2634,68.85,38.26
 4046,Fondón,Almería,Andalucía,Fondón,1,2,1032,91.16,11.32
 18076,Fonelas,Granada,Andalucía,Fonelas,1,1,955,96.44,9.9
 44102,Fonfría,Teruel,Aragón,Fonfría,2,1,29,20.58,1.41
 49071,Fonfría,Zamora,Castilla y León,Fonfría,3,2,744,132.89,5.6
 8084,Fonollosa,Barcelona,Cataluña,Fonollosa,1,2,1495,52.15,28.67
 27018,Fonsagrada (A),Lugo,Galicia,A Fonsagrada,1,2,3328,438.42,7.59
-46127,Font d'En Carròs (la),Valencia,Comunidad Valenciana,la Font d'en Carròs,1,0,3793,9.9,383.2
-46128,Font de la Figuera (la),Valencia,Comunidad Valenciana,la Font de la Figuera,1,0,2025,84.34,24.01
+46127,Font d'En Carròs (La),Valencia,Comunidad Valenciana,La Font d'en Carròs,1,0,3793,9.9,383.2
+46128,Font de la Figuera (La),Valencia,Comunidad Valenciana,La Font de la Figuera,1,0,2025,84.34,24.01
 8085,Font-rubí,Barcelona,Cataluña,Font-rubí,1,2,1440,37.07,38.85
 17069,Fontanals de Cerdanya,Girona,Cataluña,Fontanals de Cerdanya,1,1,506,28.68,17.64
 19117,Fontanar,Guadalajara,Castilla-La Mancha,Fontanar,0,1,2523,15.47,163.09
@@ -3101,7 +3101,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 29057,Genalguacil,Málaga,Andalucía,Genalguacil,1,2,391,31.87,12.27
 23037,Génave,Jaén,Andalucía,Génave,2,2,593,63.58,9.33
 31116,Genevilla,Navarra,Comunidad Foral de Navarra,Genevilla,2,2,61,8.64,7.06
-46132,Genovés (el),Valencia,Comunidad Valenciana,el Genovés,1,0,2785,15.16,183.68
+46132,Genovés (El),Valencia,Comunidad Valenciana,El Genovés,1,0,2785,15.16,183.68
 17078,Ger,Girona,Cataluña,Ger,1,1,502,32.78,15.31
 41045,Gerena,Sevilla,Andalucía,Gerena,2,0,7740,129.1,59.95
 4050,Gérgal,Almería,Andalucía,Gérgal,1,2,1107,229.49,4.82
@@ -3180,7 +3180,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 8095,Granera,Barcelona,Cataluña,Granera,1,2,85,23.85,3.56
 10086,Granja (La),Cáceres,Extremadura,La Granja,0,3,318,14.94,21.28
 25102,Granja d'Escarp (La),Lleida,Cataluña,La Granja d'Escarp,2,1,931,38.39,24.25
-46137,Granja de la Costera (la),Valencia,Comunidad Valenciana,la Granja de la Costera,1,0,281,0.83,337.98
+46137,Granja de la Costera (La),Valencia,Comunidad Valenciana,La Granja de la Costera,1,0,281,0.83,337.98
 49091,Granja de Moreruela,Zamora,Castilla y León,Granja de Moreruela,3,2,265,41.27,6.42
 3074,Granja de Rocamora,Alicante,Comunidad Valenciana,Granja de Rocamora,1,3,2609,7.17,363.88
 6059,Granja de Torrehermosa,Badajoz,Extremadura,Granja de Torrehermosa,3,0,1965,151.69,12.95
@@ -3555,7 +3555,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 26081,Jalón de Cameros,La Rioja,La Rioja,Jalón de Cameros,2,2,19,8.43,2.26
 49096,Jambrina,Zamora,Castilla y León,Jambrina,3,2,149,16.64,8.96
 23051,Jamilena,Jaén,Andalucía,Jamilena,2,2,3302,8.99,367.38
-12070,Jana (la),Castellón,Comunidad Valenciana,la Jana,1,2,664,19.5,34.05
+12070,Jana (La),Castellón,Comunidad Valenciana,La Jana,1,2,664,19.5,34.05
 50129,Jaraba,Zaragoza,Aragón,Jaraba,2,1,282,42.81,6.59
 46144,Jarafuel,Valencia,Comunidad Valenciana,Jarafuel,1,0,772,103.09,7.49
 10103,Jaraicejo,Cáceres,Extremadura,Jaraicejo,0,3,457,177.05,2.58
@@ -3810,8 +3810,8 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 43074,Llorenç del Penedès,Tarragona,Cataluña,Llorenç del Penedès,1,2,2381,4.68,508.76
 17095,Lloret de Mar,Girona,Cataluña,Lloret de Mar,1,1,38402,48.38,793.76
 7028,Lloret de Vistalegre,Illes Balears,Islas Baleares,Lloret de Vistalegre,1,2,1465,17.44,84.0
-12074,Llosa (la),Castellón,Comunidad Valenciana,la Llosa,1,2,983,10.03,97.98
-46157,Llosa de Ranes (la),Valencia,Comunidad Valenciana,la Llosa de Ranes,1,0,3687,7.13,517.42
+12074,Llosa (La),Castellón,Comunidad Valenciana,La Llosa,1,2,983,10.03,97.98
+46157,Llosa de Ranes (La),Valencia,Comunidad Valenciana,La Llosa de Ranes,1,0,3687,7.13,517.42
 7029,Lloseta,Illes Balears,Islas Baleares,Lloseta,1,2,6250,12.1,516.58
 17096,Llosses (Les),Girona,Cataluña,Les Llosses,1,1,209,114.51,1.83
 7030,Llubí,Illes Balears,Islas Baleares,Llubí,1,2,2385,34.92,68.3
@@ -4090,7 +4090,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 40124,Mata de Cuéllar,Segovia,Castilla y León,Mata de Cuéllar,3,1,259,20.08,12.9
 37186,Mata de Ledesma (La),Salamanca,Castilla y León,La Mata de Ledesma,0,2,85,38.65,2.2
 44146,Mata de los Olmos (La),Teruel,Aragón,La Mata de los Olmos,2,1,257,23.73,10.83
-12075,Mata de Morella (la),Castellón,Comunidad Valenciana,la Mata de Morella,1,2,169,15.16,11.15
+12075,Mata de Morella (La),Castellón,Comunidad Valenciana,La Mata de Morella,1,2,169,15.16,11.15
 40123,Matabuena,Segovia,Castilla y León,Matabuena,3,1,183,21.42,8.54
 24097,Matadeón de los Oteros,León,Castilla y León,Matadeón de los Oteros,2,1,229,46.44,4.93
 8120,Matadepera,Barcelona,Cataluña,Matadepera,1,2,9672,25.37,381.24
@@ -4710,7 +4710,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 45118,Novés,Toledo,Castilla-La Mancha,Novés,0,2,3179,41.71,76.21
 42132,Noviercas,Soria,Castilla y León,Noviercas,3,1,160,91.56,1.75
 50191,Novillas,Zaragoza,Aragón,Novillas,2,1,502,25.34,19.81
-3094,Nucia (la),Alicante,Comunidad Valenciana,la Nucia,1,3,18108,21.36,847.7
+3094,Nucia (La),Alicante,Comunidad Valenciana,La Nucia,1,3,18108,21.36,847.7
 22163,Nueno,Huesca,Aragón,Nueno,2,1,587,147.24,3.99
 14046,Nueva Carteya,Córdoba,Andalucía,Nueva Carteya,2,2,5341,69.33,77.04
 47102,Nueva Villa de las Torres,Valladolid,Castilla y León,Nueva Villa de las Torres,3,0,276,35.81,7.71
@@ -4965,7 +4965,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 46188,Palmera,Valencia,Comunidad Valenciana,Palmera,1,0,1024,0.98,1047.25
 22168,Palo,Huesca,Aragón,Palo,2,1,28,14.4,1.94
 17123,Palol de Revardit,Girona,Cataluña,Palol de Revardit,1,1,446,18.08,24.67
-46189,Palomar (el),Valencia,Comunidad Valenciana,el Palomar,1,0,562,7.76,72.44
+46189,Palomar (El),Valencia,Comunidad Valenciana,El Palomar,1,0,562,7.76,72.44
 44176,Palomar de Arroyos,Teruel,Aragón,Palomar de Arroyos,2,1,168,33.62,5.0
 16148,Palomares del Campo,Cuenca,Castilla-La Mancha,Palomares del Campo,2,2,571,60.98,9.36
 41070,Palomares del Río,Sevilla,Andalucía,Palomares del Río,2,0,9020,13.1,688.55
@@ -5230,7 +5230,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 34129,Pino del Río,Palencia,Castilla y León,Pino del Río,2,2,174,51.99,3.35
 10146,Pinofranqueado,Cáceres,Extremadura,Pinofranqueado,0,3,1682,146.84,11.45
 25167,Pinós,Lleida,Cataluña,Pinós,2,1,290,104.45,2.78
-3105,Pinós (el)/Pinoso,Alicante,Comunidad Valenciana,el Pinós/Pinoso,1,3,8142,126.46,64.38
+3105,Pinós (El)/Pinoso,Alicante,Comunidad Valenciana,El Pinós/Pinoso,1,3,8142,126.46,64.38
 18157,Pinos Genil,Granada,Andalucía,Pinos Genil,1,1,1518,13.99,108.49
 18158,Pinos Puente,Granada,Andalucía,Pinos Puente,1,1,9853,92.94,106.01
 50209,Pinseque,Zaragoza,Aragón,Pinseque,2,1,4184,16.11,259.71
@@ -5272,19 +5272,19 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 44184,Plou,Teruel,Aragón,Plou,2,1,48,17.21,2.79
 25168,Poal (El),Lleida,Cataluña,El Poal,2,1,667,8.86,75.28
 7044,Pobla (Sa),Illes Balears,Islas Baleares,Sa Pobla,1,2,13873,48.59,285.53
-12093,Pobla de Benifassà (la),Castellón,Comunidad Valenciana,la Pobla de Benifassà,1,2,213,136.14,1.56
+12093,Pobla de Benifassà (La),Castellón,Comunidad Valenciana,La Pobla de Benifassà,1,2,213,136.14,1.56
 25169,Pobla de Cérvoles (La),Lleida,Cataluña,La Pobla de Cérvoles,2,1,198,61.99,3.19
 8165,Pobla de Claramunt (La),Barcelona,Cataluña,La Pobla de Claramunt,1,2,2207,18.55,118.98
-46199,Pobla de Farnals (la),Valencia,Comunidad Valenciana,la Pobla de Farnals,1,0,8205,3.62,2266.57
+46199,Pobla de Farnals (La),Valencia,Comunidad Valenciana,La Pobla de Farnals,1,0,8205,3.62,2266.57
 8166,Pobla de Lillet (La),Barcelona,Cataluña,La Pobla de Lillet,1,2,1063,51.52,20.63
 43109,Pobla de Mafumet (La),Tarragona,Cataluña,La Pobla de Mafumet,1,2,4025,6.12,657.68
 43110,Pobla de Massaluca (La),Tarragona,Cataluña,La Pobla de Massaluca,1,2,341,43.1,7.91
 43111,Pobla de Montornès (La),Tarragona,Cataluña,La Pobla de Montornès,1,2,2999,12.29,244.02
 25171,Pobla de Segur (La),Lleida,Cataluña,La Pobla de Segur,2,1,3050,33.19,91.9
-46202,Pobla de Vallbona (la),Valencia,Comunidad Valenciana,la Pobla de Vallbona,1,0,25275,33.1,763.5
-46200,Pobla del Duc (la),Valencia,Comunidad Valenciana,la Pobla del Duc,1,0,2483,18.87,131.59
-46203,Pobla Llarga (la),Valencia,Comunidad Valenciana,la Pobla Llarga,1,0,4440,10.09,439.9
-12094,Pobla Tornesa (la),Castellón,Comunidad Valenciana,la Pobla Tornesa,1,2,1239,25.91,47.82
+46202,Pobla de Vallbona (La),Valencia,Comunidad Valenciana,La Pobla de Vallbona,1,0,25275,33.1,763.5
+46200,Pobla del Duc (La),Valencia,Comunidad Valenciana,La Pobla del Duc,1,0,2483,18.87,131.59
+46203,Pobla Llarga (La),Valencia,Comunidad Valenciana,La Pobla Llarga,1,0,4440,10.09,439.9
+12094,Pobla Tornesa (La),Castellón,Comunidad Valenciana,La Pobla Tornesa,1,2,1239,25.91,47.82
 34131,Población de Arroyo,Palencia,Castilla y León,Población de Arroyo,2,2,56,22.87,2.45
 34132,Población de Campos,Palencia,Castilla y León,Población de Campos,2,2,135,23.26,5.8
 34133,Población de Cerrato,Palencia,Castilla y León,Población de Cerrato,2,2,112,19.79,5.66
@@ -5292,7 +5292,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 49160,Pobladura de Valderaduey,Zamora,Castilla y León,Pobladura de Valderaduey,3,2,39,12.56,3.11
 49159,Pobladura del Valle,Zamora,Castilla y León,Pobladura del Valle,3,2,295,14.15,20.84
 13064,Poblete,Ciudad Real,Castilla-La Mancha,Poblete,3,2,2759,27.93,98.78
-3901,Poblets (els),Alicante,Comunidad Valenciana,els Poblets,1,3,2721,3.62,751.51
+3901,Poblets (Els),Alicante,Comunidad Valenciana,Els Poblets,1,3,2721,3.62,751.51
 44185,Pobo (El),Teruel,Aragón,El Pobo,2,1,112,63.6,1.76
 19222,Pobo de Dueñas (El),Guadalajara,Castilla-La Mancha,El Pobo de Dueñas,0,1,104,55.28,1.88
 43112,Poboleda,Tarragona,Cataluña,Poboleda,1,2,328,13.79,23.79
@@ -5518,7 +5518,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 31207,Pueyo,Navarra,Comunidad Foral de Navarra,Pueyo,2,2,345,21.04,16.4
 22190,Pueyo de Araguás (El),Huesca,Aragón,El Pueyo de Araguás,2,1,167,61.84,2.7
 22193,Pueyo de Santa Cruz,Huesca,Aragón,Pueyo de Santa Cruz,2,1,326,9.29,35.08
-46204,Puig de Santa Maria (el),Valencia,Comunidad Valenciana,el Puig de Santa Maria,1,0,8737,26.8,326.01
+46204,Puig de Santa Maria (El),Valencia,Comunidad Valenciana,El Puig de Santa Maria,1,0,8737,26.8,326.01
 8175,Puig-reig,Barcelona,Cataluña,Puig-reig,1,2,4289,46.16,92.92
 17141,Puigcerdà,Girona,Cataluña,Puigcerdà,1,1,9518,18.62,511.2
 8174,Puigdàlber,Barcelona,Cataluña,Puigdàlber,1,2,551,0.65,847.69
@@ -5611,7 +5611,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 46207,Rafelbunyol,Valencia,Comunidad Valenciana,Rafelbunyol,1,0,9351,4.2,2227.33
 46208,Rafelcofer,Valencia,Comunidad Valenciana,Rafelcofer,1,0,1365,2.03,671.26
 46209,Rafelguaraf,Valencia,Comunidad Valenciana,Rafelguaraf,1,0,2358,16.26,145.0
-3110,Ràfol d'Almúnia (el),Alicante,Comunidad Valenciana,el Ràfol d'Almúnia,1,3,670,4.88,137.36
+3110,Ràfol d'Almúnia (El),Alicante,Comunidad Valenciana,El Ràfol d'Almúnia,1,3,670,4.88,137.36
 46210,Ráfol de Salem,Valencia,Comunidad Valenciana,Ráfol de Salem,1,0,449,4.33,103.81
 37265,Rágama,Salamanca,Castilla y León,Rágama,0,2,210,31.66,6.63
 4077,Rágol,Almería,Andalucía,Rágol,1,2,305,26.92,11.33
@@ -5628,7 +5628,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 43121,Rasquera,Tarragona,Cataluña,Rasquera,1,2,846,50.94,16.61
 5193,Rasueros,Ávila,Castilla y León,Rasueros,0,1,168,40.66,4.13
 46212,Real,Valencia,Comunidad Valenciana,Real,1,0,2250,18.32,122.85
-46211,Real de Gandia (el),Valencia,Comunidad Valenciana,el Real de Gandia,1,0,2551,6.07,420.15
+46211,Real de Gandia (El),Valencia,Comunidad Valenciana,El Real de Gandia,1,0,2551,6.07,420.15
 41080,Real de la Jara (El),Sevilla,Andalucía,El Real de la Jara,2,0,1513,157.35,9.62
 45144,Real de San Vicente (El),Toledo,Castilla-La Mancha,El Real de San Vicente,0,2,956,53.77,17.78
 40181,Real Sitio de San Ildefonso,Segovia,Castilla y León,Real Sitio de San Ildefonso,3,1,5237,144.81,36.16
@@ -5814,7 +5814,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 9323,Rojas,Burgos,Castilla y León,Rojas,2,2,64,24.93,2.57
 42159,Rollamienta,Soria,Castilla y León,Rollamienta,3,1,41,18.62,2.2
 37271,Rollán,Salamanca,Castilla y León,Rollán,0,2,352,22.98,15.32
-3114,Romana (la),Alicante,Comunidad Valenciana,la Romana,1,3,2542,43.29,58.72
+3114,Romana (La),Alicante,Comunidad Valenciana,La Romana,1,3,2542,43.29,58.72
 10160,Romangordo,Cáceres,Extremadura,Romangordo,0,3,259,39.07,6.63
 19241,Romanillos de Atienza,Guadalajara,Castilla-La Mancha,Romanillos de Atienza,0,1,34,23.84,1.43
 19242,Romanones,Guadalajara,Castilla-La Mancha,Romanones,0,1,104,28.88,3.6
@@ -5927,7 +5927,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 31214,Salinas de Oro/Jaitz,Navarra,Comunidad Foral de Navarra,Salinas de Oro/Jaitz,2,2,108,13.87,7.79
 34158,Salinas de Pisuerga,Palencia,Castilla y León,Salinas de Pisuerga,2,2,311,21.2,14.67
 16187,Salinas del Manzano,Cuenca,Castilla-La Mancha,Salinas del Manzano,2,2,74,33.65,2.2
-7059,Salines (Ses),Illes Balears,Islas Baleares,ses Salines,1,2,5010,39.12,128.07
+7059,Salines (Ses),Illes Balears,Islas Baleares,Ses Salines,1,2,5010,39.12,128.07
 9334,Salinillas de Bureba,Burgos,Castilla y León,Salinillas de Bureba,2,2,51,22.83,2.23
 8191,Sallent,Barcelona,Cataluña,Sallent,1,2,6717,65.3,102.86
 22204,Sallent de Gállego,Huesca,Aragón,Sallent de Gállego,2,1,1519,162.14,9.37
@@ -5951,7 +5951,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 6117,Salvatierra de los Barros,Badajoz,Extremadura,Salvatierra de los Barros,3,0,1608,74.96,21.45
 10163,Salvatierra de Santiago,Cáceres,Extremadura,Salvatierra de Santiago,0,3,284,33.36,8.51
 37277,Salvatierra de Tormes,Salamanca,Castilla y León,Salvatierra de Tormes,0,2,76,34.67,2.19
-12098,Salzadella (la),Castellón,Comunidad Valenciana,la Salzadella,1,2,683,49.92,13.68
+12098,Salzadella (La),Castellón,Comunidad Valenciana,La Salzadella,1,2,683,49.92,13.68
 1052,Samaniego,Álava,País Vasco,Samaniego,2,2,308,10.6,29.06
 40176,Samboal,Segovia,Castilla y León,Samboal,3,1,448,47.46,9.44
 49184,Samir de los Caños,Zamora,Castilla y León,Samir de los Caños,3,2,169,36.58,4.62
@@ -6511,7 +6511,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 37307,Serradilla del Llano,Salamanca,Castilla y León,Serradilla del Llano,0,2,147,67.52,2.18
 5233,Serranillos,Ávila,Castilla y León,Serranillos,0,1,245,18.39,13.32
 28140,Serranillos del Valle,Madrid,Comunidad de Madrid,Serranillos del Valle,3,2,4429,13.29,333.19
-12103,Serratella (la),Castellón,Comunidad Valenciana,la Serratella,1,2,92,18.81,4.89
+12103,Serratella (La),Castellón,Comunidad Valenciana,La Serratella,1,2,92,18.81,4.89
 29904,Serrato,Málaga,Andalucía,Serrato,1,2,473,29.11,16.25
 10176,Serrejón,Cáceres,Extremadura,Serrejón,0,3,409,124.15,3.29
 22220,Sesa,Huesca,Aragón,Sesa,2,1,162,30.84,5.25
@@ -6858,8 +6858,8 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 50258,Torralbilla,Zaragoza,Aragón,Torralbilla,2,1,59,25.86,2.28
 5247,Torre (La),Ávila,Castilla y León,La Torre,0,1,219,58.37,3.75
 11036,Torre Alháquime,Cádiz,Andalucía,Torre Alháquime,1,0,800,17.36,46.08
-12119,Torre d'En Besora (la),Castellón,Comunidad Valenciana,la Torre d'En Besora,1,2,167,12.31,13.57
-12120,Torre d'en Doménec (la),Castellón,Comunidad Valenciana,la Torre d'en Doménec,1,2,157,3.19,49.28
+12119,Torre d'En Besora (La),Castellón,Comunidad Valenciana,La Torre d'En Besora,1,2,167,12.31,13.57
+12120,Torre d'en Doménec (La),Castellón,Comunidad Valenciana,La Torre d'en Doménec,1,2,157,3.19,49.28
 44223,Torre de Arcas,Teruel,Aragón,Torre de Arcas,2,1,93,34.28,2.71
 25227,Torre de Cabdella (La),Lleida,Cataluña,La Torre de Cabdella,2,1,765,165.26,4.63
 8286,Torre de Claramunt (La),Barcelona,Cataluña,La Torre de Claramunt,1,2,3852,14.95,257.66
@@ -6937,7 +6937,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 8289,Torrelles de Llobregat,Barcelona,Cataluña,Torrelles de Llobregat,1,2,6126,13.68,447.81
 47171,Torrelobatón,Valladolid,Castilla y León,Torrelobatón,3,0,390,66.09,5.9
 28152,Torrelodones,Madrid,Comunidad de Madrid,Torrelodones,3,2,24122,21.95,1099.07
-3132,Torremanzanas/Torre de les Maçanes (la),Alicante,Comunidad Valenciana,La Torremanzanas/Torre de les Maçanes,1,3,681,36.48,18.67
+3132,Torremanzanas/Torre de les Maçanes (La),Alicante,Comunidad Valenciana,La Torremanzanas/Torre de les Maçanes,1,3,681,36.48,18.67
 6132,Torremayor,Badajoz,Extremadura,Torremayor,3,0,985,21.0,46.9
 6133,Torremejía,Badajoz,Extremadura,Torremejía,3,0,2249,23.49,95.74
 10191,Torremenga,Cáceres,Extremadura,Torremenga,0,3,587,12.15,48.31
@@ -7125,7 +7125,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 31245,Urzainqui/Urzainki,Navarra,Comunidad Foral de Navarra,Urzainqui/Urzainki,2,2,88,20.92,4.21
 6136,Usagre,Badajoz,Extremadura,Usagre,3,0,1761,240.67,7.32
 50271,Used,Zaragoza,Aragón,Used,2,1,271,85.29,3.18
-12122,Useras/Useres (les),Castellón,Comunidad Valenciana,Les Useras/Useres,1,2,968,80.69,12.0
+12122,Useras/Useres (Les),Castellón,Comunidad Valenciana,Les Useras/Useres,1,2,968,80.69,12.0
 20073,Usurbil,Gipuzkoa,País Vasco,Usurbil,1,2,6132,25.64,239.15
 19296,Utande,Guadalajara,Castilla-La Mancha,Utande,0,1,37,19.04,1.94
 50272,Utebo,Zaragoza,Aragón,Utebo,2,1,18856,17.72,1064.03
@@ -7271,16 +7271,16 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 16231,Valhermoso de la Fuente,Cuenca,Castilla-La Mancha,Valhermoso de la Fuente,2,2,46,32.12,1.43
 44247,Valjunquera,Teruel,Aragón,Valjunquera,2,1,342,41.84,8.17
 12124,Vall d'Alba,Castellón,Comunidad Valenciana,Vall d'Alba,1,2,2943,52.92,55.62
-3134,Vall d'Alcalà (la),Alicante,Comunidad Valenciana,la Vall d'Alcalà,1,3,163,22.85,7.13
-3135,Vall d'Ebo (la),Alicante,Comunidad Valenciana,la Vall d'Ebo,1,3,204,32.43,6.29
+3134,Vall d'Alcalà (La),Alicante,Comunidad Valenciana,La Vall d'Alcalà,1,3,163,22.85,7.13
+3135,Vall d'Ebo (La),Alicante,Comunidad Valenciana,La Vall d'Ebo,1,3,204,32.43,6.29
 17207,Vall d'en Bas (La),Girona,Cataluña,La Vall d'en Bas,1,1,3115,90.64,34.37
-12126,Vall d'Uixó (la),Castellón,Comunidad Valenciana,la Vall d'Uixó,1,2,31549,67.08,470.31
+12126,Vall d'Uixó (La),Castellón,Comunidad Valenciana,La Vall d'Uixó,1,2,31549,67.08,470.31
 12125,Vall de Almonacid,Castellón,Comunidad Valenciana,Vall de Almonacid,1,2,286,21.12,13.54
 17208,Vall de Bianya (La),Girona,Cataluña,La Vall de Bianya,1,1,1315,93.69,14.04
 25043,Vall de Boí (La),Lleida,Cataluña,La Vall de Boí,2,1,1060,220.83,4.8
 25901,Vall de Cardós,Lleida,Cataluña,Vall de Cardós,2,1,382,56.43,6.77
 3136,Vall de Gallinera,Alicante,Comunidad Valenciana,Vall de Gallinera,1,3,557,53.63,10.39
-3137,Vall de Laguar (la),Alicante,Comunidad Valenciana,la Vall de Laguar,1,3,843,23.05,36.57
+3137,Vall de Laguar (La),Alicante,Comunidad Valenciana,La Vall de Laguar,1,3,843,23.05,36.57
 17209,Vall-llobrega,Girona,Cataluña,Vall-llobrega,1,1,918,5.43,169.05
 46251,Vallada,Valencia,Comunidad Valenciana,Vallada,1,0,3092,61.5,50.28
 47186,Valladolid,Valladolid,Castilla y León,Valladolid,3,0,297775,197.37,1508.71
@@ -7455,7 +7455,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 50280,Vera de Moncayo,Zaragoza,Aragón,Vera de Moncayo,2,1,314,27.66,11.35
 25242,Verdú,Lleida,Cataluña,Verdú,2,1,880,35.85,24.55
 32084,Verea,Ourense,Galicia,Verea,2,2,914,94.23,9.7
-3138,Verger (el),Alicante,Comunidad Valenciana,el Verger,1,3,4841,8.16,593.33
+3138,Verger (El),Alicante,Comunidad Valenciana,El Verger,1,3,4841,8.16,593.33
 17211,Verges,Girona,Cataluña,Verges,1,1,1183,9.38,126.12
 32085,Verín,Ourense,Galicia,Verín,2,2,13644,94.11,144.98
 34201,Vertavillo,Palencia,Castilla y León,Vertavillo,2,2,169,57.36,2.95
@@ -7554,7 +7554,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 8214,Vilassar de Dalt,Barcelona,Cataluña,Vilassar de Dalt,1,2,9074,8.98,1010.47
 8219,Vilassar de Mar,Barcelona,Cataluña,Vilassar de Mar,1,2,20936,3.96,5283.53
 17222,Vilaür,Girona,Cataluña,Vilaür,1,1,162,5.67,28.57
-12136,Vilavella (la),Castellón,Comunidad Valenciana,La Vilavella,1,2,3111,6.15,506.17
+12136,Vilavella (La),Castellón,Comunidad Valenciana,La Vilavella,1,2,3111,6.15,506.17
 43172,Vilaverd,Tarragona,Cataluña,Vilaverd,1,2,445,12.53,35.53
 23094,Vilches,Jaén,Andalucía,Vilches,2,2,4376,273.38,16.01
 43173,Vilella Alta (La),Tarragona,Cataluña,La Vilella Alta,1,2,131,5.2,25.19
@@ -7641,7 +7641,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 12130,Villahermosa del Río,Castellón,Comunidad Valenciana,Villahermosa del Río,1,2,476,108.85,4.37
 34211,Villaherreros,Palencia,Castilla y León,Villaherreros,2,2,203,40.79,4.98
 9437,Villahoz,Burgos,Castilla y León,Villahoz,2,2,291,50.53,5.76
-3139,Villajoyosa/Vila Joiosa (la),Alicante,Comunidad Valenciana,La Villajoyosa/Vila Joiosa,1,3,34684,59.25,585.4
+3139,Villajoyosa/Vila Joiosa (La),Alicante,Comunidad Valenciana,La Villajoyosa/Vila Joiosa,1,3,34684,59.25,585.4
 34213,Villalaco,Palencia,Castilla y León,Villalaco,2,2,52,17.85,2.91
 47209,Villalán de Campos,Valladolid,Castilla y León,Villalán de Campos,3,0,35,18.35,1.91
 47210,Villalar de los Comuneros,Valladolid,Castilla y León,Villalar de los Comuneros,3,0,473,42.74,11.07

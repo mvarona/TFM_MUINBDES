@@ -1,4 +1,4 @@
-municipio,provincia,municipio_nombre_humano,lat,lon,elevation
+municipio,provincia,municipio_nombre_humano,lat,lon,altitud
 Agurain/Salvatierra,Álava,Agurain/Salvatierra,42.847308,-2.392287,593
 Alegría-Dulantzi,Álava,Alegría-Dulantzi,42.841339,-2.51244,566
 Amurrio,Álava,Amurrio,43.052099,-3.001084,222
@@ -178,7 +178,7 @@ Benimarfull,Alicante,Benimarfull,38.7759,-0.39079,419
 Benimassot,Alicante,Benimassot,38.75,-0.28333,771
 Benimeli,Alicante,Benimeli,38.82362,-0.04221,106
 Benissa,Alicante,Benissa,38.715345,0.051209,264
-Benitachell/Poble Nou de Benitatxell (el),Alicante,El Benitachell/Poble Nou de Benitatxell,38.724094,0.150938,143
+Benitachell/Poble Nou de Benitatxell (El),Alicante,El Benitachell/Poble Nou de Benitatxell,38.724094,0.150938,143
 Biar,Alicante,Biar,38.62662,-0.7623,706
 Bigastro,Alicante,Bigastro,38.06162,-0.894344,42
 Bolulla,Alicante,Bolulla,38.67529,-0.11184,216
@@ -186,12 +186,12 @@ Busot,Alicante,Busot,38.464904,-0.432603,204
 Callosa de Segura,Alicante,Callosa de Segura,38.126098,-0.875694,22
 Callosa d'en Sarrià,Alicante,Callosa d'en Sarrià,38.64888,-0.123885,218
 Calp,Alicante,Calp,38.658408,0.05646,34
-Campello (el),Alicante,El Campello,38.428712,-0.400416,32
-Campo de Mirra/Camp de Mirra (el),Alicante,El Campo de Mirra/Camp de Mirra,38.70001,-0.79462,598
+Campello (El),Alicante,El Campello,38.428712,-0.400416,32
+Campo de Mirra/Camp de Mirra (El),Alicante,El Campo de Mirra/Camp de Mirra,38.70001,-0.79462,598
 Cañada,Alicante,Cañada,38.39711,-0.5831,158
 Castalla,Alicante,Castalla,38.599887,-0.667946,652
 Castell de Castells,Alicante,Castell de Castells,38.735695,-0.187075,827
-Castell de Guadalest (el),Alicante,El Castell de Guadalest,38.6768,-0.19908,557
+Castell de Guadalest (El),Alicante,El Castell de Guadalest,38.6768,-0.19908,557
 Catral,Alicante,Catral,38.16056,-0.802149,10
 Cocentaina,Alicante,Cocentaina,38.754923,-0.441782,452
 Confrides,Alicante,Confrides,38.68451,-0.2689,780
@@ -206,7 +206,7 @@ Elda,Alicante,Elda,38.47616,-0.795528,401
 Facheca,Alicante,Facheca,38.735,-0.26766,770
 Famorca,Alicante,Famorca,38.73101,-0.24726,715
 Finestrat,Alicante,Finestrat,38.5671,-0.212203,270
-Fondó de les Neus (el)/Hondón de las Nieves,Alicante,El Fondó de les Neus/Hondón de las Nieves,38.308625,-0.851245,361
+Fondó de les Neus (El)/Hondón de las Nieves,Alicante,El Fondó de les Neus/Hondón de las Nieves,38.308625,-0.851245,361
 Formentera del Segura,Alicante,Formentera del Segura,38.084955,-0.745611,11
 Gaianes,Alicante,Gaianes,38.8164,-0.40881,437
 Gata de Gorgos,Alicante,Gata de Gorgos,38.774048,0.083486,85
@@ -228,7 +228,7 @@ Murla,Alicante,Murla,38.76037,-0.08208,283
 Muro de Alcoy,Alicante,Muro de Alcoy,38.780312,-0.440017,412
 Mutxamel,Alicante,Mutxamel,38.407895,-0.448889,68
 Novelda,Alicante,Novelda,38.385706,-0.768862,249
-Nucia (la),Alicante,La Nucia,38.599959,-0.132423,266
+Nucia (La),Alicante,La Nucia,38.599959,-0.132423,266
 Ondara,Alicante,Ondara,38.824783,0.020541,42
 Onil,Alicante,Onil,38.628054,-0.675278,693
 Orba,Alicante,Orba,38.780068,-0.058304,159
@@ -240,17 +240,17 @@ Pego,Alicante,Pego,38.841697,-0.115876,70
 Penàguila,Alicante,Penàguila,38.68,-0.35845,686
 Petrer,Alicante,Petrer,38.484322,-0.779674,437
 Pilar de la Horadada,Alicante,Pilar de la Horadada,37.862662,-0.788448,27
-Pinós (el)/Pinoso,Alicante,El Pinós/Pinoso,38.400231,-1.043137,570
+Pinós (El)/Pinoso,Alicante,El Pinós/Pinoso,38.400231,-1.043137,570
 Planes,Alicante,Planes,38.788175,-0.327363,500
-Poblets (els),Alicante,Els Poblets,38.85381,0.02103,11
+Poblets (Els),Alicante,Els Poblets,38.85381,0.02103,11
 Polop,Alicante,Polop,38.620263,-0.133733,231
 Quatretondeta,Alicante,Quatretondeta,38.72415,-0.31669,631
 Rafal,Alicante,Rafal,38.103409,-0.848648,17
-Ràfol d'Almúnia (el),Alicante,El Ràfol d'Almúnia,38.8212,-0.05171,89
+Ràfol d'Almúnia (El),Alicante,El Ràfol d'Almúnia,38.8212,-0.05171,89
 Redován,Alicante,Redován,38.113556,-0.906116,29
 Relleu,Alicante,Relleu,38.588602,-0.310327,456
 Rojales,Alicante,Rojales,38.084971,-0.711904,13
-Romana (la),Alicante,La Romana,38.36667,-0.9,431
+Romana (La),Alicante,La Romana,38.36667,-0.9,431
 Sagra,Alicante,Sagra,38.817249,-0.068787,218
 Salinas,Alicante,Salinas,38.520186,-0.911996,490
 San Fulgencio,Alicante,San Fulgencio,38.11362,-0.717969,10
@@ -268,14 +268,14 @@ Teulada,Alicante,Teulada,38.729169,0.10546,194
 Tibi,Alicante,Tibi,38.53353,-0.576694,551
 Tollos,Alicante,Tollos,38.75629,-0.27466,789
 Tormos,Alicante,Tormos,38.80143,-0.0716,124
-Torremanzanas/Torre de les Maçanes (la),Alicante,La Torremanzanas/Torre de les Maçanes,38.604168,-0.415178,765
+Torremanzanas/Torre de les Maçanes (La),Alicante,La Torremanzanas/Torre de les Maçanes,38.604168,-0.415178,765
 Torrevieja,Alicante,Torrevieja,37.985608,-0.673845,24
-Vall d'Alcalà (la),Alicante,La Vall d'Alcalà,38.79477,-0.25138,647
+Vall d'Alcalà (La),Alicante,La Vall d'Alcalà,38.79477,-0.25138,647
 Vall de Gallinera,Alicante,Vall de Gallinera,38.82313,-0.2417,322
-Vall de Laguar (la),Alicante,La Vall de Laguar,38.781025,-0.124025,223
-Vall d'Ebo (la),Alicante,La Vall d'Ebo,38.80561,-0.1589,404
-Verger (el),Alicante,El Verger,38.856576,0.013177,11
-Villajoyosa/Vila Joiosa (la),Alicante,La Villajoyosa/Vila Joiosa,38.508793,-0.231359,36
+Vall de Laguar (La),Alicante,La Vall de Laguar,38.781025,-0.124025,223
+Vall d'Ebo (La),Alicante,La Vall d'Ebo,38.80561,-0.1589,404
+Verger (El),Alicante,El Verger,38.856576,0.013177,11
+Villajoyosa/Vila Joiosa (La),Alicante,La Villajoyosa/Vila Joiosa,38.508793,-0.231359,36
 Villena,Alicante,Villena,38.634512,-0.864459,527
 Xaló,Alicante,Xaló,38.739807,-0.01167,200
 Abla,Almería,Abla,37.141895,-2.778084,874
@@ -1821,7 +1821,7 @@ Algimia de Almonacid,Castellón,Algimia de Almonacid,39.91667,-0.43333,570
 Almassora,Castellón,Almassora,39.947883,-0.064248,37
 Almedíjar,Castellón,Almedíjar,39.86667,-0.4,724
 Almenara,Castellón,Almenara,39.753129,-0.224747,26
-Alqueries (les)/Alquerías del Niño Perdido,Castellón,Les Alqueries/Alquerías del Niño Perdido,39.895098,-0.108965,23
+Alqueries (Les)/Alquerías del Niño Perdido,Castellón,Les Alqueries/Alquerías del Niño Perdido,39.895098,-0.108965,23
 Altura,Castellón,Altura,39.850324,-0.513293,395
 Arañuel,Castellón,Arañuel,40.06667,-0.48333,471
 Ares del Maestrat,Castellón,Ares del Maestrat,40.45675,-0.13267,1202
@@ -1859,7 +1859,7 @@ Cinctorres,Castellón,Cinctorres,40.58333,-0.21667,914
 Cirat,Castellón,Cirat,40.05,-0.45,428
 Cortes de Arenoso,Castellón,Cortes de Arenoso,40.18812,-0.54195,1010
 Costur,Castellón,Costur,40.11971,-0.17385,469
-Coves de Vinromà (les),Castellón,Les Coves de Vinromà,40.30912,0.118132,185
+Coves de Vinromà (Les),Castellón,Les Coves de Vinromà,40.30912,0.118132,185
 Culla,Castellón,Culla,40.3365,-0.16569,1057
 Eslida,Castellón,Eslida,39.88333,-0.3,317
 Espadilla,Castellón,Espadilla,40.03333,-0.35,262
@@ -1872,12 +1872,12 @@ Gaibiel,Castellón,Gaibiel,39.93333,-0.48333,618
 Geldo,Castellón,Geldo,39.83333,-0.46667,300
 Herbers,Castellón,Herbers,40.721,-0.00441,793
 Higueras,Castellón,Higueras,39.98333,-0.5,732
-Jana (la),Castellón,La Jana,40.500091,0.23571,319
+Jana (La),Castellón,La Jana,40.500091,0.23571,319
 Jérica,Castellón,Jérica,39.913351,-0.571448,493
-Llosa (la),Castellón,La Llosa,39.76667,-0.2,4
+Llosa (La),Castellón,La Llosa,39.76667,-0.2,4
 Llucena/Lucena del Cid,Castellón,Llucena/Lucena del Cid,40.138191,-0.279983,567
 Ludiente,Castellón,Ludiente,40.08333,-0.36667,597
-Mata de Morella (la),Castellón,La Mata de Morella,40.608223,-0.27819,967
+Mata de Morella (La),Castellón,La Mata de Morella,40.608223,-0.27819,967
 Matet,Castellón,Matet,39.93333,-0.46667,661
 Moncofa,Castellón,Moncofa,39.808477,-0.145696,7
 Montán,Castellón,Montán,40.03333,-0.55,580
@@ -1892,21 +1892,21 @@ Palanques,Castellón,Palanques,40.718,-0.17941,665
 Pavías,Castellón,Pavías,39.96667,-0.48333,872
 Peníscola/Peñíscola,Castellón,Peníscola/Peñíscola,40.363805,0.392361,35
 Pina de Montalgrao,Castellón,Pina de Montalgrao,40.01667,-0.65,1028
-Pobla de Benifassà (la),Castellón,La Pobla de Benifassà,40.65629,0.15793,690
-Pobla Tornesa (la),Castellón,La Pobla Tornesa,40.109561,-0.008239,291
+Pobla de Benifassà (La),Castellón,La Pobla de Benifassà,40.65629,0.15793,690
+Pobla Tornesa (La),Castellón,La Pobla Tornesa,40.109561,-0.008239,291
 Portell de Morella,Castellón,Portell de Morella,40.53267,-0.26249,1057
 Puebla de Arenoso,Castellón,Puebla de Arenoso,40.1,-0.58333,704
 Ribesalbes,Castellón,Ribesalbes,40.021367,-0.277889,171
 Rossell,Castellón,Rossell,40.61784,0.220729,466
 Sacañet,Castellón,Sacañet,39.86667,-0.71667,1040
-Salzadella (la),Castellón,La Salzadella,40.41792,0.17509,342
+Salzadella (La),Castellón,La Salzadella,40.41792,0.17509,342
 San Rafael del Río,Castellón,San Rafael del Río,40.5935,0.33932,243
 Sant Joan de Moró,Castellón,Sant Joan de Moró,40.059513,-0.136464,191
 Sant Jordi/San Jorge,Castellón,Sant Jordi/San Jorge,40.50982,0.33208,166
 Sant Mateu,Castellón,Sant Mateu,40.464639,0.180213,331
 Santa Magdalena de Pulpis,Castellón,Santa Magdalena de Pulpis,40.35625,0.30258,122
 Segorbe,Castellón,Segorbe,39.850485,-0.487022,354
-Serratella (la),Castellón,La Serratella,40.31284,0.0315,772
+Serratella (La),Castellón,La Serratella,40.31284,0.0315,772
 Sierra Engarcerán,Castellón,Sierra Engarcerán,40.26929,-0.01892,752
 Soneja,Castellón,Soneja,39.810029,-0.428728,278
 Sot de Ferrer,Castellón,Sot de Ferrer,39.8,-0.4,251
@@ -1919,15 +1919,15 @@ Toga,Castellón,Toga,40.05,-0.36667,389
 Torás,Castellón,Torás,39.919208,-0.684699,771
 Toro (El),Castellón,El Toro,39.98333,-0.75,1010
 Torralba del Pinar,Castellón,Torralba del Pinar,39.98333,-0.43333,757
-Torre d'En Besora (la),Castellón,La Torre d'En Besora,40.32649,-0.07949,627
-Torre d'en Doménec (la),Castellón,La Torre d'en Doménec,40.267426,0.074319,260
+Torre d'En Besora (La),Castellón,La Torre d'En Besora,40.32649,-0.07949,627
+Torre d'en Doménec (La),Castellón,La Torre d'en Doménec,40.267426,0.074319,260
 Torreblanca,Castellón,Torreblanca,40.21956,0.196572,29
 Torrechiva,Castellón,Torrechiva,40.05,-0.4,344
 Traiguera,Castellón,Traiguera,40.524145,0.289751,270
-Useras/Useres (les),Castellón,Les Useras/Useres,40.15765,-0.16522,399
+Useras/Useres (Les),Castellón,Les Useras/Useres,40.15765,-0.16522,399
 Vall d'Alba,Castellón,Vall d'Alba,40.175908,-0.035251,302
 Vall de Almonacid,Castellón,Vall de Almonacid,39.9,-0.45,492
-Vall d'Uixó (la),Castellón,La Vall d'Uixó,39.824012,-0.233628,126
+Vall d'Uixó (La),Castellón,La Vall d'Uixó,39.824012,-0.233628,126
 Vallat,Castellón,Vallat,40.0362,-0.33666,326
 Vallibona,Castellón,Vallibona,40.603,0.04642,661
 Vilafamés,Castellón,Vilafamés,40.116555,-0.050943,286
@@ -1935,7 +1935,7 @@ Vilafranca/Villafranca del Cid,Castellón,Vilafranca/Villafranca del Cid,40.4306
 Vilanova d'Alcolea,Castellón,Vilanova d'Alcolea,40.23183,0.07409,349
 Vilar de Canes,Castellón,Vilar de Canes,40.35817,-0.0655,658
 Vila-real,Castellón,Vila-real,39.9383,-0.10087,47
-Vilavella (la),Castellón,La Vilavella,39.859557,-0.18363,41
+Vilavella (La),Castellón,La Vilavella,39.859557,-0.18363,41
 Villahermosa del Río,Castellón,Villahermosa del Río,40.20268,-0.4199,737
 Villamalur,Castellón,Villamalur,39.96667,-0.4,562
 Villanueva de Viver,Castellón,Villanueva de Viver,40.05,-0.65,970
@@ -7105,20 +7105,20 @@ Estubeny,Valencia,Estubeny,39.01792,-0.62379,174
 Faura,Valencia,Faura,39.72629,-0.263152,42
 Favara,Valencia,Favara,39.127747,-0.28895,4
 Foios,Valencia,Foios,39.535448,-0.36247,18
-Font de la Figuera (la),Valencia,La Font de la Figuera,38.805715,-0.879222,548
-Font d'En Carròs (la),Valencia,La Font d'En Carròs,38.91747,-0.17111,58
+Font de la Figuera (La),Valencia,La Font de la Figuera,38.805715,-0.879222,548
+Font d'En Carròs (La),Valencia,La Font d'En Carròs,38.91747,-0.17111,58
 Fontanars dels Alforins,Valencia,Fontanars dels Alforins,38.782749,-0.784788,635
 Fortaleny,Valencia,Fortaleny,39.18333,-0.3,4
 Fuenterrobles,Valencia,Fuenterrobles,39.58333,-1.35,921
 Gandia,Valencia,Gandia,38.972187,-0.17942,25
 Gátova,Valencia,Gátova,39.76667,-0.51667,561
 Gavarda,Valencia,Gavarda,39.091709,-0.557548,33
-Genovés (el),Valencia,El Genovés,38.988066,-0.470273,142
+Genovés (El),Valencia,El Genovés,38.988066,-0.470273,142
 Gestalgar,Valencia,Gestalgar,39.6,-0.83333,186
 Gilet,Valencia,Gilet,39.67637,-0.329827,136
 Godella,Valencia,Godella,39.516974,-0.416621,38
 Godelleta,Valencia,Godelleta,39.424196,-0.687121,269
-Granja de la Costera (la),Valencia,La Granja de la Costera,38.99802,-0.56399,113
+Granja de la Costera (La),Valencia,La Granja de la Costera,38.99802,-0.56399,113
 Guadasséquies,Valencia,Guadasséquies,38.92539,-0.48585,156
 Guadassuar,Valencia,Guadassuar,39.185934,-0.479933,31
 Guardamar de la Safor,Valencia,Guardamar de la Safor,38.962339,-0.148939,12
@@ -7132,7 +7132,7 @@ Llocnou de la Corona,Valencia,Llocnou de la Corona,39.41667,-0.38333,1
 Llocnou de Sant Jeroni,Valencia,Llocnou de Sant Jeroni,38.994745,-0.571922,147
 Llocnou d'En Fenollet,Valencia,Llocnou d'En Fenollet,39.01357,-0.46658,91
 Llombai,Valencia,Llombai,39.280415,-0.584662,146
-Llosa de Ranes (la),Valencia,La Llosa de Ranes,39.017958,-0.53639,106
+Llosa de Ranes (La),Valencia,La Llosa de Ranes,39.017958,-0.53639,106
 Llutxent,Valencia,Llutxent,38.941749,-0.357589,299
 Loriguilla,Valencia,Loriguilla,39.478784,-0.563934,94
 Losa del Obispo,Valencia,Losa del Obispo,39.7,-0.86667,457
@@ -7167,7 +7167,7 @@ Otos,Valencia,Otos,38.85427,-0.44399,319
 Paiporta,Valencia,Paiporta,39.427723,-0.417287,33
 Palma de Gandía,Valencia,Palma de Gandía,38.924552,-0.220914,71
 Palmera,Valencia,Palmera,39.464773,-0.363258,22
-Palomar (el),Valencia,El Palomar,38.858378,-0.49476,304
+Palomar (El),Valencia,El Palomar,38.858378,-0.49476,304
 Paterna,Valencia,Paterna,39.505749,-0.435319,58
 Pedralba,Valencia,Pedralba,39.605407,-0.726497,159
 Petrés,Valencia,Petrés,39.685542,-0.312069,94
@@ -7175,15 +7175,15 @@ Picanya,Valencia,Picanya,39.435174,-0.432285,35
 Picassent,Valencia,Picassent,39.362178,-0.46639,60
 Piles,Valencia,Piles,38.941109,-0.13232,16
 Pinet,Valencia,Pinet,39.464773,-0.363258,22
-Pobla de Farnals (la),Valencia,La Pobla de Farnals,39.56571,-0.28425,4
-Pobla de Vallbona (la),Valencia,La Pobla de Vallbona,39.586083,-0.538391,97
-Pobla del Duc (la),Valencia,La Pobla del Duc,38.9046,-0.421382,238
-Pobla Llarga (la),Valencia,La Pobla Llarga,39.086622,-0.476677,33
+Pobla de Farnals (La),Valencia,La Pobla de Farnals,39.56571,-0.28425,4
+Pobla de Vallbona (La),Valencia,La Pobla de Vallbona,39.586083,-0.538391,97
+Pobla del Duc (La),Valencia,La Pobla del Duc,38.9046,-0.421382,238
+Pobla Llarga (La),Valencia,La Pobla Llarga,39.086622,-0.476677,33
 Polinyà de Xúquer,Valencia,Polinyà de Xúquer,39.196973,-0.370535,17
 Potries,Valencia,Potries,38.91617,-0.19594,61
 Puçol,Valencia,Puçol,39.618218,-0.30666,20
 Puebla de San Miguel,Valencia,Puebla de San Miguel,40.05,-1.13333,1220
-Puig de Santa Maria (el),Valencia,El Puig de Santa Maria,39.589761,-0.304232,37
+Puig de Santa Maria (El),Valencia,El Puig de Santa Maria,39.589761,-0.304232,37
 Quart de les Valls,Valencia,Quart de les Valls,39.740897,-0.273841,62
 Quart de Poblet,Valencia,Quart de Poblet,39.481489,-0.442491,44
 Quartell,Valencia,Quartell,39.738677,-0.262666,45
@@ -7194,7 +7194,7 @@ Rafelcofer,Valencia,Rafelcofer,38.932423,-0.167151,40
 Rafelguaraf,Valencia,Rafelguaraf,39.051075,-0.454472,49
 Ráfol de Salem,Valencia,Ráfol de Salem,38.86651,-0.39991,295
 Real,Valencia,Real,39.336103,-0.609158,139
-Real de Gandia (el),Valencia,El Real de Gandia,38.952572,-0.189867,33
+Real de Gandia (El),Valencia,El Real de Gandia,38.952572,-0.189867,33
 Requena,Valencia,Requena,39.48756,-1.100272,698
 Riba-roja de Túria,Valencia,Riba-roja de Túria,39.54595,-0.57069,103
 Riola,Valencia,Riola,39.195747,-0.334777,13
