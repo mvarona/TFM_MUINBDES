@@ -1,4 +1,4 @@
-municipio,provincia,codigo_INE,cobertura_30,cobertura_100,cobertura_3g,cobertura_4g
+municipio,provincia,codigo_ine,cobertura_30,cobertura_100,cobertura_3g,cobertura_4g
 Ababuj,Teruel,44001,95.0,0.0,99.0,89.0
 Abades,Segovia,40001,100.0,100.0,100.0,100.0
 Abadía,Cáceres,10001,100.0,100.0,100.0,100.0
