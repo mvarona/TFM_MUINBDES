@@ -1931,7 +1931,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 12037,Castell de Cabres,Castellón,Comunidad Valenciana,Castell de Cabres,1,2
 3054,Castell de Castells,Alicante,Comunidad Valenciana,Castell de Castells,1,3
 3075,Castell de Guadalest (el),Alicante,Comunidad Valenciana,el Castell de Guadalest,1,3
-8057,Castell de L'Areny,Barcelona,Cataluña,Castell de L'Areny,1,2
+8057,Castell de l'Areny,Barcelona,Cataluña,Castell de l'Areny,1,2
 25904,Castell de Mur,Lleida,Cataluña,Castell de Mur,2,1
 17048,Castell-Platja d'Aro,Girona,Cataluña,Castell-Platja d'Aro,1,1
 9079,Castellanos de Castro,Burgos,Castilla y León,Castellanos de Castro,2,2
@@ -2415,7 +2415,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 6041,Cristina,Badajoz,Extremadura,Cristina,3,0
 37112,Cristóbal,Salamanca,Castilla y León,Cristóbal,0,2
 44087,Crivillén,Teruel,Aragón,Crivillén,2,1
-17901,Cruïlles Monells i Sant Sadurní de L'Heura,Girona,Cataluña,Cruïlles Monells i Sant Sadurní de L'Heura,1,1
+17901,Cruïlles Monells i Sant Sadurní de l'Heura,Girona,Cataluña,Cruïlles Monells i Sant Sadurní de l'Heura,1,1
 10068,Cuacos de Yuste,Cáceres,Extremadura,Cuacos de Yuste,0,3
 24061,Cuadros,León,Castilla y León,Cuadros,2,1
 32028,Cualedro,Ourense,Galicia,Cualedro,2,2
@@ -5175,7 +5175,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 31203,Petilla de Aragón,Navarra,Comunidad Foral de Navarra,Petilla de Aragón,2,2
 32060,Petín,Ourense,Galicia,Petín,2,2
 7041,Petra,Illes Balears,Islas Baleares,Petra,1,2
-3104,Picazo (El),Alicante,Comunidad Valenciana,Petrer,1,3
+3104,Petrer,Alicante,Comunidad Valenciana,Petrer,1,3
 46192,Petrés,Valencia,Comunidad Valenciana,Petrés,1,0
 2061,Pétrola,Albacete,Castilla-La Mancha,Pétrola,2,2
 18154,Peza (La),Granada,Andalucía,La Peza,1,1
@@ -6868,7 +6868,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 45171,Torre de Esteban Hambrán (La),Toledo,Castilla-La Mancha,La Torre de Esteban Hambrán,0,2
 43151,Torre de Fontaubella (La),Tarragona,Cataluña,La Torre de Fontaubella,1,2
 13084,Torre de Juan Abad,Ciudad Real,Castilla-La Mancha,Torre de Juan Abad,3,2
-43152,Torre de L'Espanyol (La),Tarragona,Cataluña,La Torre de L'Espanyol,1,2
+43152,Torre de l'Espanyol (La),Tarragona,Cataluña,La Torre de L'Espanyol,1,2
 44224,Torre de las Arcas,Teruel,Aragón,Torre de las Arcas,2,1
 6131,Torre de Miguel Sesmero,Badajoz,Extremadura,Torre de Miguel Sesmero,3,0
 47170,Torre de Peñafiel,Valladolid,Castilla y León,Torre de Peñafiel,3,0
@@ -7381,7 +7381,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 24190,Valverde-Enrique,León,Castilla y León,Valverde-Enrique,2,1
 16237,Valverdejo,Cuenca,Castilla-La Mancha,Valverdejo,2,2
 37342,Valverdón,Salamanca,Castilla y León,Valverdón,0,2
-43162,Vandellòs i L'Hospitalet de L'Infant,Tarragona,Cataluña,Vandellòs i L'Hospitalet de L'Infant,1,2
+43162,Vandellòs i l'Hospitalet de l'Infant,Tarragona,Cataluña,Vandellòs i l'Hospitalet de l'Infant,1,2
 25909,Vansa i Fórnols (La),Lleida,Cataluña,La Vansa i Fórnols,2,1
 16238,Vara de Rey,Cuenca,Castilla-La Mancha,Vara de Rey,2,2
 8297,Veciana,Barcelona,Cataluña,Veciana,1,2
@@ -7534,7 +7534,7 @@ codigo_ine,municipio,provincia,comunidad_autonoma,municipio_nombre_humano,linea_
 43167,Vilanova d'Escornalbou,Tarragona,Cataluña,Vilanova d'Escornalbou,1,2
 36061,Vilanova de Arousa,Pontevedra,Galicia,Vilanova de Arousa,1,3
 25248,Vilanova de Bellpuig,Lleida,Cataluña,Vilanova de Bellpuig,2,1
-25249,Vilanova de L'Aguda,Lleida,Cataluña,Vilanova de L'Aguda,2,1
+25249,Vilanova de l'Aguda,Lleida,Cataluña,Vilanova de l'Aguda,2,1
 25254,Vilanova de la Barca,Lleida,Cataluña,Vilanova de la Barca,2,1
 25250,Vilanova de Meià,Lleida,Cataluña,Vilanova de Meià,2,1
 43168,Vilanova de Prades,Tarragona,Cataluña,Vilanova de Prades,1,2

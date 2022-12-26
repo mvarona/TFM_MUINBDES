@@ -279,7 +279,7 @@ Alconchel de Ariza,Zaragoza,50015,1,Alconchel de Ariza
 Alconchel de la Estrella,Cuenca,16012,1,Alconchel de la Estrella
 Alconera,Badajoz,6008,1,Alconera
 Alcóntar,Almería,4008,2,Alcóntar
-Alcora (l'),Castellón,12005,2,L' Alcora
+Alcora (L'),Castellón,12005,2,L' Alcora
 Alcorcón,Madrid,28007,7,Alcorcón
 Alcorisa,Teruel,44014,1,Alcorisa
 Alcoroches,Guadalajara,19013,1,Alcoroches
@@ -292,8 +292,8 @@ Alcubilla de Nogales,Zamora,49004,1,Alcubilla de Nogales
 Alcubillas,Ciudad Real,13008,1,Alcubillas
 Alcublas,Valencia,46018,1,Alcublas
 Alcúdia,Illes Balears,7003,2,Alcúdia
-Alcúdia (l'),Valencia,46019,1,L' Alcúdia
-Alcúdia de Crespins (l'),Valencia,46020,1,L' Alcúdia de Crespins
+Alcúdia (L'),Valencia,46019,1,L' Alcúdia
+Alcúdia de Crespins (L'),Valencia,46020,1,L' Alcúdia de Crespins
 Alcudia de Monteagud,Almería,4009,1,Alcudia de Monteagud
 Alcudia de Veo,Castellón,12006,2,Alcudia de Veo
 Alcuéscar,Cáceres,10010,1,Alcuéscar
@@ -378,7 +378,7 @@ Alfaro,La Rioja,26011,1,Alfaro
 Alfarp,Valencia,46026,1,Alfarp
 Alfarràs,Lleida,25013,1,Alfarràs
 Alfarrasí,Valencia,46027,1,Alfarrasí
-Alfàs del Pi (l'),Alicante,3011,2,L' Alfàs del Pi
+Alfàs del Pi (L'),Alicante,3011,2,L' Alfàs del Pi
 Alfauir,Valencia,46023,1,Alfauir
 Alfés,Lleida,25014,1,Alfés
 Alfondeguilla,Castellón,12007,1,Alfondeguilla
@@ -536,8 +536,8 @@ Alpera,Albacete,2010,1,Alpera
 Alpicat,Lleida,25023,1,Alpicat
 Alpuente,Valencia,46036,1,Alpuente
 Alpujarra de la Sierra,Granada,18904,2,Alpujarra de la Sierra
-Alqueria d'Asnar (l'),Alicante,3017,1,L' Alqueria d'Asnar
-Alqueria de la Comtessa (l'),Valencia,46037,1,L' Alqueria de la Comtessa
+Alqueria d'Asnar (L'),Alicante,3017,1,L' Alqueria d'Asnar
+Alqueria de la Comtessa (L'),Valencia,46037,1,L' Alqueria de la Comtessa
 Alqueries (les)/Alquerías del Niño Perdido,Castellón,12901,1,Les Alqueries/Alquerías del Niño Perdido
 Alquézar,Huesca,22024,2,Alquézar
 Alquife,Granada,18018,1,Alquife
@@ -831,7 +831,7 @@ Atienza,Guadalajara,19044,5,Atienza
 Atxondo,Bizkaia,48091,1,Atxondo
 Atzeneta d'Albaida,Valencia,46003,1,Atzeneta d'Albaida
 Atzeneta del Maestrat,Castellón,12001,1,Atzeneta del Maestrat
-Atzúbia (l'),Alicante,3001,2,L' Atzúbia
+Atzúbia (L'),Alicante,3001,2,L' Atzúbia
 Aulesti,Bizkaia,48070,1,Aulesti
 Auñón,Guadalajara,19045,1,Auñón
 Auritz/Burguete,Navarra,31058,1,Auritz/Burguete
@@ -2566,7 +2566,7 @@ Elduain,Gipuzkoa,20031,1,Elduain
 Elgeta,Gipuzkoa,20033,1,Elgeta
 Elgoibar,Gipuzkoa,20032,1,Elgoibar
 Elgorriaga,Navarra,31087,1,Elgorriaga
-Eliana (l'),Valencia,46116,1,L' Eliana
+Eliana (L'),Valencia,46116,1,L' Eliana
 Eljas,Cáceres,10072,1,Eljas
 Elorrio,Bizkaia,48032,1,Elorrio
 Elvillar/Bilar,Álava,1023,1,Elvillar/Bilar
@@ -2592,7 +2592,7 @@ Enériz/Eneritz,Navarra,31089,1,Enériz/Eneritz
 Enguera,Valencia,46118,2,Enguera
 Enguídanos,Cuenca,16082,1,Enguídanos
 Enix,Almería,4041,1,Enix
-Ènova (l'),Valencia,46119,1,L' Ènova
+Ènova (L'),Valencia,46119,1,L' Ènova
 Entrala,Zamora,49061,1,Entrala
 Entrambasaguas,Cantabria,39028,1,Entrambasaguas
 Entrena,La Rioja,26059,1,Entrena
@@ -3844,7 +3844,7 @@ Lora de Estepa,Sevilla,41054,1,Lora de Estepa
 Lora del Río,Sevilla,41055,2,Lora del Río
 Loranca de Tajuña,Guadalajara,19160,1,Loranca de Tajuña
 Lorca,Murcia,30024,28,Lorca
-Lorcha/Orxa (l'),Alicante,3084,1,L' Lorcha/Orxa
+Lorcha/Orxa (L'),Alicante,3084,1,L' Lorcha/Orxa
 Loriguilla,Valencia,46148,1,Loriguilla
 Lorquí,Murcia,30025,1,Lorquí
 Losa (La),Segovia,40113,1,La Losa
@@ -4069,8 +4069,8 @@ Masegosa,Cuenca,16123,1,Masegosa
 Masegoso,Albacete,2047,1,Masegoso
 Masegoso de Tajuña,Guadalajara,19172,1,Masegoso de Tajuña
 Maside,Ourense,32045,2,Maside
-Masies de Roda (Le)s,Barcelona,8116,0,Le Masies de Rodas
-Masies de Voltregà (Le)s,Barcelona,8117,1,Le Masies de Voltregàs
+Masies de Roda (Les),Barcelona,8116,0,Le Masies de Rodas
+Masies de Voltregà (Les),Barcelona,8117,1,Le Masies de Voltregàs
 Masllorenç,Tarragona,43079,1,Masllorenç
 Masnou (El),Barcelona,8118,2,El Masnou
 Masó (La),Tarragona,43080,1,La Masó
@@ -4777,7 +4777,7 @@ Olivares de Júcar,Cuenca,16139,1,Olivares de Júcar
 Olivella,Barcelona,8148,1,Olivella
 Olivenza,Badajoz,6095,6,Olivenza
 Ollauri,La Rioja,26111,1,Ollauri
-Olleria (l'),Valencia,46183,1,L' Olleria
+Olleria (L'),Valencia,46183,1,L' Olleria
 Olmeda de Cobeta,Guadalajara,19201,2,Olmeda de Cobeta
 Olmeda de Jadraque (La),Guadalajara,19202,1,La Olmeda de Jadraque
 Olmeda de la Cuesta,Cuenca,16140,1,Olmeda de la Cuesta

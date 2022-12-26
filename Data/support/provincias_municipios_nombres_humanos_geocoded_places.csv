@@ -146,16 +146,16 @@ Alcocer de Planes,Alicante,Alcocer de Planes,38.79501,-0.40244,sport;natural;act
 Alcoleja,Alicante,Alcoleja,38.66992,-0.32382,natural;sport;building,natural
 Alcoy/Alcoi,Alicante,Alcoy/Alcoi,38.701616,-0.476523,service;commercial;sport,service
 Alfafara,Alicante,Alfafara,38.77339,-0.55551,sport;natural;leisure,sport
-Alfàs del Pi (l'),Alicante,L' Alfàs del Pi,38.566318,-0.104676,sport;building;commercial,sport
+Alfàs del Pi (L'),Alicante,L' Alfàs del Pi,38.566318,-0.104676,sport;building;commercial,sport
 Algorfa,Alicante,Algorfa,38.084582,-0.796363,sport;catering;commercial,sport
 Algueña,Alicante,Algueña,38.339218,-1.002629,leisure;service;building,leisure
 Alicante/Alacant,Alicante,Alicante/Alacant,38.360892,-0.486281,commercial;catering;sport,commercial
 Almoradí,Alicante,Almoradí,38.110237,-0.792414,catering;commercial;service,catering
 Almudaina,Alicante,Almudaina,38.75999,-0.35149,sport;natural;building,sport
-Alqueria d'Asnar (l'),Alicante,L' Alqueria d'Asnar,38.360892,-0.486281,commercial;catering;sport,commercial
+Alqueria d'Asnar (L'),Alicante,L' Alqueria d'Asnar,38.360892,-0.486281,commercial;catering;sport,commercial
 Altea,Alicante,Altea,38.596675,-0.055608,sport;leisure;accommodation,sport
 Aspe,Alicante,Aspe,38.343766,-0.766951,leisure;commercial;catering,leisure
-Atzúbia (l'),Alicante,L' Atzúbia,38.338892,-0.509477,leisure;sport;access_limited,leisure
+Atzúbia (L'),Alicante,L' Atzúbia,38.338892,-0.509477,leisure;sport;access_limited,leisure
 Balones,Alicante,Balones,38.73726,-0.34324,access_limited;sport;access,access_limited
 Banyeres de Mariola,Alicante,Banyeres de Mariola,38.715255,-0.660488,activity;leisure;service,activity
 Benasau,Alicante,Benasau,38.69047,-0.34278,natural;leisure;sport,natural
@@ -219,7 +219,7 @@ Jacarilla,Alicante,Jacarilla,38.060975,-0.867996,leisure;catering;service,leisur
 Jávea/Xàbia,Alicante,Jávea/Xàbia,38.785694,0.150464,sport;building;tourism,sport
 Jijona/Xixona,Alicante,Jijona/Xixona,38.532651,-0.506731,sport;natural;building,sport
 Llíber,Alicante,Llíber,38.74272,-0.006,sport;building;tourism,sport
-Lorcha/Orxa (l'),Alicante,L' Lorcha/Orxa,38.360892,-0.486281,commercial;catering;sport,commercial
+Lorcha/Orxa (L'),Alicante,L' Lorcha/Orxa,38.360892,-0.486281,commercial;catering;sport,commercial
 Millena,Alicante,Millena,38.73082,-0.36274,access_limited;sport;leisure,access_limited
 Monforte del Cid,Alicante,Monforte del Cid,38.379799,-0.722666,sport;commercial;leisure,sport
 Monóvar/Monòver,Alicante,Monóvar/Monòver,38.436388,-0.840944,leisure;commercial;building,leisure
@@ -983,8 +983,8 @@ Manresa,Barcelona,Manresa,41.730648,1.831997,commercial;service;leisure,commerci
 Marganell,Barcelona,Marganell,41.63388,1.80427,natural;tourism;leisure,natural
 Martorell,Barcelona,Martorell,41.481731,1.916816,access;commercial;leisure,access
 Martorelles,Barcelona,Martorelles,41.529028,2.231623,sport;leisure;access,sport
-Masies de Roda (Le)s,Barcelona,Le Masies de Rodas,42.01944,2.23546,sport;leisure;access,sport
-Masies de Voltregà (Le)s,Barcelona,Le Masies de Voltregàs,42.024167,2.236111,sport;leisure;natural,sport
+Masies de Roda (Les),Barcelona,Le Masies de Rodas,42.01944,2.23546,sport;leisure;access,sport
+Masies de Voltregà (Les),Barcelona,Le Masies de Voltregàs,42.024167,2.236111,sport;leisure;natural,sport
 Masnou (El),Barcelona,El Masnou,41.482393,2.312081,sport;leisure,sport
 Masquefa,Barcelona,Masquefa,41.500363,1.812874,catering;commercial;leisure,catering
 Matadepera,Barcelona,Matadepera,41.616911,2.012558,natural;sport;leisure,natural
@@ -1814,7 +1814,7 @@ Zahara,Cádiz,Zahara,36.839145,-5.391021,catering;commercial;tourism,catering
 Aín,Castellón,Aín,39.892802,-0.348672,natural;tourism;leisure,natural
 Albocàsser,Castellón,Albocàsser,40.356897,0.023953,sport;leisure;service,sport
 Alcalà de Xivert,Castellón,Alcalà de Xivert,40.3051,0.225807,commercial;catering;building,commercial
-Alcora (l'),Castellón,L' Alcora,40.06667,-0.2,sport;catering;natural,sport
+Alcora (L'),Castellón,L' Alcora,40.06667,-0.2,sport;catering;natural,sport
 Alcudia de Veo,Castellón,Alcudia de Veo,39.91667,-0.35,sport;natural;leisure,sport
 Alfondeguilla,Castellón,Alfondeguilla,39.83333,-0.26667,leisure;sport;catering,leisure
 Algimia de Almonacid,Castellón,Algimia de Almonacid,39.91667,-0.43333,sport;natural;leisure,sport
@@ -7002,8 +7002,8 @@ Albuixech,Valencia,Albuixech,39.544868,-0.324651,leisure;sport;building,leisure
 Alcàntera de Xúquer,Valencia,Alcàntera de Xúquer,39.068491,-0.562269,sport;building;service,sport
 Alcàsser,Valencia,Alcàsser,39.367986,-0.443372,leisure;building;service,leisure
 Alcublas,Valencia,Alcublas,39.798339,-0.70287,natural;leisure;sport,natural
-Alcúdia de Crespins (l'),Valencia,L' Alcúdia de Crespins,38.97264,-0.60219,sport;natural;leisure,sport
-Alcúdia (l'),Valencia,L' Alcúdia,39.19281,-0.52396,sport;access_limited;catering,sport
+Alcúdia de Crespins (L'),Valencia,L' Alcúdia de Crespins,38.97264,-0.60219,sport;natural;leisure,sport
+Alcúdia (L'),Valencia,L' Alcúdia,39.19281,-0.52396,sport;access_limited;catering,sport
 Aldaia,Valencia,Aldaia,39.465115,-0.46177,commercial;service;catering,commercial
 Alfafar,Valencia,Alfafar,39.40723,-0.386372,building;service;leisure,building
 Alfara de la Baronia,Valencia,Alfara de la Baronia,39.768973,-0.343358,natural;catering;leisure,natural
@@ -7020,7 +7020,7 @@ Almiserà,Valencia,Almiserà,38.91667,-0.28333,sport;catering;accommodation,spor
 Almoines,Valencia,Almoines,38.944245,-0.180795,sport;building;leisure,sport
 Almussafes,Valencia,Almussafes,39.29359,-0.413366,leisure;commercial;activity,leisure
 Alpuente,Valencia,Alpuente,39.86667,-1.01667,natural;commercial;catering,natural
-Alqueria de la Comtessa (l'),Valencia,L' Alqueria de la Comtessa,38.52309,-1.312155,natural;sport;catering,natural
+Alqueria de la Comtessa (L'),Valencia,L' Alqueria de la Comtessa,38.52309,-1.312155,natural;sport;catering,natural
 Alzira,Valencia,Alzira,39.151954,-0.432702,catering;sport;commercial,catering
 Andilla,Valencia,Andilla,39.83333,-0.8,natural;sport;leisure,natural
 Anna,Valencia,Anna,39.019526,-0.64637,sport;leisure;commercial,sport
@@ -7096,10 +7096,10 @@ Cullera,Valencia,Cullera,39.161559,-0.254091,commercial;leisure;service,commerci
 Daimús,Valencia,Daimús,38.974363,-0.1446,leisure;access_limited;sport,leisure
 Domeño,Valencia,Domeño,39.658403,-0.672369,access_limited;sport;natural,access_limited
 Dos Aguas,Valencia,Dos Aguas,39.28333,-0.8,leisure;natural;heritage,leisure
-Eliana (l'),Valencia,L' Eliana,39.556032,-0.533308,sport;leisure;catering,sport
+Eliana (L'),Valencia,L' Eliana,39.556032,-0.533308,sport;leisure;catering,sport
 Emperador,Valencia,Emperador,39.55399,-0.33912,leisure;sport;commercial,leisure
 Enguera,Valencia,Enguera,38.979466,-0.688996,commercial;catering;leisure,commercial
-Ènova (l'),Valencia,L' Ènova,39.043813,-0.481298,sport;natural;tourism,sport
+Ènova (L'),Valencia,L' Ènova,39.043813,-0.481298,sport;natural;tourism,sport
 Estivella,Valencia,Estivella,39.712879,-0.347611,catering;service;commercial,catering
 Estubeny,Valencia,Estubeny,39.01792,-0.62379,sport;natural;leisure,sport
 Faura,Valencia,Faura,39.72629,-0.263152,sport;catering;entertainment,sport
@@ -7160,7 +7160,7 @@ Nàquera/Náquera,Valencia,Nàquera/Náquera,39.666919,-0.428348,sport;natural,s
 Navarrés,Valencia,Navarrés,39.100535,-0.694114,leisure;sport,leisure
 Novelé/Novetlè,Valencia,Novelé/Novetlè,38.98128,-0.54998,sport;leisure;natural,sport
 Oliva,Valencia,Oliva,38.917975,-0.117195,leisure;commercial;catering,leisure
-Olleria (l'),Valencia,L' Olleria,39.464773,-0.363258,leisure;catering;commercial,leisure
+Olleria (L'),Valencia,L' Olleria,39.464773,-0.363258,leisure;catering;commercial,leisure
 Olocau,Valencia,Olocau,39.704005,-0.531352,sport;leisure,sport
 Ontinyent,Valencia,Ontinyent,38.82856,-0.603226,sport;catering;service,sport
 Otos,Valencia,Otos,38.85427,-0.44399,sport;natural;leisure,sport

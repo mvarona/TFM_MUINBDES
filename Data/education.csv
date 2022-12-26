@@ -279,7 +279,7 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 16012,Alconchel de la Estrella,Cuenca,Alconchel de la Estrella,0,0
 6008,Alconera,Badajoz,Alconera,1,0
 4008,Alcóntar,Almería,Alcóntar,2,0
-12005,Alcora (l'),Castellón,L' Alcora,1,0
+12005,Alcora (L'),Castellón,L' Alcora,1,0
 28007,Alcorcón,Madrid,Alcorcón,99,4
 44014,Alcorisa,Teruel,Alcorisa,6,0
 19013,Alcoroches,Guadalajara,Alcoroches,0,0
@@ -292,8 +292,8 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 13008,Alcubillas,Ciudad Real,Alcubillas,1,0
 46018,Alcublas,Valencia,Alcublas,2,0
 7003,Alcúdia,Illes Balears,Alcúdia,7,0
-46019,Alcúdia (l'),Valencia,L' Alcúdia,0,0
-46020,Alcúdia de Crespins (l'),Valencia,L' Alcúdia de Crespins,0,0
+46019,Alcúdia (L'),Valencia,L' Alcúdia,0,0
+46020,Alcúdia de Crespins (L'),Valencia,L' Alcúdia de Crespins,0,0
 4009,Alcudia de Monteagud,Almería,Alcudia de Monteagud,0,0
 12006,Alcudia de Veo,Castellón,Alcudia de Veo,0,0
 10010,Alcuéscar,Cáceres,Alcuéscar,3,0
@@ -378,7 +378,7 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 46026,Alfarp,Valencia,Alfarp,2,0
 25013,Alfarràs,Lleida,Alfarràs,3,0
 46027,Alfarrasí,Valencia,Alfarrasí,3,0
-3011,Alfàs del Pi (l'),Alicante,L' Alfàs del Pi,0,0
+3011,Alfàs del Pi (L'),Alicante,L' Alfàs del Pi,0,0
 46023,Alfauir,Valencia,Alfauir,0,0
 25014,Alfés,Lleida,Alfés,1,0
 12007,Alfondeguilla,Castellón,Alfondeguilla,1,0
@@ -536,8 +536,8 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 25023,Alpicat,Lleida,Alpicat,6,0
 46036,Alpuente,Valencia,Alpuente,2,0
 18904,Alpujarra de la Sierra,Granada,Alpujarra de la Sierra,0,0
-3017,Alqueria d'Asnar (l'),Alicante,L' Alqueria d'Asnar,0,0
-46037,Alqueria de la Comtessa (l'),Valencia,L' Alqueria de la Comtessa,0,0
+3017,Alqueria d'Asnar (L'),Alicante,L' Alqueria d'Asnar,0,0
+46037,Alqueria de la Comtessa (L'),Valencia,L' Alqueria de la Comtessa,0,0
 12901,Alqueries (les)/Alquerías del Niño Perdido,Castellón,Les Alqueries/Alquerías del Niño Perdido,0,0
 22024,Alquézar,Huesca,Alquézar,1,0
 18018,Alquife,Granada,Alquife,2,0
@@ -831,7 +831,7 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 48091,Atxondo,Bizkaia,Atxondo,2,0
 46003,Atzeneta d'Albaida,Valencia,Atzeneta d'Albaida,3,0
 12001,Atzeneta del Maestrat,Castellón,Atzeneta del Maestrat,2,0
-3001,Atzúbia (l'),Alicante,L' Atzúbia,0,0
+3001,Atzúbia (L'),Alicante,L' Atzúbia,0,0
 48070,Aulesti,Bizkaia,Aulesti,0,0
 19045,Auñón,Guadalajara,Auñón,0,0
 31058,Auritz/Burguete,Navarra,Auritz/Burguete,1,0
@@ -2566,7 +2566,7 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 20033,Elgeta,Gipuzkoa,Elgeta,2,0
 20032,Elgoibar,Gipuzkoa,Elgoibar,6,1
 31087,Elgorriaga,Navarra,Elgorriaga,0,0
-46116,Eliana (l'),Valencia,L' Eliana,0,0
+46116,Eliana (L'),Valencia,L' Eliana,0,0
 10072,Eljas,Cáceres,Eljas,1,0
 48032,Elorrio,Bizkaia,Elorrio,7,0
 1023,Elvillar/Bilar,Álava,Elvillar/Bilar,0,0
@@ -2592,7 +2592,7 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 46118,Enguera,Valencia,Enguera,5,0
 16082,Enguídanos,Cuenca,Enguídanos,0,0
 4041,Enix,Almería,Enix,0,0
-46119,Ènova (l'),Valencia,L' Ènova,0,0
+46119,Ènova (L'),Valencia,L' Ènova,0,0
 49061,Entrala,Zamora,Entrala,0,0
 39028,Entrambasaguas,Cantabria,Entrambasaguas,0,0
 26059,Entrena,La Rioja,Entrena,0,0
@@ -3844,7 +3844,7 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 41055,Lora del Río,Sevilla,Lora del Río,17,0
 19160,Loranca de Tajuña,Guadalajara,Loranca de Tajuña,0,0
 30024,Lorca,Murcia,Lorca,46,1
-3084,Lorcha/Orxa (l'),Alicante,L' Lorcha/Orxa,0,0
+3084,Lorcha/Orxa (L'),Alicante,L' Lorcha/Orxa,0,0
 46148,Loriguilla,Valencia,Loriguilla,3,0
 30025,Lorquí,Murcia,Lorquí,5,0
 40113,Losa (La),Segovia,La Losa,0,0
@@ -4069,8 +4069,8 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 2047,Masegoso,Albacete,Masegoso,0,0
 19172,Masegoso de Tajuña,Guadalajara,Masegoso de Tajuña,0,0
 32045,Maside,Ourense,Maside,0,0
-8116,Masies de Roda (Le)s,Barcelona,Le Masies de Rodas,0,0
-8117,Masies de Voltregà (Le)s,Barcelona,Le Masies de Voltregàs,0,0
+8116,Masies de Roda (Les),Barcelona,Le Masies de Rodas,0,0
+8117,Masies de Voltregà (Les),Barcelona,Le Masies de Voltregàs,0,0
 43079,Masllorenç,Tarragona,Masllorenç,2,0
 8118,Masnou (El),Barcelona,El Masnou,17,0
 43080,Masó (La),Tarragona,La Masó,1,0
@@ -4777,7 +4777,7 @@ codigo_ine,municipio,provincia,municipio_nombre_humano,num_colegios,num_universi
 8148,Olivella,Barcelona,Olivella,3,0
 6095,Olivenza,Badajoz,Olivenza,9,0
 26111,Ollauri,La Rioja,Ollauri,0,0
-46183,Olleria (l'),Valencia,L' Olleria,0,0
+46183,Olleria (L'),Valencia,L' Olleria,0,0
 19201,Olmeda de Cobeta,Guadalajara,Olmeda de Cobeta,0,0
 19202,Olmeda de Jadraque (La),Guadalajara,La Olmeda de Jadraque,0,0
 16140,Olmeda de la Cuesta,Cuenca,Olmeda de la Cuesta,0,0

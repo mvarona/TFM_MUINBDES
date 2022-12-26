@@ -146,16 +146,16 @@ Alcocer de Planes,Alicante,Alcocer de Planes,38.79501,-0.40244
 Alcoleja,Alicante,Alcoleja,38.66992,-0.32382
 Alcoy/Alcoi,Alicante,Alcoy/Alcoi,38.701616,-0.476523
 Alfafara,Alicante,Alfafara,38.77339,-0.55551
-Alfàs del Pi (l'),Alicante,L' Alfàs del Pi,38.566318,-0.104676
+Alfàs del Pi (L'),Alicante,L' Alfàs del Pi,38.566318,-0.104676
 Algorfa,Alicante,Algorfa,38.084582,-0.796363
 Algueña,Alicante,Algueña,38.339218,-1.002629
 Alicante/Alacant,Alicante,Alicante/Alacant,38.360892,-0.486281
 Almoradí,Alicante,Almoradí,38.110237,-0.792414
 Almudaina,Alicante,Almudaina,38.75999,-0.35149
-Alqueria d'Asnar (l'),Alicante,L' Alqueria d'Asnar,38.360892,-0.486281
+Alqueria d'Asnar (L'),Alicante,L' Alqueria d'Asnar,38.360892,-0.486281
 Altea,Alicante,Altea,38.596675,-0.055608
 Aspe,Alicante,Aspe,38.343766,-0.766951
-Atzúbia (l'),Alicante,L' Atzúbia,38.338892,-0.509477
+Atzúbia (L'),Alicante,L' Atzúbia,38.338892,-0.509477
 Balones,Alicante,Balones,38.73726,-0.34324
 Banyeres de Mariola,Alicante,Banyeres de Mariola,38.715255,-0.660488
 Benasau,Alicante,Benasau,38.69047,-0.34278
@@ -219,7 +219,7 @@ Jacarilla,Alicante,Jacarilla,38.060975,-0.867996
 Jávea/Xàbia,Alicante,Jávea/Xàbia,38.785694,0.150464
 Jijona/Xixona,Alicante,Jijona/Xixona,38.532651,-0.506731
 Llíber,Alicante,Llíber,38.74272,-0.006
-Lorcha/Orxa (l'),Alicante,L' Lorcha/Orxa,38.360892,-0.486281
+Lorcha/Orxa (L'),Alicante,L' Lorcha/Orxa,38.360892,-0.486281
 Millena,Alicante,Millena,38.73082,-0.36274
 Monforte del Cid,Alicante,Monforte del Cid,38.379799,-0.722666
 Monóvar/Monòver,Alicante,Monóvar/Monòver,38.436388,-0.840944
@@ -983,8 +983,8 @@ Manresa,Barcelona,Manresa,41.730648,1.831997
 Marganell,Barcelona,Marganell,41.63388,1.80427
 Martorell,Barcelona,Martorell,41.481731,1.916816
 Martorelles,Barcelona,Martorelles,41.529028,2.231623
-Masies de Roda (Le)s,Barcelona,Le Masies de Rodas,42.01944,2.23546
-Masies de Voltregà (Le)s,Barcelona,Le Masies de Voltregàs,42.024167,2.236111
+Masies de Roda (Les),Barcelona,Le Masies de Rodas,42.01944,2.23546
+Masies de Voltregà (Les),Barcelona,Le Masies de Voltregàs,42.024167,2.236111
 Masnou (El),Barcelona,El Masnou,41.482393,2.312081
 Masquefa,Barcelona,Masquefa,41.500363,1.812874
 Matadepera,Barcelona,Matadepera,41.616911,2.012558
@@ -1814,7 +1814,7 @@ Zahara,Cádiz,Zahara,36.839145,-5.391021
 Aín,Castellón,Aín,39.892802,-0.348672
 Albocàsser,Castellón,Albocàsser,40.356897,0.023953
 Alcalà de Xivert,Castellón,Alcalà de Xivert,40.3051,0.225807
-Alcora (l'),Castellón,L' Alcora,40.06667,-0.2
+Alcora (L'),Castellón,L' Alcora,40.06667,-0.2
 Alcudia de Veo,Castellón,Alcudia de Veo,39.91667,-0.35
 Alfondeguilla,Castellón,Alfondeguilla,39.83333,-0.26667
 Algimia de Almonacid,Castellón,Algimia de Almonacid,39.91667,-0.43333
@@ -7002,8 +7002,8 @@ Albuixech,Valencia,Albuixech,39.544868,-0.324651
 Alcàntera de Xúquer,Valencia,Alcàntera de Xúquer,39.068491,-0.562269
 Alcàsser,Valencia,Alcàsser,39.367986,-0.443372
 Alcublas,Valencia,Alcublas,39.798339,-0.70287
-Alcúdia de Crespins (l'),Valencia,L' Alcúdia de Crespins,38.97264,-0.60219
-Alcúdia (l'),Valencia,L' Alcúdia,39.19281,-0.52396
+Alcúdia de Crespins (L'),Valencia,L' Alcúdia de Crespins,38.97264,-0.60219
+Alcúdia (L'),Valencia,L' Alcúdia,39.19281,-0.52396
 Aldaia,Valencia,Aldaia,39.465115,-0.46177
 Alfafar,Valencia,Alfafar,39.40723,-0.386372
 Alfara de la Baronia,Valencia,Alfara de la Baronia,39.768973,-0.343358
@@ -7020,7 +7020,7 @@ Almiserà,Valencia,Almiserà,38.91667,-0.28333
 Almoines,Valencia,Almoines,38.944245,-0.180795
 Almussafes,Valencia,Almussafes,39.29359,-0.413366
 Alpuente,Valencia,Alpuente,39.86667,-1.01667
-Alqueria de la Comtessa (l'),Valencia,L' Alqueria de la Comtessa,38.52309,-1.312155
+Alqueria de la Comtessa (L'),Valencia,L' Alqueria de la Comtessa,38.52309,-1.312155
 Alzira,Valencia,Alzira,39.151954,-0.432702
 Andilla,Valencia,Andilla,39.83333,-0.8
 Anna,Valencia,Anna,39.019526,-0.64637
@@ -7096,10 +7096,10 @@ Cullera,Valencia,Cullera,39.161559,-0.254091
 Daimús,Valencia,Daimús,38.974363,-0.1446
 Domeño,Valencia,Domeño,39.658403,-0.672369
 Dos Aguas,Valencia,Dos Aguas,39.28333,-0.8
-Eliana (l'),Valencia,L' Eliana,39.556032,-0.533308
+Eliana (L'),Valencia,L' Eliana,39.556032,-0.533308
 Emperador,Valencia,Emperador,39.55399,-0.33912
 Enguera,Valencia,Enguera,38.979466,-0.688996
-Ènova (l'),Valencia,L' Ènova,39.043813,-0.481298
+Ènova (L'),Valencia,L' Ènova,39.043813,-0.481298
 Estivella,Valencia,Estivella,39.712879,-0.347611
 Estubeny,Valencia,Estubeny,39.01792,-0.62379
 Faura,Valencia,Faura,39.72629,-0.263152
@@ -7160,7 +7160,7 @@ Nàquera/Náquera,Valencia,Nàquera/Náquera,39.666919,-0.428348
 Navarrés,Valencia,Navarrés,39.100535,-0.694114
 Novelé/Novetlè,Valencia,Novelé/Novetlè,38.98128,-0.54998
 Oliva,Valencia,Oliva,38.917975,-0.117195
-Olleria (l'),Valencia,L' Olleria,39.464773,-0.363258
+Olleria (L'),Valencia,L' Olleria,39.464773,-0.363258
 Olocau,Valencia,Olocau,39.704005,-0.531352
 Ontinyent,Valencia,Ontinyent,38.82856,-0.603226
 Otos,Valencia,Otos,38.85427,-0.44399

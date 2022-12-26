@@ -279,7 +279,7 @@ Alconchel de Ariza,Zaragoza,Alconchel de Ariza,79,34.8512,2.26677991001745
 Alconchel de la Estrella,Cuenca,Alconchel de la Estrella,86,42.9418,2.00271064557145
 Alconera,Badajoz,Alconera,744,32.713,22.7432519181977
 Alcóntar,Almería,Alcóntar,542,93.9067,5.77168615231927
-Alcora (l'),Castellón,L' Alcora,10428,95.18,109.560832107586
+Alcora (L'),Castellón,L' Alcora,10428,95.18,109.560832107586
 Alcorcón,Madrid,Alcorcón,170817,33.7323,5063.90017876042
 Alcorisa,Teruel,Alcorisa,3293,121.1992,27.1701463375996
 Alcoroches,Guadalajara,Alcoroches,128,32.2474,3.96931225463138
@@ -292,8 +292,8 @@ Alcubilla de Nogales,Zamora,Alcubilla de Nogales,117,13.6748,8.55588381548542
 Alcubillas,Ciudad Real,Alcubillas,466,47.4610,9.81858789321759
 Alcublas,Valencia,Alcublas,610,43.47,14.0326662065793
 Alcúdia,Illes Balears,Alcúdia,20651,60.0172,344.08469572056
-Alcúdia (l'),Valencia,L' Alcúdia,12193,23.6674,515.181219736853
-Alcúdia de Crespins (l'),Valencia,L' Alcúdia de Crespins,5144,5.2,989.230769230769
+Alcúdia (L'),Valencia,L' Alcúdia,12193,23.6674,515.181219736853
+Alcúdia de Crespins (L'),Valencia,L' Alcúdia de Crespins,5144,5.2,989.230769230769
 Alcudia de Monteagud,Almería,Alcudia de Monteagud,129,15.52,8.31185567010309
 Alcudia de Veo,Castellón,Alcudia de Veo,196,30.6579,6.39313194967692
 Alcuéscar,Cáceres,Alcuéscar,2486,108.61,22.8892367185342
@@ -378,7 +378,7 @@ Alfaro,La Rioja,Alfaro,9562,194.1184,49.2585968151396
 Alfarp,Valencia,Alfarp,1564,20.5780,76.0034988823015
 Alfarràs,Lleida,Alfarràs,2759,11.28,244.59219858156
 Alfarrasí,Valencia,Alfarrasí,1206,6.3798,189.034139001223
-Alfàs del Pi (l'),Alicante,L' Alfàs del Pi,20495,19.2595,1064.15015966147
+Alfàs del Pi (L'),Alicante,L' Alfàs del Pi,20495,19.2595,1064.15015966147
 Alfauir,Valencia,Alfauir,467,6.2204,75.0755578419394
 Alfés,Lleida,Alfés,301,32.00,9.40625
 Alfondeguilla,Castellón,Alfondeguilla,870,28.3281,30.7115549577981
@@ -536,8 +536,8 @@ Alpera,Albacete,Alpera,2285,178.4727,12.8030785660776
 Alpicat,Lleida,Alpicat,6274,15.36,408.463541666667
 Alpuente,Valencia,Alpuente,659,138.3295,4.76398743579641
 Alpujarra de la Sierra,Granada,Alpujarra de la Sierra,952,68.5349,13.8907330425812
-Alqueria d'Asnar (l'),Alicante,L' Alqueria d'Asnar,498,1.0837,459.53677216942
-Alqueria de la Comtessa (l'),Valencia,L' Alqueria de la Comtessa,1481,2.1533,687.781544605954
+Alqueria d'Asnar (L'),Alicante,L' Alqueria d'Asnar,498,1.0837,459.53677216942
+Alqueria de la Comtessa (L'),Valencia,L' Alqueria de la Comtessa,1481,2.1533,687.781544605954
 Alqueries (les)/Alquerías del Niño Perdido,Castellón,les Alqueries/Alquerías del Niño Perdido,4539,12.6095,359.966691780007
 Alquézar,Huesca,Alquézar,338,32.3588,10.445381163702
 Alquife,Granada,Alquife,561,12.1902,46.0205739036275
@@ -831,7 +831,7 @@ Atienza,Guadalajara,Atienza,395,104.2829,3.78777345087258
 Atxondo,Bizkaia,Atxondo,1366,23.37,58.4510055626872
 Atzeneta d'Albaida,Valencia,Atzeneta d'Albaida,1139,6.0559,188.081044931389
 Atzeneta del Maestrat,Castellón,Atzeneta del Maestrat,1292,71.1579,18.156803390769
-Atzúbia (l'),Alicante,L' Atzúbia,609,14.6696,41.5144243878497
+Atzúbia (L'),Alicante,L' Atzúbia,609,14.6696,41.5144243878497
 Aulesti,Bizkaia,Aulesti,646,25.56,25.2738654147105
 Auñón,Guadalajara,Auñón,140,52.7102,2.65603241877284
 Auritz/Burguete,Navarra,Auritz/Burguete,228,19.1895,11.8814976940514
@@ -2566,7 +2566,7 @@ Elduain,Gipuzkoa,Elduain,244,25.0652,9.73461213156089
 Elgeta,Gipuzkoa,Elgeta,1141,16.8319,67.7879502611113
 Elgoibar,Gipuzkoa,Elgoibar,11464,39.113,293.099480990975
 Elgorriaga,Navarra,Elgorriaga,214,3.870,55.297157622739
-Eliana (l'),Valencia,L' Eliana,18302,8.772,2086.41130870953
+Eliana (L'),Valencia,L' Eliana,18302,8.772,2086.41130870953
 Eljas,Cáceres,Eljas,897,32.5472,27.5599744371252
 Elorrio,Bizkaia,Elorrio,7383,37.01,199.486625236423
 Elvillar/Bilar,Álava,Elvillar/Bilar,327,17.5022,18.6833655197632
@@ -2592,7 +2592,7 @@ Enériz/Eneritz,Navarra,Enériz/Eneritz,296,9.5481,31.0009321226213
 Enguera,Valencia,Enguera,4779,241.7494,19.7684048026593
 Enguídanos,Cuenca,Enguídanos,303,165.3468,1.83251202926213
 Enix,Almería,Enix,540,66.8446,8.07843864725049
-Ènova (l'),Valencia,L' Ènova,912,7.6737,118.84749208335
+Ènova (L'),Valencia,L' Ènova,912,7.6737,118.84749208335
 Entrala,Zamora,Entrala,147,9.9999,14.70014700147
 Entrambasaguas,Cantabria,Entrambasaguas,5357,43.1884,124.037936112475
 Entrena,La Rioja,Entrena,1613,21.0313,76.6952114229743
@@ -3844,7 +3844,7 @@ Lora de Estepa,Sevilla,Lora de Estepa,875,18.0880,48.374613003096
 Lora del Río,Sevilla,Lora del Río,18578,294.25,63.1367884451997
 Loranca de Tajuña,Guadalajara,Loranca de Tajuña,1396,36.40,38.3516483516484
 Lorca,Murcia,Lorca,96238,1675.27,57.4462623935246
-Lorcha/Orxa (l'),Alicante,L' Lorcha/Orxa,584,31.7647,18.3851885898497
+Lorcha/Orxa (L'),Alicante,L' Lorcha/Orxa,584,31.7647,18.3851885898497
 Loriguilla,Valencia,Loriguilla,2027,72.4211,27.9890805303979
 Lorquí,Murcia,Lorquí,7320,15.73,465.352828989193
 Losa (La),Segovia,La Losa,521,28.0023,18.6056145388057
@@ -4069,8 +4069,8 @@ Masegosa,Cuenca,Masegosa,61,30.82,1.97923426346528
 Masegoso,Albacete,Masegoso,105,103.8703,1.01087606370637
 Masegoso de Tajuña,Guadalajara,Masegoso de Tajuña,49,17.3855,2.81844065456846
 Maside,Ourense,Maside,2718,40.0439,67.875506631472
-Masies de Roda (Le)s,Barcelona,Le Masies de Rodas,704,16.2274,43.3834132393359
-Masies de Voltregà (Le)s,Barcelona,Le Masies de Voltregàs,3178,22.1888,143.225411018171
+Masies de Roda (Les),Barcelona,Le Masies de Rodas,704,16.2274,43.3834132393359
+Masies de Voltregà (Les),Barcelona,Le Masies de Voltregàs,3178,22.1888,143.225411018171
 Masllorenç,Tarragona,Masllorenç,508,6.57,77.3211567732116
 Masnou (El),Barcelona,El Masnou,23848,3.37,7076.55786350148
 Masó (La),Tarragona,La Masó,283,3.46,81.7919075144509
@@ -4777,7 +4777,7 @@ Olivares de Júcar,Cuenca,Olivares de Júcar,295,50.0002,5.8999764000944
 Olivella,Barcelona,Olivella,4127,38.81,106.338572532852
 Olivenza,Badajoz,Olivenza,11871,430.1408,27.5979400233598
 Ollauri,La Rioja,Ollauri,310,2.5989,119.281234368387
-Olleria (l'),Valencia,L' Olleria,8404,32.2247,260.793738964211
+Olleria (L'),Valencia,L' Olleria,8404,32.2247,260.793738964211
 Olmeda de Cobeta,Guadalajara,Olmeda de Cobeta,63,39.6230,1.58998561441587
 Olmeda de Jadraque (La),Guadalajara,La Olmeda de Jadraque,15,11.7139,1.2805299686697
 Olmeda de la Cuesta,Cuenca,Olmeda de la Cuesta,21,23.2272,0.904112419921471
