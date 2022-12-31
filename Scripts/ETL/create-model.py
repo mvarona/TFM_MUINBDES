@@ -1,10 +1,5 @@
 #!/usr/bin/python
 
-# Mario Varona Bueno
-# TFM MUINBDES
-# 2022
-# Returns the model on CSV, that is, the current database without categorical variables
-
 import sys
 import os
 import pandas as pd
@@ -19,6 +14,9 @@ def main(argv):
 	
 	df = pd.read_csv(filename)
 	df = df.drop(['municipio', 'provincia', 'municipio_nombre_humano', 'comunidad_autonoma', 'lat', 'lon'], axis=1)
+
+	df = df.replace({'-': 0})
+
 	df.to_csv(new_filename, index=False)
 
 if __name__ == "__main__":
