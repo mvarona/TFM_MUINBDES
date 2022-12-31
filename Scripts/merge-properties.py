@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2022
+# Returns a CSV with properties merged data
+
 import sys
 import os
 import pandas as pd

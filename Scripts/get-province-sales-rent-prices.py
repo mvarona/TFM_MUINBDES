@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2022
+# Returns a CSV with the sales and rent prices for each municipality
+
 from bs4 import BeautifulSoup
 import sys
 import os

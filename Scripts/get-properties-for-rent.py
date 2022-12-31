@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2022
+# Returns a CSV with the on-rent properties data for each municipality via Idealista
+
 from bs4 import BeautifulSoup
 import sys
 import os
