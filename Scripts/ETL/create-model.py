@@ -18,7 +18,7 @@ def main(argv):
 	new_filename = "model" + ".csv"
 	
 	df = pd.read_csv(filename)
-	df = df.drop(['municipio', 'provincia', 'municipio_nombre_humano', 'comunidad_autonoma'], axis=1)
+	df = df.drop(['municipio', 'provincia', 'municipio_nombre_humano', 'comunidad_autonoma', 'lat', 'lon'], axis=1)
 	df.to_csv(new_filename, index=False)
 
 if __name__ == "__main__":
