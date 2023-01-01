@@ -148,7 +148,7 @@
 						</div>
 					</div>
 					{% endif %}
-					{% if num_hospitales != "-" %}
+					{% if num_hospitales != "-" and num_hospitales != 0 %}
 					<div class="feature">
 						<div class="feature-icon">
 							<img alt="Icono de un hospital" src="{{ url_for('static', filename= 'images/hospital.png') }}"/>
@@ -168,7 +168,7 @@
 						</div>
 					</div>
 					{% endif %}
-					{% if num_universidades != "-" %}
+					{% if num_universidades != "-" and num_universidades != 0 %}
 					<div class="feature">
 						<div class="feature-icon">
 							<img alt="Icono de una universidad" src="{{ url_for('static', filename= 'images/university.png') }}"/>

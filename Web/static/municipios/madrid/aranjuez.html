@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title> </title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="/inicio">dondeTeEsperan.es</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+						<a class="nav-link" href="#">Lugar solo para mí</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar parecido a otro</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar sorpresa</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<link rel="stylesheet" href="/static/css/municipality.css">
+	<div id="bg"></div>
+	<div id="bg-layer"></div>
+	<div class="container">
+	
+	<main id="main">
+		<h1>¡Te esperan en Aranjuez!</h1>
+		<h3 class="province">Madrid</h3>
+		<article>
+			<div class="first-column">
+				<section class="intro">
+					<p class="intro">Aranjuez es un municipio y ciudad española en el extremo sur de la Comunidad de Madrid, cabeza del partido judicial del mismo nombre. 
+A mediados del siglo XVIII, Fernando VI derogó las restricciones anteriores que impedían residentes ajenos a la Corte y se fundó una ciudad ex novo. Durante el siglo XX, su tradicional economía agraria se vio relegada por la industria y los servicios, y a finales del mismo cobró protagonismo como núcleo turístico y de ocio.</p>
+					<a class="google" href="https://www.google.es/search?q=Aranjuez, Madrid" target="_blank">Buscar en Google</a>
+					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Aranjuez" target="_blank">Ver más en Wikipedia</a>
+				</section>
+				<section class="tags">
+					
+					    <span class="tag-1">Comercios</span>
+					
+
+					
+					
+					
+
+					
+
+					
+
+					
+					    <span class="tag-6">Servicios</span>
+					
+					
+					
+
+					
+
+					
+					    <span class="tag-9">Hostelería</span>
+					
+
+						
+
+							
+
+										
+					
+										
+					
+					
+
+					
+
+					
+
+						
+
+					
+					
+					
+
+					
+					    <span class="tag-20">Cerca de la montaña</span>
+										
+					
+				</section>
+				<section class="suggested">
+					<span class="question">¿Qué te parece?</span><br/>
+					<div class="answers">
+						<a href="#">🤩 &nbsp;¡Me gusta!</a>
+						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+					</div>
+					<div class="suggestions">
+						<span>A gente como tú le gustó...</span><br/>
+						<a href="#">Municipio sugerido, Provincia</a>
+					</div>
+				</section>
+				<section class="map">
+					<div id="static-map">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=40.03323,-3.602144&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=9&maptype=satellite"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+					<div id="streetview">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=40.03323,-3.602144&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+				</section>
+			</div>
+			<div class="second-column">
+				<div id="features-grid">
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa" src="/static/images/house.png"/>
+							<p>
+								
+								<span>323 casas en venta</span><br/>
+								
+								
+								<span>65 casas en alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+							<p>
+								<span>2 centros de salud</span><br/>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+							<p>
+								<span>1 hospitales</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+							<p>
+								<span>29 colegios</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una universidad" src="/static/images/university.png"/>
+							<p>
+								<span>3 universidades</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
+							<p>
+								<span>503 metros de altitud</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+							<p>
+								
+								<span>1.594 €/m² medio de venta</span><br/>
+								
+								
+								<span>8 €/m² medio de alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de gente" src="/static/images/people.png"/>
+							<p>
+								<span>59.833 habitantes</span><br/>
+								<span>(297 hab./km²)</span><br/>
+								<span>(media nacional: 94 hab./km²)</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+							<p>
+								
+								<span>Comprar una casa en la provincia cuesta de media 343.514 €</span><br/>
+								
+								
+								<span>Alquilar una casa en la provincia cuesta de media 1.414 €/mes</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+							<p>
+								
+								<span>En febrero, 7ºC con 0,04 mm/día lluvia de media</span><br/>
+								
+								
+								<span>En julio, 27ºC con 0,01 mm/día de lluvia de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+							<p>
+								
+								<span>En febrero, la temperatura va de -2ºC a 18ºC de media</span><br/>
+								
+								
+								<span>En julio, la temperatura va de 14ºC a 38ºC de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+							<p>
+								<span>28.189 € de renta bruta media anual</span><br/>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un coche" src="/static/images/car.png"/>
+							<p>
+								
+								<span>A 48 km. de la capital de provincia</span>
+								
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+							<p>
+								
+								<span>13.139 ofertas de empleo en la provincia</span><br/>
+								<span>10,18 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un sol" src="/static/images/sun.png"/>
+							<p>
+								<span>122.3 horas de sol en febrero de media</span><br/>
+								<span>362.1 horas de sol en julio de media</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+							<p>
+								
+								<span>Fibra óptica de hasta 30 MB en el 33 % del territorio</span><br/>
+								
+								
+								<span>Fibra óptica de hasta 100 MB en el 24 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 3G en el 99 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 4G en el 99 % del territorio</span>
+								
+							</p>
+						</div>
+					</div>
+					
+				</div>
+				<section class="photos">
+					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					  </ol>
+					  <div class="carousel-inner">
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior fotografía</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Siguiente fotografía</span>
+					  </a>
+					</div>
+				</section>
+			</div>
+		</article>
+	</main>
+	</div>
+	<script type="text/javascript">
+		var municipality = JSON.parse('{"codigo_ine": "28013", "data": {"municipio": "Aranjuez", "provincia": "Madrid", "comunidad_autonoma": "Comunidad de Madrid", "municipio_nombre_humano": "Aranjuez", "num_centros_salud": 2, "num_centros_urgencias": 0, "num_hospitales": 1, "num_colegios": 29, "num_universidades": 3, "linea_costa_provincia": 3, "linea_montana_provincia": 2, "poblacion": 59833, "superficie": 201.11, "densidad_poblacion": 297.51, "lat": 40.03323, "lon": -3.602144, "feb_avg_min_temp": -2.19, "feb_avg_max_temp": 18.07, "feb_avg_temp": 7.72, "feb_avg_humidity": 70.85, "feb_avg_wind": 11.74, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.04, "feb_avg_clouds": 28.85, "feb_avg_sunshine_hours": 122.3, "jul_avg_min_temp": 14.51, "jul_avg_max_temp": 38.63, "jul_avg_temp": 27.12, "jul_avg_humidity": 35.48, "jul_avg_wind": 10.51, "jul_avg_min_rain": 0, "jul_avg_max_rain": 3, "jul_avg_rain": 0.01, "jul_avg_clouds": 5.46, "jul_avg_sunshine_hours": 362.1, "kms_capital_provincia": 48.09, "altitud": 503, "renta_bruta_media": "28189", "precio_m2_venta": "1594.24", "num_casas_venta": "323", "precio_m2_alquiler": "8.14", "num_casas_alquiler": 65, "precio_m2_venta_provincia": 3314, "precio_medio_venta_provincia": 343514, "precio_m2_alquiler_provincia": 16, "precio_medio_alquiler_provincia": 1414, "tasa_actividad_provincia": 63.79, "tasa_paro_provincia": 10.18, "tasa_empleo_provincia": 57.29, "num_empleos_provincia": 13139, "cobertura_30": 33.55, "cobertura_100": 24.27, "cobertura_3g": 99.91, "cobertura_4g": 99.91, "sitios_comercio": 3, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 0, "sitios_natural": 0, "sitios_servicio": 2, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 1, "sitios_sport": 0, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Aranjuez es un municipio y ciudad espa\u00f1ola en el extremo sur de la Comunidad de Madrid, cabeza del partido judicial del mismo nombre. \nA mediados del siglo XVIII, Fernando VI derog\u00f3 las restricciones anteriores que imped\u00edan residentes ajenos a la Corte y se fund\u00f3 una ciudad ex novo. Durante el siglo XX, su tradicional econom\u00eda agraria se vio relegada por la industria y los servicios, y a finales del mismo cobr\u00f3 protagonismo como n\u00facleo tur\u00edstico y de ocio.", "url": "https://es.wikipedia.org/wiki/Aranjuez", "images": ["https://upload.wikimedia.org/wikipedia/commons/e/e8/...desde_las_tablas_-_Aranjuez_-_panoramio.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/92/28300_Aranjuez%2C_Madrid%2C_Spain_-_panoramio_%285%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b6/485_AISA_-_Flickr_-_antoniovera1.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/52/58_Mosamo_-_Flickr_-_antoniovera1.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d0/A0023.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5d/ARANJUEZ%2C_VIEW_OF_LA_IGLESIA_Y_LA_PLAZA_DE_SAN_ANTONIO_1754_Antonio_Joli.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fa/Aranjuez%2C_Madrid%2C_Spain_-_panoramio.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/68/Aranjuez._Plaza_de_San_Antonio._01.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/d3/Aranjuez._Retazos_de_oto%C3%B1o_%2815477212491%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cf/Aranjuez_%28Madrid%29_02.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/00/Aranjuez_-_02.JPG", "https://upload.wikimedia.org/wikipedia/commons/f/ff/Aranjuez_-_Cocheras_de_la_Reina_Madre_Isabel_de_Farnesio_%28Centro_Cultural_Isabel_de_Farnesio%29_4.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/25/Aranjuez_-_Mercado_de_Abastos.JPG", "https://upload.wikimedia.org/wikipedia/commons/f/fe/Aranjuez_Ayuntamiento3.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/63/Aranjuez_CerroValdelascasas_FortinesGuerraCivil5.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/37/Aranjuez_Garden%2C_Arbor%2C_II%2C_by_Santiago_Rusi%C3%B1ol%2C_1907%2C_oil_on_canvas_-_Museo_Nacional_Centro_de_Arte_Reina_Sof%C3%ADa_-_Madrid%2C_Spain_-_DSC08499.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/ee/Aranjuez_IglesiaAlpajes1.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/55/Aranjuez_IglesiaSanAntonio.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f6/Aranjuez_Mirador_VistaPanoramicaNorte_%28cropped_%26_tilted%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a2/Aranjuez_MonumentoJoaquinRodrigo1.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/43/Aranjuez_PalacioDesdePuenteBarcas.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e5/Aranjuez_Palacio_Real_1.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5c/Archicofrad%C3%ADa_de_Nuestro_Padre_Jes%C3%BAs_Nazareno%2C_Aranjuez_04.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/82/Ascensi%C3%B3n_de_un_Montgolfier_en_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6d/Azuda_de_la_Monta%C3%B1a%2C_Aranjuez_01.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e7/Barrios_aranjuez.png", "https://upload.wikimedia.org/wikipedia/commons/2/2f/Battaglioli_-_Fernando_VI_y_B%C3%A1rbara_de_Braganza_en_los_jardines_de_Aranjuez_%281756%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/aa/Busto_de_Santiago_Rusi%C3%B1ol.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3e/CC_El_Deleite%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/af/CEIP_San_Isidro%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4b/Calle_de_Gobernacion.JPG", "https://upload.wikimedia.org/wikipedia/commons/c/cb/Calles_de_Aranjuez_%2829369371845%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b3/Castillo_de_Oreja_08.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/13/Ca%C3%ADda_y_prisi%C3%B3n_del_Pr%C3%ADncipe_de_la_Paz.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/78/Centro_de_salud_Las_Olivas%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8d/Chinescos_-_panoramio_%281%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b7/Ciudad_Deportiva_Las_Olivas%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ef/Cuartel_de_Pav%C3%ADa%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5d/Descenso_pirata_del_Tajo_2016_06.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2e/En_una_ma%C3%B1ana_de_abril_-_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1f/Ermita_del_Real_Cortijo_de_San_Isidro_01.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7a/Estaci%C3%B3n_de_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b8/Estadio_Municipal_El_Deleite%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Fiestas_de_San_Fernando%2C_Aranjuez_2022_01.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Filomena_en_Aranjuez_45.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/09/Fresitas_de_Temporada_con_Zumo_de_Naranja_%283367822260%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/77/Hospital_del_Tajo%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b5/IES_Santiago_Rusi%C3%B1ol%2C_Aranjuez_01.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0d/La_caceria_del_tablillo_en_aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b5/MADRID_051029_MXALX_110.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/66/MTN25-0605c4-2006-Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/86/Mar_de_Ont%C3%ADgola_05.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c8/MosaicoAranjuez.JPG", "https://upload.wikimedia.org/wikipedia/commons/c/c1/Mot%C3%ADn_de_Aranjuez_2016_07.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/56/Octubre_en_los_Jardines_del_Pr%C3%ADncipe_de_Aranjuez_%2836870091514%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fb/Paisaje_cultural_Aranjuez.png", "https://upload.wikimedia.org/wikipedia/commons/4/49/Palacio_Real_de_Aranjuez_%285%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/34/Palacio_de_Godoy%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/dd/Parque_de_bomberos%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b9/Plano_de_Aranjuez%2C_1775%2C_de_Domingo_de_Aguirre.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e4/Pol%C3%ADgono_Gonzalo_Chac%C3%B3n%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/11/Residencia_Santiago_Rusi%C3%B1ol%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1e/R%C3%ADo_Jarama_antes_de_su_desembocadura.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4a/Spain_and_Portugal-_handbook_for_travellers_%281901%29_%2814796460183%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3c/Teatro_Real_Carlos_III_desde_calle_Gobernaci%C3%B3n%2C_Aranjuez.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/43/Termino_municipal_aranjuez.png", "https://upload.wikimedia.org/wikipedia/commons/c/c8/Tren_Cercan%C3%ADas_en_Aranjuez_IMG_0947_%288049933860%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/49/Tren_de_la_Fresa._IMG_0959.1_%288023086066%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8c/Triatl%C3%B2n_28300_Aranjuez_%282017%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e8/Trigo_%284811512287%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/99/Un_D%C3%ADa_en_Aranjuez_%2814639048098%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/85/Valdelascasas_05.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/50/Valdelascasas_18.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b1/Vista_de_Aranjuez%2C_Jean_L%E2%80%99Hermitte.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/15/Vista_del_Rl.Sitio_de_Aranjuez%2C_de_la_Cascada_grande_y_Palacio%3B_tomada_de_la_parte_d_Lebante_1830_Fernando_Brambila.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b9/Vista_general_del_Real_Sitio_de_Aranjuez%2C_1832%2C_Fernando_Brambila.jpg"]}}');
+		$(document).ready(function(){
+			var mainHeight = $('#main').height() + 110;
+			var bodyWidth = $('body').width()
+			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+			$('#bg', this).width(bodyWidth + 15);
+			$('#bg', this).height(mainHeight + 15);
+			$('#bg-layer', this).height(mainHeight);
+			
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 110;
+				var bodyWidth = $('body').width()
+				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+				$('#bg', this).width(bodyWidth + 15);
+				$('#bg', this).height(mainHeight + 15);
+				$('#bg-layer', this).height(mainHeight);
+			});
+		});
+		for (let i in municipality["data"]["images"]) {
+			var indicator = "";
+			var photo = "";
+			if (i == 0) {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Aranjuez'></div>";
+			} else {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Aranjuez'></div>";
+			}
+
+			$('.photos ol.carousel-indicators').append(indicator);
+			$('.photos div.carousel-inner').append(photo);
+			console.log(municipality["data"]["images"][i]);
+		}
+	</script>
+
+
+	<footer class="navbar-light bg-light">
+		<div class="navbar-nav">
+			<a class="nav-link" href="#">Metodología</a>
+		</div>
+	</footer>
+  </body>
+</html>

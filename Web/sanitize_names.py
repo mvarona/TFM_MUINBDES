@@ -4,6 +4,7 @@ import re
 from unicodedata import normalize
 
 def make_url_name(name):
+	name = name.split("/")[0]
 	name = name.replace("'", "")
 	name = name.split("(")[0]
 	name = name.lower()

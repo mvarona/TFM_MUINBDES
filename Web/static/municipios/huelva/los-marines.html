@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="es">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title> </title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="/inicio">dondeTeEsperan.es</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+						<a class="nav-link" href="#">Lugar solo para mí</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar parecido a otro</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar sorpresa</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<link rel="stylesheet" href="/static/css/municipality.css">
+	<div id="bg"></div>
+	<div id="bg-layer"></div>
+	<div class="container">
+	
+	<main id="main">
+		<h1>¡Te esperan en Los Marines!</h1>
+		<h3 class="province">Huelva</h3>
+		<article>
+			<div class="first-column">
+				<section class="intro">
+					<p class="intro">Los Marines es un municipio español de la provincia de Huelva, Andalucía. Se  encuentra  en  pleno  centro de la comarca de la Sierra de Huelva, de la que forma parte. Sus límites geográficos son al norte el municipio de Cortelazor, al este Aracena, capital de la comarca;al sur Linares de la Sierra y al oeste Fuenteheridos  y  Castaño del Robledo. Felipe II le respondió: «El mar no traeré pero marinos sereis» y desde entonces todos los jóvenes del pueblo realizaron la mili en Marina Huelva. 
+La economía del municipio se basa principalmente en la producción de castañas y en menor medida en  la cría de ganado porcino. También se pueden encontrar olivares y alcornocales. Destacar que también existe la industria relacionada con la cantería de piedra. Además, hay un predomino  de la estructura  minifundista de pequeñas y medianas explotaciones en régimen de propiedad.</p>
+					<a class="google" href="https://www.google.es/search?q=Los Marines, Huelva" target="_blank">Buscar en Google</a>
+					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Los_Marines" target="_blank">Ver más en Wikipedia</a>
+				</section>
+				<section class="tags">
+					
+
+					
+					
+					
+
+					
+					    <span class="tag-4">Ocio</span>
+					
+
+					
+					    <span class="tag-5">Naturaleza</span>
+					
+
+					
+					
+					
+
+					
+
+					
+					    <span class="tag-9">Hostelería</span>
+					
+
+						
+
+							
+
+										
+					
+										
+					
+					
+
+					
+
+					
+
+						
+
+					
+					
+					
+					    <span class="tag-19">Cerca de la costa</span>
+					
+
+										
+					
+				</section>
+				<section class="suggested">
+					<span class="question">¿Qué te parece?</span><br/>
+					<div class="answers">
+						<a href="#">🤩 &nbsp;¡Me gusta!</a>
+						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+					</div>
+					<div class="suggestions">
+						<span>A gente como tú le gustó...</span><br/>
+						<a href="#">Municipio sugerido, Provincia</a>
+					</div>
+				</section>
+				<section class="map">
+					<div id="static-map">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=37.90277,-6.6202&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=9&maptype=satellite"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+					<div id="streetview">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=37.90277,-6.6202&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+				</section>
+			</div>
+			<div class="second-column">
+				<div id="features-grid">
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa" src="/static/images/house.png"/>
+							<p>
+								
+								<span>23 casas en venta</span><br/>
+								
+								
+								<span>0 casas en alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+							<p>
+								<span>1 centros de salud</span><br/>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+							<p>
+								<span>1 colegios</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
+							<p>
+								<span>718 metros de altitud</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+							<p>
+								
+								<span>1.009 €/m² medio de venta</span><br/>
+								
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de gente" src="/static/images/people.png"/>
+							<p>
+								<span>410 habitantes</span><br/>
+								<span>(41 hab./km²)</span><br/>
+								<span>(media nacional: 94 hab./km²)</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+							<p>
+								
+								<span>Comprar una casa en la provincia cuesta de media 122.249 €</span><br/>
+								
+								
+								<span>Alquilar una casa en la provincia cuesta de media 761 €/mes</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+							<p>
+								
+								<span>En febrero, 14ºC con 0,02 mm/día lluvia de media</span><br/>
+								
+								
+								<span>En julio, 28ºC con 0 mm/día de lluvia de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+							<p>
+								
+								<span>En febrero, la temperatura va de 5ºC a 25ºC de media</span><br/>
+								
+								
+								<span>En julio, la temperatura va de 17ºC a 40ºC de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+							<p>
+								<span>16.881 € de renta bruta media anual</span><br/>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un coche" src="/static/images/car.png"/>
+							<p>
+								
+								<span>A 114 km. de la capital de provincia</span>
+								
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+							<p>
+								
+								<span>472 ofertas de empleo en la provincia</span><br/>
+								<span>12,24 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un sol" src="/static/images/sun.png"/>
+							<p>
+								<span>160.4 horas de sol en febrero de media</span><br/>
+								<span>377.2 horas de sol en julio de media</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+							<p>
+								
+								<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
+								
+								
+								<span>Fibra óptica de hasta 100 MB en el 100 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 4G en el 100 % del territorio</span>
+								
+							</p>
+						</div>
+					</div>
+					
+				</div>
+				<section class="photos">
+					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					  </ol>
+					  <div class="carousel-inner">
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior fotografía</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Siguiente fotografía</span>
+					  </a>
+					</div>
+				</section>
+			</div>
+		</article>
+	</main>
+	</div>
+	<script type="text/javascript">
+		var municipality = JSON.parse('{"codigo_ine": "21048", "data": {"municipio": "Marines (Los)", "provincia": "Huelva", "comunidad_autonoma": "Andaluc\u00eda", "municipio_nombre_humano": "Los Marines", "num_centros_salud": 1, "num_centros_urgencias": 0, "num_hospitales": 0, "num_colegios": 1, "num_universidades": 0, "linea_costa_provincia": 1, "linea_montana_provincia": 0, "poblacion": 410, "superficie": 9.98, "densidad_poblacion": 41.07, "lat": 37.90277, "lon": -6.6202, "feb_avg_min_temp": 5.49, "feb_avg_max_temp": 25.43, "feb_avg_temp": 14.89, "feb_avg_humidity": 70.71, "feb_avg_wind": 12.67, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.02, "feb_avg_clouds": 26.97, "feb_avg_sunshine_hours": 160.4, "jul_avg_min_temp": 17.53, "jul_avg_max_temp": 40.6, "jul_avg_temp": 28.73, "jul_avg_humidity": 55.8, "jul_avg_wind": 12.74, "jul_avg_min_rain": 0, "jul_avg_max_rain": 0.3, "jul_avg_rain": 0, "jul_avg_clouds": 5.93, "jul_avg_sunshine_hours": 377.2, "kms_capital_provincia": 114.03, "altitud": 718, "renta_bruta_media": "16881", "precio_m2_venta": "1009.47", "num_casas_venta": "23", "precio_m2_alquiler": "-", "num_casas_alquiler": 0, "precio_m2_venta_provincia": 1299, "precio_medio_venta_provincia": 122249, "precio_m2_alquiler_provincia": 10, "precio_medio_alquiler_provincia": 761, "tasa_actividad_provincia": 56.77, "tasa_paro_provincia": 12.24, "tasa_empleo_provincia": 49.83, "num_empleos_provincia": 472, "cobertura_30": 100, "cobertura_100": 100, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 3, "sitios_natural": 1, "sitios_servicio": 0, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 2, "sitios_sport": 0, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Los Marines es un municipio espa\u00f1ol de la provincia de Huelva, Andaluc\u00eda. Se  encuentra  en  pleno  centro de la comarca de la Sierra de Huelva, de la que forma parte. Sus l\u00edmites geogr\u00e1ficos son al norte el municipio de Cortelazor, al este Aracena, capital de la comarca;al sur Linares de la Sierra y al oeste Fuenteheridos  y  Casta\u00f1o del Robledo. Felipe II le respondi\u00f3: \u00abEl mar no traer\u00e9 pero marinos sereis\u00bb y desde entonces todos los j\u00f3venes del pueblo realizaron la mili en Marina Huelva. \nLa econom\u00eda del municipio se basa principalmente en la producci\u00f3n de casta\u00f1as y en menor medida en  la cr\u00eda de ganado porcino. Tambi\u00e9n se pueden encontrar olivares y alcornocales. Destacar que tambi\u00e9n existe la industria relacionada con la canter\u00eda de piedra. Adem\u00e1s, hay un predomino  de la estructura  minifundista de peque\u00f1as y medianas explotaciones en r\u00e9gimen de propiedad.", "url": "https://es.wikipedia.org/wiki/Los_Marines", "images": ["https://upload.wikimedia.org/wikipedia/commons/5/5d/Los_Marines_-_Iglesia_de_Nuestra_Se%C3%B1ora_de_Gracia_04.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fc/Los_Marines_Apa%C3%B1aora.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bd/Plaza_de_Los_Marines_-_panoramio.jpg"]}}');
+		$(document).ready(function(){
+			var mainHeight = $('#main').height() + 110;
+			var bodyWidth = $('body').width()
+			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+			$('#bg', this).width(bodyWidth + 15);
+			$('#bg', this).height(mainHeight + 15);
+			$('#bg-layer', this).height(mainHeight);
+			
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 110;
+				var bodyWidth = $('body').width()
+				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+				$('#bg', this).width(bodyWidth + 15);
+				$('#bg', this).height(mainHeight + 15);
+				$('#bg-layer', this).height(mainHeight);
+			});
+		});
+		for (let i in municipality["data"]["images"]) {
+			var indicator = "";
+			var photo = "";
+			if (i == 0) {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Los Marines'></div>";
+			} else {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Los Marines'></div>";
+			}
+
+			$('.photos ol.carousel-indicators').append(indicator);
+			$('.photos div.carousel-inner').append(photo);
+			console.log(municipality["data"]["images"][i]);
+		}
+	</script>
+
+
+	<footer class="navbar-light bg-light">
+		<div class="navbar-nav">
+			<a class="nav-link" href="#">Metodología</a>
+		</div>
+	</footer>
+  </body>
+</html>

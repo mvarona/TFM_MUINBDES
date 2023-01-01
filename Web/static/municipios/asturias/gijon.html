@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="es">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title> </title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="/inicio">dondeTeEsperan.es</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+						<a class="nav-link" href="#">Lugar solo para mí</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar parecido a otro</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar sorpresa</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<link rel="stylesheet" href="/static/css/municipality.css">
+	<div id="bg"></div>
+	<div id="bg-layer"></div>
+	<div class="container">
+	
+	<main id="main">
+		<h1>¡Te esperan en Gijón!</h1>
+		<h3 class="province">Asturias</h3>
+		<article>
+			<div class="first-column">
+				<section class="intro">
+					<p class="intro">Desde su fundación en época romana, su desarrollo ha estado vinculado al de su puerto, que actualmente es líder en movimientos de graneles sólidos en España. No obstante, durante las últimas décadas, la crisis de la siderurgia y el sector naval han llevado a la reconversión de su tejido productivo, lo que ha transformado la ciudad en un centro turístico, universitario, comercial y de I+D+i. Así, además de contar con una red municipal de museos, alberga el complejo cultural de la Universidad Laboral, un campus universitario y un Parque Científico Tecnológico.La ciudad es conocida por antonomasia como «capital de la Costa Verde» y es asimismo capital de la provincia marítima de Gijón. Por el concejo discurre el Camino de Santiago en su ruta costera y en él tienen su sede el Consejo Consultivo del Principado de Asturias, la Radiotelevisión del Principado de Asturias y el Centro de Seguridad Marítima Integral de Salvamento marítimo.</p>
+					<a class="google" href="https://www.google.es/search?q=Gijón, Asturias" target="_blank">Buscar en Google</a>
+					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Gij%C3%B3n" target="_blank">Ver más en Wikipedia</a>
+				</section>
+				<section class="tags">
+					
+					    <span class="tag-1">Comercios</span>
+					
+
+					
+					
+					
+
+					
+
+					
+
+					
+					    <span class="tag-6">Servicios</span>
+					
+					
+					
+
+					
+
+					
+					    <span class="tag-9">Hostelería</span>
+					
+
+						
+
+							
+
+										
+					
+										
+					
+					
+
+					
+
+					
+
+						
+
+					
+					
+					
+					    <span class="tag-19">Cerca de la costa</span>
+					
+
+					
+					    <span class="tag-20">Cerca de la montaña</span>
+										
+					
+				</section>
+				<section class="suggested">
+					<span class="question">¿Qué te parece?</span><br/>
+					<div class="answers">
+						<a href="#">🤩 &nbsp;¡Me gusta!</a>
+						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+					</div>
+					<div class="suggestions">
+						<span>A gente como tú le gustó...</span><br/>
+						<a href="#">Municipio sugerido, Provincia</a>
+					</div>
+				</section>
+				<section class="map">
+					<div id="static-map">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=43.537055,-5.66717&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=9&maptype=satellite"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+					<div id="streetview">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=43.537055,-5.66717&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+				</section>
+			</div>
+			<div class="second-column">
+				<div id="features-grid">
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa" src="/static/images/house.png"/>
+							<p>
+								
+								<span>2.818 casas en venta</span><br/>
+								
+								
+								<span>611 casas en alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+							<p>
+								<span>15 centros de salud</span><br/>
+								
+								<span>11 centros de urgencias</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+							<p>
+								<span>9 hospitales</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+							<p>
+								<span>10 colegios</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una universidad" src="/static/images/university.png"/>
+							<p>
+								<span>1 universidades</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
+							<p>
+								<span>20 metros de altitud</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+							<p>
+								
+								<span>2.310 €/m² medio de venta</span><br/>
+								
+								
+								<span>9 €/m² medio de alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de gente" src="/static/images/people.png"/>
+							<p>
+								<span>268.896 habitantes</span><br/>
+								<span>(1.461 hab./km²)</span><br/>
+								<span>(media nacional: 94 hab./km²)</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+							<p>
+								
+								<span>Comprar una casa en la provincia cuesta de media 139.373 €</span><br/>
+								
+								
+								<span>Alquilar una casa en la provincia cuesta de media 672 €/mes</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+							<p>
+								
+								<span>En febrero, 10ºC con 0,12 mm/día lluvia de media</span><br/>
+								
+								
+								<span>En julio, 19ºC con 0,06 mm/día de lluvia de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+							<p>
+								
+								<span>En febrero, la temperatura va de 4ºC a 18ºC de media</span><br/>
+								
+								
+								<span>En julio, la temperatura va de 13ºC a 28ºC de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+							<p>
+								<span>28.281 € de renta bruta media anual</span><br/>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un coche" src="/static/images/car.png"/>
+							<p>
+								
+								<span>A 31 km. de la capital de provincia</span>
+								
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+							<p>
+								
+								<span>929 ofertas de empleo en la provincia</span><br/>
+								<span>11,36 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un sol" src="/static/images/sun.png"/>
+							<p>
+								<span>47.5 horas de sol en febrero de media</span><br/>
+								<span>124.4 horas de sol en julio de media</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+							<p>
+								
+								<span>Fibra óptica de hasta 30 MB en el 70 % del territorio</span><br/>
+								
+								
+								<span>Fibra óptica de hasta 100 MB en el 18 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 3G en el 99 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 4G en el 99 % del territorio</span>
+								
+							</p>
+						</div>
+					</div>
+					
+				</div>
+				<section class="photos">
+					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					  </ol>
+					  <div class="carousel-inner">
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior fotografía</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Siguiente fotografía</span>
+					  </a>
+					</div>
+				</section>
+			</div>
+		</article>
+	</main>
+	</div>
+	<script type="text/javascript">
+		var municipality = JSON.parse('{"codigo_ine": "33024", "data": {"municipio": "Gij\u00f3n", "provincia": "Asturias", "comunidad_autonoma": "Principado de Asturias", "municipio_nombre_humano": "Gij\u00f3n", "num_centros_salud": 15, "num_centros_urgencias": 11, "num_hospitales": 9, "num_colegios": 10, "num_universidades": 1, "linea_costa_provincia": 1, "linea_montana_provincia": 1, "poblacion": 268896, "superficie": 183.95, "densidad_poblacion": 1461.79, "lat": 43.537055, "lon": -5.66717, "feb_avg_min_temp": 4.31, "feb_avg_max_temp": 18.33, "feb_avg_temp": 10.79, "feb_avg_humidity": 82.13, "feb_avg_wind": 17.39, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.12, "feb_avg_clouds": 54.7, "feb_avg_sunshine_hours": 47.5, "jul_avg_min_temp": 13.02, "jul_avg_max_temp": 28.11, "jul_avg_temp": 19.41, "jul_avg_humidity": 86.73, "jul_avg_wind": 9.25, "jul_avg_min_rain": 0, "jul_avg_max_rain": 12, "jul_avg_rain": 0.06, "jul_avg_clouds": 46.78, "jul_avg_sunshine_hours": 124.4, "kms_capital_provincia": 31.87, "altitud": 20, "renta_bruta_media": "28281", "precio_m2_venta": "2310.98", "num_casas_venta": "2818", "precio_m2_alquiler": "9.13", "num_casas_alquiler": 611, "precio_m2_venta_provincia": 1568, "precio_medio_venta_provincia": 139373, "precio_m2_alquiler_provincia": 9, "precio_medio_alquiler_provincia": 672, "tasa_actividad_provincia": 48.86, "tasa_paro_provincia": 11.36, "tasa_empleo_provincia": 43.31, "num_empleos_provincia": 929, "cobertura_30": 70.45, "cobertura_100": 18.79, "cobertura_3g": 99.86, "cobertura_4g": 99.88, "sitios_comercio": 1, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 0, "sitios_natural": 0, "sitios_servicio": 3, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 2, "sitios_sport": 0, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Desde su fundaci\u00f3n en \u00e9poca romana, su desarrollo ha estado vinculado al de su puerto, que actualmente es l\u00edder en movimientos de graneles s\u00f3lidos en Espa\u00f1a. No obstante, durante las \u00faltimas d\u00e9cadas, la crisis de la siderurgia y el sector naval han llevado a la reconversi\u00f3n de su tejido productivo, lo que ha transformado la ciudad en un centro tur\u00edstico, universitario, comercial y de I+D+i. As\u00ed, adem\u00e1s de contar con una red municipal de museos, alberga el complejo cultural de la Universidad Laboral, un campus universitario y un Parque Cient\u00edfico Tecnol\u00f3gico.La ciudad es conocida por antonomasia como \u00abcapital de la Costa Verde\u00bb y es asimismo capital de la provincia mar\u00edtima de Gij\u00f3n. Por el concejo discurre el Camino de Santiago en su ruta costera y en \u00e9l tienen su sede el Consejo Consultivo del Principado de Asturias, la Radiotelevisi\u00f3n del Principado de Asturias y el Centro de Seguridad Mar\u00edtima Integral de Salvamento mar\u00edtimo.", "url": "https://es.wikipedia.org/wiki/Gij%C3%B3n", "images": ["https://upload.wikimedia.org/wikipedia/commons/8/84/024_Plaza_del_Marqu%C3%A9s_%28Gij%C3%B3n%29%2C_amb_el_Palacio_de_Revillagigedo_i_la_Fuente_de_Pelayo_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/69/131_Plazoleta_de_la_Colegiata_%28Cimavilla%2C_Gij%C3%B3n%29%2C_a_l%27esquerra_la_Casa_de_los_Nava.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/08/500px_photo_%2825070737%29%282%29.jpeg", "https://upload.wikimedia.org/wikipedia/commons/7/74/Banco_de_Gij%C3%B3n.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Bomberos._Festival_A%C3%A9reo_Internacional_De_Gij%C3%B3n._Gij%C3%B3n_2016._%2828264061240%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6d/Campa_09.JPG", "https://upload.wikimedia.org/wikipedia/commons/6/69/Clima_Gij%C3%B3n_%28Espa%C3%B1a%29.PNG", "https://upload.wikimedia.org/wikipedia/commons/1/17/Dia_de_Asturias_en_Gijon-0.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/DolmenMonteAreo.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/a0/ElMolinonSportingvsAthletic30-10-11.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ac/El_Musel.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/61/Elogio_chillida_gijon_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f0/Elogio_del_horizonte_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ac/Estacion-Gijon-Sanz-Crespo-150913.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/77/Fabada_en_cazuela_de_barro.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/46/Ferrocarril_a_Langreo.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5f/FotoInstalacionesRTPA_WIKI.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e9/Francisco_de_Goya_y_Lucientes_-_Gaspar_Melchor_de_Jovellanos.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/11/GR_100_Gijon.JPG", "https://upload.wikimedia.org/wikipedia/commons/8/8a/Gijon_Iglesia_San_Pedro_Apostol.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f2/Gijon_Town_Hall.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/ba/Gijon_Universidad_Laboral_02.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bf/Gijon_puerto_deportivo_12-09-2005.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/46/GijonsigloXVII.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2c/Gij%C3%B3n_21_03_33_610000.jpeg", "https://upload.wikimedia.org/wikipedia/commons/8/8e/Gij%C3%B3n_old_FEVE_station.JPG", "https://upload.wikimedia.org/wikipedia/commons/f/ff/Las_mestas_3.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/e5/Letronas_de_Gijon_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/26/Museo_Jovellanos.JPG", "https://upload.wikimedia.org/wikipedia/commons/b/b4/Museodelpueblodeasturias.JPG", "https://upload.wikimedia.org/wikipedia/commons/8/8c/Mus%C3%A9u_Internacional_de_la_Gaita.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/1b/Playa_San_Lorenzo_Cimadevilla_13-09-2005.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c6/Playa_san_lorenzo_desembocadura_piles.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Tatro_Jovellanos_Gij%C3%B3n_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ac/Termes_romanes_de_Gij%C3%B3n_03.JPG"]}}');
+		$(document).ready(function(){
+			var mainHeight = $('#main').height() + 110;
+			var bodyWidth = $('body').width()
+			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+			$('#bg', this).width(bodyWidth + 15);
+			$('#bg', this).height(mainHeight + 15);
+			$('#bg-layer', this).height(mainHeight);
+			
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 110;
+				var bodyWidth = $('body').width()
+				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+				$('#bg', this).width(bodyWidth + 15);
+				$('#bg', this).height(mainHeight + 15);
+				$('#bg-layer', this).height(mainHeight);
+			});
+		});
+		for (let i in municipality["data"]["images"]) {
+			var indicator = "";
+			var photo = "";
+			if (i == 0) {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Gijón'></div>";
+			} else {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Gijón'></div>";
+			}
+
+			$('.photos ol.carousel-indicators').append(indicator);
+			$('.photos div.carousel-inner').append(photo);
+			console.log(municipality["data"]["images"][i]);
+		}
+	</script>
+
+
+	<footer class="navbar-light bg-light">
+		<div class="navbar-nav">
+			<a class="nav-link" href="#">Metodología</a>
+		</div>
+	</footer>
+  </body>
+</html>

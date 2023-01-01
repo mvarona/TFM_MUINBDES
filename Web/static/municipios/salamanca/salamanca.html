@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title> </title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="/inicio">dondeTeEsperan.es</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+						<a class="nav-link" href="#">Lugar solo para mí</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar parecido a otro</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar sorpresa</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<link rel="stylesheet" href="/static/css/municipality.css">
+	<div id="bg"></div>
+	<div id="bg-layer"></div>
+	<div class="container">
+	
+	<main id="main">
+		<h1>¡Te esperan en Salamanca!</h1>
+		<h3 class="province">Salamanca</h3>
+		<article>
+			<div class="first-column">
+				<section class="intro">
+					<p class="intro">Salamanca es un municipio y ciudad española, capital de la provincia homónima, situada en la comunidad autónoma de Castilla y León. Está ubicada en la comarca del Campo de Salamanca, en plena meseta Norte, en el cuadrante noroeste de la península ibérica. Desde entonces, la metrópoli ha sido testigo del paso de diversos pueblos: vacceos, vetones, romanos, visigodos y musulmanes.</p>
+					<a class="google" href="https://www.google.es/search?q=Salamanca, Salamanca" target="_blank">Buscar en Google</a>
+					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Salamanca" target="_blank">Ver más en Wikipedia</a>
+				</section>
+				<section class="tags">
+					
+					    <span class="tag-1">Comercios</span>
+					
+
+					
+					
+					
+
+					
+
+					
+
+					
+					
+					
+
+					
+
+					
+					    <span class="tag-9">Hostelería</span>
+					
+
+					
+					    <span class="tag-10">Deporte</span>
+						
+
+							
+
+										
+					
+										
+					
+					
+
+					
+
+					
+
+						
+
+					
+					
+					
+
+					
+					    <span class="tag-20">Cerca de la montaña</span>
+										
+					
+				</section>
+				<section class="suggested">
+					<span class="question">¿Qué te parece?</span><br/>
+					<div class="answers">
+						<a href="#">🤩 &nbsp;¡Me gusta!</a>
+						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+					</div>
+					<div class="suggestions">
+						<span>A gente como tú le gustó...</span><br/>
+						<a href="#">Municipio sugerido, Provincia</a>
+					</div>
+				</section>
+				<section class="map">
+					<div id="static-map">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=40.968136,-5.662155&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=9&maptype=satellite"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+					<div id="streetview">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=40.968136,-5.662155&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+				</section>
+			</div>
+			<div class="second-column">
+				<div id="features-grid">
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa" src="/static/images/house.png"/>
+							<p>
+								
+								<span>6.764 casas en venta</span><br/>
+								
+								
+								<span>1.558 casas en alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+							<p>
+								<span>12 centros de salud</span><br/>
+								
+								<span>2 centros de urgencias</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+							<p>
+								<span>2 hospitales</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+							<p>
+								<span>95 colegios</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una universidad" src="/static/images/university.png"/>
+							<p>
+								<span>4 universidades</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
+							<p>
+								<span>805 metros de altitud</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+							<p>
+								
+								<span>2.237 €/m² medio de venta</span><br/>
+								
+								
+								<span>9 €/m² medio de alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de gente" src="/static/images/people.png"/>
+							<p>
+								<span>143.269 habitantes</span><br/>
+								<span>(3.621 hab./km²)</span><br/>
+								<span>(media nacional: 94 hab./km²)</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+							<p>
+								
+								<span>Comprar una casa en la provincia cuesta de media 156.058 €</span><br/>
+								
+								
+								<span>Alquilar una casa en la provincia cuesta de media 801 €/mes</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+							<p>
+								
+								<span>En febrero, 4ºC con 0,03 mm/día lluvia de media</span><br/>
+								
+								
+								<span>En julio, 22ºC con 0,02 mm/día de lluvia de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+							<p>
+								
+								<span>En febrero, la temperatura va de -5ºC a 16ºC de media</span><br/>
+								
+								
+								<span>En julio, la temperatura va de 8ºC a 36ºC de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+							<p>
+								<span>26.839 € de renta bruta media anual</span><br/>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un coche" src="/static/images/car.png"/>
+							<p>
+								
+								
+								<span>Es capital de provincia</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+							<p>
+								
+								<span>538 ofertas de empleo en la provincia</span><br/>
+								<span>10,3 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un sol" src="/static/images/sun.png"/>
+							<p>
+								<span>97.9 horas de sol en febrero de media</span><br/>
+								<span>293 horas de sol en julio de media</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+							<p>
+								
+								<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
+								
+								
+								<span>Fibra óptica de hasta 100 MB en el 100 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 4G en el 100 % del territorio</span>
+								
+							</p>
+						</div>
+					</div>
+					
+				</div>
+				<section class="photos">
+					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					  </ol>
+					  <div class="carousel-inner">
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior fotografía</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Siguiente fotografía</span>
+					  </a>
+					</div>
+				</section>
+			</div>
+		</article>
+	</main>
+	</div>
+	<script type="text/javascript">
+		var municipality = JSON.parse('{"codigo_ine": "37274", "data": {"municipio": "Salamanca", "provincia": "Salamanca", "comunidad_autonoma": "Castilla y Le\u00f3n", "municipio_nombre_humano": "Salamanca", "num_centros_salud": 12, "num_centros_urgencias": 2, "num_hospitales": 2, "num_colegios": 95, "num_universidades": 4, "linea_costa_provincia": 0, "linea_montana_provincia": 2, "poblacion": 143269, "superficie": 39.56, "densidad_poblacion": 3621.56, "lat": 40.968136, "lon": -5.662155, "feb_avg_min_temp": -5.68, "feb_avg_max_temp": 16.77, "feb_avg_temp": 4.97, "feb_avg_humidity": 79.31, "feb_avg_wind": 13.68, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.03, "feb_avg_clouds": 36.9, "feb_avg_sunshine_hours": 97.9, "jul_avg_min_temp": 8.18, "jul_avg_max_temp": 36.16, "jul_avg_temp": 22.48, "jul_avg_humidity": 49.47, "jul_avg_wind": 8.93, "jul_avg_min_rain": 0, "jul_avg_max_rain": 12, "jul_avg_rain": 0.02, "jul_avg_clouds": 10.34, "jul_avg_sunshine_hours": 293, "kms_capital_provincia": 0, "altitud": 805, "renta_bruta_media": "26839", "precio_m2_venta": "2237.04", "num_casas_venta": "6764", "precio_m2_alquiler": "9.63", "num_casas_alquiler": 1558, "precio_m2_venta_provincia": 1673, "precio_medio_venta_provincia": 156058, "precio_m2_alquiler_provincia": 9, "precio_medio_alquiler_provincia": 801, "tasa_actividad_provincia": 55.83, "tasa_paro_provincia": 10.3, "tasa_empleo_provincia": 50.08, "num_empleos_provincia": 538, "cobertura_30": 100, "cobertura_100": 100, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 1, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 0, "sitios_natural": 0, "sitios_servicio": 0, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 3, "sitios_sport": 2, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Salamanca es un municipio y ciudad espa\u00f1ola, capital de la provincia hom\u00f3nima, situada en la comunidad aut\u00f3noma de Castilla y Le\u00f3n. Est\u00e1 ubicada en la comarca del Campo de Salamanca, en plena meseta Norte, en el cuadrante noroeste de la pen\u00ednsula ib\u00e9rica. Desde entonces, la metr\u00f3poli ha sido testigo del paso de diversos pueblos: vacceos, vetones, romanos, visigodos y musulmanes.", "url": "https://es.wikipedia.org/wiki/Salamanca", "images": ["https://upload.wikimedia.org/wikipedia/commons/6/6b/68436-Salamanca_%2849093713952%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4d/A-66._Cartel_informativo_autov%C3%ADa.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5a/AlfonsoVI_of_Castile.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/ca/Alfonso_X_el_Sabio_en_El_libro_de_los_juegos.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/10/Antigua_Librer%C3%ADa_%28USAL%29_07.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c4/Antonio_de_Nebrija_%281517%29_Reglas_de_orthographia_en_la_lengua_castellana.png", "https://upload.wikimedia.org/wikipedia/commons/7/7a/Bus_natural_gas_in_Salamanca.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/ea/Calle_de_la_Compa%C3%B1%C3%ADa%2C_en_Salamanca_%2834133562490%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f4/Camino_Lengua_Cast_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e7/Capilla_de_Santa_B%C3%A1rbara%2C_Catedral_Vieja_de_Salamanca_%282%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/83/Capilla_funeraria_de_los_Anaya.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/77/Capuchinos_%282055177740%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2e/Casa-museo_de_Unamuno38.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4e/Casa_de_las_Conchas%2C_Salamanca%2C_Espa%C3%B1a%2C_2003-08-08%2C_DD_01.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8b/Center_of_the_plaza_mayor_salamanca.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/e3/Chrysler_Imperial_Serie_80_01.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/55/Cimborrio_de_la_Catedral_Nueva_de_Salamanca_de_noche.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/11/Class_at_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/ce/Claustro_del_Convento_de_Las_Due%C3%B1as_%28Salamanca%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/eb/Colegio_de_San_Ambrosio%2C_Archivo_General_de_la_Guerra_Civil_Espa%C3%B1ola_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4c/Convento_de_San_Esteban%2C_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Cueva_de_Salamanca_02_edited.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/0e/Detalle_Conchas_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b0/Fachada_sur_en_la_noche%2C_Casa_Lis%2C_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/71/Fachada_de_La_Clerec%C3%ADa%2C_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/53/Fachada_de_la_catedral_vieja_de_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/90/Fachada_norte_de_la_Catedral_Nueva_de_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/Fachada_sur_de_la_Catedral_Nueva_de_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b0/Fachada_sur_en_la_noche%2C_Casa_Lis%2C_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/50/Festival_Luz_y_Vanguardias._Salamanca_%2836550709460%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1a/Filmoteca_de_Castilla_y_Le%C3%B3n_%2830898362003%29_v2.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/17/Francisco_Iturrino_Cattle_Fair_in_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/ba/Franciscodevictoria.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c3/Great_ornament_%2828180178972%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/55/Hornazo_%28Salamaca%29-Cerca01.JPG", "https://upload.wikimedia.org/wikipedia/commons/6/6c/Huerto_de_Calixto_y_Melibea_%2831053210434%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Instalaciones_MIRAT_S.A._Salamanca.JPG", "https://upload.wikimedia.org/wikipedia/commons/f/fe/LESA_SLM_023.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/74/La_Clerec%C3%ADa%2C_la_R%C3%BAa_Mayor_y_la_Plaza_de_Anaya_desde_la_Catedral_Nueva_%28Salamanca%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0d/La_Maravillosa_Orquesta_del_Alcohol_%28La_M.O.D.A%29%2C_fiestas_de_Salamanca_2018%2C_05.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/ba/Palacio_de_Monterrey_Salamanca_edited.JPG", "https://upload.wikimedia.org/wikipedia/commons/c/cc/Patio_Palacio_Salinas_%28Salamanca%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/87/Perfu_Salamanca_2010-2011.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/06/Playa_Mayor_de_Salamanca_al_anochecer.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e1/Procesion_Cristo_Amor-6.JPG", "https://upload.wikimedia.org/wikipedia/commons/9/9b/Puente_romano_-_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bb/Ramiro_II_de_Le%C3%B3n---1.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Rana_de_la_fachada_de_la_Universidad_de_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7a/Reflejos_de_la_Catedrales_de_Salamanca_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c4/Resultados_concejales_elecciones_municipales_Salamanca_2019.png", "https://upload.wikimedia.org/wikipedia/commons/4/44/Salamanca%2C_Catedral_Nueva-PM_16879.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fc/Salamanca%2C_Spain_-_panoramio_%2818%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0f/Salamanca._Cerro_de_San_Vicente_-_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ac/Salamanca._Santa_Cena._Venancio_Blanco.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/77/SalamancaKathedrale.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e8/SalamancaTormesBr%C3%BCcke1.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/80/Salamanca_%2849520943477%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/69/Salamanca_%2CConvento_de_San_Esteban_-_panoramio.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3d/Salamanca_-_BC_04.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d7/Salamanca_-_Catedral_Nueva%2C_exterior_11.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/10/Salamanca_-_Universidad%2C_Escuelas_Mayores%2C_fachada_01_version.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/08/Salamanca_Naves_Catedral_Nueva.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bb/Salamanca_claustro_catedral_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/90/Salamanca_es_una_ciudad_monumental.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/2c/Salamanca_retablo_catedral_vieja_lou.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/a3/Salamanca_train_station_%2849552227268%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ab/Slm1858.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2e/Torre_del_Clavero_%28s._XV%29%2C_Salamanca_%2837114166554%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a3/Torre_del_Gallo%2C_Catedral_Vieja_de_Salamanca.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fd/University_of_Salamanca_and_statue_of_Fray_Luis_de_Leon.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fd/University_of_Salamanca_and_statue_of_Fray_Luis_de_Leon.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/Vue_sur_la_Cath%C3%A9drale_depuis_la_terrasse_%288285633070%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/da/WLM14ES_-_Catedral_Nueva_de_Salamanca._-_julianrdc_edited.jpg"]}}');
+		$(document).ready(function(){
+			var mainHeight = $('#main').height() + 110;
+			var bodyWidth = $('body').width()
+			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+			$('#bg', this).width(bodyWidth + 15);
+			$('#bg', this).height(mainHeight + 15);
+			$('#bg-layer', this).height(mainHeight);
+			
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 110;
+				var bodyWidth = $('body').width()
+				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+				$('#bg', this).width(bodyWidth + 15);
+				$('#bg', this).height(mainHeight + 15);
+				$('#bg-layer', this).height(mainHeight);
+			});
+		});
+		for (let i in municipality["data"]["images"]) {
+			var indicator = "";
+			var photo = "";
+			if (i == 0) {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Salamanca'></div>";
+			} else {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Salamanca'></div>";
+			}
+
+			$('.photos ol.carousel-indicators').append(indicator);
+			$('.photos div.carousel-inner').append(photo);
+			console.log(municipality["data"]["images"][i]);
+		}
+	</script>
+
+
+	<footer class="navbar-light bg-light">
+		<div class="navbar-nav">
+			<a class="nav-link" href="#">Metodología</a>
+		</div>
+	</footer>
+  </body>
+</html>

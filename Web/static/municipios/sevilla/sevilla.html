@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title> </title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="/inicio">dondeTeEsperan.es</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+						<a class="nav-link" href="#">Lugar solo para mí</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar parecido a otro</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar sorpresa</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<link rel="stylesheet" href="/static/css/municipality.css">
+	<div id="bg"></div>
+	<div id="bg-layer"></div>
+	<div class="container">
+	
+	<main id="main">
+		<h1>¡Te esperan en Sevilla!</h1>
+		<h3 class="province">Sevilla</h3>
+		<article>
+			<div class="first-column">
+				<section class="intro">
+					<p class="intro">Sevilla es un municipio y una ciudad de España, capital de la provincia homónima y de Andalucía. de la Unión Europea. Su patrimonio histórico y monumental y sus diversos espacios escénicos y culturales la constituyen en ciudad receptora de turismo nacional e internacional. Es la tercera ciudad de España por número de visitantes, tras Barcelona y Madrid. Destaca la presencia histórica en la ciudad tanto de la industria aeronáutica como de la industria militar. Parte del recorrido temático del acuario está inspirado en la Expedición de Magallanes-Elcano, que supuso la Primera Vuelta al Mundo.</p>
+					<a class="google" href="https://www.google.es/search?q=Sevilla, Sevilla" target="_blank">Buscar en Google</a>
+					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Sevilla" target="_blank">Ver más en Wikipedia</a>
+				</section>
+				<section class="tags">
+					
+
+					
+					
+					
+
+					
+
+					
+
+					
+					    <span class="tag-6">Servicios</span>
+					
+					
+					
+
+					
+
+					
+					    <span class="tag-9">Hostelería</span>
+					
+
+					
+					    <span class="tag-10">Deporte</span>
+						
+
+							
+
+										
+					
+										
+					
+					
+
+					
+
+					
+
+						
+
+					
+					
+					
+					    <span class="tag-19">Cerca de la costa</span>
+					
+
+										
+					
+				</section>
+				<section class="suggested">
+					<span class="question">¿Qué te parece?</span><br/>
+					<div class="answers">
+						<a href="#">🤩 &nbsp;¡Me gusta!</a>
+						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+					</div>
+					<div class="suggestions">
+						<span>A gente como tú le gustó...</span><br/>
+						<a href="#">Municipio sugerido, Provincia</a>
+					</div>
+				</section>
+				<section class="map">
+					<div id="static-map">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=37.383606,-5.97997&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=9&maptype=satellite"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+					<div id="streetview">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=37.383606,-5.97997&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+				</section>
+			</div>
+			<div class="second-column">
+				<div id="features-grid">
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa" src="/static/images/house.png"/>
+							<p>
+								
+								
+								<span>2.202 casas en alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+							<p>
+								<span>35 centros de salud</span><br/>
+								
+								<span>10 centros de urgencias</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+							<p>
+								<span>19 hospitales</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+							<p>
+								<span>575 colegios</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una universidad" src="/static/images/university.png"/>
+							<p>
+								<span>5 universidades</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
+							<p>
+								<span>17 metros de altitud</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+							<p>
+								
+								<span>1.543 €/m² medio de venta</span><br/>
+								
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de gente" src="/static/images/people.png"/>
+							<p>
+								<span>684.234 habitantes</span><br/>
+								<span>(4.818 hab./km²)</span><br/>
+								<span>(media nacional: 94 hab./km²)</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+							<p>
+								
+								<span>Comprar una casa en la provincia cuesta de media 162.042 €</span><br/>
+								
+								
+								<span>Alquilar una casa en la provincia cuesta de media 821 €/mes</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+							<p>
+								
+								<span>En febrero, 12ºC con 0,04 mm/día lluvia de media</span><br/>
+								
+								
+								<span>En julio, 28ºC con 0 mm/día de lluvia de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+							<p>
+								
+								<span>En febrero, la temperatura va de 2ºC a 26ºC de media</span><br/>
+								
+								
+								<span>En julio, la temperatura va de 17ºC a 40ºC de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+							<p>
+								<span>29.866 € de renta bruta media anual</span><br/>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un coche" src="/static/images/car.png"/>
+							<p>
+								
+								
+								<span>Es capital de provincia</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+							<p>
+								
+								<span>1.717 ofertas de empleo en la provincia</span><br/>
+								<span>17,89 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un sol" src="/static/images/sun.png"/>
+							<p>
+								<span>157.7 horas de sol en febrero de media</span><br/>
+								<span>378.3 horas de sol en julio de media</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+							<p>
+								
+								<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
+								
+								
+								<span>Fibra óptica de hasta 100 MB en el 100 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 4G en el 100 % del territorio</span>
+								
+							</p>
+						</div>
+					</div>
+					
+				</div>
+				<section class="photos">
+					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					  </ol>
+					  <div class="carousel-inner">
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior fotografía</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Siguiente fotografía</span>
+					  </a>
+					</div>
+				</section>
+			</div>
+		</article>
+	</main>
+	</div>
+	<script type="text/javascript">
+		var municipality = JSON.parse('{"codigo_ine": "41091", "data": {"municipio": "Sevilla", "provincia": "Sevilla", "comunidad_autonoma": "Andaluc\u00eda", "municipio_nombre_humano": "Sevilla", "num_centros_salud": 35, "num_centros_urgencias": 10, "num_hospitales": 19, "num_colegios": 575, "num_universidades": 5, "linea_costa_provincia": 2, "linea_montana_provincia": 0, "poblacion": 684234, "superficie": 142, "densidad_poblacion": 4818.55, "lat": 37.383606, "lon": -5.97997, "feb_avg_min_temp": 2.69, "feb_avg_max_temp": 26.03, "feb_avg_temp": 12.56, "feb_avg_humidity": 74.66, "feb_avg_wind": 10.15, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.04, "feb_avg_clouds": 23.31, "feb_avg_sunshine_hours": 157.7, "jul_avg_min_temp": 17.2, "jul_avg_max_temp": 40.68, "jul_avg_temp": 28.02, "jul_avg_humidity": 49.38, "jul_avg_wind": 10.48, "jul_avg_min_rain": 0, "jul_avg_max_rain": 3, "jul_avg_rain": 0, "jul_avg_clouds": 5.26, "jul_avg_sunshine_hours": 378.3, "kms_capital_provincia": 0, "altitud": 17, "renta_bruta_media": "29866", "precio_m2_venta": "1543.65", "num_casas_venta": "-", "precio_m2_alquiler": "-", "num_casas_alquiler": 2202, "precio_m2_venta_provincia": 1611, "precio_medio_venta_provincia": 162042, "precio_m2_alquiler_provincia": 10, "precio_medio_alquiler_provincia": 821, "tasa_actividad_provincia": 57.59, "tasa_paro_provincia": 17.89, "tasa_empleo_provincia": 47.29, "num_empleos_provincia": 1717, "cobertura_30": 100, "cobertura_100": 100, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 0, "sitios_natural": 0, "sitios_servicio": 2, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 1, "sitios_sport": 3, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Sevilla es un municipio y una ciudad de Espa\u00f1a, capital de la provincia hom\u00f3nima y de Andaluc\u00eda. de la Uni\u00f3n Europea. Su patrimonio hist\u00f3rico y monumental y sus diversos espacios esc\u00e9nicos y culturales la constituyen en ciudad receptora de turismo nacional e internacional. Es la tercera ciudad de Espa\u00f1a por n\u00famero de visitantes, tras Barcelona y Madrid. Destaca la presencia hist\u00f3rica en la ciudad tanto de la industria aeron\u00e1utica como de la industria militar. Parte del recorrido tem\u00e1tico del acuario est\u00e1 inspirado en la Expedici\u00f3n de Magallanes-Elcano, que supuso la Primera Vuelta al Mundo.", "url": "https://es.wikipedia.org/wiki/Sevilla", "images": ["https://upload.wikimedia.org/wikipedia/commons/5/51/196_Catedral_de_Sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3d/2248763553_tienda_sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/74/AVE_en_Sevilla%2C_en_la_estaci%C3%B3n_de_Santa_Justa%2C_tren_Serie_100_de_Renfe.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/1e/AeropuertoSevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0f/Airbus_A400M_Rollout.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/14/Al_este%2C_el_palacio_arzobispal_desde_la_torre_de_la_Giralda%2C_en_Sevilla%2C_Espa%C3%B1a%2C_Spain.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/a3/Alamillo_Barqueta.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ae/Antigua_Audiencia_de_Sevila.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/20/Arriba_de_la_Giralda_se_encuentra_la_escultura_del_Giraldillo%2C_Sevilla%2C_Espa%C3%B1a%2C_Spain.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/04/Ateneo_de_Sevilla.JPG", "https://upload.wikimedia.org/wikipedia/commons/6/64/Auditoriocartuja2.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/01/Autob%C3%BAs_urbano_de_Sevilla.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/a8/Avenida_de_la_Constituci%C3%B3n.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/be/Ayuntamiento_de_Sevilla_fachada.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b2/Calatrava_Puente_del_Alamillo_Seville.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4e/Calle_juderia.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/82/Casa_Pilatos_5384865645_1642bfa658_o.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b2/Catedral_de_Santa_Mar%C3%ADa_de_la_Sede._Interior.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f1/Clima_Sevilla_%28Espa%C3%B1a%29.PNG", "https://upload.wikimedia.org/wikipedia/commons/2/20/Coches_de_caballo_tur%C3%ADstico.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/75/Conjunto_espa%C3%B1ol_1998_Sevilla_03.PNG", "https://upload.wikimedia.org/wikipedia/commons/7/79/Contenedores_selectivos_de_residuos_urbanos_en_Sevilla.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/78/Delicias_et_5_100_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c5/El_Gran_Poder_sevillano_por_la_Catedral.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/05/Embajadores_1.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/de/Estacion_Santa_Justa_Acceso_principal.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/56/Estaci%C3%B3n1demayodesdelacalle.JPG", "https://upload.wikimedia.org/wikipedia/commons/9/9f/Estaci%C3%B3n_de_Servicio_REPSOL_en_Sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/40/Estadio_Benito_Villamarin_2016001.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a4/Estadioolimpicosevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/81/Expo_S%C3%A9ville_1992_en_2007.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/2c/Expo_S%C3%A9ville_1992_en_2007_edited.JPG", "https://upload.wikimedia.org/wikipedia/commons/3/3e/FCOM.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6a/Fachadaestadiosanchezpizjoan.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/09/Feria_de_Abril_2018_24.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/31/Flamenco_in_Sevilla_02.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d3/GlorietadeBecquer.JPG", "https://upload.wikimedia.org/wikipedia/commons/3/34/Guadalquivir_Puente.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a8/HEINEKEN_MARCOROJO179.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ac/HermanaKansasCitySevilla.JPG", "https://upload.wikimedia.org/wikipedia/commons/c/c9/Hotel_Alfonso_XIII_de_Sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/ca/Iglesia_de_San_Luis%2C_Sevilla._Retablos.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/44/La_Giralda%2C_Seville%2C_Spain_-_Sep_2009.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/93/La_Giralda_August_2012_Seville_Spain.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f6/La_sevilla_del_sigloXVI.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6e/Lac_du_parc_de_l%27Alamillo.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/84/Metropol_parasol_02042011_001.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e4/Metropolparasolnov2011001.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2f/Monumental_Plaza_de_Espa%C3%B1a_de_Sevilla_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3f/Monumento_a_Col%C3%B3n%2C_Sevilla%2C_Espa%C3%B1a%2C_2015-12-06%2C_DD_81.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/75/Monumnetoelcanosevilla.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/75/Museo_Bellas_Artes_Sevilla_20120728.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/dd/Pabellon_navegacion_e2012003.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6d/Palacio_San_Telmo_facade_Seville_Spain.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/53/Palacio_congresos_sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/11/Palaciodejusticia_Sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/da/Parlamento_Andaluz.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/aa/Parque_de_Mar%C3%ADa_Luisa_-_Sevilla_3.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Patio_central_del_Palacio_de_las_Due%C3%B1as_de_Sevilla%2C_Espa%C3%B1a%2C_2016_01.JPG", "https://upload.wikimedia.org/wikipedia/commons/8/82/Patio_de_la_Monteria_Palace_Pedro_I_Alcazar_Seville_Spain.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/70/Patio_de_las_doncellas.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f8/Patio_de_las_doncellas_cropped.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9d/Periodicos_editados_en_Sevilla.jPG", "https://upload.wikimedia.org/wikipedia/commons/9/9b/PlazaEspanaDesdeAire.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/01/Plaza_de_Espa%C3%B1a_in_the_Maria_Luisa_Park%2C_Seville_Spain-_VIII.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Plaza_de_Toros_de_la_Real_Maestranza_-_Sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c1/Plaza_de_la_Encarnaci%C3%B3n_%2817193358720%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/10/Poblacion_Distritos.JPG", "https://upload.wikimedia.org/wikipedia/commons/f/f6/Polic%C3%ADa_Local_de_Sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7f/Port_de_S%C3%A9ville_rive_gauche.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/52/Puentesantelmo201306_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/53/Radiosevilla2.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/d9/Remo_en_guadalquivir_2016001.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/58/Rocio_de_la_Macarena.JPG", "https://upload.wikimedia.org/wikipedia/commons/9/92/R%C3%ADo_Guadalquivir_en_Sevilla_y_sus_cambios.png", "https://upload.wikimedia.org/wikipedia/commons/e/e5/Salidaselmaratonciudaddesevilla2009.JPG", "https://upload.wikimedia.org/wikipedia/commons/6/6a/Sevici.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7a/SevillaPavoReal.JPG", "https://upload.wikimedia.org/wikipedia/commons/6/61/Sevilla_-_Plaza_de_Am%C3%A9rica_-_Palomas_-_20070519-14.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f0/Sevilla_-_Plaza_de_Am%C3%A9rica_-_Palomas_-_20070519-14_cropped.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9f/Sevilla_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/24/Sevilla_Casino_de_la_Exposici%C3%B3n.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/47/Sevilla_Cathedral_-_Giralda.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/74/Sevilla_Luft_120308.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/ee/Sevilla_Tussam_18-03-2011_17-58-44.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/48/Sevilla_desde_el_Puente_de_Las_Delicias.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9c/Spain_Andalusia_Seville_BW_2015-10-23_14-27-54.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a8/Station_Sevilla-Santa_Justa_15-03-2011_15-33-05.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/ea/Teatro_de_la_Maestranza_-_Seville.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/e4/Tesoro_del_Carambolo_-_Museo_Arqueol%C3%B3gico_de_Sevilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/03/Toits_Guadalquivir_ponts_S%C3%A9ville_Espagne.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/83/Tomato_gazpacho.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c4/Torre_Sevilla_01.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/25/Torre_Sevilla_desde_Puente_de_la_Barqueta.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/Torre_del_oro_recorte.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/40/Tour_de_l%27Or_S%C3%A9ville.JPG", "https://upload.wikimedia.org/wikipedia/commons/8/80/Triana_panorama_%28cropped%29.JPG", "https://upload.wikimedia.org/wikipedia/commons/3/38/Universidad_de_Sevilla_%28rectorado%29_001.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/77/Vel%C3%A1_de_Santa_Ana_puente_de_Triana.JPG", "https://upload.wikimedia.org/wikipedia/commons/b/b4/Virgendelroc%C3%ADo.jpg"]}}');
+		$(document).ready(function(){
+			var mainHeight = $('#main').height() + 110;
+			var bodyWidth = $('body').width()
+			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+			$('#bg', this).width(bodyWidth + 15);
+			$('#bg', this).height(mainHeight + 15);
+			$('#bg-layer', this).height(mainHeight);
+			
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 110;
+				var bodyWidth = $('body').width()
+				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+				$('#bg', this).width(bodyWidth + 15);
+				$('#bg', this).height(mainHeight + 15);
+				$('#bg-layer', this).height(mainHeight);
+			});
+		});
+		for (let i in municipality["data"]["images"]) {
+			var indicator = "";
+			var photo = "";
+			if (i == 0) {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Sevilla'></div>";
+			} else {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Sevilla'></div>";
+			}
+
+			$('.photos ol.carousel-indicators').append(indicator);
+			$('.photos div.carousel-inner').append(photo);
+			console.log(municipality["data"]["images"][i]);
+		}
+	</script>
+
+
+	<footer class="navbar-light bg-light">
+		<div class="navbar-nav">
+			<a class="nav-link" href="#">Metodología</a>
+		</div>
+	</footer>
+  </body>
+</html>

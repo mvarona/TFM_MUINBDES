@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title> </title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="/inicio">dondeTeEsperan.es</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+						<a class="nav-link" href="#">Lugar solo para mí</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar parecido a otro</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar sorpresa</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<link rel="stylesheet" href="/static/css/municipality.css">
+	<div id="bg"></div>
+	<div id="bg-layer"></div>
+	<div class="container">
+	
+	<main id="main">
+		<h1>¡Te esperan en Vélez-Málaga!</h1>
+		<h3 class="province">Málaga</h3>
+		<article>
+			<div class="first-column">
+				<section class="intro">
+					<p class="intro">Vélez-Málaga es una ciudad y un municipio de la provincia de Málaga, en la comunidad autónoma de Andalucía, España. Esta se encuentra dispersa en varios núcleos urbanos, numerosas urbanizaciones costeras y cortijos en el interior;aun así más de la mitad se concentra en la ciudad propiamente dicha.  
+El sector turístico constituye el principal sector productivo del municipio, seguido por la agricultura, que destaca por la producción de cultivos subtropicales como el mango, la chirimoya y el níspero, y sobre todo, del aguacate, del que es el mayor productor de España.El centro histórico de Vélez-Málaga está declarado conjunto histórico-artístico. La ciudad conserva un significativo patrimonio arquitectónico mudéjar y barroco, con palacios, iglesias y conventos entre calles pintorescas.Los yacimientos arqueológicos de Vélez-Málaga  prueban la existencia de asentamientos fenicios y romanos en el actual término municipal, aunque el principal núcleo urbano fue fundado hacia el siglo X por los andalusíes, que lo llamaron Ballix Malaca (Valle de Málaga). El nombre de Vélez-Málaga aparece en el Quijote: «¡Gracias sean dadas a Dios, señores, que a tan buena parte nos ha conducido!, porque, si yo no me engaño, la tierra que pisamos es la de Vélez-Málaga».</p>
+					<a class="google" href="https://www.google.es/search?q=Vélez-Málaga, Málaga" target="_blank">Buscar en Google</a>
+					<a class="wikipedia" href="https://es.wikipedia.org/wiki/V%C3%A9lez-M%C3%A1laga" target="_blank">Ver más en Wikipedia</a>
+				</section>
+				<section class="tags">
+					
+					    <span class="tag-1">Comercios</span>
+					
+
+					
+					
+					
+
+					
+
+					
+
+					
+					    <span class="tag-6">Servicios</span>
+					
+					
+					
+
+					
+
+					
+					    <span class="tag-9">Hostelería</span>
+					
+
+						
+
+							
+
+										
+					
+										
+					
+					
+
+					
+
+					
+
+						
+
+					
+					
+					
+					    <span class="tag-19">Cerca de la costa</span>
+					
+
+					
+					    <span class="tag-20">Cerca de la montaña</span>
+										
+					
+				</section>
+				<section class="suggested">
+					<span class="question">¿Qué te parece?</span><br/>
+					<div class="answers">
+						<a href="#">🤩 &nbsp;¡Me gusta!</a>
+						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+					</div>
+					<div class="suggestions">
+						<span>A gente como tú le gustó...</span><br/>
+						<a href="#">Municipio sugerido, Provincia</a>
+					</div>
+				</section>
+				<section class="map">
+					<div id="static-map">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=36.778021,-4.099615&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=9&maptype=satellite"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+					<div id="streetview">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=36.778021,-4.099615&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+				</section>
+			</div>
+			<div class="second-column">
+				<div id="features-grid">
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa" src="/static/images/house.png"/>
+							<p>
+								
+								<span>805 casas en venta</span><br/>
+								
+								
+								<span>20 casas en alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+							<p>
+								<span>9 centros de salud</span><br/>
+								
+								<span>2 centros de urgencias</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+							<p>
+								<span>2 hospitales</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+							<p>
+								<span>37 colegios</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
+							<p>
+								<span>56 metros de altitud</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+							<p>
+								
+								<span>1.648 €/m² medio de venta</span><br/>
+								
+								
+								<span>8 €/m² medio de alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de gente" src="/static/images/people.png"/>
+							<p>
+								<span>82.967 habitantes</span><br/>
+								<span>(524 hab./km²)</span><br/>
+								<span>(media nacional: 94 hab./km²)</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+							<p>
+								
+								<span>Comprar una casa en la provincia cuesta de media 301.594 €</span><br/>
+								
+								
+								<span>Alquilar una casa en la provincia cuesta de media 1.055 €/mes</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+							<p>
+								
+								<span>En febrero, 12ºC con 0,08 mm/día lluvia de media</span><br/>
+								
+								
+								<span>En julio, 24ºC con 0,02 mm/día de lluvia de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+							<p>
+								
+								<span>En febrero, la temperatura va de 5ºC a 20ºC de media</span><br/>
+								
+								
+								<span>En julio, la temperatura va de 16ºC a 35ºC de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+							<p>
+								<span>21.933 € de renta bruta media anual</span><br/>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un coche" src="/static/images/car.png"/>
+							<p>
+								
+								<span>A 42 km. de la capital de provincia</span>
+								
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+							<p>
+								
+								<span>1.851 ofertas de empleo en la provincia</span><br/>
+								<span>17,76 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un sol" src="/static/images/sun.png"/>
+							<p>
+								<span>111.7 horas de sol en febrero de media</span><br/>
+								<span>286.8 horas de sol en julio de media</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+							<p>
+								
+								<span>Fibra óptica de hasta 30 MB en el 86 % del territorio</span><br/>
+								
+								
+								<span>Fibra óptica de hasta 100 MB en el 55 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 4G en el 99 % del territorio</span>
+								
+							</p>
+						</div>
+					</div>
+					
+				</div>
+				<section class="photos">
+					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					  </ol>
+					  <div class="carousel-inner">
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior fotografía</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Siguiente fotografía</span>
+					  </a>
+					</div>
+				</section>
+			</div>
+		</article>
+	</main>
+	</div>
+	<script type="text/javascript">
+		var municipality = JSON.parse('{"codigo_ine": "29094", "data": {"municipio": "V\u00e9lez-M\u00e1laga", "provincia": "M\u00e1laga", "comunidad_autonoma": "Andaluc\u00eda", "municipio_nombre_humano": "V\u00e9lez-M\u00e1laga", "num_centros_salud": 9, "num_centros_urgencias": 2, "num_hospitales": 2, "num_colegios": 37, "num_universidades": 0, "linea_costa_provincia": 1, "linea_montana_provincia": 2, "poblacion": 82967, "superficie": 158.19, "densidad_poblacion": 524.48, "lat": 36.778021, "lon": -4.099615, "feb_avg_min_temp": 5.91, "feb_avg_max_temp": 20.15, "feb_avg_temp": 12.66, "feb_avg_humidity": 74.04, "feb_avg_wind": 16.09, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.08, "feb_avg_clouds": 31.6, "feb_avg_sunshine_hours": 111.7, "jul_avg_min_temp": 16.38, "jul_avg_max_temp": 35.88, "jul_avg_temp": 24.41, "jul_avg_humidity": 68.19, "jul_avg_wind": 11.77, "jul_avg_min_rain": 0, "jul_avg_max_rain": 3, "jul_avg_rain": 0.02, "jul_avg_clouds": 13.02, "jul_avg_sunshine_hours": 286.8, "kms_capital_provincia": 42.92, "altitud": 56, "renta_bruta_media": "21933", "precio_m2_venta": "1648.45", "num_casas_venta": "805", "precio_m2_alquiler": "8.67", "num_casas_alquiler": 20, "precio_m2_venta_provincia": 2630, "precio_medio_venta_provincia": 301594, "precio_m2_alquiler_provincia": 11, "precio_medio_alquiler_provincia": 1055, "tasa_actividad_provincia": 56.97, "tasa_paro_provincia": 17.76, "tasa_empleo_provincia": 46.85, "num_empleos_provincia": 1851, "cobertura_30": 86.75, "cobertura_100": 55.67, "cobertura_3g": 100, "cobertura_4g": 99.92, "sitios_comercio": 1, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 0, "sitios_natural": 0, "sitios_servicio": 2, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 3, "sitios_sport": 0, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "V\u00e9lez-M\u00e1laga es una ciudad y un municipio de la provincia de M\u00e1laga, en la comunidad aut\u00f3noma de Andaluc\u00eda, Espa\u00f1a. Esta se encuentra dispersa en varios n\u00facleos urbanos, numerosas urbanizaciones costeras y cortijos en el interior;aun as\u00ed m\u00e1s de la mitad se concentra en la ciudad propiamente dicha.  \nEl sector tur\u00edstico constituye el principal sector productivo del municipio, seguido por la agricultura, que destaca por la producci\u00f3n de cultivos subtropicales como el mango, la chirimoya y el n\u00edspero, y sobre todo, del aguacate, del que es el mayor productor de Espa\u00f1a.El centro hist\u00f3rico de V\u00e9lez-M\u00e1laga est\u00e1 declarado conjunto hist\u00f3rico-art\u00edstico. La ciudad conserva un significativo patrimonio arquitect\u00f3nico mud\u00e9jar y barroco, con palacios, iglesias y conventos entre calles pintorescas.Los yacimientos arqueol\u00f3gicos de V\u00e9lez-M\u00e1laga  prueban la existencia de asentamientos fenicios y romanos en el actual t\u00e9rmino municipal, aunque el principal n\u00facleo urbano fue fundado hacia el siglo X por los andalus\u00edes, que lo llamaron Ballix Malaca (Valle de M\u00e1laga). El nombre de V\u00e9lez-M\u00e1laga aparece en el Quijote: \u00ab\u00a1Gracias sean dadas a Dios, se\u00f1ores, que a tan buena parte nos ha conducido!, porque, si yo no me enga\u00f1o, la tierra que pisamos es la de V\u00e9lez-M\u00e1laga\u00bb.", "url": "https://es.wikipedia.org/wiki/V%C3%A9lez-M%C3%A1laga", "images": ["https://upload.wikimedia.org/wikipedia/commons/f/f7/Battle_of_Malaga%2C_1704.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Camaleon_comun.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fb/Campanario_San_Juan.JPG", "https://upload.wikimedia.org/wikipedia/commons/4/4b/Castillo_de_V%C3%A9lez-M%C3%A1laga%2C_2016.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f0/Check_mark.png", "https://upload.wikimedia.org/wikipedia/commons/e/e5/Elecciones_municipales_de_2019_en_V%C3%A9lez-M%C3%A1laga_%2826_de_mayo_de_2019%29.png", "https://upload.wikimedia.org/wikipedia/commons/5/50/Mending_the_nets.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/16/Muralla_V%C3%A9lez-M%C3%A1laga.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/89/Nevada_Sierra.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0e/Palacio_de_Beniel.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ac/Persea_americana_dsc07271.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/01/Placa_de_homenaje_a_Jos%C3%A9_Mu%C3%B1oz_Anglada.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/af/Por_Mi_Pueblo.png", "https://upload.wikimedia.org/wikipedia/commons/1/12/Puerto_de_La_Caleta.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2d/San_Juan_Bautista_V%C3%A9lez.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3e/Santa_Mar%C3%ADa_la_Mayor_V%C3%A9lez.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d9/Strand_van_Torre_del_Mar.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1d/Teatro_del_Carmen.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/50/Theatrum_hispaniae_exhibens_regni_urbes_villas_ac_viridaria_magis_illustria..._Material_gr%C3%A1fico_145_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8f/Torre_5.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/27/Torre_del_Mar%2C_the_beach.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5b/Torre_del_Mar.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fb/Torre_manganeta_%281%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/Trikk_velez-malaga.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/11/Valle_de_V%C3%A9lez.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/39/Velez-Malaga.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/77/VelezMalagaChurch.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6c/Villa_Mercedes.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/62/V%C3%A9lex-M%C3%A1laga_panor%C3%A1mica.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/ec/V%C3%A9lez_-_M%C3%A1laga.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/88/%C3%81rea_metropolitana_de_V%C3%A9lez-M%C3%A1laga.png"]}}');
+		$(document).ready(function(){
+			var mainHeight = $('#main').height() + 110;
+			var bodyWidth = $('body').width()
+			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+			$('#bg', this).width(bodyWidth + 15);
+			$('#bg', this).height(mainHeight + 15);
+			$('#bg-layer', this).height(mainHeight);
+			
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 110;
+				var bodyWidth = $('body').width()
+				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+				$('#bg', this).width(bodyWidth + 15);
+				$('#bg', this).height(mainHeight + 15);
+				$('#bg-layer', this).height(mainHeight);
+			});
+		});
+		for (let i in municipality["data"]["images"]) {
+			var indicator = "";
+			var photo = "";
+			if (i == 0) {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Vélez-Málaga'></div>";
+			} else {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Vélez-Málaga'></div>";
+			}
+
+			$('.photos ol.carousel-indicators').append(indicator);
+			$('.photos div.carousel-inner').append(photo);
+			console.log(municipality["data"]["images"][i]);
+		}
+	</script>
+
+
+	<footer class="navbar-light bg-light">
+		<div class="navbar-nav">
+			<a class="nav-link" href="#">Metodología</a>
+		</div>
+	</footer>
+  </body>
+</html>

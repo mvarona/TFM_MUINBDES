@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<title> </title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="/inicio">dondeTeEsperan.es</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+						<a class="nav-link" href="#">Lugar solo para mí</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar parecido a otro</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Lugar sorpresa</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<link rel="stylesheet" href="/static/css/municipality.css">
+	<div id="bg"></div>
+	<div id="bg-layer"></div>
+	<div class="container">
+	
+	<main id="main">
+		<h1>¡Te esperan en Mancha Real!</h1>
+		<h3 class="province">Jaén</h3>
+		<article>
+			<div class="first-column">
+				<section class="intro">
+					<p class="intro">Mancha Real es un municipio y localidad española de la provincia de Jaén, en Andalucía. Además de tener una gran tradición olivarera, forma uno de los núcleos industriales más potentes de la provincia, con un amplio polígono industrial, destacando principalmente los sectores de la madera y la informática como los más consolidados en la industria local.</p>
+					<a class="google" href="https://www.google.es/search?q=Mancha Real, Jaén" target="_blank">Buscar en Google</a>
+					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Mancha_Real" target="_blank">Ver más en Wikipedia</a>
+				</section>
+				<section class="tags">
+					
+
+					
+					
+					
+
+					
+					    <span class="tag-4">Ocio</span>
+					
+
+					
+
+					
+					    <span class="tag-6">Servicios</span>
+					
+					
+					
+
+					
+
+					
+
+					
+					    <span class="tag-10">Deporte</span>
+						
+
+							
+
+										
+					
+										
+					
+					
+
+					
+
+					
+
+						
+
+					
+					
+					
+					    <span class="tag-19">Cerca de la costa</span>
+					
+
+					
+					    <span class="tag-20">Cerca de la montaña</span>
+										
+					
+				</section>
+				<section class="suggested">
+					<span class="question">¿Qué te parece?</span><br/>
+					<div class="answers">
+						<a href="#">🤩 &nbsp;¡Me gusta!</a>
+						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+					</div>
+					<div class="suggestions">
+						<span>A gente como tú le gustó...</span><br/>
+						<a href="#">Municipio sugerido, Provincia</a>
+					</div>
+				</section>
+				<section class="map">
+					<div id="static-map">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=37.786725,-3.608627&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=9&maptype=satellite"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+					<div id="streetview">
+						<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:100%;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/streetview?location=37.786725,-3.608627&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+					</div>
+				</section>
+			</div>
+			<div class="second-column">
+				<div id="features-grid">
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa" src="/static/images/house.png"/>
+							<p>
+								
+								<span>250 casas en venta</span><br/>
+								
+								
+								<span>5 casas en alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+							<p>
+								<span>2 centros de salud</span><br/>
+								
+								<span>1 centros de urgencias</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+							<p>
+								<span>10 colegios</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
+							<p>
+								<span>772 metros de altitud</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+							<p>
+								
+								<span>425 €/m² medio de venta</span><br/>
+								
+								
+								<span>4 €/m² medio de alquiler</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de gente" src="/static/images/people.png"/>
+							<p>
+								<span>11.315 habitantes</span><br/>
+								<span>(115 hab./km²)</span><br/>
+								<span>(media nacional: 94 hab./km²)</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+							<p>
+								
+								<span>Comprar una casa en la provincia cuesta de media 105.216 €</span><br/>
+								
+								
+								<span>Alquilar una casa en la provincia cuesta de media 496 €/mes</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+							<p>
+								
+								<span>En febrero, 8ºC con 0,09 mm/día lluvia de media</span><br/>
+								
+								
+								<span>En julio, 28ºC con 0 mm/día de lluvia de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+							<p>
+								
+								<span>En febrero, la temperatura va de -2ºC a 19ºC de media</span><br/>
+								
+								
+								<span>En julio, la temperatura va de 13ºC a 40ºC de media</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+							<p>
+								<span>19.161 € de renta bruta media anual</span><br/>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un coche" src="/static/images/car.png"/>
+							<p>
+								
+								<span>A 23 km. de la capital de provincia</span>
+								
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+							<p>
+								
+								<span>479 ofertas de empleo en la provincia</span><br/>
+								<span>19,64 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
+								
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un sol" src="/static/images/sun.png"/>
+							<p>
+								<span>108.9 horas de sol en febrero de media</span><br/>
+								<span>353.3 horas de sol en julio de media</span>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="feature">
+						<div class="feature-icon">
+							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+							<p>
+								
+								<span>Fibra óptica de hasta 30 MB en el 49 % del territorio</span><br/>
+								
+								
+								<span>Fibra óptica de hasta 100 MB en el 49 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+								
+								
+								<span>Cobertura móvil 4G en el 100 % del territorio</span>
+								
+							</p>
+						</div>
+					</div>
+					
+				</div>
+				<section class="photos">
+					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+					  <ol class="carousel-indicators">
+					  </ol>
+					  <div class="carousel-inner">
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Anterior fotografía</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Siguiente fotografía</span>
+					  </a>
+					</div>
+				</section>
+			</div>
+		</article>
+	</main>
+	</div>
+	<script type="text/javascript">
+		var municipality = JSON.parse('{"codigo_ine": "23058", "data": {"municipio": "Mancha Real", "provincia": "Ja\u00e9n", "comunidad_autonoma": "Andaluc\u00eda", "municipio_nombre_humano": "Mancha Real", "num_centros_salud": 2, "num_centros_urgencias": 1, "num_hospitales": 0, "num_colegios": 10, "num_universidades": 0, "linea_costa_provincia": 2, "linea_montana_provincia": 2, "poblacion": 11315, "superficie": 97.7, "densidad_poblacion": 115.81, "lat": 37.786725, "lon": -3.608627, "feb_avg_min_temp": -2.82, "feb_avg_max_temp": 19.32, "feb_avg_temp": 8.38, "feb_avg_humidity": 75.13, "feb_avg_wind": 7.63, "feb_avg_min_rain": 0, "feb_avg_max_rain": 12, "feb_avg_rain": 0.09, "feb_avg_clouds": 37.65, "feb_avg_sunshine_hours": 108.9, "jul_avg_min_temp": 13.6, "jul_avg_max_temp": 40.55, "jul_avg_temp": 28.09, "jul_avg_humidity": 36.08, "jul_avg_wind": 7.24, "jul_avg_min_rain": 0, "jul_avg_max_rain": 0.9, "jul_avg_rain": 0, "jul_avg_clouds": 7.38, "jul_avg_sunshine_hours": 353.3, "kms_capital_provincia": 23.3, "altitud": 772, "renta_bruta_media": "19161", "precio_m2_venta": "425.37", "num_casas_venta": "250", "precio_m2_alquiler": "4.04", "num_casas_alquiler": 5, "precio_m2_venta_provincia": 989, "precio_medio_venta_provincia": 105216, "precio_m2_alquiler_provincia": 6, "precio_medio_alquiler_provincia": 496, "tasa_actividad_provincia": 52.28, "tasa_paro_provincia": 19.64, "tasa_empleo_provincia": 42.01, "num_empleos_provincia": 479, "cobertura_30": 49, "cobertura_100": 49, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 1, "sitios_natural": 0, "sitios_servicio": 2, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 0, "sitios_sport": 3, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Mancha Real es un municipio y localidad espa\u00f1ola de la provincia de Ja\u00e9n, en Andaluc\u00eda. Adem\u00e1s de tener una gran tradici\u00f3n olivarera, forma uno de los n\u00facleos industriales m\u00e1s potentes de la provincia, con un amplio pol\u00edgono industrial, destacando principalmente los sectores de la madera y la inform\u00e1tica como los m\u00e1s consolidados en la industria local.", "url": "https://es.wikipedia.org/wiki/Mancha_Real", "images": ["https://upload.wikimedia.org/wikipedia/commons/d/d7/Iglesia_de_San_Juan_Evangelista%2C_Mancha_Real_01.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/79/Iglesia_de_San_Juan_Evangelista.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e2/Mancha_Real%2C_en_Ja%C3%A9n_%28Espa%C3%B1a%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2d/Mancha_Real_24J_11.jpg"]}}');
+		$(document).ready(function(){
+			var mainHeight = $('#main').height() + 110;
+			var bodyWidth = $('body').width()
+			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+			$('#bg', this).width(bodyWidth + 15);
+			$('#bg', this).height(mainHeight + 15);
+			$('#bg-layer', this).height(mainHeight);
+			
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 110;
+				var bodyWidth = $('body').width()
+				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
+				$('#bg', this).width(bodyWidth + 15);
+				$('#bg', this).height(mainHeight + 15);
+				$('#bg-layer', this).height(mainHeight);
+			});
+		});
+		for (let i in municipality["data"]["images"]) {
+			var indicator = "";
+			var photo = "";
+			if (i == 0) {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Mancha Real'></div>";
+			} else {
+				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Mancha Real'></div>";
+			}
+
+			$('.photos ol.carousel-indicators').append(indicator);
+			$('.photos div.carousel-inner').append(photo);
+			console.log(municipality["data"]["images"][i]);
+		}
+	</script>
+
+
+	<footer class="navbar-light bg-light">
+		<div class="navbar-nav">
+			<a class="nav-link" href="#">Metodología</a>
+		</div>
+	</footer>
+  </body>
+</html>
