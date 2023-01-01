@@ -22,12 +22,13 @@ h1 {
 
 footer {
     position: fixed;
-    height: 50px;
+    height: 70px;
     bottom: 0px;
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
     display: flex;
+    z-index: 4;
 }
 
 footer .navbar-nav {
@@ -35,5 +36,7 @@ footer .navbar-nav {
 }
 
 footer a {
-    margin: 5px auto;
+    margin: auto auto;
+    padding: 0!important;
+    padding-top: 2px!important;
 }

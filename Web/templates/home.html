@@ -2,31 +2,58 @@
 
 {% block content %}
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/home.css') }}">
-	<h1>{% block title %} ¡Descubre dónde te esperan! {% endblock %}</h1>
-	<div class="main-buttons">
-		<div class="column">
-			<a href="#">
-				<div class="button">
-					<img alt="Icono de unos selectores" src="{{ url_for('static', filename= 'images/slider.png') }}"/>
+	{% if images|length == 0 %}
+	<div id="bg" style="background-image: url({{ url_for('static', filename='images/backgrounds') }}/{{ fallback_background_img }})"></div>
+	{% endif %}
+	<div id="bg-layer"></div>
+	<div class="container">
+		<main id="main">
+			<h1>{% block title %} ¡Descubre dónde te esperan! {% endblock %}</h1>
+			<div class="main-buttons">
+				<div class="column">
+					<a href="#">
+						<div class="button">
+							<img alt="Icono de unos selectores" src="{{ url_for('static', filename= 'images/slider.png') }}"/>
+						</div>
+						<span>Lugar solo para mí</span>
+					</a>
 				</div>
-				<span>Lugar solo para mí</span>
-			</a>
-		</div>
-		<div class="column">
-			<a href="#">
-				<div class="button">
-					<img alt="Icono de una lupa" src="{{ url_for('static', filename= 'images/search.png') }}"/>
+				<div class="column">
+					<a href="#">
+						<div class="button">
+							<img alt="Icono de una lupa" src="{{ url_for('static', filename= 'images/search.png') }}"/>
+						</div>
+						<span>Lugar parecido a otro</span>
+					</a>
 				</div>
-				<span>Lugar parecido a otro</span>
-			</a>
-		</div>
-		<div class="column">
-			<a href="{{ domain }}/random-municipality">
-				<div class="button">
-					<img alt="Icono de bola del mundo saliendo de una caja de cartón abierta" src="{{ url_for('static', filename= 'images/surprise.png') }}"/>
+				<div class="column">
+					<a href="{{ domain }}/random-municipality">
+						<div class="button">
+							<img alt="Icono de bola del mundo saliendo de una caja de cartón abierta" src="{{ url_for('static', filename= 'images/surprise.png') }}"/>
+						</div>
+						<span>Lugar sorpresa</span>
+					</a>
 				</div>
-				<span>Lugar sorpresa</span>
-			</a>
-		</div>
+			</div>
+		</main>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setTimeout(function() {
+  				var screenHeight = $(window).height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight)});
+				$('#bg-layer').css({height: (screenHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var screenHeight = $(window).height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight)});
+				$('#bg-layer').css({height: (screenHeight)});
+			});
+		});
+	</script>
 {% endblock %}

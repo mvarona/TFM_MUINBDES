@@ -295,6 +295,43 @@ div.suggestions a {
 
 footer {
 	position: relative;
-	margin-top: 3%;
-	z-index: 4;
+	margin-top: 50px;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 1075px) {
+	article {
+		display: block;
+	}
+	div.first-column {
+		width: 100%;
+		margin-right: 0;
+		float: none;
+	}
+	div.second-column {
+		width: 100%;
+		float: none;
+	}
+}
+
+@media only screen and (max-width: 512px) {
+	h1 {
+		font-size: 2em;
+	}
+	h3.province {
+		font-size: 1em;
+	}
+	a.wikipedia {
+		display: block;
+		float: none;
+		margin-top: 10px;
+	}
+	section.suggested div.answers {
+		display: block;
+	}
+	div.answers a {
+		margin-top: 10px;
+	}
+	}
 }

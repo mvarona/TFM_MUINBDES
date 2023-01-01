@@ -2,7 +2,12 @@
 
 {% block content %}
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/municipality.css') }}">
-	<div id="bg"></div>
+	{% if images|length != 0 %}
+	<div id="bg" style="background-image: url({{ images[0]  }}"></div>
+	{% endif %}
+	{% if images|length == 0 %}
+	<div id="bg" style="background-image: url({{ url_for('static', filename='images/backgrounds') }}/{{ fallback_background_img }})"></div>
+	{% endif %}
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -95,9 +100,9 @@
 
 					{% if linea_montana_provincia == 1 or linea_montana_provincia == 2 %}
 					    <span class="tag-20">Cerca de la montaña</span>
-					{% endif %}					
-					
+					{% endif %}
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
@@ -119,218 +124,250 @@
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					{% if num_casas_venta != "-" or num_casas_alquiler != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="{{ url_for('static', filename= 'images/house.png') }}"/>
-							<p>
-								{% if num_casas_venta != "-" %}
-								<span>{{ num_casas_venta }} casas en venta</span><br/>
-								{% endif %}
-								{% if num_casas_alquiler != "-" %}
-								<span>{{ num_casas_alquiler }} casas en alquiler</span>
-								{% endif %}
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						{% if (num_casas_venta != "-" and num_casas_venta != "0") or (num_casas_alquiler != "-" and num_casas_alquiler != "0") %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="{{ url_for('static', filename= 'images/house.png') }}"/>
+								<p>
+									{% if num_casas_venta != "-" and num_casas_venta != "0" and num_casas_venta != "1" %}
+									<span>{{ num_casas_venta }} casas en venta</span><br/>
+									{% endif %}
+									{% if num_casas_venta != "-" and num_casas_venta != "0" and num_casas_venta == "1" %}
+									<span>{{ num_casas_venta }} casa en venta</span><br/>
+									{% endif %}
+									{% if num_casas_alquiler != "-" and num_casas_alquiler != "0" and num_casas_alquiler != "1" %}
+									<span>{{ num_casas_alquiler }} casas en alquiler</span>
+									{% endif %}
+									{% if num_casas_alquiler != "-" and num_casas_alquiler != "0" and num_casas_alquiler == "1" %}
+									<span>{{ num_casas_alquiler }} casa en alquiler</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if num_centros_salud != "-" or num_centros_urgencias != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="{{ url_for('static', filename= 'images/clinic.png') }}"/>
-							<p>
-								<span>{{ num_centros_salud }} centros de salud</span><br/>
-								{% if num_centros_urgencias != 0 %}
-								<span>{{ num_centros_urgencias }} centros de urgencias</span>
-								{% endif %}
-							</p>
+						{% endif %}
+						{% if num_centros_salud != "-" or num_centros_urgencias != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="{{ url_for('static', filename= 'images/clinic.png') }}"/>
+								<p>
+									{% if num_centros_salud > 1 %}
+									<span>{{ num_centros_salud }} centros de salud</span><br/>
+									{% endif %}
+									{% if num_centros_salud == 1 %}
+									<span>{{ num_centros_salud }} centro de salud</span><br/>
+									{% endif %}
+									{% if num_centros_urgencias != 0 and num_centros_urgencias > 1 %}
+									<span>{{ num_centros_urgencias }} centros de urgencias</span>
+									{% endif %}
+									{% if num_centros_urgencias != 0 and num_centros_urgencias == 1 %}
+									<span>{{ num_centros_urgencias }} centro de urgencias</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if num_hospitales != "-" and num_hospitales != 0 %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un hospital" src="{{ url_for('static', filename= 'images/hospital.png') }}"/>
-							<p>
-								<span>{{ num_hospitales }} hospitales</span>
-							</p>
+						{% endif %}
+						{% if num_hospitales != "-" and num_hospitales != 0 %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un hospital" src="{{ url_for('static', filename= 'images/hospital.png') }}"/>
+								<p>
+									{% if num_hospitales > 1 %}
+									<span>{{ num_hospitales }} hospitales</span>
+									{% endif %}
+									{% if num_hospitales == 1 %}
+									<span>{{ num_hospitales }} hospital</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if num_colegios != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="{{ url_for('static', filename= 'images/school.png') }}"/>
-							<p>
-								<span>{{ num_colegios }} colegios</span>
-							</p>
+						{% endif %}
+						{% if num_colegios != "-" and num_colegios != "0" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="{{ url_for('static', filename= 'images/school.png') }}"/>
+								<p>
+									{% if num_colegios != "1" %}
+									<span>{{ num_colegios }} colegios</span>
+									{% endif %}
+									{% if num_colegios == "1" %}
+									<span>{{ num_colegios }} colegio</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if num_universidades != "-" and num_universidades != 0 %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una universidad" src="{{ url_for('static', filename= 'images/university.png') }}"/>
-							<p>
-								<span>{{ num_universidades }} universidades</span>
-							</p>
+						{% endif %}
+						{% if num_universidades != "-" and num_universidades != 0 %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una universidad" src="{{ url_for('static', filename= 'images/university.png') }}"/>
+								<p>
+									{% if num_universidades > 1 %}
+									<span>{{ num_universidades }} universidades</span>
+									{% endif %}
+									{% if num_universidades == 1 %}
+									<span>{{ num_universidades }} universidad</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if altitud != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="{{ url_for('static', filename= 'images/up.png') }}"/>
-							<p>
-								<span>{{ altitud }} metros de altitud</span>
-							</p>
+						{% endif %}
+						{% if altitud != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una flecha hacia arriba" src="{{ url_for('static', filename= 'images/up.png') }}"/>
+								<p>
+									<span>{{ altitud }} metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if precio_m2_venta != "-" or precio_m2_alquiler != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="{{ url_for('static', filename= 'images/house-price.png') }}"/>
-							<p>
-								{% if precio_m2_venta != "-" %}
-								<span>{{ precio_m2_venta }} €/m² medio de venta</span><br/>
-								{% endif %}
-								{% if precio_m2_alquiler != "-" %}
-								<span>{{ precio_m2_alquiler }} €/m² medio de alquiler</span>
-								{% endif %}
-							</p>
+						{% endif %}
+						{% if precio_m2_venta != "-" or precio_m2_alquiler != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="{{ url_for('static', filename= 'images/house-price.png') }}"/>
+								<p>
+									{% if precio_m2_venta != "-" %}
+									<span>{{ precio_m2_venta }} €/m² medio de venta</span><br/>
+									{% endif %}
+									{% if precio_m2_alquiler != "-" %}
+									<span>{{ precio_m2_alquiler }} €/m² medio de alquiler</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if poblacion != "-" or densidad_poblacion != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="{{ url_for('static', filename= 'images/people.png') }}"/>
-							<p>
-								<span>{{ poblacion }} habitantes</span><br/>
-								<span>({{ densidad_poblacion }} hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						{% endif %}
+						{% if poblacion != "-" or densidad_poblacion != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="{{ url_for('static', filename= 'images/people.png') }}"/>
+								<p>
+									<span>{{ poblacion }} habitantes</span><br/>
+									<span>{{ densidad_poblacion }} hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if precio_medio_venta_provincia != "-" or precio_medio_alquiler_provincia != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="{{ url_for('static', filename= 'images/city.png') }}"/>
-							<p>
-								{% if precio_medio_venta_provincia != "-" %}
-								<span>Comprar una casa en la provincia cuesta de media {{ precio_medio_venta_provincia }} €</span><br/>
-								{% endif %}
-								{% if precio_medio_alquiler_provincia != "-" %}
-								<span>Alquilar una casa en la provincia cuesta de media {{ precio_medio_alquiler_provincia }} €/mes</span>
-								{% endif %}
-							</p>
+						{% endif %}
+						{% if precio_medio_venta_provincia != "-" or precio_medio_alquiler_provincia != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="{{ url_for('static', filename= 'images/city.png') }}"/>
+								<p>
+									{% if precio_medio_venta_provincia != "-" %}
+									<span>Comprar una casa en la provincia cuesta de media {{ precio_medio_venta_provincia }} €</span><br/>
+									{% endif %}
+									{% if precio_medio_alquiler_provincia != "-" %}
+									<span>Alquilar una casa en la provincia cuesta de media {{ precio_medio_alquiler_provincia }} €/mes</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if feb_avg_temp != "-" or jul_avg_temp != "-" or feb_avg_rain != "-" or jul_avg_rain != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="{{ url_for('static', filename= 'images/weather.png') }}"/>
-							<p>
-								{% if feb_avg_temp != "-" and feb_avg_rain != "-" %}
-								<span>En febrero, {{ feb_avg_temp }}ºC con {{ feb_avg_rain }} mm/día lluvia de media</span><br/>
-								{% endif %}
-								{% if jul_avg_temp != "-" and jul_avg_rain != "-" %}
-								<span>En julio, {{ jul_avg_temp }}ºC con {{ jul_avg_rain }} mm/día de lluvia de media</span>
-								{% endif %}
-							</p>
+						{% endif %}
+						{% if feb_avg_temp != "-" or jul_avg_temp != "-" or feb_avg_rain != "-" or jul_avg_rain != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="{{ url_for('static', filename= 'images/weather.png') }}"/>
+								<p>
+									{% if feb_avg_temp != "-" and feb_avg_rain != "-" %}
+									<span>En febrero, {{ feb_avg_temp }}ºC con {{ feb_avg_rain }} mm/día lluvia de media</span><br/>
+									{% endif %}
+									{% if jul_avg_temp != "-" and jul_avg_rain != "-" %}
+									<span>En julio, {{ jul_avg_temp }}ºC con {{ jul_avg_rain }} mm/día de lluvia de media</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if feb_avg_min_temp != "-" or feb_avg_max_temp != "-" or jul_avg_min_temp != "-" or jul_avg_max_temp != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="{{ url_for('static', filename= 'images/temperature.png') }}"/>
-							<p>
-								{% if feb_avg_min_temp != "-" and feb_avg_max_temp != "-" %}
-								<span>En febrero, la temperatura va de {{ feb_avg_min_temp }}ºC a {{ feb_avg_max_temp }}ºC de media</span><br/>
-								{% endif %}
-								{% if jul_avg_min_temp != "-" and jul_avg_max_temp != "-" %}
-								<span>En julio, la temperatura va de {{ jul_avg_min_temp }}ºC a {{ jul_avg_max_temp }}ºC de media</span>
-								{% endif %}
-							</p>
+						{% endif %}
+						{% if feb_avg_min_temp != "-" or feb_avg_max_temp != "-" or jul_avg_min_temp != "-" or jul_avg_max_temp != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="{{ url_for('static', filename= 'images/temperature.png') }}"/>
+								<p>
+									{% if feb_avg_min_temp != "-" and feb_avg_max_temp != "-" %}
+									<span>En febrero, la temperatura va de {{ feb_avg_min_temp }}ºC a {{ feb_avg_max_temp }}ºC de media</span><br/>
+									{% endif %}
+									{% if jul_avg_min_temp != "-" and jul_avg_max_temp != "-" %}
+									<span>En julio, la temperatura va de {{ jul_avg_min_temp }}ºC a {{ jul_avg_max_temp }}ºC de media</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if renta_bruta_media != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="{{ url_for('static', filename= 'images/savings.png') }}"/>
-							<p>
-								<span>{{ renta_bruta_media }} € de renta bruta media anual</span><br/>
-							</p>
+						{% endif %}
+						{% if renta_bruta_media != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="{{ url_for('static', filename= 'images/savings.png') }}"/>
+								<p>
+									<span>{{ renta_bruta_media }} € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if kms_capital_provincia != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="{{ url_for('static', filename= 'images/car.png') }}"/>
-							<p>
-								{% if kms_capital_provincia != 0 %}
-								<span>A {{ kms_capital_provincia }} km. de la capital de provincia</span>
-								{% endif %}
-								{% if kms_capital_provincia == 0 %}
-								<span>Es capital de provincia</span>
-								{% endif %}
-							</p>
+						{% endif %}
+						{% if kms_capital_provincia != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="{{ url_for('static', filename= 'images/car.png') }}"/>
+								<p>
+									{% if kms_capital_provincia != 0 %}
+									<span>A {{ kms_capital_provincia }} km. de la capital de provincia</span>
+									{% endif %}
+									{% if kms_capital_provincia == 0 %}
+									<span>Es capital de provincia</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if num_empleos_provincia != "-" or tasa_paro_provincia != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="{{ url_for('static', filename= 'images/jobs.png') }}"/>
-							<p>
-								{% if num_empleos_provincia != "-" or tasa_paro_provincia != "-" %}
-								<span>{{ num_empleos_provincia }} ofertas de empleo en la provincia</span><br/>
-								<span>{{ tasa_paro_provincia }} % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								{% endif %}
-							</p>
+						{% endif %}
+						{% if num_empleos_provincia != "-" or tasa_paro_provincia != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="{{ url_for('static', filename= 'images/jobs.png') }}"/>
+								<p>
+									{% if num_empleos_provincia != "-" or tasa_paro_provincia != "-" %}
+									<span>{{ num_empleos_provincia }} ofertas de empleo en la provincia</span><br/>
+									<span>{{ tasa_paro_provincia }} % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if feb_avg_sunshine_hours != "-" or jul_avg_sunshine_hours != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="{{ url_for('static', filename= 'images/sun.png') }}"/>
-							<p>
-								<span>{{ feb_avg_sunshine_hours }} horas de sol en febrero de media</span><br/>
-								<span>{{ jul_avg_sunshine_hours }} horas de sol en julio de media</span>
-							</p>
+						{% endif %}
+						{% if feb_avg_sunshine_hours != "-" or jul_avg_sunshine_hours != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="{{ url_for('static', filename= 'images/sun.png') }}"/>
+								<p>
+									<span>{{ feb_avg_sunshine_hours }} horas de sol en febrero de media</span><br/>
+									<span>{{ jul_avg_sunshine_hours }} horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					{% endif %}
-					{% if cobertura_30 != "-" or cobertura_100 != "-" or cobertura_3g != "-" or cobertura_4g != "-" %}
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="{{ url_for('static', filename= 'images/internet.png') }}"/>
-							<p>
-								{% if cobertura_30 != "-" %}
-								<span>Fibra óptica de hasta 30 MB en el {{ cobertura_30 }} % del territorio</span><br/>
-								{% endif %}
-								{% if cobertura_100 != "-" %}
-								<span>Fibra óptica de hasta 100 MB en el {{ cobertura_100 }} % del territorio</span><br/>
-								{% endif %}
-								{% if cobertura_3g != "-" %}
-								<span>Cobertura móvil 3G en el {{ cobertura_3g }} % del territorio</span><br/>
-								{% endif %}
-								{% if cobertura_4g != "-" %}
-								<span>Cobertura móvil 4G en el {{ cobertura_4g }} % del territorio</span>
-								{% endif %}
-							</p>
+						{% endif %}
+						{% if cobertura_30 != "-" or cobertura_100 != "-" or cobertura_3g != "-" or cobertura_4g != "-" %}
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="{{ url_for('static', filename= 'images/internet.png') }}"/>
+								<p>
+									{% if cobertura_30 != "-" %}
+									<span>Fibra óptica de hasta 30 MB en el {{ cobertura_30 }} % del territorio</span><br/>
+									{% endif %}
+									{% if cobertura_100 != "-" %}
+									<span>Fibra óptica de hasta 100 MB en el {{ cobertura_100 }} % del territorio</span><br/>
+									{% endif %}
+									{% if cobertura_3g != "-" %}
+									<span>Cobertura móvil 3G en el {{ cobertura_3g }} % del territorio</span><br/>
+									{% endif %}
+									{% if cobertura_4g != "-" %}
+									<span>Cobertura móvil 4G en el {{ cobertura_4g }} % del territorio</span>
+									{% endif %}
+								</p>
+							</div>
 						</div>
+						{% endif %}
 					</div>
-					{% endif %}
 				</div>
+				{% if images|length != 0 %}
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -347,44 +384,62 @@
 					  </a>
 					</div>
 				</section>
+				{% endif %}
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{{ municipality_info|safe }}');
+		var images = {{ images|safe }};
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de {{ municipio_nombre_humano }}'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de {{ municipio_nombre_humano }}'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de {{ municipio_nombre_humano }}'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de {{ municipio_nombre_humano }}'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location={{lat}},{{lon}}&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});	
+		});
+		
 	</script>
 
 {% endblock %}
