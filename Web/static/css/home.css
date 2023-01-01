@@ -1,0 +1,66 @@
+ul.navbar-nav {
+	display: none!important;
+}
+
+.main-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 75%;
+  margin-top: 8%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column {
+  flex: 25%;
+  margin-right: 10%;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+}
+
+.column:last-child {
+	margin-right: 0;
+}
+
+.button {
+	border: solid 1px #ccc;
+	padding: 10%;
+	display: flex;
+	justify-content: center;
+	border-radius: 25px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 15px;
+}
+
+.button img {
+	width: 70%;
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.column span {
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 300;
+	color: black;
+}
+
+.column:hover, .column:focus, .column:active {
+	cursor: pointer;
+	margin-top: -10px;
+}
+
+.column a {
+	color: black;
+}
+
+.column a:focus, .column:active {
+	text-decoration: underline;
+}
