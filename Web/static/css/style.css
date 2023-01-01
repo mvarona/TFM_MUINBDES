@@ -23,7 +23,6 @@ h1 {
 footer {
     position: fixed;
     height: 50px;
-    background-color: #8FE3CF;
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -31,16 +30,10 @@ footer {
     display: flex;
 }
 
+footer .navbar-nav {
+    width: 100%;
+}
+
 footer a {
-    margin: 10px auto;
-    color: #2B4865;
-}
-
-footer a:hover, footer a:focus, footer a:active {
-    text-decoration: underline;
-    color: #2B4865;
-}
-
-footer a:visited {
-    color: #2B4865;
+    margin: 5px auto;
 }

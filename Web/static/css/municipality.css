@@ -1,0 +1,300 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+nav.navbar {
+	position: relative;
+	z-index: 4;
+}
+
+#bg {
+	filter: blur(8px);
+  	-webkit-filter: blur(8px);
+  	width: 100%;
+  	height: 100%;
+  	position: absolute;
+  	z-index: 1;
+  	background-size: cover;
+  	margin: -15px;
+  	background-repeat: no-repeat;
+}
+
+#bg-layer {
+	width: 100%;
+	background-color: rgba(255,255,255,.3);
+	display: block;
+	position: absolute;
+	z-index: 2;
+}
+
+div.container {
+	position: relative;
+	z-index: 3;
+}
+
+h3.province {
+	font-size: 2em;
+	font-weight: 300;
+	float: right;
+	display: inline-block;
+	margin-right: 50px;
+}
+
+main {
+	width: 100%;
+}
+
+article {
+	width: 100%;
+	padding-top: 30px;
+	display: flex;
+}
+
+div.first-column {
+	width: 47%;
+	margin-right: 2%;
+	padding: 2.5%;
+	float: left;
+}
+
+div.second-column {
+	width: 50%;
+	float: right;
+}
+
+section.intro {
+	background-color: rgba(255,255,255,.5);
+	padding: 2.5%;
+}
+
+p.intro {
+	display: block;
+	text-align: justify;
+	margin-bottom: 30px;
+}
+
+a.wikipedia {
+	float: right;
+}
+
+a.wikipedia:hover, a.wikipedia:focus, a.wikipedia:active, a.google:hover, a.google:focus, a.google:active {
+	text-decoration: underline;
+}
+
+a.wikipedia, a.wikipedia:visited, a.google, a.google:visited {
+	color: #777;
+}
+
+section.map {
+	background-color: rgba(255,255,255,.5);
+	padding: 2.5%;
+	margin-top: 20px;
+}
+
+div#static-map {
+	width: 100%;
+	height: 350px;
+}
+
+div#streetview {
+	width: 100%;
+	height: 350px;
+	margin-top: 20px;
+}
+
+section.photos {
+	background-color: rgba(255,255,255,.5);
+	padding: 2.5%;
+	margin-top: 20px;
+}
+
+.carousel-control-next, .carousel-control-prev {
+	background-color:  rgba(0,0,0,.3)!important;
+}
+
+section.photos img {
+	width: auto;
+	height: 450px;
+	max-height: 450px;
+	object-fit: cover;
+}
+
+section.tags {
+	margin-top: 20px;
+	padding: 1%;
+	text-align: center;
+}
+
+section.tags span {
+	border-radius: 16px;
+	background-color: #00a8ff;
+	color: white;
+	padding: 8px;
+	margin-top: 5px;
+	display: inline-block;
+	font-weight: 300;
+	cursor: default;
+	margin-right: 10px;
+}
+
+section.tags span.tag-1 {
+	background-color: #2e86decc;
+}
+
+section.tags span.tag-2 {
+	background-color: #b71540cc;
+}
+
+section.tags span.tag-3 {
+	background-color: #feca57;
+	color:black;
+}
+
+section.tags span.tag-4 {
+	background-color: #5f27cdcc;
+}
+
+section.tags span.tag-5 {
+	background-color: #27ae60cc;
+}
+
+section.tags span.tag-6 {
+	background-color: #e84393cc;
+}
+
+section.tags span.tag-7 {
+	background-color: #e58e26cc;
+}
+
+section.tags span.tag-8 {
+	background-color: #c44569cc;
+}
+
+section.tags span.tag-9 {
+	background-color: #0abde3cc;
+}
+
+section.tags span.tag-10 {
+	background-color: #00b894cc;
+}
+
+section.tags span.tag-11 {
+	background-color: #c8d6e5cc;
+	color: black;
+}
+
+section.tags span.tag-12 {
+	background-color: #54a0ffcc;
+}
+
+section.tags span.tag-13 {
+	background-color: #5f27cdcc;
+}
+
+section.tags span.tag-14 {
+	background-color: #576574cc;
+}
+
+section.tags span.tag-15 {
+	background-color: #a103c4cc;
+}
+
+section.tags span.tag-16 {
+	background-color: #2e86decc;
+}
+
+section.tags span.tag-17 {
+	background-color: #341f97cc;
+}
+
+section.tags span.tag-18 {
+	background-color: #222f3ecc;
+}
+
+section.tags span.tag-19 {
+	background-color: #3498db;
+}
+
+section.tags span.tag-20 {
+	background-color: #ecf0f1;
+	color: black;
+}
+
+section.suggested {
+	background-color: rgba(255,255,255,.5);
+	padding: 2.5%;
+	padding-top: 7px;
+	margin-top: 20px;
+}
+
+section.suggested .question {
+	text-align: center;
+	display: inline-block;
+	width: 100%;
+}
+
+section.suggested div.answers {
+	display:flex;
+}
+
+section.suggested a {
+	display: inline-block;
+	margin: 7px auto;
+	margin-bottom: 0;
+	color: rgb(33,37,41);
+}
+
+div.suggestions {
+	display: none;
+}
+
+div.suggestions span {
+	display: inline-block;
+	margin-top: 10px;
+}
+
+div.suggestions a {
+	padding-left: 5px;
+}
+
+#features-grid {
+	display: block;
+
+}
+
+.feature {
+	display: inline-grid;
+	margin: 7px;
+}
+
+.feature-icon {
+	border: solid 1px #eee;
+	border-radius: 12px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	margin-bottom: 5px;
+	background-color: rgba(255,255,255,.5);
+	padding: 5px 7px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 15px;
+}
+
+.feature-icon img {
+	width: 55px;
+	height: 55px;
+	margin: auto auto;
+	display: inline-block;
+}
+
+.feature-icon p {
+	margin: auto auto;
+	padding-left: 7px;
+}
+
+footer {
+	position: relative;
+	margin-top: 3%;
+	z-index: 4;
+}

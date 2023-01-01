@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import re
-import re
 from unicodedata import normalize
 
 def make_url_name(name):
