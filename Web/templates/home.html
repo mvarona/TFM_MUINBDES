@@ -8,7 +8,6 @@
 			<a href="#">
 				<div class="button">
 					<img alt="Icono de unos selectores" src="{{ url_for('static', filename= 'images/slider.png') }}"/>
-				
 				</div>
 				<span>Lugar solo para mí</span>
 			</a>
@@ -17,16 +16,14 @@
 			<a href="#">
 				<div class="button">
 					<img alt="Icono de una lupa" src="{{ url_for('static', filename= 'images/search.png') }}"/>
-					
 				</div>
 				<span>Lugar parecido a otro</span>
 			</a>
 		</div>
 		<div class="column">
-			<a href="#">
+			<a href="{{ domain }}/random-municipality">
 				<div class="button">
 					<img alt="Icono de bola del mundo saliendo de una caja de cartón abierta" src="{{ url_for('static', filename= 'images/surprise.png') }}"/>
-					
 				</div>
 				<span>Lugar sorpresa</span>
 			</a>
