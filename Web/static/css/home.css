@@ -78,16 +78,21 @@ ul.navbar-nav {
 	margin: 0 auto;
 }
 
+.column .span-wrapper {
+	display: flex;
+}
+
 .column span {
 	display: inline-block;
 	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 100%;
+	width: 80%;
 	text-align: center;
 	font-size: 1.5em;
 	font-weight: 300;
 	color: black;
+	background-color: rgba(255,255,255,.5);
 }
 
 .column:hover, .column:focus, .column:active {
@@ -99,6 +104,10 @@ ul.navbar-nav {
 	color: black;
 }
 
-.column a:focus, .column:active {
+.column a:hover {
+	text-decoration: none;
+}
+
+.column a:focus, .column a:active {
 	text-decoration: underline;
 }

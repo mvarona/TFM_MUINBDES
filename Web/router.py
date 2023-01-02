@@ -4,6 +4,7 @@ import random_background
 import sanitize_names
 import get_municipality
 import make_decimal_numbers
+import recommender
 import json
 import os
 
@@ -29,11 +30,11 @@ def home():
 def load_random_municipality():
 	try:
 		response = json.loads(random_municipality.get_random_municipality("database.json", "wikipedia.json", True))
-		province = response["data"]["provincia"].lower()
+		province = response["data"]["provincia"]
 		municipality = response["data"]["municipio"]
 		province = sanitize_names.make_url_name(province)
 		municipality = sanitize_names.make_url_name(municipality)
-		return app.redirect("/" + province + "/" + municipality, code=302)
+		return app.send_static_file('municipios/' + province + '/' + municipality + ".html")
 	except Exception as e:
 		abort(500)
 
@@ -47,13 +48,34 @@ def load_similar_municipality():
 		fallback_background_name = fallback_background[0],
 		fallback_background_img = fallback_background[1],
 		fallback_background_user = fallback_background[2],
-		fallback_background_attr = fallback_background[3]
+		fallback_background_attr = fallback_background[3],
+		section = "municipio_parecido"
 	)
 
 @app.route('/<province>/<municipality>')
 def load_municipality(province, municipality):
-
 	return app.send_static_file('municipios/' + province + '/' + municipality + ".html")
+
+@app.route('/recomendar/<nsi_code>')
+def recommend(nsi_code):
+	try:
+		recommender_response = json.loads(recommender.recommend(nsi_code))
+		recommended_nsi_code = list(recommender_response["data"].keys())[1]
+		response = get_municipality.get_municipality_info(recommended_nsi_code)
+		province = response["data"]["provincia"]
+		municipality = response["data"]["municipio"]
+		province = sanitize_names.make_url_name(province)
+		municipality = sanitize_names.make_url_name(municipality)
+		result = {}
+		result["status"] = "OK"
+		result["data"] = {}
+		result["data"]["codigo_ine"] = recommended_nsi_code
+		result["data"]["provincia_path"] = province
+		result["data"]["municipio_path"] = municipality
+		result["data"]["url"] = "/" + province + "/" + municipality
+		return result
+	except Exception as e:
+		abort(500)
 
 @app.route('/generate-municipalities-pages')
 def generate_municipalities_pages():

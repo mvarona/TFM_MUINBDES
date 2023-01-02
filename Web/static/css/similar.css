@@ -40,13 +40,31 @@ main {
 	margin-top: 7%;
 }
 
-ul.navbar-nav {
-	display: none!important;
-}
-
 div.search {
 	display: flex;
 	margin-top: 3%;
+}
+
+h2.loading-subtitle {
+	display: none;
+  color: rgb(40,40,40);
+  text-align: center;
+  padding: 10px;
+  font-weight: 200;
+  font-size: 2em;
+  width: 40%;
+  background-color: rgba(255,255,255,.5);
+  margin: auto;
+  margin-top: 30px;
+}
+
+img.loading {
+	border-radius: 50%;
+	display: none;
+	margin: auto;
+	margin-top: 3%;
+	opacity: .8;
+	width: 25%;
 }
 
 #municipality {
@@ -69,7 +87,17 @@ div.search {
 /* Media Queries */
 
 @media only screen and (max-width: 650px) {
-    h1 {
-        font-size: 2em;
-    }
+	h1, h2, h3 {
+		break-word:  word-break!important;
+		font-size: 1em!important;
+	}
+	#municipality {
+		font-size: 1em!important;
+	}
+	.ui-menu .ui-menu-item-wrapper {
+		font-size: 1em!important;
+	}
+	body {
+		overflow: auto;
+	}
 }

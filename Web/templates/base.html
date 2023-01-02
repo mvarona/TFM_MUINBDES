@@ -23,7 +23,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename= 'images/favicons/favicon-16x16.png') }}">
 	<link rel="manifest" href="{{ url_for('static', filename= 'images/favicons/manifest.json') }}">
 	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="msapplication-TileImage" content="{{ url_for('static', filename= 'images/favicons/ms-icon-144x144.png') }}">
 	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
@@ -37,11 +37,16 @@
 				<li class="nav-item">
 						<a class="nav-link" href="#">Lugar solo para mí</a>
 				</li>
+				{% if section == "municipio_parecido" %}
+				<li class="nav-item active">
+				{% endif %}
+				{% if section != "municipio_parecido" %}
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
+				{% endif %}
+					<a class="nav-link" href="{{ domain }}/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="{{ domain }}/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>

@@ -11,10 +11,12 @@
 	<div id="bg-layer"></div>
 	<div class="container">
 		<main id="main">
-			<h1>{% block title %} ¡Descubre lugares parecidos a otros que te encantan! {% endblock %}</h1>
+			<h1 class="title loading-title">{% block title %} ¡Descubre lugares parecidos a otros que te encantan! {% endblock %}</h1>
 			<div class="search">
 				<input type="text" id="municipality" placeholder="Escribe aquí el sitio que te gusta...">
 			</div>
+			<h2 class="loading-subtitle">Recorriendo España de árbol en árbol...</h2>
+			<img class="loading" alt="Ardilla pensando en una brújula" src="{{ url_for('static', filename='images/calculating.gif') }}" />
 		</main>
 	</div>
 	<script type="text/javascript">
@@ -40,7 +42,20 @@
 		        select: function (e, value) {
 		        	selectedIndex = municipalitiesNames.indexOf(value["item"]["label"]);
 		        	selectedCode = municipalitiesCodes[selectedIndex];
-		        	console.log(selectedCode);
+		        	$('#municipality').attr('disabled', 'disabled');
+		        	$('h1.loading-title').html("Buscando la mejor recomendación...")
+		        	$('h2.loading-subtitle').slideDown();
+		        	$('img.loading').css('display', 'block');
+		        	$('img.loading').slideDown();
+		        	$.ajax({
+						url: ("{{ domain }}/recomendar/" + selectedCode),
+						method: "GET"
+					})
+					.then(function(result) {
+						path = result["data"]["url"];
+						url = "{{ domain }}" + path;
+						location.href = url;
+					});	
 			    }
 		    });
 
