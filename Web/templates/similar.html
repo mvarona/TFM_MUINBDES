@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/similar.css') }}">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script src="{{ url_for('static', filename='js/municipalities.js') }}"></script>
+	{% if images|length == 0 %}
+	<div id="bg" style="background-image: url({{ url_for('static', filename='images/backgrounds') }}/{{ fallback_background_img }})"></div>
+	{% endif %}
+	<div id="bg-layer"></div>
+	<div class="container">
+		<main id="main">
+			<h1>{% block title %} ¡Descubre lugares parecidos a otros que te encantan! {% endblock %}</h1>
+			<div class="search">
+				<input type="text" id="municipality" placeholder="Escribe aquí el sitio que te gusta...">
+			</div>
+		</main>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setTimeout(function() {
+  				var screenHeight = $(window).height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight)});
+				$('#bg-layer').css({height: (screenHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var screenHeight = $(window).height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight)});
+				$('#bg-layer').css({height: (screenHeight)});
+			});
+
+		    $('#municipality').autocomplete({
+		        source: municipalitiesNames,
+		        select: function (e, value) {
+		        	selectedIndex = municipalitiesNames.indexOf(value["item"]["label"]);
+		        	selectedCode = municipalitiesCodes[selectedIndex];
+		        	console.log(selectedCode);
+			    }
+		    });
+
+		});
+	</script>
+{% endblock %}
