@@ -1,10 +1,11 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request
 import random_municipality
 import random_background
 import sanitize_names
 import get_municipality
 import make_decimal_numbers
 import recommender
+import survey
 import json
 import os
 
@@ -90,6 +91,38 @@ def custom_municipality():
 		fallback_background_attr = fallback_background[3],
 		section = "municipio_personalizado"
 	)
+
+@app.route('/cuestionario', methods=['POST'])
+def municipality_survey():
+	try:
+		response = survey.get_survey_recommendation(request.form)
+		recommended_nsi_code = response["codigo_ine"]
+		result = {}
+
+		if recommended_nsi_code == "00000":
+			result["status"] = "OK"
+			result["data"] = {}
+			result["data"]["codigo_ine"] = recommended_nsi_code
+			result["data"]["provincia_path"] = ""
+			result["data"]["municipio_path"] = ""
+			result["data"]["url"] = ""
+
+		else:
+			province = response["provincia"]
+			municipality = response["municipio"]
+			province = sanitize_names.make_url_name(province)
+			municipality = sanitize_names.make_url_name(municipality)
+			result["status"] = "OK"
+			result["data"] = {}
+			result["data"]["codigo_ine"] = recommended_nsi_code
+			result["data"]["provincia_path"] = province
+			result["data"]["municipio_path"] = municipality
+			result["data"]["url"] = "/" + province + "/" + municipality
+
+		return result
+	except:
+		abort(500)
+	
 
 @app.route('/generate-municipalities-pages')
 def generate_municipalities_pages():

@@ -13,7 +13,7 @@
 		<main id="main">
 			<h1 class="title loading-title">{% block title %} ¡Descubre un lugar solo para ti! {% endblock %}</h1>
 			<div id="carousel" class="carousel slide" data-ride="carousel">
-			  <ol class="carousel-indicators">
+			  <ol id="indicators" class="carousel-indicators">
 			    <li data-target="#carousel" data-slide-to="0" class="active"></li>
 			    <li data-target="#carousel" data-slide-to="1"></li>
 			    <li data-target="#carousel" data-slide-to="2"></li>
@@ -29,7 +29,7 @@
 			    <li data-target="#carousel" data-slide-to="12"></li>
 			    <li data-target="#carousel" data-slide-to="13"></li>
 			  </ol>
-			  <div class="carousel-inner">
+			  <div id="carousel-items" class="carousel-inner">
 			    <div class="carousel-item active">
 			      <div class="question">
 		      		<h2>¿Quieres limitar los resultados a una comunidad autónoma en particular?</h2><br/>
@@ -151,9 +151,9 @@
 			      		<select id="salud">
 						    <option value="0">Me es indiferente</option>
 						    <option value="1">Que tenga centros de salud</option>
-						    <option value="1">Que tenga centros de salud con urgencias</option>
-						    <option value="2">Que tenga hospitales</option>
-						    <option value="3">Que tenga hospitales y centros de salud con urgencias</option>
+						    <option value="2">Que tenga centros de salud con urgencias</option>
+						    <option value="3">Que tenga hospitales</option>
+						    <option value="4">Que tenga hospitales y centros de salud con urgencias</option>
 						</select>
 						<img alt="Icono de un hospital" src="{{ url_for('static', filename='images/hospital.png') }}" />
 			      	</div>
@@ -166,7 +166,7 @@
 			      		<select id="educacion">
 						    <option value="0">Me es indiferente</option>
 						    <option value="1">Que tenga colegios</option>
-						    <option value="1">Que tenga universidades</option>
+						    <option value="2">Que tenga universidades</option>
 						    <option value="3">Que tenga colegios y universidades</option>
 						</select>
 						<img alt="Icono de un birrete" src="{{ url_for('static', filename='images/university.png') }}" />
@@ -243,7 +243,7 @@
 							<option value="2">Cobertura móvil 4G en más de la mitad del territorio</option>
 							<option value="3">Fibra óptica de 30 MB en más la mitad del territorio</option>
 							<option value="4">Fibra óptica de 100 MB más de la mitad del territorio</option>
-							<option value="4">Cobertura móvil 4G y fibra óptica de 100 MB más de la mitad del territorio</option>
+							<option value="5">Cobertura móvil 4G y fibra óptica de 100 MB más de la mitad del territorio</option>
 						</select>
 						<img alt="Icono de unas ondas de cobertura" src="{{ url_for('static', filename='images/internet.png') }}" />
 			      	</div>
@@ -251,7 +251,7 @@
 			    </div>
 			    <div class="carousel-item">
 			      <div class="question">
-		      		<h2>¡Última! ¿Qué prefieres?</h2><br/>
+		      		<h2>¡Última pregunta! Si tuvieras que elegir, ¿qué prefieres?</h2><br/>
 			      	<div class="wrapper">
 			      		<input type="range" min="-1" max="1" value="0" class="slider" id="naturaleza">
 			      		<span id="label-naturaleza">Me es indiferente</span>
@@ -271,9 +271,6 @@
 			    <span class="sr-only">Pregunta siguiente</span>
 			  </a>
 			</div>
-
-			<h2 class="loading-subtitle">Recorriendo España de árbol en árbol...</h2>
-			<img class="loading" alt="Ardilla pensando en una brújula" src="{{ url_for('static', filename='images/calculating.gif') }}" />
 		</main>
 	</div>
 	<script type="text/javascript">
@@ -377,19 +374,19 @@
 			slider_tinvierno.oninput = function() {
 				switch (this.value){
 					case "-2":
-						span_tinvierno.innerHTML = "Menos de 10ºC de media en febrero";
+						span_tinvierno.innerHTML = "Menos de 5ºC de media en febrero";
 					break;
 					case "-1":
-						span_tinvierno.innerHTML = "Entre 10 y 20ºC de media en febrero";
+						span_tinvierno.innerHTML = "Entre 5 y 10ºC de media en febrero";
 					break;
 					case "0":
 						span_tinvierno.innerHTML = "Me es indiferente";
 					break;
 					case "1":
-						span_tinvierno.innerHTML = "Entre 10 y 20ºC de media en febrero";
+						span_tinvierno.innerHTML = "Entre 10 y 15ºC de media en febrero";
 					break;
 					case "2":
-						span_tinvierno.innerHTML = "Más de 20ºC de media en febrero";
+						span_tinvierno.innerHTML = "Más de 15ºC de media en febrero";
 					break;
 				}
 			}
@@ -400,16 +397,16 @@
 			slider_tverano.oninput = function() {
 				switch (this.value){
 					case "-2":
-						span_tverano.innerHTML = "Menos de 15ºC de media en julio";
+						span_tverano.innerHTML = "Menos de 20ºC de media en julio";
 					break;
 					case "-1":
-						span_tverano.innerHTML = "Entre 15 y 20ºC de media en julio";
+						span_tverano.innerHTML = "Entre 20 y 22ºC de media en julio";
 					break;
 					case "0":
 						span_tverano.innerHTML = "Me es indiferente";
 					break;
 					case "1":
-						span_tverano.innerHTML = "Entre 20 y 25ºC de media en julio";
+						span_tverano.innerHTML = "Entre 22 y 25ºC de media en julio";
 					break;
 					case "2":
 						span_tverano.innerHTML = "Más de 25ºC de media en julio";
@@ -510,22 +507,60 @@
 			}
 
 			$('#go').click(function() {
-				console.log($('#comunidad option').filter(':selected').val());
-				console.log($('#provincia option').filter(':selected').val());
-				console.log($('#playa').val());
-				console.log($('#montana').val());
-				console.log($('#salud option').filter(':selected').val());
-				console.log($('#educacion option').filter(':selected').val());
-				console.log($('#poblacion').val());
-				console.log($('#tinvierno').val());
-				console.log($('#tverano').val());
-				console.log($('#altitud').val());
-				console.log($('#distancia').val());
-				console.log($('#renta').val());
-				console.log($('#cobertura option').filter(':selected').val());
-				console.log($('#naturaleza').val());
-			})
 
+				var resultsIndicator = "<li class='survey-results' data-target='#carousel' data-slide-to='14'></li>";
+				var resultsSlide = "<div class='carousel-item survey-results'><div class='question'><h2>Recorriendo España de árbol en árbol...</h2><br/><div class='wrapper'><img class='loading' alt='Ardilla pensando en una brújula' src='{{ url_for('static', filename='images/calculating.gif') }}' /><span></span><br/><br/><a id='repeat' href='#'>Repetir</a></div></div></div>";
+
+				$('.carousel-indicators').append(resultsIndicator);
+				$('.carousel-inner').append(resultsSlide);
+				$('.carousel-control-next-icon, .carousel-control-prev-icon').fadeOut();
+				$('.carousel-indicators').fadeOut();
+				$('#carousel').carousel(14);
+
+				request = {};
+				request["comunidad"] = $('#comunidad option').filter(':selected').val();
+				request["provincia"] = $('#provincia option').filter(':selected').val();
+				request["playa"] = $('#playa').val();
+				request["montana"] = $('#montana').val();
+				request["salud"] = $('#salud option').filter(':selected').val();
+				request["educacion"] = $('#educacion option').filter(':selected').val();
+				request["poblacion"] = $('#poblacion').val();
+				request["tinvierno"] = $('#tinvierno').val();
+				request["tverano"] = $('#tverano').val();
+				request["altitud"] = $('#altitud').val();
+				request["distancia"] = $('#distancia').val();
+				request["renta"] = $('#renta').val();
+				request["cobertura"] = $('#cobertura option').filter(':selected').val();
+				request["naturaleza"] = $('#naturaleza').val();
+
+				setTimeout(function() {
+	  				$.ajax({
+						url: "{{ domain }}/cuestionario",
+						method: "POST",
+						data: request
+					})
+					.then(function(result) {
+						if (result["status"] = "OK") {
+							if (result["data"]["codigo_ine"] == "00000") {
+								$('.survey-results h2').html("¡Demasiado exclusivo! 😎");
+								$('.survey-results span').html("No hemos podido encontrar municipios que reúnan tus condiciones.<br/>Si repites tu búsqueda ajustando alguna respuesta, ¡seguro que encuentras uno que te guste!");
+								$('.survey-results img').hide();
+								$('#repeat').css('display', 'block');
+
+
+								$('#repeat').click(function(){
+									location.reload();
+								});
+
+							} else {
+								path = result["data"]["url"];
+								url = "{{ domain }}" + path;
+								location.href = url;
+							}
+						}						
+					});
+				}, 2000);
+			});
 
 		});
 	</script>

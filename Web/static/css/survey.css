@@ -68,18 +68,23 @@ div.question h2 {
 }
 
 div.question img {
-	width: 100px;
-	margin-top: 75px;
+	width: 150px;
+	margin-top: 60px;
 }
 
 div.question img.last {
-	margin-top: 50px;
+	margin-top: 10px;
 }
 
 div.question .slider {
-	width: 250px;
+	width: 350px;
 	margin-bottom: 10px;
 	margin-top: 10px;
+	cursor: pointer;
+}
+
+.carousel-control-next, .carousel-control-prev {
+	margin-top: 10%;
 }
 
 .carousel-control-next-icon, .carousel-control-prev-icon {
@@ -108,52 +113,40 @@ div.question a {
 	text-decoration: none;
 	color: black;
 	background-color: rgba(255,255,255,.3);
-	pading: 40px 25px;
+	padding: 5px 8px;
 	border-radius: 5px;
 	width: 120px;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 15px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 15px;
 	-webkit-transition: all 0.30s ease-in-out;
 	-moz-transition: all 0.30s ease-in-out;
 	-ms-transition: all 0.30s ease-in-out;
 	-o-transition: all 0.30s ease-in-out;
 }
 
+div.question a#go {
+	margin-top: -20px;
+}
+
 div.question a:hover, div.question a:focus, div.question a:active {
-	margin-top: -5px;
+	margin-top: -3px;
 	color: black;
 }
 
-h2.loading-subtitle {
-  display: none;
-  color: rgb(40,40,40);
-  text-align: center;
-  padding: 10px;
-  font-weight: 200;
-  font-size: 2em;
-  width: 40%;
-  background-color: rgba(255,255,255,.5);
-  margin: auto;
-  margin-top: 30px;
+#repeat {
+	display: none;
+}
+
+#repeat:hover, #repeat:focus, #repeat:active {
+	margin-top: -3px;
+	color: black;
 }
 
 img.loading {
 	border-radius: 50%;
-	display: none;
 	margin: auto;
 	margin-top: 3%;
 	opacity: .8;
 	width: 25%;
-}
-
-#municipality {
-	width: 80%;
-	border-radius: 16px;
-	border: none;
-	font-size: 2em;
-	margin: auto auto;
-	font-weight: 300;
-	text-align: center;
-	padding: 8px;
 }
 
 .ui-menu .ui-menu-item-wrapper {
@@ -165,6 +158,11 @@ img.loading {
 .carousel-indicators li {
 	margin-left: 10px;
 	margin-right: 10px;
+	background-color: rgba(255,255,255,.8);
+}
+
+.carousel-indicators li.active {
+	background-color: gray;
 }
 
 /* Media Queries */
@@ -182,5 +180,8 @@ img.loading {
 	}
 	body {
 		overflow: auto;
+	}
+	footer {
+		position: relative;
 	}
 }
