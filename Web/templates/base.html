@@ -34,8 +34,13 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				{% if section == "municipio_personalizado" %}
+				<li class="nav-item active">
+				{% endif %}
+				{% if section != "municipio_personalizado" %}
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				{% endif %}
+						<a class="nav-link" href="{{ domain }}/municipio-personalizado">Lugar solo para mí</a>
 				</li>
 				{% if section == "municipio_parecido" %}
 				<li class="nav-item active">

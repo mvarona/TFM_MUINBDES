@@ -77,6 +77,20 @@ def recommend(nsi_code):
 	except Exception as e:
 		abort(500)
 
+@app.route('/municipio-personalizado')
+def custom_municipality():
+	fallback_background = random_background.get_random_background()
+	return render_template(
+		'survey.html',
+		domain = app.domain,
+		images = [],
+		fallback_background_name = fallback_background[0],
+		fallback_background_img = fallback_background[1],
+		fallback_background_user = fallback_background[2],
+		fallback_background_attr = fallback_background[3],
+		section = "municipio_personalizado"
+	)
+
 @app.route('/generate-municipalities-pages')
 def generate_municipalities_pages():
 	if os.environ['FLASK_ENV'] != "development":

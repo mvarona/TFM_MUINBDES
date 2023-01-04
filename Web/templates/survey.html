@@ -1,0 +1,532 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/survey.css') }}">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script src="{{ url_for('static', filename='js/municipalities.js') }}"></script>
+	{% if images|length == 0 %}
+	<div id="bg" style="background-image: url({{ url_for('static', filename='images/backgrounds') }}/{{ fallback_background_img }})"></div>
+	{% endif %}
+	<div id="bg-layer"></div>
+	<div class="container">
+		<main id="main">
+			<h1 class="title loading-title">{% block title %} ¡Descubre un lugar solo para ti! {% endblock %}</h1>
+			<div id="carousel" class="carousel slide" data-ride="carousel">
+			  <ol class="carousel-indicators">
+			    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel" data-slide-to="1"></li>
+			    <li data-target="#carousel" data-slide-to="2"></li>
+			    <li data-target="#carousel" data-slide-to="3"></li>
+			    <li data-target="#carousel" data-slide-to="4"></li>
+			    <li data-target="#carousel" data-slide-to="5"></li>
+			    <li data-target="#carousel" data-slide-to="6"></li>
+			    <li data-target="#carousel" data-slide-to="7"></li>
+			    <li data-target="#carousel" data-slide-to="8"></li>
+			    <li data-target="#carousel" data-slide-to="9"></li>
+			    <li data-target="#carousel" data-slide-to="10"></li>
+			    <li data-target="#carousel" data-slide-to="11"></li>
+			    <li data-target="#carousel" data-slide-to="12"></li>
+			    <li data-target="#carousel" data-slide-to="13"></li>
+			  </ol>
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <div class="question">
+		      		<h2>¿Quieres limitar los resultados a una comunidad autónoma en particular?</h2><br/>
+			      	<div class="wrapper">
+			      		<select id="comunidad">
+						    <option value="0">No, vamos con toda España</option>
+							<option value="1">Andalucía</option>
+							<option value="2">Aragón</option>
+							<option value="3">Cantabria</option>
+							<option value="4">Castilla y León</option>
+							<option value="5">Castilla-La Mancha</option>
+							<option value="6">Cataluña</option>
+							<option value="7">Ceuta</option>
+							<option value="8">Comunidad de Madrid</option>
+							<option value="9">Comunidad Foral de Navarra</option>
+							<option value="10">Comunidad Valenciana</option>
+							<option value="11">Extremadura</option>
+							<option value="12">Galicia</option>
+							<option value="13">Islas Baleares</option>
+							<option value="14">Islas Canarias</option>
+							<option value="15">La Rioja</option>
+							<option value="16">Melilla</option>
+							<option value="17">País Vasco</option>
+							<option value="18">Principado de Asturias</option>
+							<option value="19">Región de Murcia</option>
+						</select>
+						<img alt="Icono de un mapa" src="{{ url_for('static', filename='images/map.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Quieres limitar los resultados a una provincia en particular?</h2><br/>
+		      		<span>Esta respuesta prevalece sobre la anterior en caso de conflicto</span><br/>
+			      	<div class="wrapper">
+			      		<select id="provincia">
+						    <option value="0">No, vamos con toda España</option>
+							<option value="1">A Coruña</option>
+							<option value="2">Álava</option>
+							<option value="3">Albacete</option>
+							<option value="4">Alicante</option>
+							<option value="5">Almería</option>
+							<option value="6">Asturias</option>
+							<option value="7">Ávila</option>
+							<option value="8">Badajoz</option>
+							<option value="9">Barcelona</option>
+							<option value="10">Bizkaia</option>
+							<option value="11">Burgos</option>
+							<option value="12">Cáceres</option>
+							<option value="13">Cádiz</option>
+							<option value="14">Cantabria</option>
+							<option value="15">Castellón</option>
+							<option value="16">Ceuta</option>
+							<option value="17">Ciudad Real</option>
+							<option value="18">Córdoba</option>
+							<option value="19">Cuenca</option>
+							<option value="20">Gipuzkoa</option>
+							<option value="21">Girona</option>
+							<option value="22">Granada</option>
+							<option value="23">Guadalajara</option>
+							<option value="24">Huelva</option>
+							<option value="25">Huesca</option>
+							<option value="26">Illes Balears</option>
+							<option value="27">Jaén</option>
+							<option value="28">La Rioja</option>
+							<option value="29">Las Palmas</option>
+							<option value="30">León</option>
+							<option value="31">Lleida</option>
+							<option value="32">Lugo</option>
+							<option value="33">Madrid</option>
+							<option value="34">Málaga</option>
+							<option value="35">Melilla</option>
+							<option value="36">Murcia</option>
+							<option value="37">Navarra</option>
+							<option value="38">Ourense</option>
+							<option value="39">Palencia</option>
+							<option value="40">Pontevedra</option>
+							<option value="41">Salamanca</option>
+							<option value="42">Santa Cruz de Tenerife</option>
+							<option value="43">Segovia</option>
+							<option value="44">Sevilla</option>
+							<option value="45">Soria</option>
+							<option value="46">Tarragona</option>
+							<option value="47">Teruel</option>
+							<option value="48">Toledo</option>
+							<option value="49">Valencia</option>
+							<option value="50">Valladolid</option>
+							<option value="51">Zamora</option>
+							<option value="52">Zaragoza</option>
+						</select>
+						<img alt="Icono de un mapa" src="{{ url_for('static', filename='images/map.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Quieres estar cerca de la playa?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-2" max="2" value="0" class="slider" id="playa">
+			      		<span id="label-playa">Me es indiferente</span>
+						<img alt="Icono de una playa" src="{{ url_for('static', filename='images/beach.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Quieres estar cerca de la montaña?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-2" max="2" value="0" class="slider" id="montana">
+			      		<span id="label-montana">Me es indiferente</span>
+						<img alt="Icono de una montaña" src="{{ url_for('static', filename='images/mountain.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Qué servicios sanitarios quieres?</h2><br/>
+			      	<div class="wrapper">
+			      		<select id="salud">
+						    <option value="0">Me es indiferente</option>
+						    <option value="1">Que tenga centros de salud</option>
+						    <option value="1">Que tenga centros de salud con urgencias</option>
+						    <option value="2">Que tenga hospitales</option>
+						    <option value="3">Que tenga hospitales y centros de salud con urgencias</option>
+						</select>
+						<img alt="Icono de un hospital" src="{{ url_for('static', filename='images/hospital.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Qué servicios educativos quieres?</h2><br/>
+			      	<div class="wrapper">
+			      		<select id="educacion">
+						    <option value="0">Me es indiferente</option>
+						    <option value="1">Que tenga colegios</option>
+						    <option value="1">Que tenga universidades</option>
+						    <option value="3">Que tenga colegios y universidades</option>
+						</select>
+						<img alt="Icono de un birrete" src="{{ url_for('static', filename='images/university.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Cuánta población quieres que tenga?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-3" max="3" value="0" class="slider" id="poblacion">
+			      		<span id="label-poblacion">Me es indiferente</span>
+						<img alt="Icono de gente" src="{{ url_for('static', filename='images/people.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			  	<div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Qué temperatura quieres que tenga en invierno?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-2" max="2" value="0" class="slider" id="tinvierno">
+			      		<span id="label-tinvierno">Me es indiferente</span>
+						<img alt="Icono de copos de nieve" src="{{ url_for('static', filename='images/winter.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Qué temperatura quieres que tenga en verano?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-2" max="2" value="0" class="slider" id="tverano">
+			      		<span id="label-tverano">Me es indiferente</span>
+						<img alt="Icono de un sol" src="{{ url_for('static', filename='images/summer.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿A qué altitud quieres que esté?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-2" max="2" value="0" class="slider" id="altitud">
+			      		<span id="label-altitud">Me es indiferente</span>
+						<img alt="Icono de colinas" src="{{ url_for('static', filename='images/hills.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿A cuánto quieres que esté de la capital de provincia?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-3" max="3" value="0" class="slider" id="distancia">
+			      		<span id="label-distancia">Me es indiferente</span>
+						<img alt="Icono de un coche" src="{{ url_for('static', filename='images/car.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Cuánta renta quieres que tenga?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-2" max="2" value="0" class="slider" id="renta">
+			      		<span id="label-renta">Me es indiferente</span>
+						<img alt="Icono de una hucha" src="{{ url_for('static', filename='images/savings.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¿Qué cobertura de Internet quieres que tenga?</h2><br/>
+			      	<div class="wrapper">
+			      		<select id="cobertura">
+						    <option value="0">Me es indiferente</option>
+							<option value="1">Cobertura móvil 3G en más de la mitad del territorio</option>
+							<option value="2">Cobertura móvil 4G en más de la mitad del territorio</option>
+							<option value="3">Fibra óptica de 30 MB en más la mitad del territorio</option>
+							<option value="4">Fibra óptica de 100 MB más de la mitad del territorio</option>
+							<option value="4">Cobertura móvil 4G y fibra óptica de 100 MB más de la mitad del territorio</option>
+						</select>
+						<img alt="Icono de unas ondas de cobertura" src="{{ url_for('static', filename='images/internet.png') }}" />
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="carousel-item">
+			      <div class="question">
+		      		<h2>¡Última! ¿Qué prefieres?</h2><br/>
+			      	<div class="wrapper">
+			      		<input type="range" min="-1" max="1" value="0" class="slider" id="naturaleza">
+			      		<span id="label-naturaleza">Me es indiferente</span>
+			      		<img class="last" alt="Icono de un bosque con un río" src="{{ url_for('static', filename='images/nature.png') }}" /><br/>
+			      		<a id="go" href="#">¡Vamos!</a>
+			      	</div>
+			      </div>
+			    </div>
+		       </div>
+		  	</div>
+			  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Pregunta anterior</span>
+			  </a>
+			  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Pregunta siguiente</span>
+			  </a>
+			</div>
+
+			<h2 class="loading-subtitle">Recorriendo España de árbol en árbol...</h2>
+			<img class="loading" alt="Ardilla pensando en una brújula" src="{{ url_for('static', filename='images/calculating.gif') }}" />
+		</main>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#carousel").carousel({ interval: 0 });
+			
+			setTimeout(function() {
+  				var screenHeight = $(window).height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight)});
+				$('#bg-layer').css({height: (screenHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var screenHeight = $(window).height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight)});
+				$('#bg-layer').css({height: (screenHeight)});
+			});
+
+			var slider_playa = document.getElementById("playa");
+			var span_playa = document.getElementById("label-playa");
+			
+			slider_playa.oninput = function() {
+				switch (this.value){
+					case "-2":
+						span_playa.innerHTML = "¡Cerca de la costa!";
+					break;
+					case "-1":
+						span_playa.innerHTML = "No muy lejos de la costa";
+					break;
+					case "0":
+						span_playa.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_playa.innerHTML = "A un ratillo de la costa";
+					break;
+					case "2":
+						span_playa.innerHTML = "¡Lejos de la costa!";
+					break;
+				}
+			}
+
+			var slider_montana = document.getElementById("montana");
+			var span_montana = document.getElementById("label-montana");
+			
+			slider_montana.oninput = function() {
+				switch (this.value){
+					case "-2":
+						span_montana.innerHTML = "¡Cerca de la montaña!";
+					break;
+					case "-1":
+						span_montana.innerHTML = "No muy lejos de la montaña";
+					break;
+					case "0":
+						span_montana.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_montana.innerHTML = "A un ratillo de la montaña";
+					break;
+					case "2":
+						span_montana.innerHTML = "¡Lejos de la montaña!";
+					break;
+				}
+			}
+
+			var slider_poblacion = document.getElementById("poblacion");
+			var span_poblacion = document.getElementById("label-poblacion");
+			
+			slider_poblacion.oninput = function() {
+				switch (this.value){
+					case "-3":
+						span_poblacion.innerHTML = "Menos de 1.000 habitantes";
+					break;
+					case "-2":
+						span_poblacion.innerHTML = "Entre 1.000 y 5.000 habitantes";
+					break;
+					case "-1":
+						span_poblacion.innerHTML = "Entre 5.000 y 10.000 habitantes";
+					break;
+					case "0":
+						span_poblacion.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_poblacion.innerHTML = "Entre 10.000 y 100.000 habitantes";
+					break;
+					case "2":
+						span_poblacion.innerHTML = "Entre 100.000 y 250.000 habitantes";
+					break;
+					case "3":
+						span_poblacion.innerHTML = "Más de 250.000 habitantes";
+					break;
+				}
+			}
+
+			var slider_tinvierno = document.getElementById("tinvierno");
+			var span_tinvierno = document.getElementById("label-tinvierno");
+			
+			slider_tinvierno.oninput = function() {
+				switch (this.value){
+					case "-2":
+						span_tinvierno.innerHTML = "Menos de 10ºC de media en febrero";
+					break;
+					case "-1":
+						span_tinvierno.innerHTML = "Entre 10 y 20ºC de media en febrero";
+					break;
+					case "0":
+						span_tinvierno.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_tinvierno.innerHTML = "Entre 10 y 20ºC de media en febrero";
+					break;
+					case "2":
+						span_tinvierno.innerHTML = "Más de 20ºC de media en febrero";
+					break;
+				}
+			}
+
+			var slider_tverano = document.getElementById("tverano");
+			var span_tverano = document.getElementById("label-tverano");
+			
+			slider_tverano.oninput = function() {
+				switch (this.value){
+					case "-2":
+						span_tverano.innerHTML = "Menos de 15ºC de media en julio";
+					break;
+					case "-1":
+						span_tverano.innerHTML = "Entre 15 y 20ºC de media en julio";
+					break;
+					case "0":
+						span_tverano.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_tverano.innerHTML = "Entre 20 y 25ºC de media en julio";
+					break;
+					case "2":
+						span_tverano.innerHTML = "Más de 25ºC de media en julio";
+					break;
+				}
+			}
+
+			var slider_altitud = document.getElementById("altitud");
+			var span_altitud = document.getElementById("label-altitud");
+			
+			slider_altitud.oninput = function() {
+				switch (this.value){
+					case "-2":
+						span_altitud.innerHTML = "Menos de 250 metros sobre el nivel del mar";
+					break;
+					case "-1":
+						span_altitud.innerHTML = "Entre 250 y 500 metros sobre el nivel del mar";
+					break;
+					case "0":
+						span_altitud.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_altitud.innerHTML = "Entre 500 y 750 metros sobre el nivel del mar";
+					break;
+					case "2":
+						span_altitud.innerHTML = "Más de 750 metros sobre el nivel del mar";
+					break;
+				}
+			}
+
+			var slider_distancia = document.getElementById("distancia");
+			var span_distancia = document.getElementById("label-distancia");
+			
+			slider_distancia.oninput = function() {
+				switch (this.value){
+					case "-3":
+						span_distancia.innerHTML = "Menos de 5 km. de la capital";
+					break;
+					case "-2":
+						span_distancia.innerHTML = "Entre 5 y 15 km. de la capital";
+					break;
+					case "-1":
+						span_distancia.innerHTML = "Entre 15 y 25 km. de la capital";
+					break;
+					case "0":
+						span_distancia.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_distancia.innerHTML = "Entre 25 y 35 km. de la capital";
+					break;
+					case "2":
+						span_distancia.innerHTML = "Entre 35 y 50 km. de la capital";
+					break;
+					case "3":
+						span_distancia.innerHTML = "Más de 50 km. de la capital";
+					break;
+				}
+			}
+
+			var slider_renta = document.getElementById("renta");
+			var span_renta = document.getElementById("label-renta");
+			
+			slider_renta.oninput = function() {
+				switch (this.value){
+					case "-2":
+						span_renta.innerHTML = "Menos de 20.000 €";
+					break;
+					case "-1":
+						span_renta.innerHTML = "Entre 20.000 y 25.000 €";
+					break;
+					case "0":
+						span_renta.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_renta.innerHTML = "Entre 25.000 y 30.000 €";
+					break;
+					case "2":
+						span_renta.innerHTML = "Más de 30.000 €";
+					break;
+				}
+			}
+
+			var slider_naturaleza = document.getElementById("naturaleza");
+			var span_naturaleza = document.getElementById("label-naturaleza");
+			
+			slider_naturaleza.oninput = function() {
+				switch (this.value){
+					case "-1":
+						span_naturaleza.innerHTML = "Prefiero que haya naturaleza y sitios para desconectar";
+					break;
+					case "0":
+						span_naturaleza.innerHTML = "Me es indiferente";
+					break;
+					case "1":
+						span_naturaleza.innerHTML = "Prefiero que haya comercios y servicios";
+					break;
+				}
+			}
+
+			$('#go').click(function() {
+				console.log($('#comunidad option').filter(':selected').val());
+				console.log($('#provincia option').filter(':selected').val());
+				console.log($('#playa').val());
+				console.log($('#montana').val());
+				console.log($('#salud option').filter(':selected').val());
+				console.log($('#educacion option').filter(':selected').val());
+				console.log($('#poblacion').val());
+				console.log($('#tinvierno').val());
+				console.log($('#tverano').val());
+				console.log($('#altitud').val());
+				console.log($('#distancia').val());
+				console.log($('#renta').val());
+				console.log($('#cobertura option').filter(':selected').val());
+				console.log($('#naturaleza').val());
+			})
+
+
+		});
+	</script>
+{% endblock %}
