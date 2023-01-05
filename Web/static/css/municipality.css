@@ -229,12 +229,17 @@ section.suggested {
 	padding: 2.5%;
 	padding-top: 7px;
 	margin-top: 20px;
+	-webkit-transition: all 0.30s;
+	-moz-transition: all 0.30s;
+	-ms-transition: all 0.30s;
+	-o-transition: all 0.30s;
 }
 
 section.suggested .question {
 	text-align: center;
 	display: inline-block;
 	width: 100%;
+	margin-top: 3px;
 }
 
 section.suggested div.answers {
@@ -246,6 +251,11 @@ section.suggested a {
 	margin: 7px auto;
 	margin-bottom: 0;
 	color: rgb(33,37,41);
+}
+
+#thankyou {
+	display: none;
+	margin: 10px 44%;
 }
 
 div.suggestions {

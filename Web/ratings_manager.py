@@ -10,14 +10,12 @@ def commit_rating(user, item, rating):
 
 	if len(user) == user_length and len(item) == item_length:
 
-		df = pd.read_csv("ratings.csv")
-		df['item'] = df['item'].astype(str)
+		df = pd.read_csv("ratings.csv", dtype = str)
 		df = df.set_index(["item", "user"])
 
 		try:
 			df.loc[item, user]["rating"] = rating
 		except:
-			print("HERE")
 			new_rating = pd.DataFrame({
 				"item":[item],
 				"user":[user],

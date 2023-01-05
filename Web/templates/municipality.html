@@ -94,11 +94,11 @@
 					    <span class="tag-18">Comodidades</span>
 					{% endif %}
 					
-					{% if linea_costa_provincia == 1 or linea_costa_provincia == 2 %}
+					{% if linea_costa_provincia == 1 %}
 					    <span class="tag-19">Cerca de la costa</span>
 					{% endif %}
 
-					{% if linea_montana_provincia == 1 or linea_montana_provincia == 2 %}
+					{% if linea_montana_provincia == 1 %}
 					    <span class="tag-20">Cerca de la montaña</span>
 					{% endif %}
 				</section>
@@ -106,9 +106,10 @@
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
 						<span>A gente como tú le gustó...</span><br/>
 						<a href="#">Municipio sugerido, Provincia</a>
@@ -437,7 +438,41 @@
 				if (result["status"] != "OK"){
 					$('#streetview').hide();
 				}
-			});	
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "{{ codigo_ine }}";
+
+				$.ajax({
+					url: "{{ domain }}/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "{{ codigo_ine }}";
+
+				$.ajax({
+					url: "{{ domain }}/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
 		});
 		
 	</script>
