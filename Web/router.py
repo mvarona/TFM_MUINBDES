@@ -6,6 +6,7 @@ import get_municipality
 import make_decimal_numbers
 import recommender
 import survey
+import ids_generator
 import json
 import os
 
@@ -122,7 +123,14 @@ def municipality_survey():
 		return result
 	except:
 		abort(500)
-	
+
+@app.route('/generate-user-id')
+def create_user_id():
+	try:
+		new_id = ids_generator.create_user_id()
+		return new_id
+	except Exception as e:
+		abort(500)
 
 @app.route('/generate-municipalities-pages')
 def generate_municipalities_pages():
