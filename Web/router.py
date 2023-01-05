@@ -7,6 +7,7 @@ import make_decimal_numbers
 import recommender
 import survey
 import ids_generator
+import ratings_manager
 import json
 import os
 
@@ -69,7 +70,7 @@ def recommend(nsi_code):
 		province = sanitize_names.make_url_name(province)
 		municipality = sanitize_names.make_url_name(municipality)
 		result = {}
-		result["status"] = "OK"
+		result["status"] = "Ok"
 		result["data"] = {}
 		result["data"]["codigo_ine"] = recommended_nsi_code
 		result["data"]["provincia_path"] = province
@@ -101,7 +102,7 @@ def municipality_survey():
 		result = {}
 
 		if recommended_nsi_code == "00000":
-			result["status"] = "OK"
+			result["status"] = "Ok"
 			result["data"] = {}
 			result["data"]["codigo_ine"] = recommended_nsi_code
 			result["data"]["provincia_path"] = ""
@@ -113,7 +114,7 @@ def municipality_survey():
 			municipality = response["municipio"]
 			province = sanitize_names.make_url_name(province)
 			municipality = sanitize_names.make_url_name(municipality)
-			result["status"] = "OK"
+			result["status"] = "Ok"
 			result["data"] = {}
 			result["data"]["codigo_ine"] = recommended_nsi_code
 			result["data"]["provincia_path"] = province
@@ -130,6 +131,22 @@ def create_user_id():
 		new_id = ids_generator.create_user_id()
 		return new_id
 	except Exception as e:
+		abort(500)
+
+@app.route('/like', methods=['POST'])
+def like():
+	try:
+		return ratings_manager.like(request.form)
+	except Exception as e:
+		print(e)
+		abort(500)
+
+@app.route('/dislike', methods=['POST'])
+def dislike():
+	try:
+		return ratings_manager.dislike(request.form)
+	except Exception as e:
+		print(e)
 		abort(500)
 
 @app.route('/generate-municipalities-pages')

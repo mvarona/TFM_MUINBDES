@@ -26,7 +26,7 @@ def create_user_id():
 		"user_id":[new_id],
 		"creation_timestamp":[unixtimestamp]
 	})
-	users = users.append(new_user, ignore_index = True)
+	users = pd.concat([users, new_user])
 
 	users.to_csv("users.csv", index=False)
 
