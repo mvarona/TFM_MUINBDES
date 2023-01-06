@@ -66,7 +66,9 @@ def recommend(nsi_code):
 		recommended_nsi_code = list(recommender_response["data"].keys())[1]
 		response = get_municipality.get_municipality_info(recommended_nsi_code)
 		province = response["data"]["provincia"]
+		province_human_name = response["data"]["provincia"]
 		municipality = response["data"]["municipio"]
+		municipality_human_name = response["data"]["municipio_nombre_humano"]
 		province = sanitize_names.make_url_name(province)
 		municipality = sanitize_names.make_url_name(municipality)
 		result = {}
@@ -75,6 +77,8 @@ def recommend(nsi_code):
 		result["data"]["codigo_ine"] = recommended_nsi_code
 		result["data"]["provincia_path"] = province
 		result["data"]["municipio_path"] = municipality
+		result["data"]["municipio_nombre_humano"] = municipality_human_name
+		result["data"]["provincia_nombre_humano"] = province_human_name
 		result["data"]["url"] = "/" + province + "/" + municipality
 		return result
 	except Exception as e:

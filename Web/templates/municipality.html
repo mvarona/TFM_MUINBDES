@@ -111,8 +111,8 @@
 					</div>
 					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -455,6 +455,7 @@
 				});
 
 				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
 			});
 
 			$('#dislike').click(function() {
@@ -472,6 +473,19 @@
 				});
 
 				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "{{ domain }}/recomendar/{{ codigo_ine }}",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "{{ domain }}" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
 			});
 		});
 		
