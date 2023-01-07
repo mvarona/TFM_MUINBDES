@@ -47,12 +47,18 @@ def get_url(row):
 def get_images(row):
 	return row[2]
 
+def sanitize_province(row):
+	if row == "Islas Baleares":
+		return "Illes Balears"
+	else:
+		return row
+
 def main(argv):
 	if (len(sys.argv) < 2):
 		print('Uso: python3 get-wikipedia.py filename.csv')
 		sys.exit(2)
 	filename = sys.argv[1]
-	new_filename = os.path.splitext(filename)[0] + "_wikipedia" + ".csv"
+	new_filename = os.path.splitext(filename)[0] + "_wikipedia" + ".json"
 	df = pd.read_csv(filename)
 
 	df['text_url_images'] = df.apply(get_wikipedia, axis=1)
@@ -60,8 +66,13 @@ def main(argv):
 	df['url'] = df['text_url_images'].apply(get_url)
 	df['images'] = df['text_url_images'].apply(get_images)
 
+	df['provincia'] = df['provincia'].apply(sanitize_province)
+
 	df = df.drop('text_url_images', axis=1)
-	df.to_csv(new_filename, index=False)
+	df = df.set_index("codigo_ine")
+	out = df.to_json(orient = 'index')
+	with open(new_filename, 'w') as f:
+		f.write(out)
 
 if __name__ == "__main__":
 	main(sys.argv)
