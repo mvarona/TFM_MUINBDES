@@ -1,10 +1,5 @@
 #!/usr/bin/python
 
-# Mario Varona Bueno
-# TFM MUINBDES
-# 2022
-# Returns a CSV with the summary of the Wikipedia page for the municipality and its main photos
-
 import sys
 import os
 import pandas as pd
