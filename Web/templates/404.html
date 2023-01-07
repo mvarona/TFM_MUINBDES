@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/error.css') }}">
+	{% if images|length == 0 %}
+	<div id="bg" style="background-image: url({{ url_for('static', filename='images/backgrounds') }}/{{ fallback_background_img }})"></div>
+	{% endif %}
+	<div id="bg-layer"></div>
+	<div class="container">
+		<main id="main">
+			<input type="hidden" value="{% block title %} Error 404 - Página no encontrada {% endblock %}">
+			<h1>Oh, no, qué hemos hecho... 🤦</h1>
+			<p class="error">En España hay unos 8.131 municipios, y todos están (o deberían estar) aquí. Pero si estás viendo esto, es porque no hemos encontrado la página a la que te queríamos llevar...<br/>Por favor, comprueba que la dirección esté bien escrita, si es fallo nuestro intentaremos solucionarlo lo antes posible.</p>
+			<p class="error">Mientras tanto, puedes seguir descubriendo lugares...</p>
+			<div class="main-buttons">
+				<div class="column">
+					<a href="{{ domain }}/municipio-personalizado">
+						<div class="button">
+							<img alt="Icono de unos selectores" src="{{ url_for('static', filename= 'images/slider.png') }}"/>
+						</div>
+						<div class="span-wrapper">
+							<span>Lugar solo para mí</span>
+						</div>
+					</a>
+				</div>
+				<div class="column">
+					<a href="{{ domain }}/municipio-parecido">
+						<div class="button">
+							<img alt="Icono de una lupa" src="{{ url_for('static', filename= 'images/search.png') }}"/>
+						</div>
+						<div class="span-wrapper">
+							<span>Lugar parecido a otro</span>
+						</div>
+					</a>
+				</div>
+				<div class="column">
+					<a href="{{ domain }}/municipio-aleatorio">
+						<div class="button">
+							<img alt="Icono de bola del mundo saliendo de una caja de cartón abierta" src="{{ url_for('static', filename= 'images/surprise.png') }}"/>
+						</div>
+						<div class="span-wrapper">
+							<span>Lugar sorpresa</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setTimeout(function() {
+  				var screenHeight = $(window).height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight)});
+				$('#bg-layer').css({height: (screenHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var screenHeight = $(window).height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight)});
+				$('#bg-layer').css({height: (screenHeight)});
+			});
+		});
+	</script>
+{% endblock %}

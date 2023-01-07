@@ -353,5 +353,14 @@ def test_municipality():
 			fallback_background_attr = fallback_background[3]
 		)
 
+@app.errorhandler(404)
+def page_not_found(e):
+	fallback_background = random_background.get_random_background()
+	return render_template('404.html',
+		fallback_background_name = fallback_background[0],
+		fallback_background_img = fallback_background[1],
+		fallback_background_user = fallback_background[2],
+		fallback_background_attr = fallback_background[3]), 404
+
 if __name__ == "__main__":
-    app.run(debug=False)
+	app.run(debug=False)
