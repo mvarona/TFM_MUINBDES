@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, request
+from flask import Flask, render_template, abort, request, redirect
 import random_municipality
 import random_background
 import sanitize_names
@@ -37,8 +37,9 @@ def load_random_municipality():
 		municipality = response["data"]["municipio"]
 		province = sanitize_names.make_url_name(province)
 		municipality = sanitize_names.make_url_name(municipality)
-		return app.send_static_file('municipios/' + province + '/' + municipality + ".html")
+		return redirect(app.domain + '/' + province + '/' + municipality, code=302)
 	except Exception as e:
+		print(e)
 		abort(500)
 
 @app.route('/municipio-parecido')
