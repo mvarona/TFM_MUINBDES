@@ -26,13 +26,7 @@ def get_wikipedia(df):
 		url = page.url
 		images_urls = page.images
 
-		text = ""
-		sentences = page.summary.split(".")
-		num_regex = r"[0-9]+"
-		for sentence in sentences:
-			if len(sentence) > 1:
-				if len(re.findall(num_regex, sentence)) == 0:
-					text += sentence + "."
+		text = re.sub(r"\[[0-9]+\]", '', text)
 
 		images = []
 		for image in images_urls:
@@ -41,6 +35,8 @@ def get_wikipedia(df):
 				"logo" not in image and "icon" not in image and "Logo" not in image and "Icon" not in image and \
 				"svg" not in image and "Svg" not in image and "SVG" not in image:
 				images.append(image)
+
+		images = images[:10]
 
 	except:
 		print("Error con municipio: " + municipality + " (" + province + ")")
