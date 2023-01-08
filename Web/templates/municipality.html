@@ -18,7 +18,7 @@
 			<div class="first-column">
 				<section class="intro">
 					{% if text != "" %}
-					<p class="intro">{{ text }}</p>
+					<p class="intro">{{ text|safe }}</p>
 					{% endif %}
 					<a class="google" href="https://www.google.es/search?q={{ municipio_nombre_humano }}, {{ provincia }}" target="_blank">Buscar en Google</a>
 					{% if url != "" %}

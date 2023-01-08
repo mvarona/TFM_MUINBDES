@@ -48,6 +48,9 @@ def get_images(row):
 	return row[2]
 
 def sanitize_province(row):
+
+	# Para el futuro, hacer lo mismo para Gipuzkoa y Bizkaia!!!:
+
 	if row == "Islas Baleares":
 		return "Illes Balears"
 	else:
@@ -71,6 +74,9 @@ def main(argv):
 	df = df.drop('text_url_images', axis=1)
 	df = df.set_index("codigo_ine")
 	out = df.to_json(orient = 'index')
+
+	# Para el futuro, hacer que no se pierdan los leading zeros de código ine antes de guardar el JSON!!!:
+
 	with open(new_filename, 'w') as f:
 		f.write(out)
 
