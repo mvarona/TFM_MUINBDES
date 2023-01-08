@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/24/1_de_Mayo_de_1936%2C_en_Fregenal_de_la_Sierra_%28Badajoz%29.jpg"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,10 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro">Debido a su posición geográfica, la localidad está encuadrada en una encrucijada histórica. 
-Como reflejo de su tradición popular, mezcolanza del folklore bético, andaluz y extremeño;es uno de los principales focos culturales del suroeste peninsular.</p>
+					
+					<p class="intro">Fregenal de la Sierra (originalmente Frexnal o Frexenal) es un municipio y localidad de España, en la provincia de Badajoz, comunidad autónoma de Extremadura. Se sitúa en el cuadrante noroccidental de Sierra Morena, a unos 572 metros sobre el nivel del mar.<br/><br/>Entre sus más ilustres hijos se encuentran Benito Arias Montano, humanista, hebraísta, biólogo y escritor políglota que participó en el Concilio de Trento, en la redacción de la Biblia Políglota de Amberes y se encargó de la catalogación y organización de las obras que se encontraban en la Biblioteca del Real Monasterio de El Escorial, una de las mayores de la cristiandad; Juan Bravo Murillo, presidente del Consejo de Ministros durante el reinado de Isabel II, participando de diversos gobiernos moderados, mandó construir el Canal de Isabel II, introdujo el sistema métrico decimal en España y aprobó la Ley de Puertos Francos de Canarias, reformando y creando las bases de la hacienda española; Rodrigo Sánchez-Arjona y Sánchez-Arjona, que realizó la primera comunicación rural por línea privada telefónica en España, entre su casa en Fregenal y una finca en su propiedad llamada de Las Mimbres; y Eugenio Hermoso, pintor perteneciente a la Real Academia de Bellas Artes de San Fernando y ganador la Medalla de Honor en la Exposición Nacional de Bellas Artes en 1948 con sus cuadros Altar y Las Siembras, siendo uno de los pintores más importantes de Extremadura.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=Fregenal de la Sierra, Badajoz" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Fregenal_de_la_Sierra" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -91,18 +148,19 @@ Como reflejo de su tradición popular, mezcolanza del folklore bético, andaluz 
 					
 					
 
-										
 					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -115,198 +173,210 @@ Como reflejo de su tradición popular, mezcolanza del folklore bético, andaluz 
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>16 casas en venta</span><br/>
-								
-								
-								<span>6 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>16 casas en venta</span><br/>
+									
+									
+									
+									<span>6 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>1 centros de salud</span><br/>
-								
-								<span>1 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									
+									<span>1 centro de salud</span><br/>
+									
+									
+									
+									<span>1 centro de urgencias</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>6 colegios</span>
-							</p>
+						
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>6 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>566 metros de altitud</span>
-							</p>
+						
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>566 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>783 €/m² medio de venta</span><br/>
-								
-								
-								<span>3 €/m² medio de alquiler</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>783 €/m² medio de venta</span><br/>
+									
+									
+									<span>3 €/m² medio de alquiler</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>4.811 habitantes</span><br/>
-								<span>(20 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>4.811 habitantes</span><br/>
+									<span>20 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 126.096 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 530 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 126.096 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 530 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 9ºC con 0,44 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 25ºC con 0 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 9ºC con 0,44 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 25ºC con 0 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de -1ºC a 19ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 12ºC a 40ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de -1ºC a 19ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 12ºC a 40ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>19.333 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>19.333 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								<span>A 97 km. de la capital de provincia</span>
-								
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									<span>A 97 km. de la capital de provincia</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>534 ofertas de empleo en la provincia</span><br/>
-								<span>16,14 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>534 ofertas de empleo en la provincia</span><br/>
+									<span>16,14 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>139.6 horas de sol en febrero de media</span><br/>
-								<span>379.3 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>139.6 horas de sol en febrero de media</span><br/>
+									<span>379.3 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 97 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 100 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 97 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 100 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -323,49 +393,116 @@ Como reflejo de su tradición popular, mezcolanza del folklore bético, andaluz 
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "06050", "data": {"municipio": "Fregenal de la Sierra", "provincia": "Badajoz", "comunidad_autonoma": "Extremadura", "municipio_nombre_humano": "Fregenal de la Sierra", "num_centros_salud": 1, "num_centros_urgencias": 1, "num_hospitales": 0, "num_colegios": 6, "num_universidades": 0, "linea_costa_provincia": 3, "linea_montana_provincia": 0, "poblacion": 4811, "superficie": 236.65, "densidad_poblacion": 20.33, "lat": 38.166981, "lon": -6.652975, "feb_avg_min_temp": -1.23, "feb_avg_max_temp": 19.97, "feb_avg_temp": 9.55, "feb_avg_humidity": 78.77, "feb_avg_wind": 11.95, "feb_avg_min_rain": 0, "feb_avg_max_rain": 12, "feb_avg_rain": 0.44, "feb_avg_clouds": 34.2, "feb_avg_sunshine_hours": 139.6, "jul_avg_min_temp": 12.09, "jul_avg_max_temp": 40.81, "jul_avg_temp": 25.89, "jul_avg_humidity": 44.56, "jul_avg_wind": 10.26, "jul_avg_min_rain": 0, "jul_avg_max_rain": 0.9, "jul_avg_rain": 0, "jul_avg_clouds": 6.59, "jul_avg_sunshine_hours": 379.3, "kms_capital_provincia": 97.69, "altitud": 566, "renta_bruta_media": "19333", "precio_m2_venta": "783.18", "num_casas_venta": "16", "precio_m2_alquiler": "3.52", "num_casas_alquiler": 6, "precio_m2_venta_provincia": 1149, "precio_medio_venta_provincia": 126096, "precio_m2_alquiler_provincia": 7, "precio_medio_alquiler_provincia": 530, "tasa_actividad_provincia": 56.6, "tasa_paro_provincia": 16.14, "tasa_empleo_provincia": 47.46, "num_empleos_provincia": 534, "cobertura_30": 100, "cobertura_100": 97, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 2, "sitios_natural": 3, "sitios_servicio": 0, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 0, "sitios_sport": 1, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Debido a su posici\u00f3n geogr\u00e1fica, la localidad est\u00e1 encuadrada en una encrucijada hist\u00f3rica. \nComo reflejo de su tradici\u00f3n popular, mezcolanza del folklore b\u00e9tico, andaluz y extreme\u00f1o;es uno de los principales focos culturales del suroeste peninsular.", "url": "https://es.wikipedia.org/wiki/Fregenal_de_la_Sierra", "images": ["https://upload.wikimedia.org/wikipedia/commons/2/24/1_de_Mayo_de_1936%2C_en_Fregenal_de_la_Sierra_%28Badajoz%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9b/AlcaldesaFregenal.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/d7/Alcornoque_-Quercus_suber-Cork_oak.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2e/AlonsodePaz.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c6/Amadeo_king_of_Spain.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9e/Ayuntamiento_de_fregenal.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/0f/Portret_van_Benedictus_Arias_Montanus%2C_Peter_Paul_Rubens%2C_schilderij%2C_Museum_Plantin-Moretus_%28Antwerpen%29_-_MPM_V_IV_056.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e3/Biblia_sacra.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f6/CASA-MUSEO.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/83/Cerdos_en_Montanera.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/19/Columna_de_los_Ocho_mil.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/57/Coronaci%C3%B3n_de_Nuestra_Se%C3%B1ora_de_los_Remedios_en_1906.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/95/Cupula_San_Ildefonso_Fregenal.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e2/Danzaores.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6f/Domingo_de_milagros.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/20/Eco_de_Fregenal.png", "https://upload.wikimedia.org/wikipedia/commons/5/59/Efrege.png", "https://upload.wikimedia.org/wikipedia/commons/8/86/Estacion_fregenal.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e9/Estaciontrenfregenal.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/16/Eugenio_Hermoso._Autorretrato_c._1930._03.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/06/FREGENAL.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/2e/FdelaS-San_Miguel_de_los_Fresnos._04.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d6/Fregenaldesdearriba.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/da/Gower-BellFregenal.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b5/Juan_Bravo_Murillo.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b7/LOS_JUDIOS.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/5d/LUISPECHECASA.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7e/La_Coral_2007_fina.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a1/MANIFESTACI%C3%93N_PRESUR_MUNDO_OBRERO.png", "https://upload.wikimedia.org/wikipedia/commons/7/7e/MAUSOLEOMURILLO_-_copia.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/78/Manifestaci%C3%B3n_1_de_mayo_1936.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/68/Mapa_de_Badajoz%2C_de_Mart%C3%ADn_Ferreiro.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/27/Mexico1.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/af/Nertobriga_muralla.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/dd/Paseoconstituci%C3%B3n.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4b/Plato_de_jam%C3%B3n_%28Eva%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0f/Portret_van_Benedictus_Arias_Montanus%2C_Peter_Paul_Rubens%2C_schilderij%2C_Museum_Plantin-Moretus_%28Antwerpen%29_-_MPM_V_IV_056.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/14/Premioeh.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/89/Reino_de_Sevilla_1748.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2b/Retablo_Santa_Ana.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/03/SanFranciscoFregenal.JPG", "https://upload.wikimedia.org/wikipedia/commons/9/94/San_Francisco_Fregenal.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/27/Santa_Ana_Retablo.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7c/TeopompoFregenal.JPG", "https://upload.wikimedia.org/wikipedia/commons/8/81/Torre_San_Ildefonso_Fregenal.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/59/Torre_ermita.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cc/VIRGENR1.JPG", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Virgen_de_la_Salud.jpg"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/2/24/1_de_Mayo_de_1936%2C_en_Fregenal_de_la_Sierra_%28Badajoz%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/9/9b/AlcaldesaFregenal.JPG', 'https://upload.wikimedia.org/wikipedia/commons/d/d7/Alcornoque_-Quercus_suber-Cork_oak.jpg', 'https://upload.wikimedia.org/wikipedia/commons/2/2e/AlonsodePaz.jpg', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Amadeo_king_of_Spain.jpg', 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Ayuntamiento_de_fregenal.JPG', 'https://upload.wikimedia.org/wikipedia/commons/0/0f/Portret_van_Benedictus_Arias_Montanus%2C_Peter_Paul_Rubens%2C_schilderij%2C_Museum_Plantin-Moretus_%28Antwerpen%29_-_MPM_V_IV_056.jpg', 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Biblia_sacra.jpg', 'https://upload.wikimedia.org/wikipedia/commons/f/f6/CASA-MUSEO.jpg', 'https://upload.wikimedia.org/wikipedia/commons/8/83/Cerdos_en_Montanera.jpg'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Fregenal de la Sierra'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Fregenal de la Sierra'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Fregenal de la Sierra'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Fregenal de la Sierra'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=38.166981,-6.652975&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "06050";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "06050";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/06050",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>

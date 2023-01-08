@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/20/1862%2C_Historia_de_la_Villa_y_Corte_de_Madrid%2C_vol._2%2C_Atentado_de_%C3%81vila%2C_contra_Enrique_IV_%28cropped%29.jpg"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,9 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro">Ávila es un municipio y ciudad española, capital de la provincia de Ávila, en la comunidad autónoma de Castilla y León. La ciudad presenta un clima mediterráneo continentalizado con matices montañosos.Tras la fundación romana y la asimilación de la población autóctona vetona de la zona —pues no existen indicios claros de un asentamiento prerromano en el casco histórico— la ciudad pasaría al poder visigodo. Ávila, al igual que la mayor parte del territorio peninsular, cayó bajo dominio musulmán a comienzos del siglo VIII, y no sería reconquistada de forma definitiva por las tropas cristianas hasta el siglo XI. Experimentó un notable auge durante el siglo XVI, para verse posteriormente sumida en una prolongada crisis y declive hasta el siglo XIX, en el cual la construcción del ferrocarril consiguió dar cierto empuje al desarrollo económico.Ávila posee los títulos de «Ávila del Rey» —otorgado por Alfonso VII—, «Ávila de los Leales» —otorgado por Alfonso VIII— y «Ávila de los Caballeros» —otorgado por Alfonso X—, todos ellos presentes en la bandera de la ciudad. La seña de identidad es su muralla medieval completa, destacando también otras construcciones representativas como la catedral del Salvador —cuyo cimorro se monta sobre la muralla— y la basílica de San Vicente.</p>
+					
+					<p class="intro">Ávila es un municipio y ciudad española, capital de la provincia de Ávila, en la comunidad autónoma de Castilla y León. Se encuentra situada junto al curso del río Adaja y se trata de la capital de provincia más alta del país, a 1131 m sobre el nivel del mar, en virtud de lo cual en su casco urbano son relativamente frecuentes las nevadas durante el invierno. La ciudad presenta un clima mediterráneo continentalizado con matices montañosos. En 2018 su término municipal concentraba el 36,38 % del total de población de la provincia.<br/><br/>Ávila posee los títulos de «Ávila del Rey» —otorgado por Alfonso VII—, «Ávila de los Leales» —otorgado por Alfonso VIII— y «Ávila de los Caballeros» —otorgado por Alfonso X—, todos ellos presentes en la bandera de la ciudad. La seña de identidad es su muralla medieval completa, destacando también otras construcciones representativas como la catedral del Salvador —cuyo cimorro se monta sobre la muralla— y la basílica de San Vicente. Ha sido considerada tradicionalmente como «ciudad de cantos y de santos» y su casco histórico medieval, en excelente estado de conservación, fue declarado Patrimonio de la Humanidad en 1985.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=Ávila, Ávila" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/%C3%81vila" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -92,18 +150,19 @@
 
 					
 					    <span class="tag-20">Cerca de la montaña</span>
-										
 					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -116,216 +175,234 @@
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>850 casas en venta</span><br/>
-								
-								
-								<span>132 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>850 casas en venta</span><br/>
+									
+									
+									
+									<span>132 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>13 centros de salud</span><br/>
-								
-								<span>2 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									<span>13 centros de salud</span><br/>
+									
+									
+									
+									<span>2 centros de urgencias</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
-							<p>
-								<span>3 hospitales</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+								<p>
+									
+									<span>3 hospitales</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>41 colegios</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>41 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una universidad" src="/static/images/university.png"/>
-							<p>
-								<span>2 universidades</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una universidad" src="/static/images/university.png"/>
+								<p>
+									
+									<span>2 universidades</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>1065 metros de altitud</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>1065 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>1.274 €/m² medio de venta</span><br/>
-								
-								
-								<span>6 €/m² medio de alquiler</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>1.274 €/m² medio de venta</span><br/>
+									
+									
+									<span>6 €/m² medio de alquiler</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>57.949 habitantes</span><br/>
-								<span>(251 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>57.949 habitantes</span><br/>
+									<span>251 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 99.417 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 520 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 99.417 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 520 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 7ºC con 0,04 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 27ºC con 0,01 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 7ºC con 0,04 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 27ºC con 0,01 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de -2ºC a 18ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 14ºC a 38ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de -2ºC a 18ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 14ºC a 38ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>26.267 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>26.267 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								
-								<span>Es capital de provincia</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									
+									<span>Es capital de provincia</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>374 ofertas de empleo en la provincia</span><br/>
-								<span>14,86 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>374 ofertas de empleo en la provincia</span><br/>
+									<span>14,86 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>119.4 horas de sol en febrero de media</span><br/>
-								<span>357 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>119.4 horas de sol en febrero de media</span><br/>
+									<span>357 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 56 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 42 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 92 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 56 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 42 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 92 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -342,49 +419,116 @@
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "05019", "data": {"municipio": "\u00c1vila", "provincia": "\u00c1vila", "comunidad_autonoma": "Castilla y Le\u00f3n", "municipio_nombre_humano": "\u00c1vila", "num_centros_salud": 13, "num_centros_urgencias": 2, "num_hospitales": 3, "num_colegios": 41, "num_universidades": 2, "linea_costa_provincia": 0, "linea_montana_provincia": 1, "poblacion": 57949, "superficie": 230.7, "densidad_poblacion": 251.19, "lat": 40.646709, "lon": -4.701896, "feb_avg_min_temp": -2.11, "feb_avg_max_temp": 18.04, "feb_avg_temp": 7.71, "feb_avg_humidity": 70.46, "feb_avg_wind": 11.52, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.04, "feb_avg_clouds": 29.26, "feb_avg_sunshine_hours": 119.4, "jul_avg_min_temp": 14.3, "jul_avg_max_temp": 38.49, "jul_avg_temp": 27.05, "jul_avg_humidity": 36.06, "jul_avg_wind": 10.33, "jul_avg_min_rain": 0, "jul_avg_max_rain": 3, "jul_avg_rain": 0.01, "jul_avg_clouds": 5.5, "jul_avg_sunshine_hours": 357, "kms_capital_provincia": 0, "altitud": 1065, "renta_bruta_media": "26267", "precio_m2_venta": "1274.94", "num_casas_venta": "850", "precio_m2_alquiler": "6.27", "num_casas_alquiler": 132, "precio_m2_venta_provincia": 1022, "precio_medio_venta_provincia": 99417, "precio_m2_alquiler_provincia": 6, "precio_medio_alquiler_provincia": 520, "tasa_actividad_provincia": 52.78, "tasa_paro_provincia": 14.86, "tasa_empleo_provincia": 44.94, "num_empleos_provincia": 374, "cobertura_30": 56.29, "cobertura_100": 42, "cobertura_3g": 100, "cobertura_4g": 92.57, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 1, "sitios_natural": 0, "sitios_servicio": 0, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 0, "sitios_sport": 2, "sitios_edificio": 3, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "\u00c1vila es un municipio y ciudad espa\u00f1ola, capital de la provincia de \u00c1vila, en la comunidad aut\u00f3noma de Castilla y Le\u00f3n. La ciudad presenta un clima mediterr\u00e1neo continentalizado con matices monta\u00f1osos.Tras la fundaci\u00f3n romana y la asimilaci\u00f3n de la poblaci\u00f3n aut\u00f3ctona vetona de la zona \u2014pues no existen indicios claros de un asentamiento prerromano en el casco hist\u00f3rico\u2014 la ciudad pasar\u00eda al poder visigodo. \u00c1vila, al igual que la mayor parte del territorio peninsular, cay\u00f3 bajo dominio musulm\u00e1n a comienzos del siglo VIII, y no ser\u00eda reconquistada de forma definitiva por las tropas cristianas hasta el siglo XI. Experiment\u00f3 un notable auge durante el siglo XVI, para verse posteriormente sumida en una prolongada crisis y declive hasta el siglo XIX, en el cual la construcci\u00f3n del ferrocarril consigui\u00f3 dar cierto empuje al desarrollo econ\u00f3mico.\u00c1vila posee los t\u00edtulos de \u00ab\u00c1vila del Rey\u00bb \u2014otorgado por Alfonso VII\u2014, \u00ab\u00c1vila de los Leales\u00bb \u2014otorgado por Alfonso VIII\u2014 y \u00ab\u00c1vila de los Caballeros\u00bb \u2014otorgado por Alfonso X\u2014, todos ellos presentes en la bandera de la ciudad. La se\u00f1a de identidad es su muralla medieval completa, destacando tambi\u00e9n otras construcciones representativas como la catedral del Salvador \u2014cuyo cimorro se monta sobre la muralla\u2014 y la bas\u00edlica de San Vicente.", "url": "https://es.wikipedia.org/wiki/%C3%81vila", "images": ["https://upload.wikimedia.org/wikipedia/commons/2/20/1862%2C_Historia_de_la_Villa_y_Corte_de_Madrid%2C_vol._2%2C_Atentado_de_%C3%81vila%2C_contra_Enrique_IV_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e3/1864%2C_%C3%81vila%2C_Antonio_Bernardino_S%C3%A1nchez.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/aa/1925-02-21%2C_La_Esfera%2C_Las_viejas_ciudades_espa%C3%B1olas%2C_El_paseo_del_Rastro_en_%C3%81vila%2C_Sancha_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fd/Adaja%2C_San_Segundo_y_muralla.JPG", "https://upload.wikimedia.org/wikipedia/commons/4/41/Alberto_Insua.png", "https://upload.wikimedia.org/wikipedia/commons/b/b0/Aldeavieja02.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/62/Aquila_adalberti%2C_La_Ca%C3%B1ada.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/12/Avila01.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7d/Avila_-_13.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/16/Avila_-_Ayuntamiento_3.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f9/Avila_-_Basilica_de_San_Vicente%2C_exteriores_21.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b3/Avila_-_Basilica_de_San_Vicente%2C_exteriores_22.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/98/Avila_-_Museo_de_Avila%2C_Casa_de_los_Deanes_1.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/06/Avila_-_Plaza_de_Calvo_Sotelo.JPG", "https://upload.wikimedia.org/wikipedia/commons/c/c2/Avila_34_estadio_A_Suarez_by-dpc.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cf/Avila_36_El_Soto_by-dpc.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/50/Avila_47_polideportivo_by-dpc.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b0/Avila_49_bus_by-dpc.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6d/Avila_89_hospital_by-dpc.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/55/Avila_Capital_-_012_%2830611373191%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c5/Avila_Catedral_PM_73576_E_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/13/Avila_Convento_de_Sta_Theresa01.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b9/Avila_muralla_01_by-dpc.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/96/Avila_murallas_romanicas_01_ni.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/0b/Avila_palacio_de_congresos_01_by-dpc.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2f/Batallas.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/d0/Biblioteca_p%C3%BAblica_de_%C3%81vila.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/25/CIL_II_5865.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/48/Carderera-Convent.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e7/Casa_de_Diego_de_Bracamonte.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5f/Casa_de_Suero_del_%C3%81guila_o_de_los_Verdugos%2C_%C3%81vila.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/65/Cathedral%2C_%C3%81vila.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0f/Ermitadesonsoles.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/61/Los_4_postes_%2827470578741%29_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1b/Mansi%C3%B3ndeSuperunda20110618110909P1120184.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a0/Mapa_de_%C3%81vila%2C_Francisco_Coello%2C_1864.png", "https://upload.wikimedia.org/wikipedia/commons/7/77/Mercado_de_la_Chico.png", "https://upload.wikimedia.org/wikipedia/commons/f/fc/Murallas_de_Avila.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d4/Nissan_Cabstar_Colle_rentals_%5E_sales_-_Flickr_-_Joost_J._Bakker_IJmuiden.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/74/Peter_Paul_Rubens_166.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cd/Planta_de_Nissan_en_%C3%81vila._Junta_de_Castilla_y_Le%C3%B3n._2012.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/35/Plaza_del_Mercado_Grande%2C_%C3%81vila.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/75/Puente_del_ffcc_%C3%81vila_2.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/24/Puesto_de_comida%2C_%C3%81vila.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Quatro_postes_and_city_walls_of_Avila_in_winter.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4a/Restos_romanos_avila.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7e/San_Segundo.iglesia.JPG", "https://upload.wikimedia.org/wikipedia/commons/6/67/Schwarzstorch%2C_Rocherath%2C_Ostbelgien_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/13/UCAV_%C3%81vila.png", "https://upload.wikimedia.org/wikipedia/commons/2/2f/Vaca_avile%C3%B1a_negra_ib%C3%A9rica.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/ed/Vista_general_de_%C3%81vila_%28ca._1870%29_-_J._Laurent_%28cropped%29_F%C3%A1brica_de_harinas.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/00/WLM14ES_-_07072007_200755_19094_-_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/95/%C3%81bside_de_la_Bas%C3%ADlica_de_San_Vicente_%281865%29_-_Parcerisa%2C_F._J..jpg", "https://upload.wikimedia.org/wikipedia/commons/d/db/%C3%81vila._Catedral_1.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/5b/%C3%81vila._Monasterio_de_Santo_Tom%C3%A1s_13.JPG", "https://upload.wikimedia.org/wikipedia/commons/4/4c/%C3%81vila._Plaza_del_Mercado_Chico.JPG", "https://upload.wikimedia.org/wikipedia/commons/b/b7/%C3%81vila_-_46939602825_Plaza_del_Mercado_Chico_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5b/%C3%81vila_Torre%C3%B3n_de_los_Guzmanes2.jpg"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/2/20/1862%2C_Historia_de_la_Villa_y_Corte_de_Madrid%2C_vol._2%2C_Atentado_de_%C3%81vila%2C_contra_Enrique_IV_%28cropped%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/e/e3/1864%2C_%C3%81vila%2C_Antonio_Bernardino_S%C3%A1nchez.jpg', 'https://upload.wikimedia.org/wikipedia/commons/a/aa/1925-02-21%2C_La_Esfera%2C_Las_viejas_ciudades_espa%C3%B1olas%2C_El_paseo_del_Rastro_en_%C3%81vila%2C_Sancha_%28cropped%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Adaja%2C_San_Segundo_y_muralla.JPG', 'https://upload.wikimedia.org/wikipedia/commons/4/41/Alberto_Insua.png', 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Aldeavieja02.jpg', 'https://upload.wikimedia.org/wikipedia/commons/6/62/Aquila_adalberti%2C_La_Ca%C3%B1ada.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/12/Avila01.jpg', 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Avila_-_13.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/16/Avila_-_Ayuntamiento_3.jpg'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Ávila'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Ávila'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Ávila'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Ávila'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=40.646709,-4.701896&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "05019";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "05019";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/05019",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>

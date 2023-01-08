@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/67/1-Teruel-paisajeUrbano_%282006%29-2.jpg"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,9 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro">Teruel es un municipio y ciudad española situada en el sur de Aragón, capital de la provincia homónima. Su clima se caracteriza por presentar inviernos muy fríos y veranos cálidos/templados y secos.Posee un importante patrimonio artístico mudéjar, parte del cual ha sido reconocido por la Unesco como Patrimonio de la Humanidad, además de otros atractivos turísticos como el mausoleo de los Amantes de Teruel, El Torico y el centro paleontológico Dinópolis. Los monumentos mudéjares más destacados son la iglesia de Santa María, catedral de la diócesis de Teruel, y las torres de El Salvador, San Martín y San Pedro, a cuyos pies se encuentra la iglesia que recibe el mismo nombre, también de estilo mudéjar.</p>
+					
+					<p class="intro">Teruel es un municipio y ciudad española situada en el sur de Aragón, capital de la provincia homónima. Con 35 994 habitantes (INE 2021), es la capital provincial menos poblada del país. Ubicada en la zona centro-oriental de la península ibérica, a una altitud de unos 915 m sobre el nivel del mar, se encuentra en la confluencia de los ríos Alfambra y Guadalaviar, conocido aguas abajo de la ciudad como Turia. Su clima se caracteriza por presentar inviernos muy fríos y veranos cálidos/templados y secos.<br/><br/>Posee un importante patrimonio artístico mudéjar, parte del cual ha sido reconocido por la Unesco como Patrimonio de la Humanidad, además de otros atractivos turísticos como el mausoleo de los Amantes de Teruel, El Torico y el centro paleontológico Dinópolis. Los monumentos mudéjares más destacados son la iglesia de Santa María, catedral de la diócesis de Teruel, y las torres de El Salvador, San Martín y San Pedro, a cuyos pies se encuentra la iglesia que recibe el mismo nombre, también de estilo mudéjar.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=Teruel, Teruel" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Teruel" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -89,23 +147,22 @@
 					
 					
 					
-					    <span class="tag-19">Cerca de la costa</span>
-					
 
 					
 					    <span class="tag-20">Cerca de la montaña</span>
-										
 					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -118,216 +175,234 @@
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>1.181 casas en venta</span><br/>
-								
-								
-								<span>42 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>1.181 casas en venta</span><br/>
+									
+									
+									
+									<span>42 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>12 centros de salud</span><br/>
-								
-								<span>1 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									<span>12 centros de salud</span><br/>
+									
+									
+									
+									
+									<span>1 centro de urgencias</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
-							<p>
-								<span>3 hospitales</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+								<p>
+									
+									<span>3 hospitales</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>31 colegios</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>31 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una universidad" src="/static/images/university.png"/>
-							<p>
-								<span>1 universidades</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una universidad" src="/static/images/university.png"/>
+								<p>
+									
+									
+									<span>1 universidad</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>929 metros de altitud</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>929 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>1.332 €/m² medio de venta</span><br/>
-								
-								
-								<span>6 €/m² medio de alquiler</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>1.332 €/m² medio de venta</span><br/>
+									
+									
+									<span>6 €/m² medio de alquiler</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>35.994 habitantes</span><br/>
-								<span>(81 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>35.994 habitantes</span><br/>
+									<span>81 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 103.002 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 501 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 103.002 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 501 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 11ºC con 0,04 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 26ºC con 0,02 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 11ºC con 0,04 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 26ºC con 0,02 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de 1ºC a 23ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 17ºC a 34ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de 1ºC a 23ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 17ºC a 34ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>27.105 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>27.105 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								
-								<span>Es capital de provincia</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									
+									<span>Es capital de provincia</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>425 ofertas de empleo en la provincia</span><br/>
-								<span>9,07 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>425 ofertas de empleo en la provincia</span><br/>
+									<span>9,07 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>135.6 horas de sol en febrero de media</span><br/>
-								<span>272 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>135.6 horas de sol en febrero de media</span><br/>
+									<span>272 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 96 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 27 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 99 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 99 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 96 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 27 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 99 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 99 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -344,49 +419,116 @@
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "44216", "data": {"municipio": "Teruel", "provincia": "Teruel", "comunidad_autonoma": "Arag\u00f3n", "municipio_nombre_humano": "Teruel", "num_centros_salud": 12, "num_centros_urgencias": 1, "num_hospitales": 3, "num_colegios": 31, "num_universidades": 1, "linea_costa_provincia": 2, "linea_montana_provincia": 1, "poblacion": 35994, "superficie": 440.41, "densidad_poblacion": 81.73, "lat": 40.343611, "lon": -1.107222, "feb_avg_min_temp": 1.89, "feb_avg_max_temp": 23.34, "feb_avg_temp": 11.46, "feb_avg_humidity": 62.96, "feb_avg_wind": 11.3, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.04, "feb_avg_clouds": 28.33, "feb_avg_sunshine_hours": 135.6, "jul_avg_min_temp": 17.32, "jul_avg_max_temp": 34.63, "jul_avg_temp": 26.26, "jul_avg_humidity": 62.23, "jul_avg_wind": 8.71, "jul_avg_min_rain": 0, "jul_avg_max_rain": 12, "jul_avg_rain": 0.02, "jul_avg_clouds": 15.65, "jul_avg_sunshine_hours": 272, "kms_capital_provincia": 0, "altitud": 929, "renta_bruta_media": "27105", "precio_m2_venta": "1332.14", "num_casas_venta": "1181", "precio_m2_alquiler": "6.62", "num_casas_alquiler": 42, "precio_m2_venta_provincia": 1068, "precio_medio_venta_provincia": 103002, "precio_m2_alquiler_provincia": 6, "precio_medio_alquiler_provincia": 501, "tasa_actividad_provincia": 57.96, "tasa_paro_provincia": 9.07, "tasa_empleo_provincia": 52.7, "num_empleos_provincia": 425, "cobertura_30": 96, "cobertura_100": 27.09, "cobertura_3g": 99.91, "cobertura_4g": 99.55, "sitios_comercio": 3, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 0, "sitios_natural": 0, "sitios_servicio": 0, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 1, "sitios_sport": 0, "sitios_edificio": 2, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Teruel es un municipio y ciudad espa\u00f1ola situada en el sur de Arag\u00f3n, capital de la provincia hom\u00f3nima. Su clima se caracteriza por presentar inviernos muy fr\u00edos y veranos c\u00e1lidos/templados y secos.Posee un importante patrimonio art\u00edstico mud\u00e9jar, parte del cual ha sido reconocido por la Unesco como Patrimonio de la Humanidad, adem\u00e1s de otros atractivos tur\u00edsticos como el mausoleo de los Amantes de Teruel, El Torico y el centro paleontol\u00f3gico Din\u00f3polis. Los monumentos mud\u00e9jares m\u00e1s destacados son la iglesia de Santa Mar\u00eda, catedral de la di\u00f3cesis de Teruel, y las torres de El Salvador, San Mart\u00edn y San Pedro, a cuyos pies se encuentra la iglesia que recibe el mismo nombre, tambi\u00e9n de estilo mud\u00e9jar.", "url": "https://es.wikipedia.org/wiki/Teruel", "images": ["https://upload.wikimedia.org/wikipedia/commons/6/67/1-Teruel-paisajeUrbano_%282006%29-2.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/be/1874-08-15%2C_La_Ilustraci%C3%B3n_Espa%C3%B1ola_y_Americana%2C_Cr%C3%B3nica_ilustrada_de_la_guerra%2C_Teruel%2C_Ataque_y_defensa_el_4_del_actual.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7c/Amantes_de_teruel_edited.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bb/Ayuntamiento_y_Catedral_de_Teruel.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/32/BODAS_DE_ISABEL_DE_SEGURA_EN_TERUEL_1748.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/45/Batalla_de_Teruel.png", "https://upload.wikimedia.org/wikipedia/commons/2/28/Catedral%2C_Teruel%2C_Espa%C3%B1a%2C_2014-01-10%2C_DD_67.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/12/Catedral_y_Torres_de_Teruel.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/ff/Clima_Teruel_%28Espa%C3%B1a%29.PNG", "https://upload.wikimedia.org/wikipedia/commons/6/6e/El_Ajo_2017.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7e/Entrance_of_the_Republican_Troops_in_Teruel_-_Google_Art_Project.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/99/Forum_turolii.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e1/Grabado_Historia_de_Teruel_-_Pedro_Pruneda.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c8/Grabado_de_Teruel_en_el_siglo_XVIII.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/96/Iglesia_de_San_Mart%C3%ADn%2C_Teruel%2C_Espa%C3%B1a%2C_2014-01-10%2C_DD_55.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/2d/Jm%C3%B3n_de_Teruel_%28Espa%C3%B1a%29.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/29/Museo_de_Arte_Sacro%2C_Teruel%2C_Espa%C3%B1a%2C_2014-01-10%2C_DD_44.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4d/Passeig_del_%C3%93valo%2C_Terol.JPG", "https://upload.wikimedia.org/wikipedia/commons/c/c7/Plano_de_Teruel_%281881%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/07/Plaza_de_toros_de_Teruel.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8a/Plaza_del_Torico%2C_Teruel%2C_Espa%C3%B1a%2C_2014-01-10%2C_DD_72.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/78/R%C3%A9plica_dinosaurio_Din%C3%B3polis_2018.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/35/SEMANA_SANTA_DE_TERUEL_Exaltaci%C3%B3n_de_los_instrumentos_de_Semana_Santa_2770.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/98/Teruel_-_Catedral%2C_exteriores_11.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cd/Teruel_-_Iglesia_del_Salvador_02.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/43/Vista_de_Teruel_desde_la_torre_de_la_iglesia_del_Salvador%2C_Espa%C3%B1a%2C_2014-01-10%2C_DD_80.JPG", "https://upload.wikimedia.org/wikipedia/commons/9/92/Vista_de_Teruel_desde_la_torre_de_la_iglesia_del_Salvador%2C_Espa%C3%B1a%2C_2014-01-10%2C_DD_82.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/51/WLM14ES_-_05102013_120833_DesDie_1379_-_.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/aa/WLM14ES_-_25072010_125246_F_9743_-_.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2d/WLM14ES_-_P1400871_-_.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b4/%C2%BFdonde_est%C3%A1_el_torico_-_panoramio.jpg"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/6/67/1-Teruel-paisajeUrbano_%282006%29-2.jpg', 'https://upload.wikimedia.org/wikipedia/commons/b/be/1874-08-15%2C_La_Ilustraci%C3%B3n_Espa%C3%B1ola_y_Americana%2C_Cr%C3%B3nica_ilustrada_de_la_guerra%2C_Teruel%2C_Ataque_y_defensa_el_4_del_actual.jpg', 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Amantes_de_teruel_edited.jpg', 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Ayuntamiento_y_Catedral_de_Teruel.jpg', 'https://upload.wikimedia.org/wikipedia/commons/3/32/BODAS_DE_ISABEL_DE_SEGURA_EN_TERUEL_1748.jpg', 'https://upload.wikimedia.org/wikipedia/commons/4/45/Batalla_de_Teruel.png', 'https://upload.wikimedia.org/wikipedia/commons/2/28/Catedral%2C_Teruel%2C_Espa%C3%B1a%2C_2014-01-10%2C_DD_67.JPG', 'https://upload.wikimedia.org/wikipedia/commons/1/12/Catedral_y_Torres_de_Teruel.jpg', 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Clima_Teruel_%28Espa%C3%B1a%29.PNG', 'https://upload.wikimedia.org/wikipedia/commons/6/6e/El_Ajo_2017.jpg'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Teruel'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Teruel'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Teruel'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Teruel'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=40.343611,-1.107222&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "44216";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "44216";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/44216",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>

@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/f/f4/%28Puerto_de_Melilla%29_Aterrizando_en_Melilla_%2816668390111%29_%28cropped%29.jpg"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,9 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro">Melilla es una ciudad autónoma española situada en el norte de África, a orillas del mar Mediterráneo. Limita por mar con el mar de Alborán (al este) y con Marruecos por tierra, concretamente con las comunas de Mariguari y Farhana al norte y el oeste y con la ciudad de Beni-Enzar al sur. También está incluida en la zona geográfica natural de Guelaya.Cuenta con una fortaleza, Melilla La Vieja, construida entre los siglos XVI y XVIII, dotada de almacenes, aljibes, baluartes, fosos, fuertes, cuevas, minas, capillas (una de ellas, la única obra religiosa gótica de África) y hospitales, que hacen de ella la más completa de esta orilla del Mediterráneo, aparte de los fuertes exteriores neomedievales, construidos durante el siglo XIX. El patrimonio arquitectónico de la ciudad, situado en el llamado Ensanche de Melilla, está considerado como uno de los mejores exponentes del estilo modernista español de principios del  XX.</p>
+					
+					<p class="intro">Melilla es una ciudad autónoma española situada en el norte de África, a orillas del mar Mediterráneo. Enclavada en el corazón de la región del Rif, alberga una población de 86 487 habitantes (INE 2019) y presenta diversas particularidades fruto de su posición geográfica y de su historia, tanto en la composición de su población, como en su actividad económica y en su cultura, resultado de la convivencia de cristianos, musulmanes y judíos desde el siglo XIX.<br/><br/>Cuenta con una fortaleza, Melilla La Vieja, construida entre los siglos XVI y XVIII, dotada de almacenes, aljibes, baluartes, fosos, fuertes, cuevas, minas, capillas (una de ellas, la única obra religiosa gótica de África) y hospitales, que hacen de ella la más completa de esta orilla del Mediterráneo, aparte de los fuertes exteriores neomedievales, construidos durante el siglo XIX. El patrimonio arquitectónico de la ciudad, situado en el llamado Ensanche de Melilla, está considerado como uno de los mejores exponentes del estilo modernista español de principios del  XX.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=Melilla, Melilla" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Melilla" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -92,18 +150,19 @@
 					    <span class="tag-19">Cerca de la costa</span>
 					
 
-										
 					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -116,216 +175,234 @@
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>379 casas en venta</span><br/>
-								
-								
-								<span>91 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>379 casas en venta</span><br/>
+									
+									
+									
+									<span>91 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>4 centros de salud</span><br/>
-								
-								<span>1 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									<span>4 centros de salud</span><br/>
+									
+									
+									
+									
+									<span>1 centro de urgencias</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
-							<p>
-								<span>1 hospitales</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+								<p>
+									
+									
+									<span>1 hospital</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>40 colegios</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>40 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una universidad" src="/static/images/university.png"/>
-							<p>
-								<span>1 universidades</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una universidad" src="/static/images/university.png"/>
+								<p>
+									
+									
+									<span>1 universidad</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>36 metros de altitud</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>36 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>1.803 €/m² medio de venta</span><br/>
-								
-								
-								<span>5 €/m² medio de alquiler</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>1.803 €/m² medio de venta</span><br/>
+									
+									
+									<span>5 €/m² medio de alquiler</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>86.261 habitantes</span><br/>
-								<span>(6.057 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>86.261 habitantes</span><br/>
+									<span>6.057 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 191.581 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 717 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 191.581 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 717 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 13ºC con 0,04 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 25ºC con 0 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 13ºC con 0,04 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 25ºC con 0 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de 5ºC a 21ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 16ºC a 35ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de 5ºC a 21ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 16ºC a 35ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>30.175 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>30.175 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								
-								<span>Es capital de provincia</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									
+									<span>Es capital de provincia</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>331 ofertas de empleo en la provincia</span><br/>
-								<span>24,66 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>331 ofertas de empleo en la provincia</span><br/>
+									<span>24,66 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>106.1 horas de sol en febrero de media</span><br/>
-								<span>231 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>106.1 horas de sol en febrero de media</span><br/>
+									<span>231 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 100 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 100 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -342,49 +419,116 @@
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "52001", "data": {"municipio": "Melilla", "provincia": "Melilla", "comunidad_autonoma": "Melilla", "municipio_nombre_humano": "Melilla", "num_centros_salud": 4, "num_centros_urgencias": 1, "num_hospitales": 1, "num_colegios": 40, "num_universidades": 1, "linea_costa_provincia": 1, "linea_montana_provincia": 0, "poblacion": 86261, "superficie": 14.24, "densidad_poblacion": 6057.65, "lat": 35.287631, "lon": -2.948249, "feb_avg_min_temp": 5.36, "feb_avg_max_temp": 21.91, "feb_avg_temp": 13.44, "feb_avg_humidity": 75.34, "feb_avg_wind": 16.34, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.04, "feb_avg_clouds": 30.56, "feb_avg_sunshine_hours": 106.1, "jul_avg_min_temp": 16.8, "jul_avg_max_temp": 35.85, "jul_avg_temp": 25.28, "jul_avg_humidity": 66.88, "jul_avg_wind": 11.77, "jul_avg_min_rain": 0, "jul_avg_max_rain": 0.9, "jul_avg_rain": 0, "jul_avg_clouds": 23.76, "jul_avg_sunshine_hours": 231, "kms_capital_provincia": 0, "altitud": 36, "renta_bruta_media": "30175", "precio_m2_venta": "1803.03", "num_casas_venta": "379", "precio_m2_alquiler": "5.58", "num_casas_alquiler": 91, "precio_m2_venta_provincia": 2035, "precio_medio_venta_provincia": 191581, "precio_m2_alquiler_provincia": 10, "precio_medio_alquiler_provincia": 717, "tasa_actividad_provincia": 63.11, "tasa_paro_provincia": 24.66, "tasa_empleo_provincia": 47.55, "num_empleos_provincia": 331, "cobertura_30": 100, "cobertura_100": 100, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 0, "sitios_natural": 3, "sitios_servicio": 0, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 0, "sitios_sport": 1, "sitios_edificio": 2, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Melilla es una ciudad aut\u00f3noma espa\u00f1ola situada en el norte de \u00c1frica, a orillas del mar Mediterr\u00e1neo. Limita por mar con el mar de Albor\u00e1n (al este) y con Marruecos por tierra, concretamente con las comunas de Mariguari y Farhana al norte y el oeste y con la ciudad de Beni-Enzar al sur. Tambi\u00e9n est\u00e1 incluida en la zona geogr\u00e1fica natural de Guelaya.Cuenta con una fortaleza, Melilla La Vieja, construida entre los siglos XVI y XVIII, dotada de almacenes, aljibes, baluartes, fosos, fuertes, cuevas, minas, capillas (una de ellas, la \u00fanica obra religiosa g\u00f3tica de \u00c1frica) y hospitales, que hacen de ella la m\u00e1s completa de esta orilla del Mediterr\u00e1neo, aparte de los fuertes exteriores neomedievales, construidos durante el siglo XIX. El patrimonio arquitect\u00f3nico de la ciudad, situado en el llamado Ensanche de Melilla, est\u00e1 considerado como uno de los mejores exponentes del estilo modernista espa\u00f1ol de principios del  XX.", "url": "https://es.wikipedia.org/wiki/Melilla", "images": ["https://upload.wikimedia.org/wikipedia/commons/f/f4/%28Puerto_de_Melilla%29_Aterrizando_en_Melilla_%2816668390111%29_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/ce/1990_190E_2.5-16.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2f/Aguad%C3%BA2.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/48/Air_Nostrum_%28Iberia_Regional%29_ATR_ATR-72-500_%28ATR-72-212A%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/19/Baluarte_de_la_Concepci%C3%B3n_Alta%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/17/CAMARA_DE_COMERCIO_MELILLA.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/55/CASA_DE_LOS_CRISTALES.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b0/CASA_DE_MIGUEL_G%C3%93MEZ_MORALES.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/93/CEIP_Reyes_Cat%C3%B3licos_%285256594425%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/98/CLUB_MAR%C3%8DTIMO_%28MELILLA%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/27/CRONOS_%28ESCULTURA%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6b/Calle_de_San_Miguel.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1a/Calles_del_parque.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/Campamentos_militares_en_el_Real%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ed/Campeonato_de_Espa%C3%B1a_de_Voley_Playa_%286%29%2C_Torres_V_Centenario%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Casa_enrique_nieto.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7b/Casino_Militar%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/29/Cementerio_de_Melilla%2C_2008.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1d/Chevrolet_%28Museo_Historia_del_Autom%C3%B3vil_en_Melilla%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c1/EDIFICIO_DEL_ANTIG%C3%9CA_REDACCI%C3%93N_EL_TELEGRAMA_DEL_RIF.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7b/Economato_Militar.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ee/Edificio_Avenida_de_la_Democracia_8.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c0/Edificio_El_Acueducto.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3f/Edificio_La_Pilarica.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/99/El_Wisteria_en_el_Puerto_de_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/43/Encuentros_%28Melilla%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/99/Ensenada_de_%22Los_Gal%C3%A1pagos%22.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Entrada_al_Cementerio_Municipal_de_la_Pur%C3%ADsima_Concepci%C3%B3n%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5f/Escultura_de_una_vaca_en_el_Parque_Forestal_de_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/33/Estatua_de_Franco_en_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/90/Estatua_de_Pedro_de_Estopi%C3%B1%C3%A1n_en_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0b/FUENTE_DEL_BOMBILLO.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/84/Fort%C3%ADn_de_Reina_Regente_7.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/68/Foso_del_Hornabeque2.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/07/Frente_de_La_Marina.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/75/Frente_de_Tierra_de_Melilla_la_Vieja.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/a8/Frente_de_Tr%C3%A1pana_desde_el_baluarte_de_la_Concepci%C3%B3n.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Frente_de_la_Marina%2C_Melilla_la_Vieja.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/10/Fuerte_de_Cabrerizas_Altas%2C_Nevada_del_2005_%282%29_%287085316031%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0a/Fuerte_de_Camellos%2C_Melilla_7.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0e/Fuerte_de_Rostrogordo.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/Fundaci%C3%B3n_Gaselec%2C_Melilla%2C_Sue%C3%B1os_y_Luz_%281%29_%287119624337%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0a/Gaselec_%285257201574%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/50/Grandes_Almacenes_La_Reconquista%2C_Melilla_7.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bf/Homenaje_al_Modernismo_Melillense_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Hospital_del_Rey%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cf/Hospital_del_Rey%2C_Melilla_7.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/92/Jugando_con_el_agua_%28Parque_C%C3%A1ndido_Lobera%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bb/Kitesurf-LNI_Ostia_race-2011-IMG0010.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d9/Kursaal%2C_2_d%C3%ADa_%283%29_%285547973648%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/ba/Lago_del_Parque_Forestal%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8c/Melilla_1849.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Melilla_La_Vieja_y_Puerto.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/61/Melilla_a_los_que_sucumbieron_por_la_Patria.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/23/Melilla_desde_el_barrio_Victoria.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/64/Melul2.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f6/Mezquita_central_melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/38/Monumento_a_los_H%C3%A9roes_de_Taxdirt.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f7/Monumento_al_Ej%C3%A9rcito_de_la_Victoria%2C_Melilla_%282%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/51/Museo_de_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7f/Museo_iba%C3%B1ez.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ee/Mustafa_arruf-_fernando_arrabal.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ac/Oratorio_Hind%C3%BA%2C_Melilla%2C_Ruta_de_los_Templos_%285%29_%285446058270%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e9/PALACIO_ASAMBLEA_MELILLA.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e2/Palacio_de_la_Asamblea_de_Melilla%2C_Amaneciendo_en_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e2/Palacio_de_la_Asamblea_de_Melilla%2C_Amaneciendo_en_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/76/Pante%C3%B3n_Margallo%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/76/Pante%C3%B3n_Margallo%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/48/Pante%C3%B3n_Regulares_n%C3%BAmero_5.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/61/Pante%C3%B3n_de_los_H%C3%A9roes2.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Parque_Agust%C3%ADn_Jerez%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fe/Parque_C%C3%A1ndido_Lobera.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7b/Parque_Forestal%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/27/Parque_Forestal%2C_Melilla_%282%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8c/Parque_Forestal%2C_Melilla_%283%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/14/Parque_Forestal_Juan_Carlos_I.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f7/Parque_Forestal_Juan_Carlos_I_Rey.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/29/Parque_Forestal_de_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/37/Parque_Hern%C3%A1ndez%2C_Melilla_%282%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/29/Parque_Hern%C3%A1ndez%2C_Melilla_%283%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/91/Parque_Hern%C3%A1ndez%2C_puerta_principal.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ae/Parque_Hern%C3%A1ndez_de_Melilla._Kiosko_%282009%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0d/Parque_Lobera.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/98/Parque_forestal.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/02/Perspectiva_nocturna_de_Melilla_desde_el_Parador_Nacional.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4c/Pferruginea_04_JGuallart.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Playa_del_Hip%C3%B3dromo5%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a5/Plaza_de_Espa%C3%B1a%2C_Melilla_%283%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3e/Plaza_de_Espa%C3%B1a_de_Melilla_%282%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7d/Plaza_de_Melilla%2C_1774-1775.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fc/Procesi%C3%B3n_de_Semana_Santa_en_Melilla..jpg", "https://upload.wikimedia.org/wikipedia/commons/8/85/Puerta_de_la_Marina%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/02/Puerta_santiago_melilla_vieja.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8c/Melilla_1849.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/26/Sinagoga_Or_Zaruah_%28Melilla%29%2C_Ruta_de_los_Templos_%283%29_%285445465149%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/23/Sinagoga_Orr_Zoruah%2C_Ruta_de_los_Templos_%286%29_%285446069722%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/dc/Teatro-Cine_Monumental%2C_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b2/Traje_t%C3%ADpico_de_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/23/Trazado_de_los_L%C3%ADmites_de_la_Plaza_de_Melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/90/Uned-_melilla.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/68/Zawiya_Alawiya_%28Melilla%29%2C_Ruta_de_los_Templos_%284%29_%285446085874%29.jpg"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/f/f4/%28Puerto_de_Melilla%29_Aterrizando_en_Melilla_%2816668390111%29_%28cropped%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/c/ce/1990_190E_2.5-16.jpg', 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Aguad%C3%BA2.jpg', 'https://upload.wikimedia.org/wikipedia/commons/4/48/Air_Nostrum_%28Iberia_Regional%29_ATR_ATR-72-500_%28ATR-72-212A%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/19/Baluarte_de_la_Concepci%C3%B3n_Alta%2C_Melilla.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/17/CAMARA_DE_COMERCIO_MELILLA.jpg', 'https://upload.wikimedia.org/wikipedia/commons/5/55/CASA_DE_LOS_CRISTALES.jpg', 'https://upload.wikimedia.org/wikipedia/commons/b/b0/CASA_DE_MIGUEL_G%C3%93MEZ_MORALES.jpg', 'https://upload.wikimedia.org/wikipedia/commons/9/93/CEIP_Reyes_Cat%C3%B3licos_%285256594425%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/9/98/CLUB_MAR%C3%8DTIMO_%28MELILLA%29.jpg'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Melilla'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Melilla'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Melilla'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Melilla'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=35.287631,-2.948249&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "52001";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "52001";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/52001",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>

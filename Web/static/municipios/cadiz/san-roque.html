@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8c/A_British_Man_of_War_before_the_Rock_of_Gibraltar_by_Thomas_Whitcombe.jpg"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,9 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro">San Roque es un municipio y ciudad española situada en el área del Estrecho de Gibraltar, o sea, en el extremo suroriental de la provincia de Cádiz, en la comunidad autónoma de Andalucía. Pertenece a la comarca del Campo de Gibraltar y a su mancomunidad de municipios.La Reconquista cristiana de la comarca del Campo de Gibraltar llevó a que los núcleos urbanos de la comarca se quedaran completamente despoblados. La única excepción fue la ciudad de Gibraltar que, al conservar su población, pasa a ser el centro neurálgico, económico y administrativo de la comarca. Esperando un pronto retorno, la población española se exilió en las cercanías del Peñón, en los antiguos asentamientos del Campo de Gibraltar que los árabes habían abandonado después de la Reconquista. Los exiliados refundaron la mayoría de los pueblos y ciudades que actualmente forman la comarca incluyendo, por ejemplo, San Roque. También refundaron Algeciras, llevándose allí la imagen de Nuestra Señora de Europa, que estaba en la capilla de Punta Europa en Gibraltar. A San Roque transportó la población española exiliada los archivos oficiales de la ciudad de Gibraltar y los demás documentos españoles  así como la parte del patrimonio histórico que se pudo rescatar, y que allí permanecen todavía. Desde ese momento, el asentamiento de exiliados españoles que funda la ciudad de San Roque pasó a ser considerado oficialmente como la ciudad de Gibraltar en el exilio o textualmente y según reza el lema de San Roque, &#34;la ciudad donde reside la de Gibraltar&#34;.San Roque conserva todos los símbolos y títulos de los que disfrutaba Gibraltar durante la presencia española.</p>
+					
+					<p class="intro">San Roque es un municipio y ciudad española situada en el área del Estrecho de Gibraltar, o sea, en el extremo suroriental de la provincia de Cádiz, en la comunidad autónoma de Andalucía. Pertenece a la comarca del Campo de Gibraltar y a su mancomunidad de municipios. Con una población de 30.516 habitantes, es la tercera ciudad de su comarca, integrante del área metropolitana del Campo de Gibraltar, y undécima de la provincia.<br/><br/>La economía de San Roque está basada en la industria química, petrolera y energética, perteneciendo al municipio el más importante polígono industrial de Andalucía, que comprende la refinería de Gibraltar-San Roque y una central eléctrica de ciclo combinado. El sector industrial está complementado por el turismo, especialmente el de alto nivel, centrado en la urbanización de lujo Sotogrande y en el campo de golf de Valderrama, sede de grandes campeonatos a nivel europeo y mundial, como la Ryder Cup de 1997.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=San Roque, Cádiz" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/San_Roque_(C%C3%A1diz)" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -92,18 +150,19 @@
 					    <span class="tag-19">Cerca de la costa</span>
 					
 
-										
 					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -116,196 +175,208 @@
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>326 casas en venta</span><br/>
-								
-								
-								<span>23 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>326 casas en venta</span><br/>
+									
+									
+									
+									<span>23 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>10 centros de salud</span><br/>
-								
-								<span>2 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									<span>10 centros de salud</span><br/>
+									
+									
+									
+									<span>2 centros de urgencias</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>28 colegios</span>
-							</p>
+						
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>28 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>77 metros de altitud</span>
-							</p>
+						
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>77 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>6.818 €/m² medio de venta</span><br/>
-								
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>6.818 €/m² medio de venta</span><br/>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>32.178 habitantes</span><br/>
-								<span>(230 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>32.178 habitantes</span><br/>
+									<span>230 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 158.397 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 712 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 158.397 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 712 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 13ºC con 0,05 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 23ºC con 0 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 13ºC con 0,05 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 23ºC con 0 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de 6ºC a 19ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 17ºC a 32ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de 6ºC a 19ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 17ºC a 32ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>29.289 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>29.289 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								<span>A 126 km. de la capital de provincia</span>
-								
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									<span>A 126 km. de la capital de provincia</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>804 ofertas de empleo en la provincia</span><br/>
-								<span>21,7 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>804 ofertas de empleo en la provincia</span><br/>
+									<span>21,7 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>59 horas de sol en febrero de media</span><br/>
-								<span>165.2 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>59 horas de sol en febrero de media</span><br/>
+									<span>165.2 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 97 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 78 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 100 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 97 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 78 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 100 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -322,49 +393,116 @@
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "11033", "data": {"municipio": "San Roque", "provincia": "C\u00e1diz", "comunidad_autonoma": "Andaluc\u00eda", "municipio_nombre_humano": "San Roque", "num_centros_salud": 10, "num_centros_urgencias": 2, "num_hospitales": 0, "num_colegios": 28, "num_universidades": 0, "linea_costa_provincia": 1, "linea_montana_provincia": 0, "poblacion": 32178, "superficie": 139.48, "densidad_poblacion": 230.7, "lat": 36.210953, "lon": -5.385595, "feb_avg_min_temp": 6.74, "feb_avg_max_temp": 19.86, "feb_avg_temp": 13.92, "feb_avg_humidity": 76.79, "feb_avg_wind": 20.52, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.05, "feb_avg_clouds": 42.67, "feb_avg_sunshine_hours": 59, "jul_avg_min_temp": 17, "jul_avg_max_temp": 32.47, "jul_avg_temp": 23.44, "jul_avg_humidity": 70.79, "jul_avg_wind": 16.38, "jul_avg_min_rain": 0, "jul_avg_max_rain": 0.9, "jul_avg_rain": 0, "jul_avg_clouds": 21.77, "jul_avg_sunshine_hours": 165.2, "kms_capital_provincia": 126.87, "altitud": 77, "renta_bruta_media": "29289", "precio_m2_venta": "6818.65", "num_casas_venta": "326", "precio_m2_alquiler": "-", "num_casas_alquiler": 23, "precio_m2_venta_provincia": 1593, "precio_medio_venta_provincia": 158397, "precio_m2_alquiler_provincia": 9, "precio_medio_alquiler_provincia": 712, "tasa_actividad_provincia": 55.05, "tasa_paro_provincia": 21.7, "tasa_empleo_provincia": 43.1, "num_empleos_provincia": 804, "cobertura_30": 97.33, "cobertura_100": 78.44, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 1, "sitios_natural": 0, "sitios_servicio": 3, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 2, "sitios_sport": 0, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "San Roque es un municipio y ciudad espa\u00f1ola situada en el \u00e1rea del Estrecho de Gibraltar, o sea, en el extremo suroriental de la provincia de C\u00e1diz, en la comunidad aut\u00f3noma de Andaluc\u00eda. Pertenece a la comarca del Campo de Gibraltar y a su mancomunidad de municipios.La Reconquista cristiana de la comarca del Campo de Gibraltar llev\u00f3 a que los n\u00facleos urbanos de la comarca se quedaran completamente despoblados. La \u00fanica excepci\u00f3n fue la ciudad de Gibraltar que, al conservar su poblaci\u00f3n, pasa a ser el centro neur\u00e1lgico, econ\u00f3mico y administrativo de la comarca. Esperando un pronto retorno, la poblaci\u00f3n espa\u00f1ola se exili\u00f3 en las cercan\u00edas del Pe\u00f1\u00f3n, en los antiguos asentamientos del Campo de Gibraltar que los \u00e1rabes hab\u00edan abandonado despu\u00e9s de la Reconquista. Los exiliados refundaron la mayor\u00eda de los pueblos y ciudades que actualmente forman la comarca incluyendo, por ejemplo, San Roque. Tambi\u00e9n refundaron Algeciras, llev\u00e1ndose all\u00ed la imagen de Nuestra Se\u00f1ora de Europa, que estaba en la capilla de Punta Europa en Gibraltar. A San Roque transport\u00f3 la poblaci\u00f3n espa\u00f1ola exiliada los archivos oficiales de la ciudad de Gibraltar y los dem\u00e1s documentos espa\u00f1oles  as\u00ed como la parte del patrimonio hist\u00f3rico que se pudo rescatar, y que all\u00ed permanecen todav\u00eda. Desde ese momento, el asentamiento de exiliados espa\u00f1oles que funda la ciudad de San Roque pas\u00f3 a ser considerado oficialmente como la ciudad de Gibraltar en el exilio o textualmente y seg\u00fan reza el lema de San Roque, \"la ciudad donde reside la de Gibraltar\".San Roque conserva todos los s\u00edmbolos y t\u00edtulos de los que disfrutaba Gibraltar durante la presencia espa\u00f1ola.", "url": "https://es.wikipedia.org/wiki/San_Roque_(C%C3%A1diz)", "images": ["https://upload.wikimedia.org/wikipedia/commons/8/8c/A_British_Man_of_War_before_the_Rock_of_Gibraltar_by_Thomas_Whitcombe.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/11/Autob%C3%BAs_urbano_de_San_Roque.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5e/Busportillosr.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/05/CA-34_Torilx.JPG", "https://upload.wikimedia.org/wikipedia/commons/b/bb/CTMCG-zonas-bah%C3%ADa.png", "https://upload.wikimedia.org/wikipedia/commons/3/38/Carteia_Termas_%283%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/14/Colegio_Gloria_Fuertes_Guadiaro.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/42/Cuartel_Guardia_Civil_San_Roque.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b8/Estaci%C3%B3n_de_San_Roque.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/80/Monumento_Golf_Pueblo_Nuevo.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cc/Palacio_de_los_Gobernadores%2C_San_Roque.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/ff/Parroquia_Santa_Mar%C3%ADa_la_Coronada%2C_San_Roque.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/eb/Pinar_del_Rey_oeste.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/29/Punta_Chullera.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fb/Refiner%C3%ADa_CEPSA_Gibraltar-San_Roque.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/11/San_Roque_%28al_fondo%2C_Gibraltar%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ee/San_Roque_Barriadas-zonas.png", "https://upload.wikimedia.org/wikipedia/commons/1/19/San_Roque_Edificio_Diego_Salinas_y_Casa_Consistorial.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b1/San_Roque_situacion_1.png", "https://upload.wikimedia.org/wikipedia/commons/0/05/San_Roque_y_su_perro.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8f/Sr-d-e2011.png"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/8/8c/A_British_Man_of_War_before_the_Rock_of_Gibraltar_by_Thomas_Whitcombe.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/11/Autob%C3%BAs_urbano_de_San_Roque.jpg', 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Busportillosr.jpg', 'https://upload.wikimedia.org/wikipedia/commons/0/05/CA-34_Torilx.JPG', 'https://upload.wikimedia.org/wikipedia/commons/b/bb/CTMCG-zonas-bah%C3%ADa.png', 'https://upload.wikimedia.org/wikipedia/commons/3/38/Carteia_Termas_%283%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/14/Colegio_Gloria_Fuertes_Guadiaro.jpg', 'https://upload.wikimedia.org/wikipedia/commons/4/42/Cuartel_Guardia_Civil_San_Roque.jpg', 'https://upload.wikimedia.org/wikipedia/commons/b/b8/Estaci%C3%B3n_de_San_Roque.jpg', 'https://upload.wikimedia.org/wikipedia/commons/8/80/Monumento_Golf_Pueblo_Nuevo.jpg'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de San Roque'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de San Roque'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de San Roque'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de San Roque'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=36.210953,-5.385595&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "11033";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "11033";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/11033",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>

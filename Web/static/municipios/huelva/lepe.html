@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/dd/Agric.JPG"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,9 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro">Lepe es una ciudad y municipio español de la provincia de Huelva, Andalucía./km². Es el municipio más poblado de la provincia tras la capital.Fundada por los fenicios en un pequeño valle junto al río Piedras, Lepe ha sido poblada por romanos y árabes, conservando patrimonio histórico de estas épocas. Marineros leperos y vinculados a la villa de Lepe intervienen en el descubrimiento y la conquista de América, entre los que destaca Rodrigo Pérez de Acevedo. Otros leperos de renombre son Álvaro Alonso Barba, Cristóbal Méndez, Manuel Vela y Fray José Oria Castañeda. El mayor incentivo de la misma ha sido el cultivo de la fresa, aunque actualmente el sector económico en auge es el turismo, desde la creación de Islantilla, mancomunado con Isla Cristina e incluido en ambos términos municipales.Los núcleos menores de Lepe son La Barca, Pinares de Lepe, El Terrón, La Antilla y la parte de Islantilla del término municipal de Lepe, aumentando estos dos últimos la población en verano de forma considerable debido al turismo. El Paraje Natural Marismas del Río Piedras y Flecha del Rompido es el principal exponente de patrimonio natural del municipio, dentro del cual se sitúa la playa de Nueva Umbría. Entre sus fiestas destacan la Romería de Nuestra Señora de la Bella y las Fiestas Patronales de San Roque y la Bella.</p>
+					
+					<p class="intro">Lepe es una ciudad y municipio español de la provincia de Huelva, Andalucía. Según el INE, en 2020 contaba con una población de 27 880 habitantes. Su extensión superficial es de 127,94 km² y tiene una densidad de 217,91 hab./km². Es el municipio más poblado de la provincia tras la capital.<br/><br/>De su término municipal cabe mencionar sus 24 km de playa (La Antilla, Santa Pura, Nueva Umbría y la parte oriental de Islantilla), así como el puerto pesquero de El Terrón, la Ermita de la Bella o la Torre del Catalán. Entre sus fiestas destacan la Romería de Nuestra Señora de la Bella y las Fiestas Patronales de San Roque y la Bella.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=Lepe, Huelva" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Lepe" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -92,18 +150,19 @@
 					    <span class="tag-19">Cerca de la costa</span>
 					
 
-										
 					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -116,207 +175,222 @@
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>307 casas en venta</span><br/>
-								
-								
-								<span>7 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>307 casas en venta</span><br/>
+									
+									
+									
+									<span>7 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>2 centros de salud</span><br/>
-								
-								<span>2 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									<span>2 centros de salud</span><br/>
+									
+									
+									
+									<span>2 centros de urgencias</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
-							<p>
-								<span>1 hospitales</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+								<p>
+									
+									
+									<span>1 hospital</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>22 colegios</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>22 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>25 metros de altitud</span>
-							</p>
+						
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>25 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>1.223 €/m² medio de venta</span><br/>
-								
-								
-								<span>10 €/m² medio de alquiler</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>1.223 €/m² medio de venta</span><br/>
+									
+									
+									<span>10 €/m² medio de alquiler</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>28.293 habitantes</span><br/>
-								<span>(221 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>28.293 habitantes</span><br/>
+									<span>221 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 122.249 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 761 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 122.249 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 761 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 14ºC con 0,02 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 28ºC con 0 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 14ºC con 0,02 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 28ºC con 0 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de 5ºC a 25ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 17ºC a 40ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de 5ºC a 25ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 17ºC a 40ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>18.026 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>18.026 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								<span>A 32 km. de la capital de provincia</span>
-								
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									<span>A 32 km. de la capital de provincia</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>472 ofertas de empleo en la provincia</span><br/>
-								<span>12,24 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>472 ofertas de empleo en la provincia</span><br/>
+									<span>12,24 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>160.4 horas de sol en febrero de media</span><br/>
-								<span>377.2 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>160.4 horas de sol en febrero de media</span><br/>
+									<span>377.2 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 62 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 36 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 100 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 62 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 36 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 100 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -333,49 +407,116 @@
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "21044", "data": {"municipio": "Lepe", "provincia": "Huelva", "comunidad_autonoma": "Andaluc\u00eda", "municipio_nombre_humano": "Lepe", "num_centros_salud": 2, "num_centros_urgencias": 2, "num_hospitales": 1, "num_colegios": 22, "num_universidades": 0, "linea_costa_provincia": 1, "linea_montana_provincia": 0, "poblacion": 28293, "superficie": 127.94, "densidad_poblacion": 221.14, "lat": 37.254503, "lon": -7.202989, "feb_avg_min_temp": 5.49, "feb_avg_max_temp": 25.43, "feb_avg_temp": 14.89, "feb_avg_humidity": 70.71, "feb_avg_wind": 12.67, "feb_avg_min_rain": 0, "feb_avg_max_rain": 3, "feb_avg_rain": 0.02, "feb_avg_clouds": 26.97, "feb_avg_sunshine_hours": 160.4, "jul_avg_min_temp": 17.53, "jul_avg_max_temp": 40.6, "jul_avg_temp": 28.73, "jul_avg_humidity": 55.8, "jul_avg_wind": 12.74, "jul_avg_min_rain": 0, "jul_avg_max_rain": 0.3, "jul_avg_rain": 0, "jul_avg_clouds": 5.93, "jul_avg_sunshine_hours": 377.2, "kms_capital_provincia": 32.5, "altitud": 25, "renta_bruta_media": "18026", "precio_m2_venta": "1223.26", "num_casas_venta": "307", "precio_m2_alquiler": "10.07", "num_casas_alquiler": 7, "precio_m2_venta_provincia": 1299, "precio_medio_venta_provincia": 122249, "precio_m2_alquiler_provincia": 10, "precio_medio_alquiler_provincia": 761, "tasa_actividad_provincia": 56.77, "tasa_paro_provincia": 12.24, "tasa_empleo_provincia": 49.83, "num_empleos_provincia": 472, "cobertura_30": 62.57, "cobertura_100": 36.43, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 1, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 3, "sitios_natural": 0, "sitios_servicio": 0, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 2, "sitios_sport": 0, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Lepe es una ciudad y municipio espa\u00f1ol de la provincia de Huelva, Andaluc\u00eda./km\u00b2. Es el municipio m\u00e1s poblado de la provincia tras la capital.Fundada por los fenicios en un peque\u00f1o valle junto al r\u00edo Piedras, Lepe ha sido poblada por romanos y \u00e1rabes, conservando patrimonio hist\u00f3rico de estas \u00e9pocas. Marineros leperos y vinculados a la villa de Lepe intervienen en el descubrimiento y la conquista de Am\u00e9rica, entre los que destaca Rodrigo P\u00e9rez de Acevedo. Otros leperos de renombre son \u00c1lvaro Alonso Barba, Crist\u00f3bal M\u00e9ndez, Manuel Vela y Fray Jos\u00e9 Oria Casta\u00f1eda. El mayor incentivo de la misma ha sido el cultivo de la fresa, aunque actualmente el sector econ\u00f3mico en auge es el turismo, desde la creaci\u00f3n de Islantilla, mancomunado con Isla Cristina e incluido en ambos t\u00e9rminos municipales.Los n\u00facleos menores de Lepe son La Barca, Pinares de Lepe, El Terr\u00f3n, La Antilla y la parte de Islantilla del t\u00e9rmino municipal de Lepe, aumentando estos dos \u00faltimos la poblaci\u00f3n en verano de forma considerable debido al turismo. El Paraje Natural Marismas del R\u00edo Piedras y Flecha del Rompido es el principal exponente de patrimonio natural del municipio, dentro del cual se sit\u00faa la playa de Nueva Umbr\u00eda. Entre sus fiestas destacan la Romer\u00eda de Nuestra Se\u00f1ora de la Bella y las Fiestas Patronales de San Roque y la Bella.", "url": "https://es.wikipedia.org/wiki/Lepe", "images": ["https://upload.wikimedia.org/wikipedia/commons/d/dd/Agric.JPG", "https://upload.wikimedia.org/wikipedia/commons/8/83/Autov%C3%ADa_A-49.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/38/BellaJMMartinez.JPG", "https://upload.wikimedia.org/wikipedia/commons/f/fb/Casa_del_Capit%C3%A1n%2C_Almadraba_Nueva_Umbr%C3%ADa.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/2a/Coalici%C3%B3n_Democr%C3%A1tica.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c3/Costa_Occidental_de_Huelva.png", "https://upload.wikimedia.org/wikipedia/commons/5/5c/Des_fraises.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a7/ErmitaBella.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7d/Ermita_de_la_Bella.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cb/Flecha_de_El_Rompido%2C_Huelva.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9d/FuenteNueva.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/13/Lepe_%28Huelva%29_%28Spain%29_-_33184483222.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3c/Nueva_Umbr%C3%ADa.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e5/T1000001.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/41/TorreCatalan.JPG"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/d/dd/Agric.JPG', 'https://upload.wikimedia.org/wikipedia/commons/8/83/Autov%C3%ADa_A-49.jpg', 'https://upload.wikimedia.org/wikipedia/commons/3/38/BellaJMMartinez.JPG', 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Casa_del_Capit%C3%A1n%2C_Almadraba_Nueva_Umbr%C3%ADa.JPG', 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Coalici%C3%B3n_Democr%C3%A1tica.jpg', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Costa_Occidental_de_Huelva.png', 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Des_fraises.jpg', 'https://upload.wikimedia.org/wikipedia/commons/a/a7/ErmitaBella.jpg', 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Ermita_de_la_Bella.jpg', 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Flecha_de_El_Rompido%2C_Huelva.jpg'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Lepe'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Lepe'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Lepe'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Lepe'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=37.254503,-7.202989&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "21044";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "21044";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/21044",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>

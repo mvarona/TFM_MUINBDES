@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/22/Ajuntament_Caldes_Montbui_Catalonia.JPG"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,10 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro"> Está situado en la comarca del Vallés Oriental, en la provincia de Barcelona. Es una de las fuentes más calientes de Europa. Los romanos ya aprovecharon esta agua y construyeron allí un balneario que en parte se ha conservado hasta nuestros días. Son las termas romanas mejor conservadas de la península. El escritor romano Plinio el Viejo ya habla de este balneario llamado entonces Aquae-Calidae en su crónica sobre la Hispania Romana. La historiadora Mercedes Sorda mantiene lo de Plinio, aunque hay otras versiones alternativas que indican que de este balneario el primero en hablar sería Virgilio.A partir de esta actividad balnearia (que adquiere importancia a finales del siglo XIX) se ha desarrollado el crecimiento urbanístico del municipio, contribuyendo asimismo a este crecimiento su entorno natural y su clima benigno. Se encuentra en la plaza de la villa donde también están situados las termas romanas, el ayuntamiento, el balneario de las Broquetas y el museo de Manolo Hugué. El agua que sale de esta fuente no varía nunca en cantidad y contiene cloro, flúor, bromo y yodo. Sirve para combatir la artritis, fracturas etc. 
-Existe en Caldas el museo de Manolo Hugué, un escultor importante del siglo XX y mejor amigo de Picasso cuyo talento fue ayudado a crear por Manolo. Como Hugué tenía amistad con Picasso, este museo contiene además de obras de Manolo Hugué una importante colección de obras de Picasso. Su portada se considera como una de las mejores obras del barroco catalán. También son interesantes las columnas salomónicas, diseñadas por el escultor francés Pere Ruppin. La iglesia tiene una sola nave y doce capillas laterales. La mayor obra de la iglesia es la escultura de madera “La Santa Majestad”. Es de aspecto oriental y llegó a Caldes a mediados del siglo XV traída por unos gitanos.En cuanto a la economía, hoy en día la agricultura va perdiendo peso (aunque la horticultura sigue siendo importante) a favor de un incremento de la industria y del sector de servicios. También el turismo desempeña un papel importante gracias a las instalaciones termales: existen pequeños hoteles que confieren a este municipio la peculiaridad de ser el pequeño refugio termal más cercano a Barcelona.De su gastronomía, rica y variada, destacan los &#39;carquinyolis&#39;(dulce hecho con almendra, harina y azúcar) y el salchichón (llonganissa).La ciudad de Caldas está hermanada con la localidad alemana de Taunusstein y la francesa de Saint-Paul-lès-Dax.</p>
+					
+					<p class="intro">Caldas de Montbuy (en catalán y oficialmente Caldes de Montbui) es un municipio de Cataluña, España. Está situado en la comarca del Vallés Oriental, en la provincia de Barcelona. Se encuentra a unos 35 km al norte de Barcelona. Su población supera los 17 000 habitantes, que viven repartidos por el núcleo urbano y varias urbanizaciones, entre otras El Farell, que fue construida en una montaña a una altura de más de 800 metros. El término municipal de Caldas de Montbuy comprende una extensión de 38 km².<br/><br/>La ciudad de Caldas está hermanada con la localidad alemana de Taunusstein y la francesa de Saint-Paul-lès-Dax.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=Caldes de Montbui, Barcelona" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Caldas_de_Montbuy" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -94,19 +151,18 @@ Existe en Caldas el museo de Manolo Hugué, un escultor importante del siglo XX 
 					
 
 					
-					    <span class="tag-20">Cerca de la montaña</span>
-										
-					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -119,207 +175,222 @@ Existe en Caldas el museo de Manolo Hugué, un escultor importante del siglo XX 
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>212 casas en venta</span><br/>
-								
-								
-								<span>8 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>212 casas en venta</span><br/>
+									
+									
+									
+									<span>8 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>1 centros de salud</span><br/>
-								
-								<span>1 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									
+									<span>1 centro de salud</span><br/>
+									
+									
+									
+									<span>1 centro de urgencias</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
-							<p>
-								<span>1 hospitales</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+								<p>
+									
+									
+									<span>1 hospital</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>13 colegios</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>13 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>217 metros de altitud</span>
-							</p>
+						
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>217 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>1.739 €/m² medio de venta</span><br/>
-								
-								
-								<span>9 €/m² medio de alquiler</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>1.739 €/m² medio de venta</span><br/>
+									
+									
+									<span>9 €/m² medio de alquiler</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>17.797 habitantes</span><br/>
-								<span>(475 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>17.797 habitantes</span><br/>
+									<span>475 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 272.259 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 1.367 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 272.259 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 1.367 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 10ºC con 0,06 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 25ºC con 0,07 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 10ºC con 0,06 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 25ºC con 0,07 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de 0ºC a 19ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 17ºC a 33ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de 0ºC a 19ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 17ºC a 33ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>32.448 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>32.448 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								<span>A 34 km. de la capital de provincia</span>
-								
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									<span>A 34 km. de la capital de provincia</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>11.030 ofertas de empleo en la provincia</span><br/>
-								<span>9,18 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>11.030 ofertas de empleo en la provincia</span><br/>
+									<span>9,18 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>120 horas de sol en febrero de media</span><br/>
-								<span>228.9 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>120 horas de sol en febrero de media</span><br/>
+									<span>228.9 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 98 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 98 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 100 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 98 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 98 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 100 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -336,49 +407,116 @@ Existe en Caldas el museo de Manolo Hugué, un escultor importante del siglo XX 
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "08033", "data": {"municipio": "Caldes de Montbui", "provincia": "Barcelona", "comunidad_autonoma": "Catalu\u00f1a", "municipio_nombre_humano": "Caldes de Montbui", "num_centros_salud": 1, "num_centros_urgencias": 1, "num_hospitales": 1, "num_colegios": 13, "num_universidades": 0, "linea_costa_provincia": 1, "linea_montana_provincia": 2, "poblacion": 17797, "superficie": 37.41, "densidad_poblacion": 475.73, "lat": 41.630059, "lon": 2.16897, "feb_avg_min_temp": 0.63, "feb_avg_max_temp": 19.45, "feb_avg_temp": 10.23, "feb_avg_humidity": 71.98, "feb_avg_wind": 11.52, "feb_avg_min_rain": 0, "feb_avg_max_rain": 12, "feb_avg_rain": 0.06, "feb_avg_clouds": 28.65, "feb_avg_sunshine_hours": 120, "jul_avg_min_temp": 17.29, "jul_avg_max_temp": 33.37, "jul_avg_temp": 25.34, "jul_avg_humidity": 67.04, "jul_avg_wind": 10.73, "jul_avg_min_rain": 0, "jul_avg_max_rain": 12, "jul_avg_rain": 0.07, "jul_avg_clouds": 15.73, "jul_avg_sunshine_hours": 228.9, "kms_capital_provincia": 34.73, "altitud": 217, "renta_bruta_media": "32448", "precio_m2_venta": "1739.07", "num_casas_venta": "212", "precio_m2_alquiler": "9.1", "num_casas_alquiler": 8, "precio_m2_venta_provincia": 2946, "precio_medio_venta_provincia": 272259, "precio_m2_alquiler_provincia": 16, "precio_medio_alquiler_provincia": 1367, "tasa_actividad_provincia": 61.29, "tasa_paro_provincia": 9.18, "tasa_empleo_provincia": 55.67, "num_empleos_provincia": 11030, "cobertura_30": 98.25, "cobertura_100": 98.25, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 2, "sitios_natural": 0, "sitios_servicio": 0, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 1, "sitios_sport": 0, "sitios_edificio": 3, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": " Est\u00e1 situado en la comarca del Vall\u00e9s Oriental, en la provincia de Barcelona. Es una de las fuentes m\u00e1s calientes de Europa. Los romanos ya aprovecharon esta agua y construyeron all\u00ed un balneario que en parte se ha conservado hasta nuestros d\u00edas. Son las termas romanas mejor conservadas de la pen\u00ednsula. El escritor romano Plinio el Viejo ya habla de este balneario llamado entonces Aquae-Calidae en su cr\u00f3nica sobre la Hispania Romana. La historiadora Mercedes Sorda mantiene lo de Plinio, aunque hay otras versiones alternativas que indican que de este balneario el primero en hablar ser\u00eda Virgilio.A partir de esta actividad balnearia (que adquiere importancia a finales del siglo XIX) se ha desarrollado el crecimiento urban\u00edstico del municipio, contribuyendo asimismo a este crecimiento su entorno natural y su clima benigno. Se encuentra en la plaza de la villa donde tambi\u00e9n est\u00e1n situados las termas romanas, el ayuntamiento, el balneario de las Broquetas y el museo de Manolo Hugu\u00e9. El agua que sale de esta fuente no var\u00eda nunca en cantidad y contiene cloro, fl\u00faor, bromo y yodo. Sirve para combatir la artritis, fracturas etc. \nExiste en Caldas el museo de Manolo Hugu\u00e9, un escultor importante del siglo XX y mejor amigo de Picasso cuyo talento fue ayudado a crear por Manolo. Como Hugu\u00e9 ten\u00eda amistad con Picasso, este museo contiene adem\u00e1s de obras de Manolo Hugu\u00e9 una importante colecci\u00f3n de obras de Picasso. Su portada se considera como una de las mejores obras del barroco catal\u00e1n. Tambi\u00e9n son interesantes las columnas salom\u00f3nicas, dise\u00f1adas por el escultor franc\u00e9s Pere Ruppin. La iglesia tiene una sola nave y doce capillas laterales. La mayor obra de la iglesia es la escultura de madera \u201cLa Santa Majestad\u201d. Es de aspecto oriental y lleg\u00f3 a Caldes a mediados del siglo XV tra\u00edda por unos gitanos.En cuanto a la econom\u00eda, hoy en d\u00eda la agricultura va perdiendo peso (aunque la horticultura sigue siendo importante) a favor de un incremento de la industria y del sector de servicios. Tambi\u00e9n el turismo desempe\u00f1a un papel importante gracias a las instalaciones termales: existen peque\u00f1os hoteles que confieren a este municipio la peculiaridad de ser el peque\u00f1o refugio termal m\u00e1s cercano a Barcelona.De su gastronom\u00eda, rica y variada, destacan los 'carquinyolis'(dulce hecho con almendra, harina y az\u00facar) y el salchich\u00f3n (llonganissa).La ciudad de Caldas est\u00e1 hermanada con la localidad alemana de Taunusstein y la francesa de Saint-Paul-l\u00e8s-Dax.", "url": "https://es.wikipedia.org/wiki/Caldas_de_Montbuy", "images": ["https://upload.wikimedia.org/wikipedia/commons/2/22/Ajuntament_Caldes_Montbui_Catalonia.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/57/Font_del_Lle%C3%B3.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/aa/Termas_Romanas.jpg"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/2/22/Ajuntament_Caldes_Montbui_Catalonia.JPG', 'https://upload.wikimedia.org/wikipedia/commons/5/57/Font_del_Lle%C3%B3.jpg', 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Termas_Romanas.jpg'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Caldes de Montbui'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Caldes de Montbui'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Caldes de Montbui'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Caldes de Montbui'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=41.630059,2.16897&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "08033";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "08033";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/08033",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>

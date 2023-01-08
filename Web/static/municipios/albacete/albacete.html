@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/c3/%22Croquis_fait_a_Albacete%22_%2819316440843%29.jpg"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,9 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro">Albacete es una ciudad y un municipio de España en la comunidad autónoma de Castilla-La Mancha, capital de la provincia homónima. Es la capital más oriental de Castilla-La Mancha, localizada al sureste de la península ibérica en medio de una vasta campiña de un alto valor natural próxima al cerro de San Blas, sobre el que se emplaza la ciudad medieval de Chinchilla de Montearagón, en la región histórica de La Mancha de Montearagón, encuadrada actualmente dentro de la comarca de Los Llanos. El célebre escritor Azorín describió en su poesía a la ciudad de Albacete como el «Nueva York de La Mancha».Actualmente, Albacete es una capital moderna, con grandes espacios para el viandante y amplias zonas verdes. Entre sus grandes monumentos más representativos se encuentran el Recinto Ferial de Albacete, la Catedral de San Juan Bautista, la Plaza de toros, el Teatro Circo, el Palacio Provincial, la Fábrica de Harinas, el Pasaje Lodares o la Torre del Agua. Destacan museos como el Museo de Albacete, el Museo de la Cuchillería, el Museo Municipal, el Museo Internacional de Arte Popular del Mundo, el Jardín Botánico de Castilla-La Mancha, el Centro Cultural La Asunción o la Casa de la Cultura José Saramago. El ocio es una de las señas de identidad de la capital albaceteña, que cuenta con zonas de fiesta como La Zona, El Campus o Los Titis.La industria es uno de los pilares de la ciudad. La educación superior y la investigación son otros de los grandes polos de desarrollo de la ciudad, destacando la Universidad de Castilla-La Mancha, el Campus Biosanitario, el Campus Científico y Tecnológico de la Energía y el Medio Ambiente –de Excelencia Internacional–, el Parque Científico y Tecnológico de Castilla-La Mancha y la Real Academia de Medicina de Castilla-La Mancha.El sector aeronáutico, militar y de defensa es otro de los motores económicos de la ciudad.</p>
+					
+					<p class="intro">Albacete es una ciudad y un municipio de España en la comunidad autónoma de Castilla-La Mancha, capital de la provincia homónima. Es la capital más oriental de Castilla-La Mancha, localizada al sureste de la península ibérica en medio de una vasta campiña de un alto valor natural próxima al cerro de San Blas, sobre el que se emplaza la ciudad medieval de Chinchilla de Montearagón, en la región histórica de La Mancha de Montearagón, encuadrada actualmente dentro de la comarca de Los Llanos. Es, ampliamente, la ciudad más grande y más poblada de Castilla-La Mancha, con 172 722 habitantes (INE 2021), la capital provincial más poblada de la submeseta sur tras Madrid y una de las ciudades de interior más pobladas del país. Su área metropolitana, que asciende a 217 774 habitantes, es la mayor de Castilla-La Mancha y una de las treinta mayores aglomeraciones urbanas del país. El término municipal de Albacete es el séptimo más extenso de España, con 1125,91 km².<br/><br/>El sector aeronáutico, militar y de defensa es otro de los motores económicos de la ciudad. Albacete es sede de la Base Aérea de Los Llanos, del Ala 14, de la Maestranza Aérea de Albacete, la más importante de España, y del Programa de Liderazgo Táctico de la OTAN, escuela de pilotos de élite equivalente al Top Gun europeo. Además, la ciudad alberga el Parque Aeronáutico y Logístico de Albacete, que acoge a importantes empresas del sector, en el que se ubica la planta de helicópteros de Albacete, única existente en España, y el hub global de Airbus.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=Albacete, Albacete" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Albacete" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -89,23 +147,20 @@
 					
 					
 					
-					    <span class="tag-19">Cerca de la costa</span>
-					
 
 					
-					    <span class="tag-20">Cerca de la montaña</span>
-										
-					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -118,214 +173,232 @@
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>2.470 casas en venta</span><br/>
-								
-								
-								<span>199 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>2.470 casas en venta</span><br/>
+									
+									
+									
+									<span>199 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>15 centros de salud</span><br/>
-								
-								<span>2 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									<span>15 centros de salud</span><br/>
+									
+									
+									
+									<span>2 centros de urgencias</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
-							<p>
-								<span>5 hospitales</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un hospital" src="/static/images/hospital.png"/>
+								<p>
+									
+									<span>5 hospitales</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>132 colegios</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>132 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una universidad" src="/static/images/university.png"/>
-							<p>
-								<span>1 universidades</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una universidad" src="/static/images/university.png"/>
+								<p>
+									
+									
+									<span>1 universidad</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>687 metros de altitud</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>687 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>1.447 €/m² medio de venta</span><br/>
-								
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>1.447 €/m² medio de venta</span><br/>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>172.722 habitantes</span><br/>
-								<span>(153 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>172.722 habitantes</span><br/>
+									<span>153 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 152.281 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 659 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 152.281 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 659 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 7ºC con 0,02 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 25ºC con 0,01 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 7ºC con 0,02 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 25ºC con 0,01 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de -4ºC a 18ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 13ºC a 38ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de -4ºC a 18ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 13ºC a 38ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>27.350 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>27.350 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								
-								<span>Es capital de provincia</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									
+									<span>Es capital de provincia</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>532 ofertas de empleo en la provincia</span><br/>
-								<span>12,41 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>532 ofertas de empleo en la provincia</span><br/>
+									<span>12,41 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>127.3 horas de sol en febrero de media</span><br/>
-								<span>388.4 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>127.3 horas de sol en febrero de media</span><br/>
+									<span>388.4 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 43 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 27 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 98 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 95 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 43 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 27 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 98 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 95 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -342,49 +415,116 @@
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "02003", "data": {"municipio": "Albacete", "provincia": "Albacete", "comunidad_autonoma": "Castilla-La Mancha", "municipio_nombre_humano": "Albacete", "num_centros_salud": 15, "num_centros_urgencias": 2, "num_hospitales": 5, "num_colegios": 132, "num_universidades": 1, "linea_costa_provincia": 2, "linea_montana_provincia": 2, "poblacion": 172722, "superficie": 1126.99, "densidad_poblacion": 153.26, "lat": 38.995097, "lon": -1.86197, "feb_avg_min_temp": -4.51, "feb_avg_max_temp": 18.82, "feb_avg_temp": 7.2, "feb_avg_humidity": 72.8, "feb_avg_wind": 16.02, "feb_avg_min_rain": 0, "feb_avg_max_rain": 0.9, "feb_avg_rain": 0.02, "feb_avg_clouds": 26.72, "feb_avg_sunshine_hours": 127.3, "jul_avg_min_temp": 13.04, "jul_avg_max_temp": 38.14, "jul_avg_temp": 25.87, "jul_avg_humidity": 43.43, "jul_avg_wind": 13.07, "jul_avg_min_rain": 0, "jul_avg_max_rain": 12, "jul_avg_rain": 0.01, "jul_avg_clouds": 4.51, "jul_avg_sunshine_hours": 388.4, "kms_capital_provincia": 0, "altitud": 687, "renta_bruta_media": "27350", "precio_m2_venta": "1447.44", "num_casas_venta": "2470", "precio_m2_alquiler": "-", "num_casas_alquiler": 199, "precio_m2_venta_provincia": 1300, "precio_medio_venta_provincia": 152281, "precio_m2_alquiler_provincia": 7, "precio_medio_alquiler_provincia": 659, "tasa_actividad_provincia": 58.07, "tasa_paro_provincia": 12.41, "tasa_empleo_provincia": 50.86, "num_empleos_provincia": 532, "cobertura_30": 43.5, "cobertura_100": 27.56, "cobertura_3g": 98.56, "cobertura_4g": 95, "sitios_comercio": 1, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 0, "sitios_natural": 0, "sitios_servicio": 2, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 3, "sitios_sport": 0, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Albacete es una ciudad y un municipio de Espa\u00f1a en la comunidad aut\u00f3noma de Castilla-La Mancha, capital de la provincia hom\u00f3nima. Es la capital m\u00e1s oriental de Castilla-La Mancha, localizada al sureste de la pen\u00ednsula ib\u00e9rica en medio de una vasta campi\u00f1a de un alto valor natural pr\u00f3xima al cerro de San Blas, sobre el que se emplaza la ciudad medieval de Chinchilla de Montearag\u00f3n, en la regi\u00f3n hist\u00f3rica de La Mancha de Montearag\u00f3n, encuadrada actualmente dentro de la comarca de Los Llanos. El c\u00e9lebre escritor Azor\u00edn describi\u00f3 en su poes\u00eda a la ciudad de Albacete como el \u00abNueva York de La Mancha\u00bb.Actualmente, Albacete es una capital moderna, con grandes espacios para el viandante y amplias zonas verdes. Entre sus grandes monumentos m\u00e1s representativos se encuentran el Recinto Ferial de Albacete, la Catedral de San Juan Bautista, la Plaza de toros, el Teatro Circo, el Palacio Provincial, la F\u00e1brica de Harinas, el Pasaje Lodares o la Torre del Agua. Destacan museos como el Museo de Albacete, el Museo de la Cuchiller\u00eda, el Museo Municipal, el Museo Internacional de Arte Popular del Mundo, el Jard\u00edn Bot\u00e1nico de Castilla-La Mancha, el Centro Cultural La Asunci\u00f3n o la Casa de la Cultura Jos\u00e9 Saramago. El ocio es una de las se\u00f1as de identidad de la capital albacete\u00f1a, que cuenta con zonas de fiesta como La Zona, El Campus o Los Titis.La industria es uno de los pilares de la ciudad. La educaci\u00f3n superior y la investigaci\u00f3n son otros de los grandes polos de desarrollo de la ciudad, destacando la Universidad de Castilla-La Mancha, el Campus Biosanitario, el Campus Cient\u00edfico y Tecnol\u00f3gico de la Energ\u00eda y el Medio Ambiente \u2013de Excelencia Internacional\u2013, el Parque Cient\u00edfico y Tecnol\u00f3gico de Castilla-La Mancha y la Real Academia de Medicina de Castilla-La Mancha.El sector aeron\u00e1utico, militar y de defensa es otro de los motores econ\u00f3micos de la ciudad.", "url": "https://es.wikipedia.org/wiki/Albacete", "images": ["https://upload.wikimedia.org/wikipedia/commons/c/c3/%22Croquis_fait_a_Albacete%22_%2819316440843%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/02/%22Guitarrero_manchego_et_danseuse_d%27Albacete_%28manche%29%22_%2819316179793%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/%22Une_rue_d%27Albacete%22_%2819942542471%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/47/1877-03-08%2C_La_Ilustraci%C3%B3n_Espa%C3%B1ola_y_Americana%2C_Viaje_de_S._M._el_rey_%28cropped%29_Albacete%2C_Arcos_erigidos_%C3%A1_expensas_del_Ayuntamiento_y_la_Diputaci%C3%B3n_provincial.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7c/AB_1776.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Aeronaves_del_Ala_14_%2830052749316%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/04/Aeropuerto_Los_Llanos_exterior.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/61/Ahpab1.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/43/Ahpb2.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ac/Albacete._Plaza_del_Altozano_1.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/55/Albacete._Plaza_del_Altozano_5.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4b/Albacete._S.M._el_Rey%2C_presenciando_el_desfile_de_las_tropas._Real_Audiencia_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8f/Albacete_%2810965996115%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3a/Albacete_00.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d7/Albacete_Cathedral_2021_-_west_fa%C3%A7ade.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/79/Albacete_Mapa_metropolitano.png", "https://upload.wikimedia.org/wikipedia/commons/0/04/Albacete_Spagna.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/7c/Albacete_desde_Chinchilla_%2817498822072%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/98/Andr%C3%A9s_Iniesta_Euro_2012_vs_France_02.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/ca/Antigua_sede_del_Banco_de_Espa%C3%B1a_de_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/09/Ateneo_de_Albacete._Ateneo_Albacetense._Calle_Feria.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/97/Autobus_tur%C3%ADstico_de_Albacete_dos_plantas.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/29/Autob%C3%BAs_Urbano_de_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/f/f4/Avenida_Gregorio_Arcos_del_Parque_Empresarial_de_Campollano.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/2e/Avenida_Isabel_la_Cat%C3%B3lica._Plaza_de_Isabel_II._Avenida_Ram%C3%B3n_Men%C3%A9ndez_Pidal._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d4/Avenida_de_Espa%C3%B1a._Plaza_Benjam%C3%ADn_Palencia._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c0/Ayuntamiento_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3a/Biblioteca_P%C3%BAblica_del_Estado_en_Albacete._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2b/Calle_Ancha._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/65/Calle_Tejares._La_Zona._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/63/Calle_Zapateros._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Camara_Comercio.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d6/Canal_de_Mar%C3%ADa_Cristina_al_norte_de_la_ciudad_de_Albacete_5.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8c/Capilla_Virgen_de_los_Llanos_Recinto_Ferial_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/78/Carril_bici_Albacete-Valdeganga_%28v%C3%ADa_verde%29._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/76/Casa_Perona.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6c/Casa_de_Ejercicios_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cc/Casa_de_Hortelano%2C_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/47/Caseta_de_los_Jardinillos._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/03/Casino_Primitivo_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/43/Castillo_Chinchilla_amanecer.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1d/Catedral_Albacete_interior.JPG", "https://upload.wikimedia.org/wikipedia/commons/7/7b/Catedral_de_Albacete%2C_San_Juan_AAE4385.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ab/CdT03_copia.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Centro_Asociado_UNED_Albacete_Virgen_de_la_Milagrosa.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fb/Centro_Cultural_El_Ensanche._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2a/Centro_Europeo_de_Empresas_e_Innovaci%C3%B3n_de_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/8/87/Centro_Regional_de_Investigaciones_Biom%C3%A9dicas_%28CRIB%29_y_Animalario.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/76/Centro_de_Atenci%C3%B3n_a_Grandes_Discapacidades_F%C3%ADsicas_y_Org%C3%A1nicas_Infanta_Leonor._Albacete._Barrio_San_Antonio_Abad.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/65/Centro_de_Recuperaci%C3%B3n_de_Personas_con_Discapacidad_F%C3%ADsica_%28CRMF%29_de_Albacete._Espa%C3%B1a..jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a3/Circuito_de_Albacete_durante_un_entrenamiento.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e7/Circunvalaci%C3%B3n_de_Albacete_7.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/32/Claqueta_original_de_la_pel%C3%ADcula_Amanece%2C_que_no_es_poco_de_Jos%C3%A9_Luis_Cuerda._Filmoteca_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/be/Clima_Albacete_%28Espa%C3%B1a%29.PNG", "https://upload.wikimedia.org/wikipedia/commons/6/60/Colegio_Notarial._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/07/Colegio_de_Arquitectos._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/dd/Comandancia_de_la_Guardia_Civil._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bc/Comisar%C3%ADa_de_la_Polic%C3%ADa_Local_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9a/Comisar%C3%ADa_del_Cuerpo_Nacional_de_Polic%C3%ADa_en_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/44/Confederaci%C3%B3n_de_Empresarios_de_Albacete_%28FEDA%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/00/Conservatorio_Profesional_de_Danza_Jos%C3%A9_Antonio_Ruiz_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e1/Conservatorio_Superior_de_M%C3%BAsica_de_Castilla-La_Mancha._Conservatorio_Profesional_de_M%C3%BAsica_Tom%C3%A1s_de_Torrej%C3%B3n_y_Velasco_de_Albacete._Calle_Zapateros._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/54/Cospedal_en_la_ceremonia_del_primer_helicoptero_NH90_ensamblado_en_Espa%C3%B1a.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fc/Cuchillero_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b5/Dehesa_de_Los_Llanos_%28Albacete%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8d/Delegaci%C3%B3n_de_Hacienda._Calle_Francisco_Fontecha._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/49/Dep%C3%B3sito_de_Agua_de_la_Fiesta_del_%C3%81rbol._Parque_de_la_Fiesta_del_%C3%81rbol._Albacete_13.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3f/Dep%C3%B3sito_de_Agua_de_la_Fiesta_del_%C3%81rbol._Parque_de_la_Fiesta_del_%C3%81rbol._Albacete_25.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/46/Dep%C3%B3sito_de_Agua_de_la_Fiesta_del_%C3%81rbol._Parque_de_la_Fiesta_del_%C3%81rbol._Albacete_25_%28cropped%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/80/Dep%C3%B3sitos_del_Sol._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/59/Diputaci%C3%B3n_de_Albacete_%283144749309%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/74/Edificio_Bancaja._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f6/Edificio_Banesto._Casa_de_D._Juan_N%C3%BA%C3%B1ez._Calle_Tesifonte_Gallego._Calle_Ancha._Centro._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0a/Edificio_Benjam%C3%ADn_Palencia._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/75/Edificio_Casa_Marlo._Plaza_de_Gabriel_Lodares._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/61/Edificio_Legorburo._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9c/El_Gran_Hotel%2C_Albacete._%283579173066%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/eb/El_Sembrador._Fuente_de_las_Ranas._Avenida_de_la_Estaci%C3%B3n._Paseo_de_la_Libertad._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ef/Emblem%C3%A1tico_edificio_de_mediados_del_siglo_XX_en_los_alrededores_del_Parque_Abelardo_S%C3%A1nchez._Barrio_Franciscanos._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bb/Emprendedores.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6f/Entierro_de_la_Sardina_2014_Albacete_Carnaval.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/45/Entrada_Ciudad_Deportiva_%22Andr%C3%A9s_Iniesta%22_del_Albacete_Balompi%C3%A9_S.A.D.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8d/Entrada_al_Museo_Provincial_de_Albacete._Parque_Abelardo_S%C3%A1nchez._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e1/Entrada_del_Auditorio_de_Albacete_b.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d7/Entrada_del_Jard%C3%ADn_Bot%C3%A1nico_de_Castilla-La_Mancha.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/62/Escuela_de_Arte_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ae/Escuela_de_Cuchiller%C3%ADa_de_Albacete_Am%C3%B3s_N%C3%BA%C3%B1ez.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/55/Escultura_%22Ejecutivo%22_de_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/e7/Esfinge_de_El_Salobral_%28M.A.N._Inv.38443%29_01.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5a/Estaci%C3%B3n_de_autobuses_de_Albacete._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4c/Estadio_Carlos_Belmonte._Albacete.png", "https://upload.wikimedia.org/wikipedia/commons/5/51/Estatua_de_Isabel_de_Portugal.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/da/Exposici%C3%B3n_interior_en_la_feria_agr%C3%ADcola_y_ganadera_de_Castilla-La_Mancha_%22Expovicaman%22%2C_celebrada_en_el_Palacio_del_IFAB_de_Albacete..JPG", "https://upload.wikimedia.org/wikipedia/commons/4/4a/Factoria_de_Eurocopter_en_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4a/Factoria_de_Eurocopter_en_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6c/Facultad_de_Medicina_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/54/Feria_de_Albacete_%28centenario%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cb/Feria_de_Albacete_2007_05_%281356262052%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c7/Fiestas_de_San_Juan_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a0/Fuente_de_la_Circunvalaci%C3%B3n._Letrero_de_Neum%C3%A1ticos_Lassa._Circunvalaci%C3%B3n_de_Albacete._Carretera_de_las_Pe%C3%B1as_6.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/18/Fuente_de_la_Tamos._Albacete_9.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/71/Fuente_del_Parque_Lineal._Parque_Lineal_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ae/F%C3%A1brica_de_Harinas_de_Albacete._Junta_de_Comunidades_de_Castilla-La_Mancha._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/f8/F%C3%A1brica_de_Harinas_de_Albacete._Junta_de_Comunidades_de_Castilla-La_Mancha._Albacete_3.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/12/Gazpachos_Manchegos_Requena%27s_Style.JPG", "https://upload.wikimedia.org/wikipedia/commons/c/cf/Hospital_General_Universitario_de_Albacete_1.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ee/Hospital_Perpetuo_Socorro_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/43/Hotel_Santa_Isabel._Estilo_Luis_XV._Avenida_Gregorio_Arcos._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/db/Iglesia_de_F%C3%A1tima._Albacete._30.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fe/Iglesia_de_Santa_Teresa._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c2/Iglesia_del_Pilar_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b4/Inauguraci%C3%B3n_de_la_Ciudad_de_la_Justicia_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9c/Instituto_Bachiller_Sabuco._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fe/Institutoinvestigacioninformaticaalbacete.png", "https://upload.wikimedia.org/wikipedia/commons/1/1e/Jugoslovenski_rukovodioci_u_%C5%A0paniji.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1d/La_Mulilla._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9c/La_Nudista._Paseo_de_la_Libertad._Centro._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8f/La_Pulgosa_Albacete_2.jpeg", "https://upload.wikimedia.org/wikipedia/commons/1/1a/Lonja_Municipal_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/62/Los_Leones._F%C3%A1brica_de_Harinas_de_Albacete_3.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/67/Maikel_Melero_%28ESP%29_-_2018125200407_2018-05-05_Night_of_the_Jumps_-_Sven_-_1D_X_MK_II_-_2204_-_AK8I9428.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8d/Mapa_La_Mancha.png", "https://upload.wikimedia.org/wikipedia/commons/0/01/Marques_de_Molins.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/43/Mercadillo_de_Los_Invasores_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/0/00/Mercado_de_Villacerrada._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/dc/Mirage_2000-5F_%2810677417734%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/19/Monasterio_de_la_Encarnaci%C3%B3n._Convento_de_la_Encarnaci%C3%B3n._Centro_Cultural_la_Asunci%C3%B3n%2C_Instituto_de_Estudios_Albacetenses_%28IEA%29._Real_Conservatorio_Profesional_de_M%C3%BAsica_y_Danza_de_Albacete._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/83/Montecasino._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9e/Monumento_a_las_Brigadas_Internacionales._Plaza_de_la_Universidad._Barrio_Universidad._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/7a/Murales_de_Casimiro_Escrib%C3%A1._Catedral_de_San_Juan_Bautista_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/91/Museo_Pedag%C3%B3gico_y_del_Ni%C3%B1o_de_Castilla-La_Mancha._Museo_del_Ni%C3%B1o._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/13/Navajas._Albacete%2C_Espa%C3%B1a.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a6/Oratorio_de_San_Felipe_Neri._Parque_Sur._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/77/Palacio_de_Congresos_Ciudad_de_Albacete_-_Sala_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e3/Palacio_de_Congresos_de_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/5e/Palacio_del_Obispado_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/29/PanoramaCampusAlbacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e9/Parador_de_Albacete_3.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/41/Parque_Pol%C3%ADgono_San_Ant%C3%B3n._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8a/Parque_de_Bomberos_de_Albacete_10.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fe/Parroquia_Iglesia_de_San_Francisco._Franciscanos._Barrio_Franciscanos._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Pasaje_Lodares.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c8/Paseo_Central_del_Parque_Abelardo_S%C3%A1nchez._Centro._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/85/Plaza_Mayor._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fa/Plaza_de_La_Mancha_de_Albacete_%28Barrio_de_Villacerrada%29.JPG", "https://upload.wikimedia.org/wikipedia/commons/a/ab/Posada_del_Rosario_%28Albacete%29.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/1a/Presa_de_Los_Anguijes.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1b/Puerta_Principal_de_la_Plaza_de_toros_de_Albacete._2.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d9/Puerta_de_Hierros_Recinto_Ferial_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/58/Purul%C3%AD_-_Torre_de_Comunicaciones_de_Castilla-La_Mancha_Televisi%C3%B3n_%28CMT%29_en_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ef/P%C3%B3rtico_de_La_Mancha_de_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/5b/Recinto_Ferial_de_Albacete._Feria_de_Albacete_17.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/73/Ruta_de_Don_Quijote._Parque_de_la_Fiesta_del_%C3%81rbol._Calle_Nuestra_Se%C3%B1ora_de_Montserrat._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/93/Sal%C3%B3n_de_plenos_del_Ayuntamiento_de_Albacete.png", "https://upload.wikimedia.org/wikipedia/commons/a/a7/Sede_actual_del_TSJCM_en_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/3/3c/Sede_de_Globalcaja._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/d0/Sede_social_de_la_Corporaci%C3%B3n_HMS_%28Ajusa%29._Parque_Empresarial_Ajusa._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2e/Semana_Santa_Albacete_-_panoramio.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/57/Servicios_Perif%C3%A9ricos_de_la_Consejer%C3%ADa_de_Educaci%C3%B3n%2C_Cultura_y_Deportes_de_la_Junta_de_Comunidades_de_Castilla-La_Mancha_en_Albacete._Avenida_de_la_Estaci%C3%B3n._Albacete_6.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a1/Servicios_Perif%C3%A9ricos_de_la_Consejer%C3%ADa_de_Sanidad_y_Asuntos_Sociales_en_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/cf/Subdelegaci%C3%B3n_de_Defensa_de_Albacete_3.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/26/Subdelegaci%C3%B3n_del_Gobierno_en_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9d/Teatro_Circo_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/03/Teatro_de_la_Paz._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/71/Templete_de_los_jardinillos_Albacete.JPG", "https://upload.wikimedia.org/wikipedia/commons/2/2f/Tesifonte_gallego.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/38/Traje_de_manchego.jpeg", "https://upload.wikimedia.org/wikipedia/commons/4/44/Transiberian%3F_%283183546446%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/ed/Trofeo_001.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/8e/U.S._Air_Force_F-15C_Eagle_aircraft_assigned_to_the_493rd_Fighter_Squadron_sit_on_the_flight_line_during_the_Tactical_Leadership_Program_%28TLP%29_at_Albacete_Air_Base%2C_Spain_130118-F-BH151-110.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e1/Universidad_Popular_de_Albacete._Casa_de_la_Cultura_Jos%C3%A9_Saramago.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/07/Vialia_Estaci%C3%B3n_de_Albacete-Los_Llanos._Albacete_3.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9e/Vista_de_Chinchilla_de_Montearag%C3%B3n_desde_Albacete._Barrio_Facultad_de_Medicina._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0f/Vista_interior_de_la_Plaza_de_toros_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/16/Vista_panor%C3%A1mica_sureste_de_la_plaza_de_toros_de_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/54/Yacimiento_arqueol%C3%B3gico_de_El_Acequi%C3%B3n._Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0e/Zona_Los_Titis_Albacete.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/a0/Zona_Universidad._Hotel_Universidad._Albacete_2.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e4/Zona_ecuestre_de_Expovicaman.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/5d/%C3%81rbol_gigante_de_Navidad_en_Albacete.jpg"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/c/c3/%22Croquis_fait_a_Albacete%22_%2819316440843%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/0/02/%22Guitarrero_manchego_et_danseuse_d%27Albacete_%28manche%29%22_%2819316179793%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/9/97/%22Une_rue_d%27Albacete%22_%2819942542471%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/4/47/1877-03-08%2C_La_Ilustraci%C3%B3n_Espa%C3%B1ola_y_Americana%2C_Viaje_de_S._M._el_rey_%28cropped%29_Albacete%2C_Arcos_erigidos_%C3%A1_expensas_del_Ayuntamiento_y_la_Diputaci%C3%B3n_provincial.jpg', 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AB_1776.jpg', 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Aeronaves_del_Ala_14_%2830052749316%29.jpg', 'https://upload.wikimedia.org/wikipedia/commons/0/04/Aeropuerto_Los_Llanos_exterior.jpg', 'https://upload.wikimedia.org/wikipedia/commons/6/61/Ahpab1.jpg', 'https://upload.wikimedia.org/wikipedia/commons/4/43/Ahpb2.jpg', 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Albacete._Plaza_del_Altozano_1.jpg'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Albacete'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Albacete'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Albacete'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Albacete'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=38.995097,-1.86197&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "02003";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "02003";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/02003",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>

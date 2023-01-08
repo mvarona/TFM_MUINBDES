@@ -6,8 +6,52 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/static/css/style.css">
 	<title> </title>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		function writeCookie(key, value, days) {
+		    var date = new Date();
+			days = days || 365;
+			date.setTime(+ date + (days * 24 * 60 * 60 * 1000)); //
+
+		    cookie = key + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+		    return cookie;
+		};
+
+		$(document).ready(function() {
+	     	if (!(!!$.cookie('user_id'))) {
+				$.ajax({
+					url: "http://127.0.0.1:5000/generate-user-id",
+					method: "GET"
+				})
+				.then(function(result) {
+					if (result != undefined && result.length == 32) {
+						document.cookie = writeCookie("user_id", result);
+					}
+				});
+			}
+		});
+
+	</script>
+	<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/static/images/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,21 +61,30 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+				
+				
 				<li class="nav-item">
-						<a class="nav-link" href="#">Lugar solo para mí</a>
+				
+						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+				</li>
+				
+				
+				<li class="nav-item">
+				
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar parecido a otro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Lugar sorpresa</a>
+					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 	
 	<link rel="stylesheet" href="/static/css/municipality.css">
-	<div id="bg"></div>
+	
+	<div id="bg" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d8/00171749.jpg"></div>
+	
+	
 	<div id="bg-layer"></div>
 	<div class="container">
 	
@@ -41,9 +94,14 @@
 		<article>
 			<div class="first-column">
 				<section class="intro">
-					<p class="intro">Pedro Muñoz es un municipio y localidad española de la provincia de Ciudad Real, en la comunidad autónoma de Castilla-La Mancha. Pertenece también a la asociación para el desarrollo y promoción de la Mancha Norte Promancha y a la Mancomunidad de Servicios de Comsermancha. En la comarca el pueblo es conocido popularmente como Perrote. Algunas de estas casas están blasonadas.También tiene un patrimonio natural y ecológico compuesto por un complejo palustre de tres lagunas, donde la laguna de la Vega o del Pueblo, es la más importante, ya que todos los años tiene agua. Allí se pueden ver numerosas especies de aves migratorias a través de dos miradores que hay instalados. Junto a la laguna se halla un centro de interpretación.Además cuenta con un importante patrimonio industrial de antiguas bodegas, alcoholeras y dos antiguas fábricas de harinas, una de ellas de finales del siglo XIX en la orilla del río Záncara.</p>
+					
+					<p class="intro">Pedro Muñoz es un municipio y localidad española de la provincia de Ciudad Real, en la comunidad autónoma de Castilla-La Mancha.<br/><br/>Además cuenta con un importante patrimonio industrial de antiguas bodegas, alcoholeras y dos antiguas fábricas de harinas, una de ellas de finales del siglo XIX en la orilla del río Záncara.</p>
+					
 					<a class="google" href="https://www.google.es/search?q=Pedro Muñoz, Ciudad Real" target="_blank">Buscar en Google</a>
+					
 					<a class="wikipedia" href="https://es.wikipedia.org/wiki/Pedro_Mu%C3%B1oz_(Ciudad_Real)" target="_blank">Ver más en Wikipedia</a>
+					
+					
 				</section>
 				<section class="tags">
 					
@@ -91,19 +149,18 @@
 					
 
 					
-					    <span class="tag-20">Cerca de la montaña</span>
-										
-					
 				</section>
+				<div id="small-screens-holder-second-column"></div>
 				<section class="suggested">
 					<span class="question">¿Qué te parece?</span><br/>
 					<div class="answers">
-						<a href="#">🤩 &nbsp;¡Me gusta!</a>
-						<a href="#">👎 &nbsp;Meh, no es para mí</a>
+						<a id="like" href="javascript:void()">🤩 &nbsp;¡Me gusta!</a>
+						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
+					<span id="thankyou">¡Gracias!</span>
 					<div class="suggestions">
-						<span>A gente como tú le gustó...</span><br/>
-						<a href="#">Municipio sugerido, Provincia</a>
+						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
+						<a id="first-suggestion" href=""></a>
 					</div>
 				</section>
 				<section class="map">
@@ -116,198 +173,210 @@
 				</section>
 			</div>
 			<div class="second-column">
-				<div id="features-grid">
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa" src="/static/images/house.png"/>
-							<p>
-								
-								<span>139 casas en venta</span><br/>
-								
-								
-								<span>3 casas en alquiler</span>
-								
-							</p>
+				<div id="small-screens-holder-second-column-to-hide">
+					<div id="features-grid">
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa" src="/static/images/house.png"/>
+								<p>
+									
+									<span>139 casas en venta</span><br/>
+									
+									
+									
+									<span>3 casas en alquiler</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
-							<p>
-								<span>1 centros de salud</span><br/>
-								
-								<span>1 centros de urgencias</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/clinic.png"/>
+								<p>
+									
+									
+									<span>1 centro de salud</span><br/>
+									
+									
+									
+									<span>1 centro de urgencias</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
-							<p>
-								<span>8 colegios</span>
-							</p>
+						
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un fonendoscopio" src="/static/images/school.png"/>
+								<p>
+									
+									<span>8 colegios o<br/>institutos</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una flecha hacia arriba" src="/static/images/up.png"/>
-							<p>
-								<span>663 metros de altitud</span>
-							</p>
+						
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de unas colinas" src="/static/images/hills.png"/>
+								<p>
+									<span>663 metros de altitud</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
-							<p>
-								
-								<span>548 €/m² medio de venta</span><br/>
-								
-								
-								<span>5 €/m² medio de alquiler</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una casa con el símbolo del dólar" src="/static/images/house-price.png"/>
+								<p>
+									
+									<span>548 €/m² medio de venta</span><br/>
+									
+									
+									<span>5 €/m² medio de alquiler</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de gente" src="/static/images/people.png"/>
-							<p>
-								<span>7.325 habitantes</span><br/>
-								<span>(72 hab./km²)</span><br/>
-								<span>(media nacional: 94 hab./km²)</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de gente" src="/static/images/people.png"/>
+								<p>
+									<span>7.325 habitantes</span><br/>
+									<span>72 hab./km²</span><br/>
+									<span>(media nacional: 94 hab./km²)</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una ciudad" src="/static/images/city.png"/>
-							<p>
-								
-								<span>Comprar una casa en la provincia cuesta de media 96.893 €</span><br/>
-								
-								
-								<span>Alquilar una casa en la provincia cuesta de media 461 €/mes</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una ciudad" src="/static/images/city.png"/>
+								<p>
+									
+									<span>Comprar una casa en la provincia cuesta de media 96.893 €</span><br/>
+									
+									
+									<span>Alquilar una casa en la provincia cuesta de media 461 €/mes</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
-							<p>
-								
-								<span>En febrero, 7ºC con 0,02 mm/día lluvia de media</span><br/>
-								
-								
-								<span>En julio, 25ºC con 0,01 mm/día de lluvia de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una nube y un sol" src="/static/images/weather.png"/>
+								<p>
+									
+									<span>En febrero, 7ºC con 0,02 mm/día lluvia de media</span><br/>
+									
+									
+									<span>En julio, 25ºC con 0,01 mm/día de lluvia de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
-							<p>
-								
-								<span>En febrero, la temperatura va de -4ºC a 18ºC de media</span><br/>
-								
-								
-								<span>En julio, la temperatura va de 13ºC a 38ºC de media</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un termómetro" src="/static/images/temperature.png"/>
+								<p>
+									
+									<span>En febrero, la temperatura va de -4ºC a 18ºC de media</span><br/>
+									
+									
+									<span>En julio, la temperatura va de 13ºC a 38ºC de media</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de una hucha" src="/static/images/savings.png"/>
-							<p>
-								<span>18.892 € de renta bruta media anual</span><br/>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de una hucha" src="/static/images/savings.png"/>
+								<p>
+									<span>18.892 € de renta bruta media anual</span><br/>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un coche" src="/static/images/car.png"/>
-							<p>
-								
-								<span>A 126 km. de la capital de provincia</span>
-								
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un coche" src="/static/images/car.png"/>
+								<p>
+									
+									<span>A 126 km. de la capital de provincia</span>
+									
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
-							<p>
-								
-								<span>496 ofertas de empleo en la provincia</span><br/>
-								<span>17,1 % de paro en la provincia<br/> (media nacional: 12.6 %)</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/jobs.png"/>
+								<p>
+									
+									<span>496 ofertas de empleo en la provincia</span><br/>
+									<span>17,1 % de paro en la provincia<br/> (media nacional: 12,6 %)</span>
+									
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un sol" src="/static/images/sun.png"/>
-							<p>
-								<span>127.3 horas de sol en febrero de media</span><br/>
-								<span>388.4 horas de sol en julio de media</span>
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un sol" src="/static/images/sun.png"/>
+								<p>
+									<span>127.3 horas de sol en febrero de media</span><br/>
+									<span>388.4 horas de sol en julio de media</span>
+								</p>
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="feature">
-						<div class="feature-icon">
-							<img alt="Icono de un maletín" src="/static/images/internet.png"/>
-							<p>
-								
-								<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
-								
-								
-								<span>Fibra óptica de hasta 100 MB en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
-								
-								
-								<span>Cobertura móvil 4G en el 100 % del territorio</span>
-								
-							</p>
+						
+						
+						<div class="feature">
+							<div class="feature-icon">
+								<img alt="Icono de un maletín" src="/static/images/internet.png"/>
+								<p>
+									
+									<span>Fibra óptica de hasta 30 MB en el 100 % del territorio</span><br/>
+									
+									
+									<span>Fibra óptica de hasta 100 MB en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 3G en el 100 % del territorio</span><br/>
+									
+									
+									<span>Cobertura móvil 4G en el 100 % del territorio</span>
+									
+								</p>
+							</div>
 						</div>
+						
 					</div>
-					
 				</div>
+				
 				<section class="photos">
 					<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 					  <ol class="carousel-indicators">
@@ -324,49 +393,116 @@
 					  </a>
 					</div>
 				</section>
+				
 			</div>
 		</article>
 	</main>
 	</div>
 	<script type="text/javascript">
-		var municipality = JSON.parse('{"codigo_ine": "13061", "data": {"municipio": "Pedro Mu\u00f1oz", "provincia": "Ciudad Real", "comunidad_autonoma": "Castilla-La Mancha", "municipio_nombre_humano": "Pedro Mu\u00f1oz", "num_centros_salud": 1, "num_centros_urgencias": 1, "num_hospitales": 0, "num_colegios": 8, "num_universidades": 0, "linea_costa_provincia": 3, "linea_montana_provincia": 2, "poblacion": 7325, "superficie": 101.6, "densidad_poblacion": 72.1, "lat": 39.399809, "lon": -2.946991, "feb_avg_min_temp": -4.51, "feb_avg_max_temp": 18.82, "feb_avg_temp": 7.2, "feb_avg_humidity": 72.8, "feb_avg_wind": 16.02, "feb_avg_min_rain": 0, "feb_avg_max_rain": 0.9, "feb_avg_rain": 0.02, "feb_avg_clouds": 26.72, "feb_avg_sunshine_hours": 127.3, "jul_avg_min_temp": 13.04, "jul_avg_max_temp": 38.14, "jul_avg_temp": 25.87, "jul_avg_humidity": 43.43, "jul_avg_wind": 13.07, "jul_avg_min_rain": 0, "jul_avg_max_rain": 12, "jul_avg_rain": 0.01, "jul_avg_clouds": 4.51, "jul_avg_sunshine_hours": 388.4, "kms_capital_provincia": 126.59, "altitud": 663, "renta_bruta_media": "18892", "precio_m2_venta": "548.85", "num_casas_venta": "139", "precio_m2_alquiler": "5.28", "num_casas_alquiler": 3, "precio_m2_venta_provincia": 936, "precio_medio_venta_provincia": 96893, "precio_m2_alquiler_provincia": 5, "precio_medio_alquiler_provincia": 461, "tasa_actividad_provincia": 55.64, "tasa_paro_provincia": 17.1, "tasa_empleo_provincia": 46.12, "num_empleos_provincia": 496, "cobertura_30": 100, "cobertura_100": 100, "cobertura_3g": 100, "cobertura_4g": 100, "sitios_comercio": 0, "sitios_turismo": 0, "sitios_alojamiento": 0, "sitios_ocio": 1, "sitios_natural": 0, "sitios_servicio": 3, "sitios_actividad": 0, "sitios_entretenimiento": 0, "sitios_catering": 0, "sitios_sport": 2, "sitios_edificio": 0, "sitios_acceso_limitado": 0, "sitios_artificial": 0, "sitios_acceso": 0, "sitios_sin_acceso": 0, "sitios_patrimonio": 0, "sitios_carretera": 0, "sitios_cuota": 0, "sitios_comodidad": 0, "text": "Pedro Mu\u00f1oz es un municipio y localidad espa\u00f1ola de la provincia de Ciudad Real, en la comunidad aut\u00f3noma de Castilla-La Mancha. Pertenece tambi\u00e9n a la asociaci\u00f3n para el desarrollo y promoci\u00f3n de la Mancha Norte Promancha y a la Mancomunidad de Servicios de Comsermancha. En la comarca el pueblo es conocido popularmente como Perrote. Algunas de estas casas est\u00e1n blasonadas.Tambi\u00e9n tiene un patrimonio natural y ecol\u00f3gico compuesto por un complejo palustre de tres lagunas, donde la laguna de la Vega o del Pueblo, es la m\u00e1s importante, ya que todos los a\u00f1os tiene agua. All\u00ed se pueden ver numerosas especies de aves migratorias a trav\u00e9s de dos miradores que hay instalados. Junto a la laguna se halla un centro de interpretaci\u00f3n.Adem\u00e1s cuenta con un importante patrimonio industrial de antiguas bodegas, alcoholeras y dos antiguas f\u00e1bricas de harinas, una de ellas de finales del siglo XIX en la orilla del r\u00edo Z\u00e1ncara.", "url": "https://es.wikipedia.org/wiki/Pedro_Mu%C3%B1oz_(Ciudad_Real)", "images": ["https://upload.wikimedia.org/wikipedia/commons/d/d8/00171749.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/11/Alcoholera_II.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c6/Alfonso_XI_de_Castilla_y_Le%C3%B3n.jpg", "https://upload.wikimedia.org/wikipedia/commons/f/fe/Atascaburras.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Ayuntamiento_de_Pedro_Mu%C3%B1oz_de_cerca.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/1a/Black-necked_Stilt.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6a/Bodega_San_Isidro.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9f/Camino_de_san_miguel_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/40/Casa_fernandez_cuellar.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e0/Casa_solariega_de_los_granero.JPG", "https://upload.wikimedia.org/wikipedia/commons/c/c4/Centro_cultural_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/d/dc/Centro_de_interpretacion_el_Humedal_de_Don_Quijote_cerca_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/3/37/Centro_de_salud_de_Pedro_Mu%C3%B1oz_%28Ciudad_Real%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e7/Deco_Cristi_y_Alucasman.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Ermita_de_ntra_se%C3%B1ora_de_los_%C3%A1ngeles_pm1.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0e/Ermita_virgen_buen_parto_de_frente_pm.JPG", "https://upload.wikimedia.org/wikipedia/commons/4/40/Escenas_de_la_Reconquista_por_las_Ordenes_Militares._Spanish_Reconquest_._Monasterio_de_Ucles.Cuenca_.Espa%C3%B1a..jpg", "https://upload.wikimedia.org/wikipedia/commons/3/3e/Estadio_municipal_Juan_de_Ramos_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/c/c9/Festival_de_Mayos_en_Pedro_Mu%C3%B1oz_1.JPG", "https://upload.wikimedia.org/wikipedia/commons/1/12/Gazpachos_Manchegos_Requena%27s_Style.JPG", "https://upload.wikimedia.org/wikipedia/commons/e/ef/Harinerafront.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/01/IES_Isabel_martinez_buendia_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b7/Isabella_of_Portugal_by_Titian.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9d/Laguna_de_la_vega_desde_un_mirador_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/8/87/Mallard_drake_flight.jpg", "https://upload.wikimedia.org/wikipedia/commons/9/9f/Maquinaria_cubeta_5.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Migas_ruleras.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/df/Museo_Juan_Mayordomo_front.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e6/Pabellon_municipal_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/b6/Parque_solar_fotovolaico_cerca_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/e/e5/Parroquia_de_San_Pedro_Ap%C3%B3stol_en_Pedro_Mu%C3%B1oz.JPG", "https://upload.wikimedia.org/wikipedia/commons/9/93/Pisto.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/bc/Plaza_de_toros_de_Pedro_Mu%C3%B1oz_entrada_sombra.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/2d/Puente_de_san_miguel_sobre_el_rio_zancara.JPG", "https://upload.wikimedia.org/wikipedia/commons/5/59/Puente_romano_de_san_miguel_II.JPG", "https://upload.wikimedia.org/wikipedia/commons/d/d9/Salicornia_ramosissima_fg01.jpg", "https://upload.wikimedia.org/wikipedia/commons/4/4a/Tamarix_africana.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/6c/Teatro_municipal_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/7/74/Vivero_de_empresas_pm.jpg", "https://upload.wikimedia.org/wikipedia/commons/b/be/Vi%C3%B1a_de_airen_por_la_carretera_de_criptana_pm.jpg"]}}');
+		var images = ['https://upload.wikimedia.org/wikipedia/commons/d/d8/00171749.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/11/Alcoholera_II.jpg', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Alfonso_XI_de_Castilla_y_Le%C3%B3n.jpg', 'https://upload.wikimedia.org/wikipedia/commons/f/fe/Atascaburras.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Ayuntamiento_de_Pedro_Mu%C3%B1oz_de_cerca.JPG', 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Black-necked_Stilt.jpg', 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Bodega_San_Isidro.jpg', 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Camino_de_san_miguel_pm.jpg', 'https://upload.wikimedia.org/wikipedia/commons/4/40/Casa_fernandez_cuellar.jpg', 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Casa_solariega_de_los_granero.JPG'];
 		$(document).ready(function(){
-			var mainHeight = $('#main').height() + 110;
-			var bodyWidth = $('body').width()
-			$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-			$('#bg', this).width(bodyWidth + 15);
-			$('#bg', this).height(mainHeight + 15);
-			$('#bg-layer', this).height(mainHeight);
-			
-		    $(window).resize(function() {
-			    var mainHeight = $('#main').height() + 110;
-				var bodyWidth = $('body').width()
-				$('#bg').css('background-image', 'url(' + municipality.data.images[0] + ')');
-				$('#bg', this).width(bodyWidth + 15);
-				$('#bg', this).height(mainHeight + 15);
-				$('#bg-layer', this).height(mainHeight);
-			});
-		});
-		for (let i in municipality["data"]["images"]) {
-			var indicator = "";
-			var photo = "";
-			if (i == 0) {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
-				photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Pedro Muñoz'></div>";
-			} else {
-				indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
-				photo = "<div class='carousel-item'><img class='d-block w-100' src='" + municipality["data"]["images"][i] + "' alt='Imagen de Wikipedia de Pedro Muñoz'></div>";
+
+			if($('body').width() < 1075) {
+			    $('#small-screens-holder-second-column').append($('#features-grid'));
+			    $('#small-screens-holder-second-column-to-hide').hide();
 			}
 
-			$('.photos ol.carousel-indicators').append(indicator);
-			$('.photos div.carousel-inner').append(photo);
-			console.log(municipality["data"]["images"][i]);
-		}
+			setTimeout(function() {
+  				var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var mainHeight = $('#main').height() + 100;
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (mainHeight + 15)});
+				$('#bg-layer').css({height: (mainHeight)});
+			});
+
+		    for (let i in images) {
+				var indicator = "";
+				var photo = "";
+				if (i == 0) {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + " class='active'></li>";
+					photo = "<div class='carousel-item active'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Pedro Muñoz'></div>";
+				} else {
+					indicator = "<li data-target='#carouselIndicators' data-slide-to=" + i + "></li>";
+					photo = "<div class='carousel-item'><img class='d-block w-100' src='" + images[i] + "' alt='Imagen de Wikipedia de Pedro Muñoz'></div>";
+				}
+
+				$('.photos ol.carousel-indicators').append(indicator);
+				$('.photos div.carousel-inner').append(photo);
+			}
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/streetview/metadata?location=39.399809,-2.946991&key=AIzaSyAOAZ8lNPSi7iZOaqPj-xwOfSWe72zsCCg",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] != "OK"){
+					$('#streetview').hide();
+				}
+			});
+
+			$('#like').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "13061";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/like",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions').delay(3000).fadeIn()
+			});
+
+			$('#dislike').click(function() {
+				var request = {};
+				request["user"] = $.cookie('user_id');
+				request["item"] = "13061";
+
+				$.ajax({
+					url: "http://127.0.0.1:5000/dislike",
+					method: "POST",
+					data: request
+				})
+				.then(function(result) {
+					
+				});
+
+				$('#thankyou').fadeIn().delay(3000).fadeOut();
+			});
+
+			$.ajax({
+				url: "http://127.0.0.1:5000/recomendar/13061",
+				method: "GET"
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok"){
+					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
+					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					$('#first-suggestion').html(name);
+					$('#first-suggestion').attr("href", url);
+				}
+			});
+		});
+		
 	</script>
 
 
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
+			
 			<a class="nav-link" href="#">Metodología</a>
 		</div>
 	</footer>
