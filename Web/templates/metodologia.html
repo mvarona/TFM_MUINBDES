@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/metodologia.css') }}">
+	{% if images|length == 0 %}
+	<div id="bg" style="background-image: url({{ url_for('static', filename='images/backgrounds') }}/{{ fallback_background_img }})"></div>
+	{% endif %}
+	<div id="bg-layer"></div>
+	<div class="container">
+		<main id="main">
+			<h1>{% block title %} Metodología {% endblock %}</h1>
+			<p class="error">El objetivo principal de este sitio Web es proporcionar a los usuarios una forma de descubrir municipios de la geografía española, basándose en un sistema automatizado que recomiende el municipio de España más cercano a las preferencias del usuario; bien a través de un cuestionario, o de calcular la similitud entre municipios.<br/><br/>Para ello, se han recogido de forma automatizada 78 variables para cada uno de los 8.131 municipios que hay en España. Categorizándolas por clases a ellas y a otros datos necesarios para tratarlas, son las siguientes:</p>
+			<div class="error">
+				<ul>
+					<li>Número de universidades por municipio. Fuente: <a target="_blank" href="https://www.educacion.gob.es/ruct/consultauniversidades?actual=universidades">Ministerio de Educación</a>.</li>
+					<li>Número de colegios o institutos por municipio. Fuente: <a target="_blank" href="https://www.educacion.gob.es/centros/buscar.do">Ministerio de Educación</a>.</li>
+					<li>Nomenclátor de Entidades Singulares del INE, con municipio de pertenecencia asociado. Fuente: <a target="_blank" href="https://www.ine.es/CDINEbase/consultar.do?mes=&operacion=Relaci%F3n+de+municipios+y+c%F3digos+por+provincias+y+comunidades+aut%F3nomas&id_oper=Ir">INE</a> y <a target="_blank" href="https://alarcos.esi.uclm.es/per/fruiz/pobesp/tem_list.htm#ent">Francisco Ruiz</a>.</li>
+					<li>Distancias a las capitales de provincias. Fuente: Cálculos por carretera de <a target="_blank" href="https://www.opentripplanner.org">OpenTripPlanner</a>, y en línea recta a través de la distancia geodésica de <a target="_blank" href="https://pypi.org/project/geopy/">GeoPy</a> cuando la primera no se encontró.</li>
+					<li>Centros de Atención Primaria, Centros Hospitalarios y Centros de Atención Urgente Extrahospitalaria. Fuente: <a target="_blank" href="https://www.sanidad.gob.es/ciudadanos/centrosCA.do">Ministerio de Sanidad.</a></li>
+					<li>Rentas brutas medias por municipio. Fuente: <a target="_blank" href="https://www.agenciatributaria.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpfmunicipios/2019/jrubikf74b3dca9af01b51cabd6d5603e0e16daecd1a97c.html">Agencia Tributaria</a> para todos los territorios excepto País Vasco y la Comunidad Foral de Navarra.</li>
+					<li>Rentas brutas medias por municipio de País Vasco. Fuente: <a target="_blank" href="https://www.eustat.eus/bankupx/pxweb/es/DB/-/PX_170120_cpibmun_pibmun03b.px/">Eustat</a>.</li>
+					<li>Rentas brutas medias por municipio de la Comunidad Foral de Navarra. Fuente: <a target="_blank" href="http://www.navarra.es/home_es/Gobierno+de+Navarra/Organigrama/Los+departamentos/Economia+y+Hacienda/Organigrama/Estructura+Organica/Hacienda/ESTADISTICAS+IRPF.htm">Hacienda Foral</a>.</li>
+					<li>Tasa de actividad, paro y empleo por provincia y sexo. Fuente: <a target="_blank" href="https://www.ine.es/jaxiT3/Tabla.htm?t=3996">INE</a>.</li>
+					<li>Precios y número de viviendas en venta, y precios y número de viviendas en alquiler por municipio. Fuente: <a target="_blank" href="https://www.idealista.com">idealista</a>, y <a target="_blank" href="https://www.fotocasa.es/es/">fotocasa</a>, usada en los casos en los que la primera falló.</li>
+					<li>Precios medios de viviendas en venta, y precios medios de viviendas en alquiler por provincia. Fuente: <a target="_blank" href="https://www.fotocasa.es/es/">fotocasa</a>.</li>
+					<li>Geoposicionamiento por municipio. Fuente: <a target="_blank" href="https://positionstack.com">PositionStack</a>.</li>
+					<li>Altitud por municipio. Fuente: <a target="_blank" href="https://open-elevation.com">OpenElevation</a>.</li>
+					<li>Datos climáticos por municipio. Fuente: <a target="_blank" href="https://openweathermap.org/api">OpenWeather</a>.</li>
+					<li>Cobertura de banda ancha por municipio. Fuente: <a target="_blank" href="https://avancedigital.mineco.gob.es/banda-ancha/cobertura/Paginas/informacion-cobertura.aspx">Ministerio de Asuntos Económicos y Transformación Digital.</a></li>
+					<li>Lugares más significativos por municipio. Fuente: <a target="_blank" href="https://www.geoapify.com">GeoApify</a>.</li>
+					<li>Número de ofertas de empleo disponibles por provincia. Fuente: <a target="_blank" href="https://www.infojobs.net">Infojobs</a>.</li>
+					<li>Extracto de información del municipio e imágenes del municipio. Fuente: <a target="_blank" href="https://www.wikipedia.org">Wikipedia</a>.</li>
+				</ul>
+			</div>
+			<p class="error">
+				Todos los datos han sido recogidos en diciembre de 2022, y hacen referencia a los datos más recientes disponibles a esa fecha, siendo las fechas más distintas a la fecha de recogida las de los datos:
+			</p>
+				
+			<div class="error">
+				<ul>
+					<li>Rentas brutas medias por municipio, pertenecientes al año 2019.</li>
+					<li>Cobertura de banda ancha por municipio, perteneciente al año 2020.</li>
+				</ul>
+			</div>
+			<p class="error">
+				De forma general, se ha considerado que un municipio está próximo a la costa si su provincia es costera, variando los intervalos disponibles en el cuestionario según la distancia por carretera aproximada a la costa más española más cercana. De forma similar, se ha considerado que un municipio está próximo a la montaña si en su provincia se encuentran los principales sistemas montañosos españoles: Cordilleras Béticas, Cordillera Cantábrica, Cordillera Costero-Catalana, Islas Canarias, Macizo Galaico, Meseta Central, Pirineos, Sistema Central y Sistema Ibérico, usando el siguiente intervalo del cuestionario para municipios en cuya provincia se encuentran otros sistemas menores, como los de las Islas Baleares, Sierra Morena, los Montes de Toledo o los Montes de León, y usando los siguientes intervalos disponibles según la distancia por carretera aproximada al sistema montañoso más cercano.
+				<br/><br/>
+				Las temperaturas y precipitaciones recogidas se corresponden con los promedios de los datos históricos calculados para los valores máximos, mínimos y medios durante los meses de febrero y julio en cada municipio.
+				<br/><br/>
+				La cobertura disponible en un municipio se calcula como la media de las coberturas disponibles en todos los territorios (entidades singulares) asociados a él, para los que el Ministerio de Asuntos Económicos y Transición Digital ha facilitado datos.
+				<br/><br/>
+				La presencia o ausencia de "naturaleza y sitios para desconectar" en el cuestionario se evalúa por la presencia de lugares de tipo "natural", "de ocio", o "de actividades" en el top 3 de los lugares encontrados en ese municipio. De forma similar, la presencia o ausencia de "comercios y servicios" en el cuestionario se evalúa por la presencia de lugares de tipo "comercio", "servicio" u "hostelería" en el top 3 de los lugares encontrados en ese municipio.
+				<br/><br/>En todos los rangos del cuestionario se incluye el/los extremo/s del intervalo correspondiente, por ejemplo: "Municipios de menos de 10.000 habitantes", incluye a los municipios que tienen 10.000 habitantes, de forma análoga con el ejemplo acotado inferiormente ("Municipios de más de 10.000 habitantes").
+				<br/><br/>La denominación "colegios" incluye indistintamente a "colegios e institutos" (Centros de educación primaria y secundaria), dado que los datos del Ministerio de Educación no realizan esta distinción.
+				<br/><br/>La extracción de datos se ha realizado de forma automatizada, no siendo supervisado ni comprobado con otras fuentes su resultado individualmente para cada municipio o entidad singular, debido al tamaño masivo del conjunto de datos.
+				<br/><br/>Puede solicitarse cualquier dato concreto que se desee consultar a <a target="_blank" href="mailto:hi@mariovarona.dev?subject=Solicitud%20de%20Datos%20-%20DondeTeEsperan">hi@mariovarona.dev</a>.
+			</p>
+			<p class="error">Este sitio Web constituye los resultados tangibles del Trabajo de Fin de Máster de <a target="_blank" href="https://www.linkedin.com/in/mariovarona/">Mario Varona Bueno</a> para el <a target="_blank" href="https://www.inf.uva.es/master-online/">Máster Interuniversitario en Inteligencia de Negocio y Big Data en Entornos Seguros de las Universidades de Burgos, León y Valladolid</a>. Debido a las limitaciones de recursos, aunque ha sido intención del autor reducirlos al mínimo posible, pueden existir imprecisiones o errores en la información mostrada. El autor desea mejorar este proyecto de forma continua, por lo que si se detectan, se agradece su comunicación a la dirección <a target="_blank" href="mailto:hi@mariovarona.dev?subject=Correcion%20o%20Feedback%20-%20DondeTeEsperan">hi@mariovarona.dev</a> para que puedan ser subsanados. Cualquier otro <i>feedback</i> también es bienvenido.</p>
+		</main>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setTimeout(function() {
+  				var screenHeight = $('main').height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight + 120)});
+				$('#bg-layer').css({height: (screenHeight + 140)});
+			}, 10);
+						
+		    $(window).resize(function() {
+			    var screenHeight = $('main').height();
+				var bodyWidth = $('body').width();
+				$('#bg').css({width: (bodyWidth + 15)});
+				$('#bg').css({height: (screenHeight + 120)});
+				$('#bg-layer').css({height: (screenHeight + 140)});
+			});
+		});
+	</script>
+{% endblock %}

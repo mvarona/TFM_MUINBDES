@@ -1,0 +1,148 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+nav.navbar {
+	position: relative;
+	z-index: 4;
+}
+
+#bg {
+	filter: blur(8px);
+  	-webkit-filter: blur(8px);
+  	width: 100%;
+  	height: 100%;
+  	position: absolute;
+  	z-index: 1;
+  	background-size: cover;
+  	margin: -15px;
+  	background-repeat: no-repeat;
+}
+
+#bg-layer {
+	width: 100%;
+	background-color: rgba(255,255,255,.3);
+	display: block;
+	position: absolute;
+	z-index: 2;
+}
+
+div.container {
+	position: relative;
+	z-index: 3;
+}
+
+ul.navbar-nav {
+	display: none!important;
+}
+
+.main-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 75%;
+  margin-top: 8%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p.error, div.error {
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.7);
+	font-size: 1.2em;
+	margin-top: 20px;
+	font-weight: 300;
+}
+
+div.error {
+	margin-top: -16px;
+	padding-top: 0;
+}
+
+.column {
+  flex: 25%;
+  margin-right: 10%;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+}
+
+.column:last-child {
+	margin-right: 0;
+}
+
+.button {
+	border: solid 1px #ccc;
+	padding: 10%;
+	display: flex;
+	justify-content: center;
+	border-radius: 25px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 15px;
+	background-color: white;
+}
+
+.button img {
+	width: 70%;
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.column .span-wrapper {
+	display: flex;
+}
+
+.column span {
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 300;
+	color: black;
+	background-color: rgba(255,255,255,.5);
+}
+
+.column:hover, .column:focus, .column:active {
+	cursor: pointer;
+	margin-top: -10px;
+}
+
+.column a {
+	color: black;
+}
+
+.column a:hover {
+	text-decoration: none;
+}
+
+.column a:focus, .column a:active {
+	text-decoration: underline;
+}
+
+footer {
+	position: relative;
+}
+
+@media only screen and (max-width: 960px) {
+	h1, h2, h3 {
+		font-size: 1.5em!important;
+	}
+	body, html {
+		overflow: auto;
+	}
+	footer {
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.column {
+		flex: 100%;
+		margin-bottom: 15px;
+	}
+}

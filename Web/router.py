@@ -14,6 +14,7 @@ import os
 app = Flask(__name__)
 
 app.domain = 'http://127.0.0.1:5000'
+app.mode = "Debug"
 
 @app.route('/')
 @app.route("/inicio")
@@ -38,8 +39,7 @@ def load_random_municipality():
 		province = sanitize_names.make_url_name(province)
 		municipality = sanitize_names.make_url_name(municipality)
 		return redirect(app.domain + '/' + province + '/' + municipality, code=302)
-	except Exception as e:
-		print(e)
+	except:
 		abort(500)
 
 @app.route('/municipio-parecido')
@@ -82,7 +82,7 @@ def recommend(nsi_code):
 		result["data"]["provincia_nombre_humano"] = province_human_name
 		result["data"]["url"] = "/" + province + "/" + municipality
 		return result
-	except Exception as e:
+	except:
 		abort(500)
 
 @app.route('/municipio-personalizado')
@@ -135,28 +135,42 @@ def create_user_id():
 	try:
 		new_id = ids_generator.create_user_id()
 		return new_id
-	except Exception as e:
+	except:
 		abort(500)
 
 @app.route('/like', methods=['POST'])
 def like():
 	try:
 		return ratings_manager.like(request.form)
-	except Exception as e:
-		print(e)
+	except:
 		abort(500)
 
 @app.route('/dislike', methods=['POST'])
 def dislike():
 	try:
 		return ratings_manager.dislike(request.form)
-	except Exception as e:
-		print(e)
+	except:
+		abort(500)
+
+@app.route('/metodologia')
+def methodology():
+	try:
+		fallback_background = random_background.get_random_background()
+		return render_template(
+			'metodologia.html',
+			domain = app.domain,
+			images = [],
+			fallback_background_name = fallback_background[0],
+			fallback_background_img = fallback_background[1],
+			fallback_background_user = fallback_background[2],
+			fallback_background_attr = fallback_background[3]
+		)
+	except:
 		abort(500)
 
 @app.route('/generate-municipalities-pages')
 def generate_municipalities_pages():
-	if app.env != "development":
+	if app.mode != "Debug":
 		abort(404)
 	else:
 		with open("database.json", 'r') as f:
@@ -259,7 +273,7 @@ def generate_municipalities_pages():
 @app.route('/test-municipality-page')
 def test_municipality():
 
-	if app.env != "development":
+	if app.mode != "Debug":
 		abort(404)
 	else:
 		# Uncomment to test the template:
@@ -363,10 +377,7 @@ def page_not_found(e):
 		fallback_background_attr = fallback_background[3]), 404
 
 if __name__ == "__main__":
-	debug = True
-	if debug:
+	if app.mode == "Debug":
 		app.run(debug=True)
-		app.env = "development"
 	else:
 		app.run(debug=False)
-		app.env = "production"
