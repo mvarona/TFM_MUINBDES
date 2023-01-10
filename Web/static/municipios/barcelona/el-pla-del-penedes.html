@@ -23,7 +23,7 @@
 		$(document).ready(function() {
 	     	if (!(!!$.cookie('user_id'))) {
 				$.ajax({
-					url: "http://127.0.0.1:5000/generate-user-id",
+					url: "https://www.dondeteesperan.es/generate-user-id",
 					method: "GET"
 				})
 				.then(function(result) {
@@ -65,16 +65,16 @@
 				
 				<li class="nav-item">
 				
-						<a class="nav-link" href="http://127.0.0.1:5000/municipio-personalizado">Lugar solo para mí</a>
+						<a class="nav-link" href="https://www.dondeteesperan.es/municipio-personalizado">Lugar solo para mí</a>
 				</li>
 				
 				
 				<li class="nav-item">
 				
-					<a class="nav-link" href="http://127.0.0.1:5000/municipio-parecido">Lugar parecido a otro</a>
+					<a class="nav-link" href="https://www.dondeteesperan.es/municipio-parecido">Lugar parecido a otro</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="http://127.0.0.1:5000/municipio-aleatorio">Lugar sorpresa</a>
+					<a class="nav-link" href="https://www.dondeteesperan.es/municipio-aleatorio">Lugar sorpresa</a>
 				</li>
 			</ul>
 		</div>
@@ -424,7 +424,7 @@
 				request["item"] = "08164";
 
 				$.ajax({
-					url: "http://127.0.0.1:5000/like",
+					url: "https://www.dondeteesperan.es/like",
 					method: "POST",
 					data: request
 				})
@@ -442,7 +442,7 @@
 				request["item"] = "08164";
 
 				$.ajax({
-					url: "http://127.0.0.1:5000/dislike",
+					url: "https://www.dondeteesperan.es/dislike",
 					method: "POST",
 					data: request
 				})
@@ -454,13 +454,13 @@
 			});
 
 			$.ajax({
-				url: "http://127.0.0.1:5000/recomendar/08164",
+				url: "https://www.dondeteesperan.es/recomendar/08164",
 				method: "GET"
 			})
 			.then(function(result) {
 				if (result["status"] == "Ok"){
 					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
-					var url = "http://127.0.0.1:5000" + result["data"]["url"];
+					var url = "https://www.dondeteesperan.es" + result["data"]["url"];
 					$('#first-suggestion').html(name);
 					$('#first-suggestion').attr("href", url);
 				}
@@ -473,7 +473,7 @@
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
 			
-			<a class="nav-link" href="#">Metodología</a>
+			<a class="nav-link" href="https://www.dondeteesperan.es/metodologia">Metodología</a>
 		</div>
 	</footer>
   </body>
