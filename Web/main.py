@@ -6,18 +6,18 @@ import get_municipality
 import make_decimal_numbers
 import recommender
 import survey
-import ids_generator
 import ratings_manager
 import json
 import os
+import requests
 
 app = Flask(__name__)
 
-# app.domain = 'http://localhost:5000'
-# app.mode = "Debug"
+app.domain = 'http://localhost:5000'
+app.mode = "Debug"
 
-app.domain = 'https://www.dondeteesperan.es'
-app.mode = "Production"
+#app.domain = 'https://www.dondeteesperan.es'
+#app.mode = "Production"
 
 @app.route('/')
 @app.route("/inicio")
@@ -136,8 +136,10 @@ def municipality_survey():
 @app.route('/generate-user-id')
 def create_user_id():
 	try:
-		new_id = ids_generator.create_user_id()
-		return new_id
+		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/generate-user-id"
+		params = {"auth_token": "8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig"}
+		new_id = requests.post(url, data=params)
+		return new_id.text
 	except:
 		abort(500)
 
