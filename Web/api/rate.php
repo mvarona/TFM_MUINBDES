@@ -4,8 +4,8 @@
 		
 		$lineToSearch = $_POST['item'] . "," . $_POST['user'];
 		$newLine = $_POST['item'] . "," . $_POST['user'] . "," . $_POST['rating'] . "\n";
-		$reading = fopen('ratings.csv', 'r');
-		$writing = fopen('ratings.csv.tmp', 'w');
+		$reading = fopen('storage/ratings.csv', 'r');
+		$writing = fopen('storage/ratings.csv.tmp', 'w');
 		$replaced = false;
 
 		while (!feof($reading)) {
@@ -18,11 +18,11 @@
 		}
 		
 		if ($replaced) {
-			rename('ratings.csv.tmp', 'ratings.csv');
+			rename('storage/ratings.csv.tmp', 'storage/ratings.csv');
 		} else {
 			fputs($writing, $newLine);
-			rename('ratings.csv.tmp', 'ratings.csv');
-			unlink('ratings.csv.tmp');
+			rename('storage/ratings.csv.tmp', 'storage/ratings.csv');
+			unlink('storage/ratings.csv.tmp');
 		}
 
 		fclose($reading);

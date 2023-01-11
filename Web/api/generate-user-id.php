@@ -18,7 +18,7 @@
 	}
 
 	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == '8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig')){
-		$users = fopen("users.csv","a+");
+		$users = fopen("storage/users.csv","a+");
 		$ids = array();
 		$i = 0;
 		while ($id = fgetcsv($users)[0]) {
