@@ -95,6 +95,101 @@ section.map {
 	margin-top: 20px;
 }
 
+section.agenda {
+	background-color: rgba(255,255,255,.5);
+	padding: 2.5%;
+	margin-top: 20px;
+}
+
+section.agenda span.num-events {
+	background-color: #f44336;
+	border-radius: 50%;
+	padding: 5px;
+	margin: 5px;
+	margin-top: -5px;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	color: white;
+	font-size: .65rem;
+	vertical-align: super;
+}
+
+section.agenda div.header {
+	text-align: center;
+	width: 100%;
+}
+
+section.agenda span.section-title {
+	display: inline-block;
+	font-size: 1.2rem;
+}
+
+section.agenda div.events {
+	margin-top: 10px;
+	padding: 2px 8px;
+	height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+section.agenda div.event div.event-header {
+	width: 100%;
+}
+
+section.agenda div.event .title {
+	width: 70%;
+	display: inline;
+	text-overflow: ellipsis;
+	font-size: 1.1rem;
+	text-transform: capitalize;
+}
+
+section.agenda div.event .category {
+	width: 20%;
+	float: right;
+	text-align: right;
+	text-overflow: ellipsis;
+	padding-right: 5px;
+	display:inline-block;
+	padding-top: 2px;
+	font-size: .8rem;
+}
+
+section.agenda div.event .date {
+	text-overflow: ellipsis;
+	display: block;
+	width: 100%;
+	text-align:center;
+	margin-top: 7px;
+}
+
+section.agenda div.event .place {
+	text-overflow: ellipsis;
+	display: block;
+	width: 100%;
+	text-align:center;
+}
+
+section.agenda div.event a.place-link {
+	color: rgb(33,37,41);
+}
+
+section.agenda div.event p.description {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical;
+	margin-top: 7px;
+	text-align: justify;
+	text-overflow: ellipsis;
+}
+
+section.agenda div.event a.info-link {
+	color: rgb(33,37,41);
+}
+
 div#static-map {
 	width: 100%;
 	height: 350px;
