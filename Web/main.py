@@ -298,7 +298,6 @@ def test_municipality():
 	if app.mode != "Debug":
 		abort(404)
 	else:
-		# Uncomment to test the template:
 		try:
 			response = get_municipality.get_municipality_info("37362")
 			fallback_background = random_background.get_random_background()
@@ -398,6 +397,29 @@ def page_not_found(e):
 		fallback_background_img = fallback_background[1],
 		fallback_background_user = fallback_background[2],
 		fallback_background_attr = fallback_background[3]), 404
+
+@app.errorhandler(500)
+def page_not_found(e):
+	fallback_background = random_background.get_random_background()
+	return render_template('500.html',
+		fallback_background_name = fallback_background[0],
+		fallback_background_img = fallback_background[1],
+		fallback_background_user = fallback_background[2],
+		fallback_background_attr = fallback_background[3]), 500
+
+@app.route('/test-404')
+def test_404():
+	if app.mode != "Debug":
+		abort(404)
+	else:
+		abort(404)
+
+@app.route('/test-500')
+def test_500():
+	if app.mode != "Debug":
+		abort(404)
+	else:
+		abort(500)
 
 if __name__ == "__main__":
 	if app.mode == "Debug":
