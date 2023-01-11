@@ -448,6 +448,22 @@
 				}
 			});
 
+			if (images.length == 0){
+				{% if fallback_background_img|length == 0 %}
+
+				var fallback_background_name = "España";
+				var fallback_background_img = "{{url_for('static', filename='images/backgrounds') }}/spain_4.jpg";
+				var fallback_background_user = "suzannekra";
+				var fallback_background_attr = "https://www.freeimages.com/es/photo/river-in-spain-1385181";
+
+				$('div#bg').css('background-image', "url(" + fallback_background_img + ")");
+				$('span.fallback_name').html(fallback_background_name);
+				$('span.fallback_user').html(fallback_background_user);
+				$('a.fallback_attr').attr("href", fallback_background_attr);
+
+				{% endif %}
+			}
+
 			$('#like').click(function() {
 				var request = {};
 				request["user"] = $.cookie('user_id');

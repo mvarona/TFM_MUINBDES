@@ -88,7 +88,7 @@
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
 			{% if images|length == 0 %}
-			<a class="nav-link fallback_background_attr" href="{{ fallback_background_attr }}" target="_blank">Fondo: {{ fallback_background_name }}, de @{{ fallback_background_user }}</a>
+			<a class="nav-link fallback_background_attr fallback_attr" href="{{ fallback_background_attr }}" target="_blank">Fondo: <span class='fallback_name'>{{ fallback_background_name }}</span>, de @<span class='fallback_user'>{{ fallback_background_user }}</span></a>
 			{% endif %}
 			<a class="nav-link" href="{{ domain }}/metodologia">Metodología</a>
 		</div>

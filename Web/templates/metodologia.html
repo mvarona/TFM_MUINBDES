@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+	<input type="hidden" value="{% block description %}Descubre los mejores sitios de España según tus gustos, los que más se parecen a otros lugares que te encantan, o déjate sorprender. Descubre dónde te esperan.{% endblock %}" />
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/metodologia.css') }}">
 	{% if images|length == 0 %}
 	<div id="bg" style="background-image: url({{ url_for('static', filename='images/backgrounds') }}/{{ fallback_background_img }})"></div>

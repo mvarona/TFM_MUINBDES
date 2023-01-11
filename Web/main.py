@@ -38,10 +38,10 @@ def load_random_municipality():
 	try:
 		response = json.loads(random_municipality.get_random_municipality("database.json", "wikipedia.json", True))
 		province = response["data"]["provincia"]
-		municipality = response["data"]["municipio"]
+		municipality_human_name = response["data"]["municipio_nombre_humano"]
 		province = sanitize_names.make_url_name(province)
-		municipality = sanitize_names.make_url_name(municipality)
-		return redirect(app.domain + '/' + province + '/' + municipality, code=302)
+		municipality_human_name = sanitize_names.make_url_name(municipality_human_name)
+		return redirect(app.domain + '/' + province + '/' + municipality_human_name, code=302)
 	except:
 		abort(500)
 
@@ -74,7 +74,7 @@ def recommend(nsi_code):
 		municipality = response["data"]["municipio"]
 		municipality_human_name = response["data"]["municipio_nombre_humano"]
 		province = sanitize_names.make_url_name(province)
-		municipality = sanitize_names.make_url_name(municipality)
+		municipality = sanitize_names.make_url_name(municipality_human_name)
 		result = {}
 		result["status"] = "Ok"
 		result["data"] = {}
@@ -119,15 +119,15 @@ def municipality_survey():
 
 		else:
 			province = response["provincia"]
-			municipality = response["municipio"]
+			municipality_human_name = response["municipio"]
 			province = sanitize_names.make_url_name(province)
-			municipality = sanitize_names.make_url_name(municipality)
+			municipality_human_name = sanitize_names.make_url_name(municipality_human_name)
 			result["status"] = "Ok"
 			result["data"] = {}
 			result["data"]["codigo_ine"] = recommended_nsi_code
 			result["data"]["provincia_path"] = province
-			result["data"]["municipio_path"] = municipality
-			result["data"]["url"] = "/" + province + "/" + municipality
+			result["data"]["municipio_path"] = municipality_human_name
+			result["data"]["url"] = "/" + province + "/" + municipality_human_name
 
 		return result
 	except:
