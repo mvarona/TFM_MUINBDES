@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+	<input type="hidden" value="{% block description %}Descubre los mejores sitios de España según tus gustos, los que más se parecen a otros lugares que te encantan, o déjate sorprender. Descubre dónde te esperan.{% endblock %}" />
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/survey.css') }}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -241,8 +242,8 @@
 						    <option value="0">Me es indiferente</option>
 							<option value="1">Cobertura móvil 3G en más de la mitad del territorio</option>
 							<option value="2">Cobertura móvil 4G en más de la mitad del territorio</option>
-							<option value="3">Fibra óptica de 30 MB en más la mitad del territorio</option>
-							<option value="4">Fibra óptica de 100 MB más de la mitad del territorio</option>
+							<option value="3">Cobertura de fibra óptica de 30 MB en más la mitad del territorio</option>
+							<option value="4">Cobertura de fibra óptica de 100 MB más de la mitad del territorio</option>
 							<option value="5">Cobertura móvil 4G y fibra óptica de 100 MB más de la mitad del territorio</option>
 						</select>
 						<img alt="Icono de unas ondas de cobertura" src="{{ url_for('static', filename='images/internet.png') }}" />
@@ -275,7 +276,7 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#carousel").carousel({ interval: 0 });
+			$("#carousel").carousel({ interval: false });
 			
 			setTimeout(function() {
   				var screenHeight = $(window).height();

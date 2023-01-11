@@ -278,6 +278,7 @@ def generate_municipalities_pages():
 				sitios_cuota = response["data"]["sitios_cuota"],
 				sitios_comodidad = response["data"]["sitios_comodidad"],
 				text = response["data"]["text"],
+				text_description = response["data"]["text"].replace("<br/>", " ").replace("\n", " ").replace("  ", " "),
 				url = response["data"]["url"],
 				images = response["data"]["images"]
 			)
@@ -380,6 +381,7 @@ def test_municipality():
 			sitios_cuota = response["data"]["sitios_cuota"],
 			sitios_comodidad = response["data"]["sitios_comodidad"],
 			text = response["data"]["text"],
+			text_description = response["data"]["text"].replace("<br/>", " ").replace("\n", " ").replace("  ", " "),
 			url = response["data"]["url"],
 			images = response["data"]["images"],
 			fallback_background_name = fallback_background[0],

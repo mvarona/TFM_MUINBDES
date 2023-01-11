@@ -10,7 +10,8 @@
 	{% endif %}
 	<div id="bg-layer"></div>
 	<div class="container">
-	
+	<input type="hidden" value="{% block title %}{{ municipio_nombre_humano }}, {{ provincia }} - DondeTeEsperan{% endblock %}" />
+	<input type="hidden" value="{% block description %}{{ text_description }}{% endblock %}" />
 	<main id="main">
 		<h1>¡Te esperan en {{ municipio_nombre_humano }}!</h1>
 		<h3 class="province">{{ provincia }}</h3>
@@ -358,10 +359,10 @@
 								<img alt="Icono de un maletín" src="{{ url_for('static', filename= 'images/internet.png') }}"/>
 								<p>
 									{% if cobertura_30 != "-" %}
-									<span>Fibra óptica de hasta 30 MB en el {{ cobertura_30 }} % del territorio</span><br/>
+									<span>Cobertura de fibra óptica de 30 MB en el {{ cobertura_30 }} % del territorio</span><br/>
 									{% endif %}
 									{% if cobertura_100 != "-" %}
-									<span>Fibra óptica de hasta 100 MB en el {{ cobertura_100 }} % del territorio</span><br/>
+									<span>Cobertura de fibra óptica de 100 MB en el {{ cobertura_100 }} % del territorio</span><br/>
 									{% endif %}
 									{% if cobertura_3g != "-" %}
 									<span>Cobertura móvil 3G en el {{ cobertura_3g }} % del territorio</span><br/>

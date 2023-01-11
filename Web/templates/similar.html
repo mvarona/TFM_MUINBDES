@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+	<input type="hidden" value="{% block description %}Descubre los mejores sitios de España según tus gustos, los que más se parecen a otros lugares que te encantan, o déjate sorprender. Descubre dónde te esperan.{% endblock %}" />
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/similar.css') }}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>

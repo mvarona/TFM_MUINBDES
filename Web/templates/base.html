@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Descubre los mejores sitios de España según tus gustos, los que más se parecen a otros lugares que te encantan, o déjate sorprender. Descubre dónde te esperan.">
+	<meta name="description" content="{% block description %} {% endblock %}">	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
 	<title>{% block title %} {% endblock %}</title>
@@ -88,7 +88,7 @@
 	<footer class="navbar-light bg-light">
 		<div class="navbar-nav">
 			{% if images|length == 0 %}
-			<a class="nav-link fallback_background_attr" href="{{ fallback_background_attr }}" target="_blank">{{ fallback_background_name }}, de @{{ fallback_background_user }}</a>
+			<a class="nav-link fallback_background_attr" href="{{ fallback_background_attr }}" target="_blank">Fondo: {{ fallback_background_name }}, de @{{ fallback_background_user }}</a>
 			{% endif %}
 			<a class="nav-link" href="{{ domain }}/metodologia">Metodología</a>
 		</div>
