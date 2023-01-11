@@ -146,14 +146,30 @@ def create_user_id():
 @app.route('/like', methods=['POST'])
 def like():
 	try:
-		return ratings_manager.like(request.form)
+		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/rate"
+		params = {
+			"auth_token": "8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig",
+			"item": request.form["item"],
+			"user": request.form["user"],
+			"rating": 1
+		}
+		response = requests.post(url, data=params)
+		return response.text
 	except:
 		abort(500)
 
 @app.route('/dislike', methods=['POST'])
 def dislike():
 	try:
-		return ratings_manager.dislike(request.form)
+		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/rate"
+		params = {
+			"auth_token": "8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig",
+			"item": request.form["item"],
+			"user": request.form["user"],
+			"rating": 0
+		}
+		response = requests.post(url, data=params)
+		return response.text
 	except:
 		abort(500)
 
