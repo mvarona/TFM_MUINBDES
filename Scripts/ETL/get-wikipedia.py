@@ -8,8 +8,8 @@ import wikipedia
 
 def get_wikipedia(df):
 	municipality = df['municipio_nombre_humano']
-	province = df['provincia']
-	terms = municipality + ", " + province
+	province = df['provincia_wikipedia']
+	terms = "Municipio " + municipality + ", " + province
 	text = ""
 	url = ""
 	images = ""
@@ -28,7 +28,7 @@ def get_wikipedia(df):
 			if "flag" not in image and "coat" not in image and "bandera" not in image and "escudo" not in image and \
 				"Flag" not in image and "Coat" not in image and "Bandera" not in image and "Escudo" not in image and \
 				"logo" not in image and "icon" not in image and "Logo" not in image and "Icon" not in image and \
-				"svg" not in image and "Svg" not in image and "SVG" not in image:
+				"svg" not in image and "Svg" not in image and "SVG" not in image and "municipalities" not in image and "mapa" not in image and "map" not in image and "Municipalities" not in image and "Mapa" not in image and "Map" not in image:
 				images.append(image)
 
 		images = images[:10]
@@ -49,12 +49,28 @@ def get_images(row):
 
 def sanitize_province(row):
 
-	# Para el futuro, hacer lo mismo para Gipuzkoa y Bizkaia!!!:
-
 	if row == "Islas Baleares":
 		return "Illes Balears"
+	elif row == "Gipuzkoa":
+		return "Guipúzcoa"
+	elif row == "Bizkaia":
+		return "Vizcaya"
+	elif row == "Lleida":
+		return "Lerida"
+	elif row == "Girona":
+		return "Gerona"
 	else:
 		return row
+
+def complete_nsi_code(row):
+	code = row
+	if code < 1000:
+		code = "00" + str(row)
+
+	if code < 10000:
+		code = "0" + str(row)
+
+	return code
 
 def main(argv):
 	if (len(sys.argv) < 2):
@@ -64,18 +80,17 @@ def main(argv):
 	new_filename = os.path.splitext(filename)[0] + "_wikipedia" + ".json"
 	df = pd.read_csv(filename)
 
+	df['provincia'] = df['provincia']
+	df['provincia_wikipedia'] = df['provincia'].apply(sanitize_province)
 	df['text_url_images'] = df.apply(get_wikipedia, axis=1)
 	df['text'] = df['text_url_images'].apply(get_text)
 	df['url'] = df['text_url_images'].apply(get_url)
 	df['images'] = df['text_url_images'].apply(get_images)
 
-	df['provincia'] = df['provincia'].apply(sanitize_province)
-
 	df = df.drop('text_url_images', axis=1)
+	df['codigo_ine'] = df['codigo_ine'].apply(complete_nsi_code)
 	df = df.set_index("codigo_ine")
 	out = df.to_json(orient = 'index')
-
-	# Para el futuro, hacer que no se pierdan los leading zeros de código ine antes de guardar el JSON!!!:
 
 	with open(new_filename, 'w') as f:
 		f.write(out)
