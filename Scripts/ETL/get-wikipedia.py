@@ -59,6 +59,8 @@ def sanitize_province(row):
 		return "Lerida"
 	elif row == "Girona":
 		return "Gerona"
+	elif row == "Ourense":
+		return "Orense"
 	else:
 		return row
 
