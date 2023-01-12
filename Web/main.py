@@ -10,14 +10,20 @@ import ratings_manager
 import json
 import os
 import requests
+import sys
 
 app = Flask(__name__)
 
-app.domain = 'http://localhost:5000'
-app.mode = "Debug"
+app.domain = 'https://www.dondeteesperan.es'
+app.mode = "Production"
 
-#app.domain = 'https://www.dondeteesperan.es'
-#app.mode = "Production"
+if len(sys.argv) > 1 and sys.argv[1] == "mode=debug":
+	app.domain = 'http://localhost:5000'
+	app.mode = "Debug"
+
+if len(sys.argv) > 1 and sys.argv[1] == "mode=generate_pages":
+	app.domain = 'https://www.dondeteesperan.es'
+	app.mode = "Debug"
 
 @app.route('/')
 @app.route("/inicio")
@@ -191,7 +197,7 @@ def methodology():
 
 @app.route('/generate-municipalities-pages')
 def generate_municipalities_pages():
-	if app.mode != "Debug":
+	if app.mode != "Debug" or "dondeteesperan.es" not in app.domain:
 		abort(404)
 	else:
 		with open("database.json", 'r') as f:
