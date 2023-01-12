@@ -48,7 +48,7 @@ ul.navbar-nav {
   margin-right: auto;
 }
 
-p.error, div.error {
+p.highlight, div.highlight {
 	padding: 20px;
 	background-color: rgba(255, 255, 255, 0.7);
 	font-size: 1.2em;
@@ -56,7 +56,7 @@ p.error, div.error {
 	font-weight: 300;
 }
 
-div.error {
+div.highlight {
 	margin-top: -16px;
 	padding-top: 0;
 }
