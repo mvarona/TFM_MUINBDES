@@ -479,6 +479,10 @@
 				request["user"] = $.cookie('user_id');
 				request["item"] = "{{ codigo_ine }}";
 
+				if (request["user"] == undefined) {
+					request["user"] = "anonymous";
+				}
+
 				$.ajax({
 					url: "{{ domain }}/like",
 					method: "POST",
@@ -496,6 +500,10 @@
 				var request = {};
 				request["user"] = $.cookie('user_id');
 				request["item"] = "{{ codigo_ine }}";
+
+				if (request["user"] == undefined) {
+					request["user"] = "anonymous";
+				}
 
 				$.ajax({
 					url: "{{ domain }}/dislike",

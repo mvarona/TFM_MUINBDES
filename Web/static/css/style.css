@@ -2,6 +2,17 @@ body {
     margin-bottom:50px;
 }
 
+.termsfeed-com---nb-simple {
+    width: 100%!important;
+    max-width: 100%!important;
+    position: fixed!important;
+    margin-bottom: 70px!important;
+}
+
+.termsfeed-com---nb .cc-nb-main-container {
+    padding: 1rem!important;
+}
+
 div.container {
     height: 100%;
     width: 100%;

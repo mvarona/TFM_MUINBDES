@@ -195,6 +195,30 @@ def methodology():
 	except:
 		abort(500)
 
+@app.route('/robots.txt')
+def robots_txt():
+	return app.send_static_file('robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap_xml():
+	return app.send_static_file('sitemap.xml')
+
+@app.route('/privacidad')
+def privacy():
+	try:
+		fallback_background = random_background.get_random_background()
+		return render_template(
+			'privacidad.html',
+			domain = app.domain,
+			images = [],
+			fallback_background_name = fallback_background[0],
+			fallback_background_img = fallback_background[1],
+			fallback_background_user = fallback_background[2],
+			fallback_background_attr = fallback_background[3]
+		)
+	except:
+		abort(500)
+
 @app.route('/generate-municipalities-pages')
 def generate_municipalities_pages():
 	if app.mode != "Debug" or "dondeteesperan.es" not in app.domain:
