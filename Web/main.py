@@ -11,6 +11,7 @@ import json
 import os
 import requests
 import sys
+import user_suggestions
 
 app = Flask(__name__)
 
@@ -177,6 +178,44 @@ def dislike():
 		}
 		response = requests.post(url, data=params)
 		return response.text
+	except:
+		abort(500)
+
+@app.route('/generate-users-suggestions', methods=['POST'])
+def generate_users_suggestions():
+	try:
+		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/get-ratings"
+		params = {
+			"auth_token": request.form["auth_token"]
+		}
+		response = requests.post(url, data=params)
+		if response.status_code != 200:
+			abort(response.status_code)
+		ratings = response.text
+		return user_suggestions.generate_suggestions(ratings, request.form["auth_token"])
+	except:
+		abort(500)
+
+@app.route('/user-suggestions', methods=['POST'])
+def get_user_suggestion():
+	try:
+		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/get-suggestions"
+		params = {
+			"auth_token": "vgV1cqgaCR44AbPSm8aC0FlEwPt4CsdSBHSrfD1b2"
+		}
+		response = requests.post(url, data=params)
+		if response.status_code != 200:
+			abort(response.status_code)
+		user = request.form["user"]
+		response = json.loads(response.text)
+		
+		result = {}
+		result["status"] = "Ok"
+		result["data"] = []
+
+		if user in response:
+			result["data"] = response[user]
+		return result
 	except:
 		abort(500)
 
