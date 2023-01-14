@@ -1,5 +1,9 @@
 <?php 
 
+	require("DotEnv.php");
+	use DevCoder\DotEnv;
+	(new DotEnv('.env'))->load();
+	
 	function generateRandomString($length = 30) {
 		$characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 		$charactersLength = strlen($characters);
@@ -17,7 +21,7 @@
 		return $newId;
 	}
 
-	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == '8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig')){
+	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == $_ENV['GENERATE_USER_ID_SECRET'])){
 		$users = fopen("storage/users.csv","a+");
 		$ids = array();
 		$i = 0;

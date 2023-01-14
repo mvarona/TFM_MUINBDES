@@ -12,6 +12,9 @@
 # below:
 .git
 .gitignore
+.DS_Store
+.env
+.phpintel
 
 # Python pycache:
 __pycache__/

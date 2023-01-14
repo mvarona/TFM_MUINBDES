@@ -1,6 +1,10 @@
-<?php 
+<?php
 
-	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == 'GKdaAFdQivtnEP74nxer3zsvdNrE67dJsAv2Ea0l') && isset($_POST['suggestions'])) {
+	require("DotEnv.php");
+	use DevCoder\DotEnv;
+	(new DotEnv('.env'))->load();
+
+	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == $_ENV['READ_UPDATE_SUGGESTIONS_SECRET']) && isset($_POST['suggestions'])) {
 		$f = fopen('storage/suggestions.json', 'w+');
 		$suggestions = $_POST['suggestions'];
 		fwrite($f, $suggestions);

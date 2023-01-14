@@ -118,10 +118,15 @@
 						<a id="dislike" href="javascript:void()">👎 &nbsp;Meh, no es para mí</a>
 					</div>
 					<span id="thankyou">¡Gracias!</span>
-					<div class="suggestions">
+					<div class="suggestions suggestions-like">
 						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
-						<a id="first-suggestion" href=""></a>
-						<a href=""><img id="first-suggestion-img" alt="Imagen del municipio sugerido" src=""/></a>
+						<a class="first-suggestion" href=""></a>
+						<a href=""><img class="first-suggestion-img" alt="Imagen del municipio sugerido" src=""/></a>
+					</div>
+					<div class="suggestions suggestions-dislike">
+						<span>Basándonos en tus valoraciones previas, puede que te guste...</span><br/>
+						<a class="first-suggestion" href=""></a>
+						<a href=""><img class="first-suggestion-img" alt="Imagen del municipio sugerido" src=""/></a>
 					</div>
 				</section>
 				<section class="map">
@@ -494,7 +499,11 @@
 				});
 
 				$('#thankyou').fadeIn().delay(3000).fadeOut();
-				$('.suggestions').delay(3000).fadeIn()
+				$('.suggestions-dislike').delay(3000).fadeOut();
+				$('.suggestions-like').delay(3000).fadeIn();
+				setTimeout(function () {
+				   $(window).trigger('resize');
+				}, 3500);
 			});
 
 			$('#dislike').click(function() {
@@ -516,6 +525,13 @@
 				});
 
 				$('#thankyou').fadeIn().delay(3000).fadeOut();
+				$('.suggestions-like').delay(3000).fadeOut();
+				if ($('.suggestions-dislike a').attr("href").length > 0){
+					$('.suggestions-dislike').delay(3000).fadeIn();
+					setTimeout(function () {
+					   $(window).trigger('resize');
+					}, 3500);
+				}
 			});
 
 			$.ajax({
@@ -526,10 +542,34 @@
 				if (result["status"] == "Ok"){
 					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
 					var url = "{{ domain }}" + result["data"]["url"];
-					$('#first-suggestion').html(name);
-					$('.suggestions a').attr("href", url);
-					if (result["data"]["images"].length > 2){
-						$('#first-suggestion-img').attr("src", result["data"]["images"][1]);
+					$('.suggestions-like .first-suggestion').html(name);
+					$('.suggestions-like a').attr("href", url);
+					if (result["data"]["images"].length >= 2){
+						$('.suggestions-like .first-suggestion-img').attr("src", result["data"]["images"][1]);
+					} else {
+						$('.suggestions-like .first-suggestion-img').hide();
+					}
+				}
+			});
+
+			$.ajax({
+				url: "{{ domain }}/user-suggestions",
+				method: "POST",
+				data: {user: $.cookie('user_id')}
+			})
+			.then(function(result) {
+				if (result["status"] == "Ok" && result["data"].length > 0){
+					var maxRandom = result["data"].length - 1;
+					var randomNum = Math.floor(Math.random() * (maxRandom - 0 + 1)) + 0; // random between [0, max]
+					var suggestion = result["data"][randomNum];
+					var name = suggestion["municipio_nombre_humano"] + ", " + suggestion["provincia_nombre_humano"];
+					var url = "{{ domain }}" + suggestion["url"];
+					$('.suggestions-dislike .first-suggestion').html(name);
+					$('.suggestions-dislike a').attr("href", url);
+					if (suggestion["images"].length >= 2){
+						$('.suggestions-dislike .first-suggestion-img').attr("src", suggestion["images"][1]);
+					} else {
+						$('.suggestions-dislike .first-suggestion-img').hide();
 					}
 				}
 			});

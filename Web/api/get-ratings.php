@@ -1,9 +1,13 @@
-<?php 
+<?php
 
-	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == 'GKdaAFdQivtnEP74nxer3zsvdNrE67dJsAv2Ea0l')) {
-		$reading = file_get_contents('storage/ratings.csv');
+	require("DotEnv.php");
+	use DevCoder\DotEnv;
+	(new DotEnv('.env'))->load();
+
+	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == $_ENV['READ_UPDATE_SUGGESTIONS_SECRET'])) {
+		$ratings = file_get_contents('storage/ratings.csv');
 		header('Content-type: text/csv');		
-		echo $reading;
+		echo $ratings;
 	} else {
 		header("HTTP/1.1 401 Unauthorized");
 	}

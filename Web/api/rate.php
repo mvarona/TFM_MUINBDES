@@ -1,6 +1,10 @@
 <?php 
 
-	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == '8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig') && isset($_POST['item']) && isset($_POST['user']) && isset($_POST['rating']) && (($_POST['rating'] == 1) || ($_POST['rating'] == 0))) {
+	require("DotEnv.php");
+	use DevCoder\DotEnv;
+	(new DotEnv('.env'))->load();
+
+	if (isset($_POST['auth_token']) && ($_POST['auth_token'] == $_ENV['RATE_MUNICIPALITY_SECRET']) && isset($_POST['item']) && isset($_POST['user']) && isset($_POST['rating']) && (($_POST['rating'] == 1) || ($_POST['rating'] == 0))) {
 		
 		$lineToSearch = $_POST['item'] . "," . $_POST['user'];
 		$newLine = $_POST['item'] . "," . $_POST['user'] . "," . $_POST['rating'] . "\n";

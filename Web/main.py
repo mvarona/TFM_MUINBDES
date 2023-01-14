@@ -1,4 +1,5 @@
 from flask import Flask, render_template, abort, request, redirect
+from dotenv import load_dotenv
 import random_municipality
 import random_background
 import sanitize_names
@@ -12,6 +13,7 @@ import os
 import requests
 import sys
 import user_suggestions
+import random
 
 app = Flask(__name__)
 
@@ -91,7 +93,7 @@ def recommend(nsi_code):
 		result["data"]["municipio_nombre_humano"] = municipality_human_name
 		result["data"]["provincia_nombre_humano"] = province_human_name
 		result["data"]["url"] = "/" + province + "/" + municipality
-		result["data"]["images"] = get_municipality.get_municipality_info(recommended_nsi_code)['data']['images']
+		result["data"]["images"] = response['data']['images']
 		return result
 	except:
 		abort(500)
@@ -145,7 +147,7 @@ def municipality_survey():
 def create_user_id():
 	try:
 		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/generate-user-id"
-		params = {"auth_token": "8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig"}
+		params = {"auth_token": os.environ.get('GENERATE_USER_ID_SECRET')}
 		new_id = requests.post(url, data=params)
 		return new_id.text
 	except:
@@ -156,7 +158,7 @@ def like():
 	try:
 		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/rate"
 		params = {
-			"auth_token": "8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig",
+			"auth_token": os.environ.get('RATE_MUNICIPALITY_SECRET'),
 			"item": request.form["item"],
 			"user": request.form["user"],
 			"rating": 1
@@ -171,7 +173,7 @@ def dislike():
 	try:
 		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/rate"
 		params = {
-			"auth_token": "8DUJdMxsRxlTCa5w6egi6mY9g6NWORTUDBuS1uig",
+			"auth_token": os.environ.get('RATE_MUNICIPALITY_SECRET'),
 			"item": request.form["item"],
 			"user": request.form["user"],
 			"rating": 0
@@ -201,7 +203,7 @@ def get_user_suggestion():
 	try:
 		url = "https://www.bmsalamanca.com/others/dondeteesperan/api/get-suggestions"
 		params = {
-			"auth_token": "vgV1cqgaCR44AbPSm8aC0FlEwPt4CsdSBHSrfD1b2"
+			"auth_token": os.environ.get('GET_USER_SUGGESTIONS_SECRET')
 		}
 		response = requests.post(url, data=params)
 		if response.status_code != 200:
@@ -214,7 +216,27 @@ def get_user_suggestion():
 		result["data"] = []
 
 		if user in response:
-			result["data"] = response[user]
+			data = []
+			random_list = random.sample(response[user], 5)
+			for code in random_list:
+				info = get_municipality.get_municipality_info(code)
+				province = info["data"]["provincia"]
+				province_human_name = info["data"]["provincia"]
+				municipality = info["data"]["municipio"]
+				municipality_human_name = info["data"]["municipio_nombre_humano"]
+				province = sanitize_names.make_url_name(province)
+				municipality = sanitize_names.make_url_name(municipality_human_name)
+				item = {}
+				item["codigo_ine"] = code
+				item["provincia_path"] = province
+				item["municipio_path"] = municipality
+				item["municipio_nombre_humano"] = municipality_human_name
+				item["provincia_nombre_humano"] = province_human_name
+				item["url"] = "/" + province + "/" + municipality
+				item["images"] = info['data']['images']
+				data.append(item)
+
+			result["data"] = data
 		return result
 	except:
 		abort(500)
