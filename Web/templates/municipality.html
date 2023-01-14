@@ -121,6 +121,7 @@
 					<div class="suggestions">
 						<span>Si te ha gustado este municipio, puede que te guste...</span><br/>
 						<a id="first-suggestion" href=""></a>
+						<a href=""><img id="first-suggestion-img" alt="Imagen del municipio sugerido" src=""/></a>
 					</div>
 				</section>
 				<section class="map">
@@ -526,7 +527,10 @@
 					var name = result["data"]["municipio_nombre_humano"] + ", " + result["data"]["provincia_nombre_humano"];
 					var url = "{{ domain }}" + result["data"]["url"];
 					$('#first-suggestion').html(name);
-					$('#first-suggestion').attr("href", url);
+					$('.suggestions a').attr("href", url);
+					if (result["data"]["images"].length > 2){
+						$('#first-suggestion-img').attr("src", result["data"]["images"][1]);
+					}
 				}
 			});
 

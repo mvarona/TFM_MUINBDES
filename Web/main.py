@@ -90,6 +90,7 @@ def recommend(nsi_code):
 		result["data"]["municipio_nombre_humano"] = municipality_human_name
 		result["data"]["provincia_nombre_humano"] = province_human_name
 		result["data"]["url"] = "/" + province + "/" + municipality
+		result["data"]["images"] = get_municipality.get_municipality_info(recommended_nsi_code)['data']['images']
 		return result
 	except:
 		abort(500)
