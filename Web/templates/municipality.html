@@ -574,39 +574,39 @@
 				}
 			});
 
-			$.ajax({
-				url: "https://analisis.datosabiertos.jcyl.es/api/records/1.0/search/?dataset=eventos-de-la-agenda-cultural-categorizados-y-geolocalizados&q=&facet=categoria&facet=fecha_inicio&facet=nombre_provincia&geofilter.distance={{lat}}%2C{{lon}}%2C10000",
-				method: "GET"
-			})
-			.then(function(result) {
+			if ("{{ comunidad_autonoma }}" == "Castilla y León"){
+				$.ajax({
+					url: "https://analisis.datosabiertos.jcyl.es/api/records/1.0/search/?dataset=eventos-de-la-agenda-cultural-categorizados-y-geolocalizados&q=&facet=categoria&facet=fecha_inicio&facet=nombre_provincia&geofilter.distance={{lat}}%2C{{lon}}%2C10000",
+					method: "GET"
+				})
+				.then(function(result) {
 
-				if (result["nhits"] > 0){
-					$('.num-events').html(result["nhits"]);
+					if (result["nhits"] > 0){
+						$('.num-events').html(result["nhits"]);
 
-					var events = result["records"];
-					var eventsHTML = [];
-					events.forEach(function(event) {
-						var title = "• " + event["fields"]["titulo"].toLowerCase();
-						var category = event["fields"]["categoria"];
-						const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-						var date = new Date(event["fields"]["fecha_inicio"]).toLocaleDateString('es-ES', options);
-						var place = event["fields"]["lugar_celebracion"];
-						var place_link = "https://maps.google.com/?q=" + event["fields"]["latitud"] + "%2C" + event["fields"]["longitud"];
-						var description = event["fields"]["descripcion"].split("</p>")[0].replace("<p>", "").replace("</p>", "").replace("<strong>", "").replace("</strong>", "").replace("<b>", "").replace("</b>", "");
-						var info_link = event["fields"]["enlace_contenido"];
+						var events = result["records"];
+						var eventsHTML = [];
+						events.forEach(function(event) {
+							var title = "• " + event["fields"]["titulo"].toLowerCase();
+							var category = event["fields"]["categoria"];
+							const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+							var date = new Date(event["fields"]["fecha_inicio"]).toLocaleDateString('es-ES', options);
+							var place = event["fields"]["lugar_celebracion"];
+							var place_link = "https://maps.google.com/?q=" + event["fields"]["latitud"] + "%2C" + event["fields"]["longitud"];
+							var description = event["fields"]["descripcion"].split("</p>")[0].replace("<p>", "").replace("</p>", "").replace("<strong>", "").replace("</strong>", "").replace("<b>", "").replace("</b>", "");
+							var info_link = event["fields"]["enlace_contenido"];
 
-						var eventHTML = "<div class='event'><div class='event-header'><h5 class='title'>" + title + "</h5><span class='category'>" + category + "</span></div><div class='event-details'><span class='date'>" + date + "</span><a class='place-link' target='_blank' href='" + place_link + "'><span class='place'>" + place + "</span></a></div><p class='description'>" + description + "</p><a class='info-link' target='_blank' href='" + info_link + "'>Más información</a><hr/></div>";
-						eventsHTML.push(eventHTML);
-					});
-					$('div.events').html(eventsHTML);
-				
-				} else {
-					$('section.agenda').hide();
-				}
-			});
-
-
-			
+							var eventHTML = "<div class='event'><div class='event-header'><h5 class='title'>" + title + "</h5><span class='category'>" + category + "</span></div><div class='event-details'><span class='date'>" + date + "</span><a class='place-link' target='_blank' href='" + place_link + "'><span class='place'>" + place + "</span></a></div><p class='description'>" + description + "</p><a class='info-link' target='_blank' href='" + info_link + "'>Más información</a><hr/></div>";
+							eventsHTML.push(eventHTML);
+						});
+						$('div.events').html(eventsHTML);
+					
+					} else {
+						$('section.agenda').hide();
+						$(window).trigger('resize');
+					}
+				});
+			}			
 		});
 		
 	</script>

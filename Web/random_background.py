@@ -18,7 +18,7 @@ def get_random_background():
 	names.append("España")
 	names.append("España")
 	names.append("España")
-	names.append("Torimbia, Asturias")
+	names.append("Playa de Torimbia, Asturias")
 
 	backgrounds.append("barcelona.jpg")
 	backgrounds.append("beach.jpg")
