@@ -14,6 +14,7 @@ import requests
 import sys
 import user_suggestions
 import random
+from urllib.parse import urlparse, urlunparse
 
 app = Flask(__name__)
 
@@ -27,6 +28,14 @@ if len(sys.argv) > 1 and sys.argv[1] == "mode=debug":
 if len(sys.argv) > 1 and sys.argv[1] == "mode=generate_pages":
 	app.domain = 'https://www.dondeteesperan.es'
 	app.mode = "Debug"
+
+@app.before_request
+def redirect_to_www():
+	urlparts = urlparse(request.url)
+	if urlparts.netloc == 'dondeteesperan.es':
+		urlparts_list = list(urlparts)
+		urlparts_list[1] = 'www.dondeteesperan.es'
+		return redirect(urlunparse(urlparts_list), code=301)
 
 @app.route('/')
 @app.route("/inicio")
