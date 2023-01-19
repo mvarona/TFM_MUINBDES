@@ -1,0 +1,164 @@
+\capitulo{3}{Conceptos teóricos}
+
+A continuación, se exponen los principales conceptos teóricos cuya aparición en el presente trabajo es relevante:
+
+\section{Sistema de recomendación}
+
+Un sistema de recomendación, también llamado a veces recomendador automático –para reforzar la ausencia de intervención humana–, es una herramienta informática que opera como un sistema de filtrado de información, de forma que, para un conjunto de datos, devuelve los candidatos más prometedores con respecto a la función para la que fue diseñado. Es el caso de los mecanismos que recomiendan qué vídeo, serie o película ver a continuación, qué noticias relacionadas existen o qué artista musical nos puede gustar descubrir. La principal característica de estos sistemas es su capacidad para encontrar cosas que el usuario no está buscando activamente, porque ignora que existen, pero que encajan con su perfil y, por lo tanto, resultan útiles y agradables.
+
+Tal como se vio en la asignatura ``Técnicas de Aprendizaje Automático Escalables'', se debe tener en cuenta factores como la relevancia (fundamental para ofrecer sugerencias útiles), la novedad o aleatoriedad donde corresponda (puede ser positivo priorizar elementos recientes, como noticias o canciones; o sorprender con resultados con un toque algo más aleatorio), y la diversidad (a fin de ofrecer resultados menos evidentes que los más lógicamente esperables).
+
+Existen dos aproximaciones fundamentales: los sistemas de recomendación basados en contenido y los que están basados en filtros colaborativos. Recientemente, han aparecido soluciones híbridas que aúnan ambos esquemas para ofrecer resultados más robustos, donde los artículos se parecen individualmente pero las recomendaciones también cuentan con el respaldo de usuarios reales. En ambos casos se desea crear listas de los k elementos cuya recomendación es más favorable.
+
+\subsection{3.1.1. Sistema de recomendación basado en contenido}
+
+En estos sistemas se analiza el contenido de los artículos a comparar (libros, canciones, series...), y se extraen sus características para poder utilizar medidas de similitud entre las propiedades encontradas que aporten una idea de la similitud entre los ítems que forman.
+
+En ocasiones se construyen creando primero perfiles de los usuarios para agrupar los elementos más parecidos, con técnicas similares al \textit{clustering}, como variantes del algoritmo de k-vecinos más cercanos (\textit{k-nearest neighbors}).
+
+La principal limitación de usar este enfoque es el llamado problema de arranque en frío (o \textit{cold start problem}, en inglés), que se caracteriza por no saber cómo actuar ante un caso nuevo, tanto de artículos como de usuarios. Por otra parte, si no queremos depender de los perfiles de los usuarios para encontrar elementos similares –lo que nos permite poder ofrecer recomendaciones incluso aunque no tengamos usuarios en el sistema o este aún no haya expresado ninguna preferencia histórica–, deberemos asegurarnos de que contamos con características suficientes (en número y en representatividad) como para poder encontrar parecidos razonables entre los artículos.
+
+Aquí la definición de similitud no es agnóstica del contenido, sino totalmente dependiente; de hecho, las medidas de distancia empleadas variarán también en gran medida según el dominio del problema. Así, para vectores de números reales se usará habitualmente el coeficiente de correlación de Pearson –que mide la dependencia entre dos variables aleatorias continuas, sin necesidad de que los valores estén en la misma escala– o la similitud coseno –que mide la variación en el ángulo entre dos vectores–; mientras que para vectores binarios (asociados a características cualitativas) se usará la similitud de Jaccard –que mide el número de elementos comunes entre dos conjuntos–.
+
+\begin{itemize}
+    \item Coeficiente de correlación de Pearson. Siendo X e Y un par de variables aleatorias continuas, es el cociente entre la covarianza entre ambas y el producto de su desviación estándar:
+\end{itemize}
+
+$\rho_{X,Y}={\sigma_{XY} \over \sigma_X \sigma_Y} =\frac{\operatorname{Cov}(X,Y)}{\sqrt{\operatorname{Var}(X)\operatorname{Var}(Y)}}$
+
+\begin{itemize}
+    \item Similitud coseno. Siendo A y B dos vectores, la similitud coseno es su producto escalar dividido por el producto de sus normas:
+\end{itemize}
+
+${\displaystyle {\text{similitud}}=\cos(\theta )={\mathbf {A} \cdot \mathbf {B} \over \|\mathbf {A} \|\|\mathbf {B} \|}={\frac {\sum \limits _{i=1}^{n}{A_{i}B_{i}}}{{\sqrt {\sum \limits _{i=1}^{n}{A_{i}^{2}}}}{\sqrt {\sum \limits _{i=1}^{n}{B_{i}^{2}}}}}},}$
+
+\begin{itemize}
+    \item Índice de Jaccard. Siendo A y B dos conjuntos, este índice se calcula dividiendo el número de elementos que se encuentran en su intersección, entre el número de elementos que se encuentran en la unión:
+\end{itemize}
+
+${\displaystyle {\mathcal {J}}={\frac {\mid A\cap B\mid }{\mid A\cup B\mid }}}$
+
+\subsection{3.1.2. Sistema de recomendación basado en un filtro colaborativo}
+
+Otra manera de evitar las limitaciones de los sistemas de recomendación basados en contenido es utilizar la \textit{sabiduría del grupo} (o \textit{wisdom of the crowd} en inglés), que nos permite ofrecer sugerencias comparando los gustos implícitos (clicks, visitas...) o explícitos (valoraciones, opiniones...) de diferentes usuarios; de forma que, si dos usuarios se parecen en sus perfiles, podremos asumir que existirá una posibilidad significativa de que lo que le ha gustado anteriormente a uno, le guste al otro.
+
+Además, este tipo de sistemas presenta una mayor independencia del dominio, dado que se basa en evaluaciones agnósticas de las características de los elementos que componen el conjunto; y una mayor capacidad de explicación, dado que las preferencias se asocian automáticamente, en lugar de depender de las características extraídas.
+
+Entre los retos que presentan estos sistemas nos encontramos su escalabilidad y dispersión de la matriz de gustos, dado que un usuario valorará habitualmente muy pocos elementos del total de elementos existentes; la privacidad, ya que los usuarios no siempre querrán que se les asocie con los elementos con los que interactúen; y la dificultad para recomendar a usuarios poco comunes.
+
+Los principales métodos de esta familia se basan en memoria y en factorización de matrices. Los primeros buscan similitudes entre usuarios o artículos (filas o columnas, respectivamente de la matriz de gustos) para después aplicar algoritmos de los k-vecinos más próximos, pero tienen complejidades temporales y espaciales elevadas cuando crecen los datos. Por otra parte, los segundos se basan en modelos para implementar algún algoritmo de factorización de matrices, como ALS (siglas de \textit{Alternating Least Squares}, Mínimos Cuadrados Alternos, en inglés), que permite reducir una matriz de rango alto a dos matrices de rango menor cuyo producto se aproxima a la original y donde el cálculo de similitud entre usuarios o artículos es inmediato y se resuelve con un producto escalar de vectores fila o columna, respectivamente. Para estimar el error global se puede minimizar la raíz del error cuadrático medio, o \textit{Root Mean Squared Error} (RMSE, por sus siglas en inglés), que consiste en la raíz de la media del cuadrado de la diferencia entre los valores pronosticados y los valores observados. Siendo $n$ el número de observaciones, $R__ij$ el valor observado, y $U_i * I_j^T$ el valor pronosticado:
+
+RMSE = $\sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{(R_ij - U_i * I_j^T)}^2}$
+
+\section{\textit{One Hot Encoding}}
+
+Es un tipo de codificación de datos ampliamente usado en tratamiento de características categóricas donde el conjunto de posibles valores se va a representar por un grupo de bits, de forma que cada valor posible se representará con el bit correspondiente en valor alto, y todos los demás en valor bajo.
+
+Por ejemplo, si quisiéramos representar la presencia o ausencia de palabras en un texto de un corpus, crearíamos una matriz con tantas filas como documentos componen el corpus, y tantas columnas como valores posibles tiene nuestro diccionario, marcando con un valor binario la presencia o ausencia de cada palabra en cada texto.
+
+\section{Discretización}
+
+Es el proceso de convertir funciones continuas en homólogas discretas, habitualmente necesario al digitalizar señales analógicas o tratar con variables cualitativas. Puede conseguirse creando intervalos en el rango de valores que toma la función, y aproximando los valores al intervalo más cercano \cite{discretizacion}.
+
+Siempre que se discretizan valores continuos, existe lo que se conoce como error de discretización, que deberá procurar reducirse a una cantidad aceptable para el modelado correspondiente.
+
+\section{Normalización}
+
+Este concepto tiene amplios significados en el campo de la estadística, pero por lo que a este trabajo respecta, nos referiremos por ``normalización'' a la conversión de escala de la distribución de una variable para poder realizar comparaciones adimensionales entre diversos elementos o con respecto a sus promedios u otras propiedades estadísticas. De esta manera, es posible comparar valores naturalmente distintos, procedentes de diferentes variables medidas con diversas unidades \cite{normalizacion}, \cite{normalizacion2}.
+
+Existen diversos tipos de normalización según su caso de aplicación:
+
+\begin{itemize}
+    \item Puntuación estándar: $\frac{X - \mu}{\sigma}$
+\end{itemize}
+
+Es  la diferencia entre el valor observado y la media, dividido entre la desviación típica. Se usa para normalizar errores cuando se conocen los parámetros de población, que debe seguir una distribución normal.
+
+\begin{itemize}
+    \item T de Student: $\frac{X - \overline{X}}{s}$
+\end{itemize}
+
+Normaliza los residuos cuando se pueden estimar los parámetros de población pero no se conocen.
+
+\begin{itemize}
+    \item Coeficiente de variación: $\frac{\sigma}{\mu}$
+\end{itemize}
+
+Se aplica en distribuciones positivas como la exponencial o la de Poisson, y utiliza la media como medida de escala para normalizar la dispersión.
+
+\begin{itemize}
+    \item Característica \textit{scaling}: $X' = \frac{X - X_{min}}{X_{max}-X_{min}}$
+\end{itemize}
+
+También se conoce como normalización basada en la unidad, dado que convierte los valores a valores del intervalo [0, 1].
+
+\section{Organización territorial española}
+
+En España existen actualmente 8.131 municipios \cite{municipio}. Los municipios son, según la Ley reguladora de las Bases del Régimen Local, las entidades locales básicas de la organización territorial del Estado \cite{ESP_wiki}. De acuerdo con esta ley, los municipios poseen personalidad jurídica y capacidad para el cumplimiento de sus fines, contando con los elementos de su territorio, población y organización. Los municipios se organizan en provincias, y estas en Comunidades Autónomas, a excepción de las dos ciudades autónomas de Ceuta y Melilla, que no disponen de ningún municipio asociado ni pertenecen a otra comunidad autónoma.
+
+Por su parte, existen 61.578 entidades singulares de población, que el Instituto Nacional de Estadística define como \textit{«cualquier área habitable de un término municipal, habitada, o excepcionalmente deshabitada, claramente diferenciada dentro del mismo y que es conocida por una denominación específica que la identifica sin posibilidad de confusión»}. Las entidades singulares pueden estar formadas por varios núcleos de población, y/o tenerla diseminada, englobando edificaciones que no pueden considerarse núcleo. Además, cada entidad posee una calificación tradicionalmente reconocida, como villa, lugar, aldea, urbanización, poblado, caserío, monasterio...
+
+Es importante señalar que la división del municipio en entidades singulares y colectivas (agrupación de varias entidades singulares, o de partes de ellas) de población no goza de carácter oficial, pero sí gran tradición. No es infrecuente debido al alto número de entidades existentes conocer a una o a varias, e incluso presuponer que se trata de un municipio en sí mismo. Esto es especialmente notable en la mitad norte peninsular, a causa de la dispersión geográfica y la orografía, que junto con razones históricas motiva la existencia de numerosos diseminados, muchos de ellos actualmente deshabitados \cite{INE_entidad_singular}.
+
+Desde el año 1981, el Instituto Nacional de Estadística etiqueta cada núcleo de población con un código numérico formado por 11 cifras que, comenzando por la izquierda, tiene la siguiente forma:
+
+\begin{itemize}
+    \item Las dos primeras cifras corresponden a la provincia.
+    \item Las tres siguientes (tercera, cuarta y quinta) corresponden al municipio.
+    \item La sexta y séptima corresponden a la entidad colectiva, si la hubiera. De no ser el caso, se usarán dos ceros.
+    \item La octava y novena cifras codifican la entidad singular dentro de la entidad colectiva o municipal, según corresponda.
+    \item La décima y undécima se refieren a los núcleos de población dentro de la entidad singular, usando "99" para diseminados.
+\end{itemize}
+
+Los códigos fueron actualizados en el año 1991 para mantener un orden alfabético, y corresponde a los ayuntamientos revisar, al menos anualmente, la relación de entidades y núcleos de población, para ser remitida al Instituto Nacional de Estadística, que las publica con la misma frecuencia. En caso de que se incorporen nuevos núcleos, se les asignará un código correlativo al último asignado, no reutilizando nunca los códigos de los núcleos que pudieran desaparecer. Conviene señalar que es posible que existan municipios o incluso entidades singulares de población con el mismo nombre –de hecho, ocurre en varios casos–, por lo que la identificación debe hacerse con el código del INE siempre que sea posible. Sin embargo, debido al alto número de instituciones que no emplean este código, la desambigüación debe hacerse con la provincia de pertenencia, donde no existen municipios duplicados.
+
+\section{Datos abiertos}
+
+La filosofía de datos abiertos (u \textit{Open Data}, en inglés) busca liberar determinados tipos de datos, especialmente concernientes a instituciones públicas y privadas, sin que suponga un menoscabo de las libertades individuales, de forma libre; esto es, sin limitaciones de derechos de autor, patentes, regalías u otro tipo de mecanismos de control, amparándose en el derecho a saber de la ciudadanía, la transparencia como parte de un buen gobierno público y corporativo, y en la utilidad pública de herramientas que surgen de hacer la información accesible y reusable. \cite{datos_abiertos}
+
+Esto último se consigue con una limpieza previa de los datos, donde el organismo titular de los mismos se encarga de garantizar que los conjuntos de datos elegidos son aptos para ser liberados, tanto por su calidad (limpieza, corrección...), como por su capacidad jurídica para poder hacerlo (los datos están agregados, anonimizados o no se corresponden con personas físicas identificadas o identificables.
+
+Además, es fundamental que las capacidades de adquisición y procesamiento técnicas de los datos sean grandes, con el objetivo de no obstaculizar el propósito mismo para el que los datos abiertos son diseñados: promover el desarrollo de contenidos periodísticos, soluciones técnicas, productos, servicios, etc. gratuita o comercialmente, que beneficien a la sociedad basándose en la idea de aprovechar datos, habitualmente de titularidad pública o considerados como de interés público (como datos de consumo, datos de calidad de aire y aguas, datos de tráfico, datos de contagios, etc...), para realizar un análisis y extraer conclusiones valiosas.
+
+Esto se materializa en servicios que idealmente cuentan con APIs (interfaces de programación de aplicaciones, por sus siglas en inglés) y/o capacidad de exportación de los datos en múltiples formatos habitualmente reconocidos fácilmente por máquinas, como los formatos CSV (valores separados por comas, por sus siglas en inglés), JSON (\textit{JavaScript Object Notation}, notación de Objetos JavaScript en inglés), XML (\textit{Extensible Markup Language}, lenguaje de marcado extensible en inglés) o XLSX (formato de hojas de cálculo de Microsoft Excel, el menos reusable de los comentados por tratarse de archivos binarios de software propietario comercial; pero no por ello menos usado en administraciones públicas).
+
+\section{\textit{Web scraping}}
+
+Traducido en español como \textit{raspado Web}, abarca el conjunto de medios técnicos que posibilitan la extracción automática de información de sitios Web. Habitualmente, estas técnicas se basan en programas informáticos que simulan la navegación de un usuario legítimo en Internet, realizando las llamadas a través del protocolo de transferencia de hipertexto y su versión segura (HTTP y HTTPS, por sus siglas en inglés), o imitando los movimientos de un humano a través de un navegador Web con interfaz gráfica.
+
+Dado que se basan en imitar el comportamiento de un humano, o la llamada a un servidor de un navegador Web, los resultados no son siempre los deseados, ya que existen diversas medidas técnicas que los autores de un sitio Web pueden adoptar, bien para evitar esta técnica en sus versiones más factibles, o bien como parte de las decisiones del diseño del sistema implementado, que pueden provocar que falle el rastreo Web. Un ejemplo de esto último son las páginas basadas en \textit{scroll} (o deslizamiento vertical) infinito, o que completan en algún momento la carga de datos de manera dinámica tiempo después de haber terminado de enviar la página al cliente de red. Este enfoque complica la creación de un programa que extraiga la información, dado que es notablemente más factible comunicarse vía HTTP/S con un servidor, lo que normalmente provoca el cierre de la conexión cuando se recibe la respuesta, no siendo posible emular el desplazamiento vertical o interacción que realizaría un humano.
+
+Por estos motivos, esta técnica se usa como último recurso para extraer datos, prevaleciendo siempre que sea posible el uso de APIs públicas de la institución, que están en sí mismas diseñadas para un uso mecanizado y automático, y donde los cambios suelen estar indicados mediante mecanismos de versionado.
+
+Es importante resaltar que el raspado Web, por definición, consiste en extraer datos que no necesariamente fueron concebidos para su extracción, por lo que puede conllevar implicaciones legales. Actualmente, la legislación no es clara en este sentido, y la jurisprudencia ha dictaminado veredictos cuyo resultado depende en gran medida de las características del \textit{scrapper} y del uso que se fuera a dar a esos datos \cite{scraping_legal}, \cite{ryanair}.
+
+Entre los usos más comunes del Web \textit{scraping} encontramos la monitorización de precios, la inyección de datos de otros sitios Web de forma adaptada a las necesidades del que los inyecta, la lectura de contenido desde fuentes externas o la recopilación de datos para enriquecer búsquedas, creando fragmentos accesorios conocidos como \textit{rich snippets}, que aportan información de diversas fuentes de confianza relacionadas con la búsqueda.
+
+\section{\textit{Geocoding} y distancias}
+
+La geocodificación, referida habitualmente en inglés como \textit{geocoding}, abarca el proceso de asignar coordenadas geográficas a puntos geográficos cualitativos (ciudades, pueblos, direcciones, edificios, lugares emblemáticos, puntos de interés, accidentes geográficos...). De esta manera, se transforma una dirección exacta o aproximada, en unas coordenadas que permiten su representación inequívoca en un plano de un Sistema de Información Geográfica \cite{geocodificacion}.
+
+Conociendo la posición exacta de dos puntos es posible calcular su distancia por diversos medios, siendo algunas de las más empleadas las siguientes:
+
+\begin{itemize}
+    \item Distancia por carretera. Es una de las más populares por su utilidad, dado que tiene en cuenta la disponibilidad de infraestructura y las características orográficas del terreno para poder comunicar dos puntos cualesquiera por vía terrestre.
+    \item Distancia geodésica. Una línea geodésica es aquella de menor longitud entre dos puntos en una superficie dada, estando contenida en la propia superficie. Habitualmente nos referimos a esta distancia como la distancia \textit{en línea recta}, y no tiene en cuenta los accidentes geográficos, infraestructura disponible u otras características que limiten la comunicación ente los puntos.
+\end{itemize}
+
+Pese a que el cálculo de distancias entre dos puntos geolocalizados (identificados con coordenadas geográficas, habitualmente latitud y longitud) puede requerir de un tiempo de computación elevado –especialmente si se tienen en cuenta factores como la conveniencia de la ruta o posibles combinaciones con medios de transporte colectivo–, es un cálculo factible. Sin embargo, no ocurre lo mismo con determinadas distancias que los humanos consideramos aún más intuitivas, como la distancia de un punto a la costa o a la montaña.
+
+Incluso aún siendo capaces de definir formalmente conceptos como \textit{costa} y \textit{montaña} –asumiendo, por ejemplo, lugares de altitud menor y mayor, respectivamente, a unos umbrales determinados sobre el nivel del mar– no es trivial elegir el punto costero o montañoso más cercano para poder calcular algún tipo de distancia geográfica.
+
+Un posible enfoque podría ser calcular la distancia a todos los puntos que componen la frontera natural de un territorio con la costa, y elegir la menor, pero podría estar sujeto a problemas de solución arbitraria, como en el caso de playas interiores o costas incluidas en el territorio. En el escenario de sistemas montañosos, sería necesario contar con el perímetro de todos ellos, algo difícil de conseguir en el caso de las montañas de menor altitud o que se encuentran fuera de sistemas montañosos importantes. Además, en ambos supuestos, el coste lógico que supone realizar comparaciones para un gran número de pares de puntos es elevado.
+
+Otro enfoque puede ser contar con datos geolocalizados de accidentes geográficos similares, como ``playas'' o ``picos montañosos significativos'', y calcular la distancia hasta los mismos. De nuevo, se puede caer en el error de asimilar una ``playa'' con una ``costa'', teniendo problemas similares en el caso de las montañas (dado que se forzaría a escoger solo los picos más significativos, que son los que cuentan con denominación y geolocalización conocidos), incurriendo en costes altos de igual manera y dependiendo notablemente de la cantidad y calidad de los datos auxiliares etiquetados.
+
+Una de las formas de resolver problemas de distancias en tiempos razonables consiste en emplear heurísticas para aproximar la solución del problema. Por ejemplo, se podría tomar la heurística de considerar que los puntos pertenecientes a subconjuntos territoriales de ámbito superior que limitan con el hito geográfico de interés presentan la menor distancia posible, y que esta aumenta conforme aumenta la distancia de otras agrupaciones territoriales a las anteriores. De esta forma, los municipios pertenecientes a provincias costeras, serán los que menor distancia a la costa tendrán, los municipios de provincias colindantes a las costeras presentarán la segunda menor distancia a la costa, los municipios de provincias colindantes a las anteriores, la tercera menor distancia, y así sucesivamente, teniendo en cuenta que ninguna agrupación puede tener dos asignaciones de distancia distintas. En el caso de la distancia a la montaña, se podría tomar una heurística similar con ligeras modificaciones según el dominio del problema.
+
+\section{\textit{Paas}}
+
+Una plataforma como servicio, o \textit{PaaS} por sus siglas en inglés, es un conjunto de servicios y herramientas proporcionadas por un proveedor de computación en la nube (o \textit{cloud computing}) que permiten abstraer la infraestructura subyacente (controlada por el proveedor) y ofrecer a los desarrolladores de aplicaciones un entorno de despliegue de aplicaciones con diversas prestaciones que difieren de las capacidades de una instalación en sistemas propios (o que abaratan significativamente sus costes) \cite{paas}.
+
+Dado que los detalles de infraestructura son abstraídos para el programador, este puede despreocuparse de la escalabilidad, velocidad o instalación de actualizaciones de la plataforma, que será configurable, pero dependerá en última instancia del proveedor de la computación en la nube. Además, el uso de APIs le permiten comunicarse con el sistema como si realmente este fuera conocido para él, por lo que los resultados a nivel de usuario son equivalentes.
+
+Ejemplos de plataformas como servicio son App Engine, de Google; Azure, de Microsoft; AWS Lambda, de Amazon; o Heroku, de Salesforce.

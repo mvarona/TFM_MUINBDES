@@ -1,0 +1,135 @@
+\capitulo{4}{Técnicas y herramientas}
+
+A continuación, se presentan las principales técnicas y herramientas usadas en la construcción de este trabajo.
+
+\section{Metodología de trabajo}
+
+Como se ha estudiado en la asignatura ``Técnicas de Aprendizaje Automático Escalables'', existen diversas metodologías para proyectos de Big Data o ciencia de datos en grandes cantidades. En este punto, se procede a hacer un breve análisis de algunas de las más populares, y se indica también cuál ha sido la elegida para realizar este trabajo y por qué:
+
+\subsection{4.1.1. KDD (\textit{Knowledge Discovery in Databases})}
+
+KDD, del inglés ``Extracción de conocimiento en bases de datos'', se originó en la comunidad investigadora, y distingue entre etapas de identificación, preprocesado y modelado. Pese a que existe una retroalimentación entre etapas, pone el foco en las etapas de preprocesado, evaluación y presentación del conocimiento adquirido, en línea con el peso mencionado anteriormente que estos pasos tienen en cualquier proyecto de Big Data. Los procesos de esta metodología se pueden resumir en cinco etapas de la siguiente manera:
+
+\begin{enumerate}
+    \item Selección de datos a explorar. En primer lugar, elegiremos los datos que queremos integrar en la base de datos.
+    \item Preprocesamiento de datos. Abarca las etapas de limpieza, donde se eliminará el ruido u otros datos incoherentes; la integración, que consiste en la unificación de datos procedentes de diversos orígenes; y la selección final de datos, que toma de la base de datos existente en este punto los datos relevantes (es decir, un subconjunto de variables) para la exploración del fenómeno a estudiar.
+    \item Transformación de datos. Dentro de esta etapa, los datos adquieren formas apropiadas para su posterior procesado. Ejemplos de estas tareas son la creación de sumatorios, el uso de funciones de agregación, u otras similares para resumir los datos.
+    \item Minería de datos. Consiste en buscar patrones de interés o representativos en los datos por medio de diversas técnicas.
+    \item Evaluación de patrones e interpretación del conocimiento. Los últimos pasos de esta metodología, y que condicionan una posible regresión al comienzo, abarcan identificar los patrones que realmente aportan información novedosa o interesante, junto con su adecuada visualización para poder representar este nuevo conocimiento extraído al usuario.
+\end{enumerate}
+
+\subsection{4.1.2. SEMMA (\textit{Sample, Explore, Modify, Model and Access})}
+
+La metodología SEMMA (muestrear, explorar, modificar, modelar y acceder, por sus siglas en inglés) se basa en muestrear la base de datos principal, asumiendo que un procesamiento completo es complejo y lento de llevar a cabo. Pone el foco en la transformación y modelado de los datos, omitiendo aspectos de negocio. Sus principales etapas son las siguientes:
+
+\begin{enumerate}
+    \item Muestrear. Consiste en tomar muestras de pequeño tamaño de la base de datos, con el objetivo de poder realizar manipulaciones de forma ágil.
+    \item Explorar. Esta fase busca aumentar el entendimiento de los datos, refinando el proceso mientras se buscan anomalías, tendencias o patrones.
+    \item Modificar. Abarca la creación, selección y transformación de variables para reducir su número, con la intención de contar con datos relevantes.
+    \item Modelar. Busca crear el modelo que mejor satisfaga los objetivos propuestos al inicio del proyecto.
+    \item Acceder. Evalúa la confianza y utilidad de los resultados extraídos, provocando una repetición del proceso en caso de que los objetivos no se hayan cumplido.
+\end{enumerate}
+
+
+\subsection{4.1.3. CRISP-DM (\textit{Cross-Industry Standard Process for Data Mining})}
+
+CRISP-DM (proceso estándar entre industrias para el minado de datos, por sus siglas en inglés) es la metodología más usada actualmente \cite{crisp}, y se diferencia de las anteriores por considerar el proceso de negocio dentro del propio ciclo de vida de los datos. Así, sus principales fases son:
+
+\begin{enumerate}
+    \item Entendimiento de negocio. Desde una perspectiva de negocio, se busca entender los objetivos y requisitos del proyecto, con la intención de convertirlos en una definición de un problema de minado de datos, para diseñar posteriormente un plan inicial para alcanzar dichos objetivos. Esta fase es de gran importancia en esta metodología, ya que se determinan los antecedentes, metas estratégicas del proyecto y criterios de éxito. Además, se realiza un inventario de los recursos, un análisis de costes y beneficios estimados, se determinan los objetivos finales y se produce el plan preliminar mencionado. 
+    \item Entendimiento de datos. Esta fase comienza con una colección de datos inicial y actividades para familiarizarse con los datos, explorarlos, identificar problemas de calidad, descubrir las primeras observaciones o detectar conjuntos interesantes para formar hipótesis a partir de información oculta.
+    \item Preparación de datos. En este punto, se realizan las transformaciones adecuadas para construir el conjunto de datos final que compondrá el modelo. Abarca transformaciones, limpieza, reducción de variables o cambios de formato, y su resultado es un entregable apto para ser introducido en la herramienta de modelado elegida.
+    \item Modelado. Se seleccionan y aplican varias técnicas de modelado, cuyos parámetros se ajustan hasta encontrar los valores óptimos. Habitualmente será necesario volver a la etapa de preprocesado anterior para adecuar los datos a una nueva técnica de modelado, ya que con frecuencia se requieren tratamientos o formatos especiales para ciertas técnicas.
+    \item Evaluación. Desde un punto de vista de negocio, se revisan los pasos ejecutados para construir el modelo junto con el grado de consecución de los objetivos inicialmente propuestos y la revisión de los criterios marcados para su evaluación. Se busca encontrar un objetivo clave de negocio que no haya sido suficientemente satisfecho, y al final de esta fase se decide si los resultados son aptos para continuar o no.
+    \item Despliegue. Al igual que en el resto de metodologías mencionadas, CRISP-DM entiende que el desarrollo del proyecto no termina normalmente con la creación del proyecto. Por el contrario, suele ser necesario interpretar y presentar los conocimientos obtenidos de una manera adecuada según los requisitos de negocio, pudiendo significar la creación de informes o cuadros de mando, la elaboración de procesos de minado repetibles, el acceso e interacción con sistemas que contengan los resultados obtenidos, etc.
+    
+\end{enumerate}
+
+Una de las principales diferencias entre esta metodología y las anteriores, es la posibilidad de volver hacia una etapa anterior en cualquier paso de la metodología CRISP-DM, promoviendo la mejora continua flexible y ágil, necesarias en muchos entornos empresariales.
+
+Esta flexibilidad para mejorar los conjuntos de datos constantemente, junto con la gran popularidad de la que goza y el énfasis que realiza en los requisitos de negocio y en los criterios de evaluación y aceptación –cuya definición y consecución es fundamental en cualquier proyecto real, como el que se ha buscado realizar con este trabajo–, han propiciado su elección para el mismo.
+
+Por último, para administrar y monitorizar el progreso del desarrollo de este trabajo, se ha utilizado el gestor de tareas Todoist \cite{todoist}, y las herramientas conectadas al sistema de control de cambios Git, como tickets o \textit{issues}, de los repositorios en línea de GitHub \cite{github}.
+
+\section{Fuentes de datos}
+
+Debido a la importancia de los procesos de extracción, transformación y limpieza para el desarrollo de este trabajo, se considera relevante incluir las principales fuentes de datos consultadas o explotadas para el mismo:
+
+\begin{itemize}
+    \item Altitud por municipio. Fuente: OpenElevation \cite{openelevation}.
+    \item Centros de Atención Primaria, Centros Hospitalarios y Centros de Atención Urgente Extrahospitalaria. Fuente: Ministerio de Sanidad \cite{salud}.
+    \item Cobertura de banda ancha por municipio. Fuente: Ministerio de Asuntos Económicos y Transformación Digital \cite{cobertura}.
+    \item Datos climáticos por municipio. Fuente: OpenWeather \cite{openweather}.
+    \item Distancias a las capitales de provincias. Fuente: Cálculos por carretera de OpenTripPlanner \cite{otp}, y en línea recta a través de la distancia geodésica de GeoPy \cite{GeoPy} cuando la primera no se encontró.
+    \item Extracto de información del municipio e imágenes del municipio. Fuente: Wikipedia \cite{wikipedia_api}.
+    \item Geoposicionamiento por municipio. Fuente: PositionStack \cite{positionstack}.
+    \item Lugares más significativos por municipio. Fuente: GeoApify \cite{geoapify}.
+    \item Nomenclátor de Entidades Singulares del INE, con municipio de pertenencia asociado. Fuente: INE \cite{municipios_ine} y Francisco Ruiz \cite{entidades}.
+    \item Nomenclátor Geográfico de Municipios y Entidades de Población. Fuente: Centro Nacional de Información Geográfica \cite{nomenclator}.
+    \item Número de colegios o institutos por municipio. Fuente: Ministerio de Educación \cite{colegios}.
+    \item Número de ofertas de empleo disponibles por provincia. Fuente: Infojobs \cite{infojobs}.
+    \item Número de universidades por municipio. Fuente: Ministerio de Educación \cite{universidades}.
+    \item Precios medios de viviendas en venta, y precios medios de viviendas en alquiler por provincia. Fuente: Fotocasa \cite{fotocasa}.
+    \item Precios y número de viviendas en venta, y precios y número de viviendas en alquiler por municipio. Fuente: Idealista \cite{idealista}, y Fotocasa \cite{fotocasa}, usada en los casos en los que la primera falló.
+    \item Provincias de España y sus capitales. Fuente: Libretilla \cite{provincias}.
+    \item Relieve de España. Fuente: El Orden Mundial \cite{relieve}.
+    \item Rentas brutas medias por municipio de la Comunidad Foral de Navarra. Fuente: Hacienda Foral \cite{renta_navarra}.
+    \item Rentas brutas medias por municipio de País Vasco. Fuente: Eustat \cite{renta_euskadi}, \cite{PIB_pais_vasco}.
+    \item Rentas brutas medias por municipio. Fuente: Agencia Tributaria para todos los territorios excepto País Vasco \cite{renta}, y la Comunidad Foral de Navarra \cite{renta_navarra}.
+    \item Rugosidad del terreno en España. Fuente: Fundación BBVA \cite{rugosidad}.
+    \item Tasa de actividad, paro y empleo por provincia y sexo. Fuente: INE \cite{INE_empleo}.
+\end{itemize}
+
+Como se detallará posteriormente, en diversos momentos de las fases de ETL y exploración de datos ha sido necesario utilizar diversas utilidades de terceros para procesar parte de los datos, verificar expresiones o comprobar la integridad de los mismos. Estas han sido las siguientes:
+
+\begin{itemize}
+    \item Postman, de Postman \cite{postman}. Utilizada para realizar peticiones HTTP y HTTPS a los servicios Web ajenos (para conocer el formato de la respuesta devuelta), y propios (para ahorrar peticiones innecesarias durante la programación de los \textit{scripts}).
+    \item Comparador de listas, de Molbiotools \cite{molbiotools}. Se ha utilizado para comparar listas y verificar la corrección de los cambios.
+    \item Contador de líneas duplicadas en listas, de Shailesh N. Humbad \cite{somacon}. Empleada para verificar la integridad de los datos.
+    \item Conversor de CSV a JSON, de Flatfile \cite{csv2json}. Empleada para crear archivos JSON para la Web a partir de los archivos CSV manejados habitualmente.
+    \item Coordinates Plotter, de Darrin J. Ward \cite{mapmaker}. Usada para explorar los datos de geoposicionamiento.
+    \item Detector de duplicados, de dCode \cite{dcode}. Ha sido usada para buscar duplicados en listas, con información complementaria a la del resto de herramientas.
+    \item Excel, de Microsoft \cite{excel}, y Numbers, de Apple \cite{numbers}. Utilizadas para abrir los archivos en formato CSV, XLS y XLSX, y verificar su integridad y corrección.
+    \item Herramienta de explicación, construcción y pruebas de expresiones regulares, de gskinner \cite{regexr}. Empleada para construir y comprobar la corrección de diversas expresiones regulares.
+
+    \imagen{regexr}{Manejo de expresiones regulares para detectar y corregir inconsistencias.}
+    
+    \item Herramienta para ordenar una lista alfabéticamente, de Scott Smind \cite{alfabetico}. Utilizada para ordenar puntos de la memoria y anexos alfabéticamente.
+    \item Supresor de líneas duplicadas en listas, de autoría anónima \cite{dedupelist}. Usada para eliminar duplicados en listas intermedias.
+    \item Supresor de líneas vacías en listas, de CodeBeautify \cite{codebeautify}. Usada para eliminar líneas en blanco tras supresiones manuales o automáticas.
+    \item Validador de datos en formato JSON, de CircleCell \cite{jsonlint}. Utilizado para comprobar la integridad y corrección de datos en formato JSON.
+    \item Visualizador de datos en formato JSON, de CodeBeautify \cite{jsonviewer}. Utilizada para visualizar gráficamente el árbol jerárquico de un archivo en formato JSON.
+\end{itemize}
+
+\section{Programación}
+
+Como se detallará posteriormente, el proyecto abarca \textit{scripts} de programación escritos en Python y JavaScript que extraen, transforman, limpian y procesan información de diversas fuentes (tanto propias como ajenas), tomando los datos de archivos CSV (archivos separados por comas, por sus siglas en inglés, o puntos y comas, en el caso de este trabajo), JSON (archivos de notación JavaScript), XML (lenguaje de marcado extensible) o páginas de Internet públicas; y devolviendo archivos en formato CSV o JSON.
+
+Entre las bibliotecas de terceros usadas, destacan las siguientes, ordenadas alfabéticamente y respetando la grafía de los autores:
+
+\begin{itemize}
+    \item beautifulsoup4. Desarrollada por Leonard Richardson bajo licencia MIT \cite{beautifulsoup4}, permite extraer fácilmente información de páginas Web mediante mecanismos de interpretación y selección avanzada de elementos HTML y XML. Se ha utilizado en los archivos de extracción de datos de origen Web.
+    \item Flask. Publicada por Armin Ronacher con licencia BSD \cite{flask}, es un micro \textit{framework} Web, o micro marco de desarrollo Web, para aplicaciones en línea basadas en Python. A diferencia de otros marcos, Flask es ligero y ofrece una gran flexibilidad en cuanto a arquitectura, herramientas, estructura de ficheros o dependencias, lo que lo convierte en una opción escalable y que se adapta bien a numerosos tipos de proyectos. Constituye la base sobre la que se ejecuta la aplicación Web final.
+    \item Jinja2. Desarrollada por el mismo autor de Flask y bajo la misma licencia \cite{jinja2}, Jinja es un motor de plantillas ligero y extensible, que permite crear páginas HTML dinámicas en tiempo real, facilitando enormemente la programación de sitios Web de gran tamaño. Se ha utilizado para generar las páginas HTML de la aplicación Web, con algunas particularidades que se detallarán posteriormente.
+    \item pandas. Programada por el equipo de desarrollo de Pandas (``The Pandas Development Team''), y publicada bajo licencia BSD \cite{pandas}, proporciona estructuras de datos eficientes para manejar grandes cantidades de información, series temporales y estadísticas varias. Se ha utilizado para acceder y procesar la información de los archivos CSV y JSON.
+    \item python-dotenv. Desarrollada por Saurabh Kumar con licencia BSD \cite{py_dotenv}, permite utilizar variables de entorno en Python de fácilmente, evitando escribir secretos como claves de API o credenciales en el código en texto plano que queda registrado en el sistema de control de versiones. De esta manera, los secretos se almacenan codificados mediante un par clave-valor en un archivo ``.env'', de variables de entorno. Este archivo se incluye en el fichero ``.gitignore'' para evitar su adición al repositorio. Tras incluir y llamar a la función principal de esta biblioteca, los secretos se cargan en el entorno del sistema para acceder a ellos de forma segura, quedando localmente en la máquina de destino y evitando su propagación en texto plano más allá del citado archivo. Se ha empleado para no exponer las credenciales de las APIs usadas en la fase de extracción Web y en algunos servicios del producto final. Esta es una de las medidas de seguridad estudiadas en la asignatura ``Fundamentos de Ciberseguridad'', y presente en diversos documentos de seguridad estándar, como el Plan Director de Seguridad del INCIBE \cite{INCIBE} o el proyecto OWASP para la seguridad de aplicaciones Web \cite{OWASP}.
+    \item phpDotEnv. Desarrollada por Vance Lucas con licencia BSD (cláusula 3) \cite{phpdotenv}, permite la misma medida de seguridad anterior en el servidor donde se ejecuta el código PHP.
+    \item re. Este módulo, desarrollado por la fundación de software Python (``Python Software Foundation'') forma parte de la distribución oficial de Python y utiliza su licencia propia (PSFL, por sus siglas en inglés) \cite{re}. Permite operar con expresiones regulares, y se ha utilizado para buscar patrones, como por ejemplo precios o metros cuadrados en páginas Web, o paréntesis en los nombres de los municipios.
+    \item requests. Publicada por Kenneth Reitz bajo la licencia Apache 2.0 \cite{requests}, esta biblioteca ofrece implementar la capa de red para comunicaciones HTTP y HTTPS de forma sencilla. Se ha utilizado para realizar las llamadas en los archivos de extracción Web.
+    \item scikit-learn. Desarrollada por Andreas Mueller con licencia BSD \cite{scikit}, es una serie de módulos para el aprendizaje automático y el minado de datos. Se ha utilizado para crear el modelo y los recomendadores.
+    \item surprise. Incluida posteriormente como módulo de scikit-learn \cite{scikit_surprise}, es una biblioteca desarrollada por Nicolas Hug con licencia BSD para sistemas de recomendación \cite{surprise}. Se ha utilizado para desarrollar el recomendador de filtro colaborativo.
+    \item sys. Mencionado por su gran presencia en el código, el módulo del sistema de Python permite acceder a variables de entorno y funciones que interactúan con el intérprete \cite{sys}. Se ha utilizado para pasar argumentos a los \textit{scripts} por línea de comandos, indicando valores como los archivos de entrada o salida u otros parámetros de configuración de los mismos.
+    \item wikipedia. Publicada por Jonathan Goldsmith con licencia MIT \cite{wikipedia_py}, ofrece la API pública de Wikipedia a través de Python. Se ha utilizado para extraer la información de Wikipedia de los distintos municipios.
+\end{itemize}
+
+Se ha aprovechado la existencia de un servidor personal para generar archivos de imitación (\textit{mock}) de diversas fuentes a las que se quería acceder durante el proceso de extracción de datos (tanto vía API como vía HTTP), con la intención de probar los guiones de extracción escritos en Python y JavaScript contra ellos durante el desarrollo. De esta manera, se han utilizado estos archivos de imitación durante la fase de depuración de errores, verificando el correcto funcionamiento de los archivos antes de realizar las llamadas a los servicios de terceros, y evitando incurrir en gastos de cuotas innecesarios en los servicios accedidos mediante API, o en demasiadas llamadas a los servicios de terceros durante el proceso de \textit{Web scraping}.
+
+Además, se han creado archivos de HTML, CSS y JavaScript para la visualización e interacción con el resultado del proyecto, que constituye una aplicación Web desarrollada con el \textit{micro-framework} Flask. Para su desarrollo, al igual que el resto de archivos de programación del proyecto, se ha empleado el editor de código Sublime Text \cite{sublime}, y los navegadores Web Safari \cite{safari}, Chrome \cite{chrome} y Firefox \cite{firefox}.
+
+\section{Despliegue}
+
+Para desplegar el resultado final del proyecto software se ha optado por la plataforma como servicio (PaaS, por sus siglas en inglés) App Engine, de Google \cite{appengine}. Esta solución abstrae la infraestructura necesaria para desplegar una aplicación Web, dejando en manos del desarrollador la configuración del entorno a nivel de aplicación, y permitiendo que este pueda alojarse en los servicios de computación en la nube de Google a bajo coste. App Engine es una de las alternativas estudiadas en este máster dentro de la asignatura ``Infraestructura para el Big Data'', y ha sido elegida por la experiencia previa del autor con ella y su conveniencia frente a otras alternativas. Sin embargo, como se abordará posteriormente, no se descarta una posible migración en el futuro a otra alternativa, dada la facilidad para hacerlo entre las soluciones de computación en la nube existentes. Por otra parte, el dominio Web del proyecto ha sido adquirido con la empresa Soluciones Corporativas IP \cite{dondominio}.
+
+\section{Otras herramientas}
+
+Como herramienta para la creación de la memoria y anexos en \LaTeX \space se ha empleado el portal en línea Overleaf \cite{overleaf} y Texmaker \cite{texmaker}. Los iconos empleados a lo largo del trabajo, el producto software o cualquier otro artefacto relacionado con este trabajo, y que no sean de fuente propia, están extraídos de Icons8 \cite{icons8}.
