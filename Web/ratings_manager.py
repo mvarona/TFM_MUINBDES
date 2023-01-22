@@ -1,3 +1,8 @@
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2022
+# Manages the like and dislike features
+
 import pandas as pd
 import random
 import string

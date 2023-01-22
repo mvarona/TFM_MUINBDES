@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2023
+# Returns a CSV with the recommendations of the collaborative filter based on items
+
 import pandas as pd
 from io import StringIO
 import recommender

@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2023
+# Returns a the required information per municipality
+
 import sys
 import os
 import pandas as pd

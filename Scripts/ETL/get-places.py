@@ -3,7 +3,6 @@
 # Mario Varona Bueno
 # TFM MUINBDES
 # 2022
-
 # Returns a CSV with the main places on a 5km radius around the specified coordinates
 
 import sys

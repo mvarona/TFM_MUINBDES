@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2023
+# Get the list of municipalities for the autocompletion feature
+
 import sys
 import os
 import json

@@ -1,5 +1,10 @@
 import pandas as pd
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2023
+# Returns a municipality after applying the selected filters
+
 def filter_region(model, comunidad):
 	comunidad = int(comunidad)
 

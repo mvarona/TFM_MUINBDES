@@ -1,5 +1,10 @@
 from random import randrange
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2023
+# Returns a random background
+
 def get_random_background():
 	names = []
 	backgrounds = []

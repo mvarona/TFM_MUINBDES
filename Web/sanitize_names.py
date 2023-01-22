@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2023
+# Generates a URL-safe name for the passed municipality
+
 import re
 from unicodedata import normalize
 

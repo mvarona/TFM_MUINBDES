@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2022
+# Returns a CSV with the recommendations of the content-based recommender
+
 import pandas as pd
 import sys
 import os

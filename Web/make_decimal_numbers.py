@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2022
+# Returns a decimal number as string
+
 def convert_decimal_numbers(num, roundNumber=True):
 	if num == "-":
 		return num

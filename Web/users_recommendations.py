@@ -6,8 +6,12 @@ from sklearn.model_selection import train_test_split
 from surprise.model_selection import cross_validate
 from surprise import BaselineOnly
 from surprise import accuracy
-
 from sklearn.utils import shuffle
+
+# Mario Varona Bueno
+# TFM MUINBDES
+# 2022
+# Returns a CSV with the recommendations of the collaborative filter based on users
 
 def create_users_recommendations():
 	df = pd.read_csv("ratings.csv")
