@@ -277,3 +277,1748 @@ Todos los datos han sido recogidos en diciembre de 2022, y hacen referencia a lo
     \item Rentas brutas medias por municipio, pertenecientes al año 2019.
     \item Cobertura de banda ancha por municipio, perteneciente al año 2020.
 \end{itemize}
+
+Finalmente, el perfil estadístico de los datos que compondrán el modelo es el siguiente:
+
+\begin{enumerate}
+    	\item codigo\_ine. Representa el código del Instituto Nacional de Estadística para el municipio.
+	
+	Número de valores: 8.131.
+	
+	Variable categórica.
+
+	\item municipio. Representa el nombre del municipio como figura en el INE.
+	
+	Número de valores: 8.131.
+	
+	Valores únicos: 8.114.
+	
+	Primer valor más repetido: Molar (El).
+	
+	Frecuencia del primer valor más repetido: 2.
+	
+	Variable categórica.
+
+	\item provincia. Representa el nombre de la provincia como figura en el INE.
+	
+	Número de valores: 8.131.
+	
+	Valores únicos: 52.
+	
+	Primer valor más repetido: Burgos.
+	
+	Frecuencia del primer valor más repetido: 371.
+	
+	Variable categórica.
+
+	\item comunidad\_autonoma. Representa el nombre de la comunidad o ciudad autónoma como figura en el INE.
+	
+	Número de valores: 8.131.
+	
+	Valores únicos: 19.
+	
+	Primer valor más repetido: Castilla y León.
+	
+	Frecuencia del primer valor más repetido: 2248.
+	
+	Variable categórica.
+
+	\item municipio\_nombre\_humano. Representa el nombre habitual del municipio construido según se ha descrito anteriormente.
+	
+	Número de valores: 8.131.
+	
+	Valores únicos: 8.114.
+	
+	Primer valor más repetido: El Molar.
+	
+	Frecuencia del primer valor más repetido: 2.
+	
+	Variable categórica.
+
+	\item num\_centros\_salud. Representa el número de centros de salud encontrados en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 1,608535.
+	
+	Desviación estándar: 2,627955.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 1.
+	
+	Percentil 50 \%: 1.
+	
+	Percentil 75 \%: 1.
+	
+	Valor máximo: 128.
+	
+	Variable discreta.
+
+	\item num\_centros\_urgencias. Representa el número de centros con urgencias extrahospitalarias encontrados en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,244865.
+	
+	Desviación estándar: 0,687748.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 29.
+	
+	Variable discreta.
+
+	\item num\_hospitales. Representa el número de hospitales encontrados en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,102570.
+	
+	Desviación estándar: 1,122314.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 62.
+	
+	Variable discreta.
+
+	\item num\_colegios. Representa el número de centros de educación primaria o secundaria encontrados en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 3,808757.
+	
+	Desviación estándar: 26,754116.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 1.673.
+	
+	Variable discreta.
+
+	\item num\_universidades. Representa el número de instituciones de educación superior encontradas en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,036650.
+	
+	Desviación estándar: 0,439316.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 27.
+	
+	Variable discreta.
+
+	\item linea\_costa\_provincia. Representa el valor de la distancia a la costa según la heurística seguida.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 1,519739.
+	
+	Desviación estándar: 0,947683.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 1.
+	
+	Percentil 50 \%: 2.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item linea\_montana\_provincia. Representa el valor de la distancia a la montaña según la heurística seguida.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 1,515927.
+	
+	Desviación estándar: 0,771947.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 1.
+	
+	Percentil 50 \%: 2.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item poblacion. Representa el número de habitantes del municipio según el CNIG.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 5,827710e+03.
+	
+	Desviación estándar: 4,784572e+04.
+	
+	Valor mínimo: 3e+00.
+	
+	Percentil 25 \%: 1,530000e+02.
+	
+	Percentil 50 \%: 5,230000e+02.
+	
+	Percentil 75 \%: 2,416000e+03.
+	
+	Valor máximo: 3,305408e+06.
+	
+	Variable discreta.
+
+	\item superficie. Representa la superficie en kilómetros cuadrados del municipio según el CNIG.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 62,082519.
+	
+	Desviación estándar: 92,027746.
+	
+	Valor mínimo: 0,030.
+	
+	Percentil 25 \%: 18,430.
+	
+	Percentil 50 \%: 34,890.
+	
+	Percentil 75 \%: 68,865.
+	
+	Valor máximo: 1.750,230.
+	
+	Variable continua.
+
+	\item densidad\_poblacion. Representa el cociente entre el número de habitantes y la superficie del municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 179,066256.
+	
+	Desviación estándar: 917,030223.
+	
+	Valor mínimo: 0,190.
+	
+	Percentil 25 \%: 4,640.
+	
+	Percentil 50 \%: 13,430.
+	
+	Percentil 75 \%: 55,740.
+	
+	Valor máximo: 27.054,260.
+	
+	Variable continua.
+
+	\item lat. Representa la coordenada de latitud del municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 40,724022.
+	
+	Desviación estándar: 2,122406.
+	
+	Valor mínimo: 27,705214.
+	
+	Percentil 25 \%: 39,861447.
+	
+	Percentil 50 \%: 41,183650.
+	
+	Percentil 75 \%: 42,130990.
+	
+	Valor máximo: 43,733580.
+	
+	Variable continua.
+
+	\item lon. Representa la coordenada de longitud del municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: -3,107545.
+	
+	Desviación estándar: 3,027364.
+	
+	Valor mínimo: -18,003670.
+	
+	Percentil 25 \%: -5,116445.
+	
+	Percentil 50 \%: -3,233750.
+	
+	Percentil 75 \%: -1,123423.
+	
+	Valor máximo: 4,289900.
+	
+	Variable continua.
+
+	\item feb\_avg\_min\_temp. Representa el promedio de las temperaturas mínimas históricas en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: -1,860926.
+	
+	Desviación estándar: 3,426865.
+	
+	Valor mínimo: -6,820.
+	
+	Percentil 25 \%: -4,280.
+	
+	Percentil 50 \%: -2,490.
+	
+	Percentil 75 \%: 0,110.
+	
+	Valor máximo: 12,910.
+	
+	Variable continua.
+
+	\item feb\_avg\_max\_temp. Representa el promedio de las temperaturas máximas históricas en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 18,807847.
+	
+	Desviación estándar: 2,398942.
+	
+	Valor mínimo: 15,050.
+	
+	Percentil 25 \%: 17,050.
+	
+	Percentil 50 \%: 18,820.
+	
+	Percentil 75 \%: 19,730.
+	
+	Valor máximo: 30,040.
+	
+	Variable continua.
+
+	\item feb\_avg\_temp. Representa el promedio de las temperaturas históricas en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 8,168821.
+	
+	Desviación estándar: 2,732125.
+	
+	Valor mínimo: 4,060.
+	
+	Percentil 25 \%: 6,370.
+	
+	Percentil 50 \%: 7,720.
+	
+	Percentil 75 \%: 9,800.
+	
+	Valor máximo: 18,160.
+	
+	Variable continua.
+
+	\item feb\_avg\_humidity. Representa el promedio de la humedad histórica en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 75,260264.
+	
+	Desviación estándar: 5,426036.
+	
+	Valor mínimo: 60,380.
+	
+	Percentil 25 \%: 71,470.
+	
+	Percentil 50 \%: 76,110.
+	
+	Percentil 75 \%: 79,310.
+	
+	Valor máximo: 84,100.
+	
+	Variable continua.
+
+	\item feb\_avg\_wind. Representa el promedio de las velocidades del viento históricas en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 12,790082.
+	
+	Desviación estándar: 2,582472.
+	
+	Valor mínimo: 6,340.
+	
+	Percentil 25 \%: 11,270.
+	
+	Percentil 50 \%: 11,990.
+	
+	Percentil 75 \%: 15,160.
+	
+	Valor máximo: 23,470.
+	
+	Variable continua.
+
+	\item feb\_avg\_min\_rain. Representa el promedio de las precipitaciones mínimas históricas en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,0.
+	
+	Desviación estándar: 0,0.
+	
+	Valor mínimo: 0,0.
+	
+	Percentil 25 \%: 0,0.
+	
+	Percentil 50 \%: 0,0.
+	
+	Percentil 75 \%: 0,0.
+	
+	Valor máximo: 0,0.
+	
+	Variable continua.
+
+	\item feb\_avg\_max\_rain. Representa el promedio de las precipitaciones máximas históricas en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 4,795019.
+	
+	Desviación estándar: 3,736073.
+	
+	Valor mínimo: 0,900.
+	
+	Percentil 25 \%: 3.
+	
+	Percentil 50 \%: 3.
+	
+	Percentil 75 \%: 3.
+	
+	Valor máximo: 12.
+	
+	Variable continua.
+
+	\item feb\_avg\_rain. Representa el promedio de las precipitaciones históricas en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,087018.
+	
+	Desviación estándar: 0,103658.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0,030.
+	
+	Percentil 50 \%: 0,050.
+	
+	Percentil 75 \%: 0,120.
+	
+	Valor máximo: 0,580.
+	
+	Variable continua.
+
+	\item feb\_avg\_clouds. Representa el promedio de la nubosidad histórica en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 34,776345.
+	
+	Desviación estándar: 8,348728.
+	
+	Valor mínimo: 20,510.
+	
+	Percentil 25 \%: 28,220.
+	
+	Percentil 50 \%: 34,200.
+	
+	Percentil 75 \%: 38,190.
+	
+	Valor máximo: 55,810.
+	
+	Variable continua.
+
+	\item feb\_avg\_sunshine\_hours. Representa el promedio de las horas de sol históricas en febrero.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 103,220244.
+	
+	Desviación estándar: 25,362799.
+	
+	Valor mínimo: 44,400.
+	
+	Percentil 25 \%: 92,100.
+	
+	Percentil 50 \%: 101,700.
+	
+	Percentil 75 \%: 124,800.
+	
+	Valor máximo: 160,400.
+	
+	Variable continua.
+
+	\item jul\_avg\_min\_temp. Representa el promedio de las temperaturas mínimas históricas en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 12,677091.
+	
+	Desviación estándar: 3,667269.
+	
+	Valor mínimo: 5,680.
+	
+	Percentil 25 \%: 9,620.
+	
+	Percentil 50 \%: 13,480.
+	
+	Percentil 75 \%: 15,150.
+	
+	Valor máximo: 19,420.
+	
+	Variable continua.
+
+	\item jul\_avg\_max\_temp. Representa el promedio de las temperaturas máximas históricas en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 36,420878.
+	
+	Desviación estándar: 2,460139.
+	
+	Valor mínimo: 28,110.
+	
+	Percentil 25 \%: 34,630.
+	
+	Percentil 50 \%: 36,180.
+	
+	Percentil 75 \%: 38,490.
+	
+	Valor máximo: 41,330.
+	
+	Variable continua.
+
+	\item jul\_avg\_temp. Representa el promedio de las temperaturas históricas en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 24,135807.
+	
+	Desviación estándar: 2,657738.
+	
+	Valor mínimo: 19,090.
+	
+	Percentil 25 \%: 21,970.
+	
+	Percentil 50 \%: 25,310.
+	
+	Percentil 75 \%: 26,260.
+	
+	Valor máximo: 28,730.
+	
+	Variable continua.
+
+	\item jul\_avg\_humidity. Representa el promedio de la humedad histórica en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 56,174483.
+	
+	Desviación estándar: 12,792079.
+	
+	Valor mínimo: 35,390.
+	
+	Percentil 25 \%: 49,070.
+	
+	Percentil 50 \%: 56,780.
+	
+	Percentil 75 \%: 65,050.
+	
+	Valor máximo: 86,730.
+	
+	Variable continua.
+
+	\item jul\_avg\_wind. Representa el promedio de las velocidades del viento históricas en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 11,068964.
+	
+	Desviación estándar: 3,225845.
+	
+	Valor mínimo: 6,620.
+	
+	Percentil 25 \%: 8,930.
+	
+	Percentil 50 \%: 10,330.
+	
+	Percentil 75 \%: 12,460.
+	
+	Valor máximo: 38,880.
+	
+	Variable continua.
+
+	\item jul\_avg\_min\_rain. Representa el promedio de las precipitaciones mínimas históricas en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,0.
+	
+	Desviación estándar: 0,0.
+	
+	Valor mínimo: 0,0.
+	
+	Percentil 25 \%: 0,0.
+	
+	Percentil 50 \%: 0,0.
+	
+	Percentil 75 \%: 0,0.
+	
+	Valor máximo: 0,0.
+	
+	Variable continua.
+
+	\item jul\_avg\_max\_rain. Representa el promedio de las precipitaciones máximas históricas en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 7,446280.
+	
+	Desviación estándar: 4,802844.
+	
+	Valor mínimo: 0,300.
+	
+	Percentil 25 \%: 3.
+	
+	Percentil 50 \%: 12.
+	
+	Percentil 75 \%: 12.
+	
+	Valor máximo: 12.
+	
+	Variable continua.
+
+	\item jul\_avg\_rain. Representa el promedio de las precipitaciones históricas en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,023540.
+	
+	Desviación estándar: 0,022075.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0,010.
+	
+	Percentil 50 \%: 0,020.
+	
+	Percentil 75 \%: 0,030.
+	
+	Valor máximo: 0,170.
+	
+	Variable continua.
+
+	\item jul\_avg\_clouds. Representa el promedio de la nubosidad histórica en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 16,040075.
+	
+	Desviación estándar: 10,766366.
+	
+	Valor mínimo: 4,510.
+	
+	Percentil 25 \%: 8,100.
+	
+	Percentil 50 \%: 12,690.
+	
+	Percentil 75 \%: 21,880.
+	
+	Valor máximo: 47,510.
+	
+	Variable continua.
+
+	\item jul\_avg\_sunshine\_hours. Representa el promedio de las horas de sol históricas en julio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 267,176473.
+	
+	Desviación estándar: 80,813302.
+	
+	Valor mínimo: 49,700.
+	
+	Percentil 25 \%: 214,800.
+	
+	Percentil 50 \%: 273,700.
+	
+	Percentil 75 \%: 343,300.
+	
+	Valor máximo: 388,400.
+	
+	Variable continua.
+
+	\item kms\_capital\_provincia. Representa la distancia del municipio a su capital de provincia en kilómetros.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 62,383328.
+	
+	Desviación estándar: 36,467612.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 35,635.
+	
+	Percentil 50 \%: 56,090.
+	
+	Percentil 75 \%: 83,270.
+	
+	Valor máximo: 227,120.
+	
+	Variable continua.
+
+	\item altitud. Representa la altitud sobre el nivel del mar del municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 619,578773.
+	
+	Desviación estándar: 348,438821.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 333.
+	
+	Percentil 50 \%: 673.
+	
+	Percentil 75 \%: 864.
+	
+	Valor máximo: 2.196.
+	
+	Variable continua.
+
+	\item renta\_bruta\_media. Representa la renta bruta media anual per cápita del municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 21.626,313492.
+	
+	Desviación estándar: 10.722,167104.
+	
+	Valor mínimo: 10.353.
+	
+	Percentil 25 \%: 17.879.
+	
+	Percentil 50 \%: 19.808.
+	
+	Percentil 75 \%: 22.933.
+	
+	Valor máximo: 53.0327.
+	
+	Variable continua.
+
+	\item precio\_m2\_venta. Representa el precio del metro cuadrado promedio de las viviendas a la venta.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 806,118989.
+	
+	Desviación estándar: 9.908,827660.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 429,630.
+	
+	Percentil 75 \%: 896,080.
+	
+	Valor máximo: 850.000.
+	
+	Variable continua.
+
+	\item num\_casas\_venta. Representa el número de viviendas a la venta.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 87.066044.
+	
+	Desviación estándar: 961,542442.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 5.
+	
+	Percentil 75 \%: 28.
+	
+	Valor máximo: 72.396.
+	
+	Variable discreta.
+
+	\item precio\_m2\_alquiler. Representa el precio del metro cuadrado promedio de las viviendas en alquiler.
+	
+	Promedio: 4,141270.
+	
+	Desviación estándar: 189,638816.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 3,510.
+	
+	Valor máximo: 17.094,020.
+	
+	Variable continua.
+
+	\item num\_casas\_alquiler. Representa el número de viviendas en alquiler.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 21,695732.
+	
+	Desviación estándar: 880,894804.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 1.
+	
+	Valor máximo: 55.212.
+	
+	Variable discreta.
+
+	\item precio\_m2\_venta\_provincia. Representa el precio del metro cuadrado promedio de las viviendas en venta en la provincia.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 1576,911573.
+	
+	Desviación estándar: 569,065599.
+	
+	Valor mínimo: 936.
+	
+	Percentil 25 \%: 1.159.
+	
+	Percentil 50 \%: 1.445.
+	
+	Percentil 75 \%: 1.674.
+	
+	Valor máximo: 3.314.
+	
+	Variable continua.
+
+	\item precio\_medio\_venta\_provincia. Representa el precio medio de venta de las viviendas en la provincia.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 156.122,501537.
+	
+	Desviación estándar: 55.720,425875.
+	
+	Valor mínimo: 96.893.
+	
+	Percentil 25 \%: 119.586.
+	
+	Percentil 50 \%: 141.657.
+	
+	Percentil 75 \%: 163.450.
+	
+	Valor máximo: 358.810.
+	
+	Variable continua.
+
+	\item precio\_m2\_alquiler\_provincia. Representa el precio del metro cuadrado promedio de las viviendas en alquiler en la provincia.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 8,731275.
+	
+	Desviación estándar: 2,658687.
+	
+	Valor mínimo: 5.
+	
+	Percentil 25 \%: 7.
+	
+	Percentil 50 \%: 8.
+	
+	Percentil 75 \%: 10.
+	
+	Valor máximo: 16.
+	
+	Variable continua.
+
+	\item precio\_medio\_alquiler\_provincia. Representa el precio medio de alquiler de las viviendas en la provincia.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 751,893125.
+	
+	Desviación estándar: 238,788464.
+	
+	Valor mínimo: 461.
+	
+	Percentil 25 \%: 588.
+	
+	Percentil 50 \%: 672.
+	
+	Percentil 75 \%: 821.
+	
+	Valor máximo: 1.414.
+	
+	Variable continua.
+
+	\item tasa\_actividad\_provincia. Representa la tasa de actividad de la provincia.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 57,589041.
+	
+	Desviación estándar: 3,485300.
+	
+	Valor mínimo: 48,860.
+	
+	Percentil 25 \%: 55,640.
+	
+	Percentil 50 \%: 57,780.
+	
+	Percentil 75 \%: 59,930.
+	
+	Valor máximo: 65,420.
+	
+	Variable continua.
+
+	\item tasa\_paro\_provincia. Representa la tasa de desempleo de la provincia.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 11,675691.
+	
+	Desviación estándar: 3,468686.
+	
+	Valor mínimo: 7,320.
+	
+	Percentil 25 \%: 9,280.
+	
+	Percentil 50 \%: 10,550.
+	
+	Percentil 75 \%: 12,360.
+	
+	Valor máximo: 24,660.
+	
+	Variable continua.
+
+	\item tasa\_empleo\_provincia. Representa la tasa de empleo de la provincia.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 50,893220.
+	
+	Desviación estándar: 4,030124.
+	
+	Valor mínimo: 42,010.
+	
+	Percentil 25 \%: 47,620.
+	
+	Percentil 50 \%: 51,310.
+	
+	Percentil 75 \%: 54,130.
+	
+	Valor máximo: 59,340.
+	
+	Variable continua.
+
+	\item num\_empleos\_provincia. Representa el número de empleos disponibles en la provincia.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 1.543,535236.
+	
+	Desviación estándar: 2.677,706433.
+	
+	Valor mínimo: 329.
+	
+	Percentil 25 \%: 479.
+	
+	Percentil 50 \%: 677.
+	
+	Percentil 75 \%: 1.234.
+	
+	Valor máximo: 13.139.
+	
+	Variable discreta.
+
+	\item cobertura\_30. Representa el porcentaje del territorio cubierto con fibra óptica de más de 30 megabytes de velocidad.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 70,299592.
+	
+	Desviación estándar: 35,226801.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 48,500.
+	
+	Percentil 50 \%: 89.
+	
+	Percentil 75 \%: 99,890.
+	
+	Valor máximo: 100.
+	
+	Variable continua.
+
+	\item cobertura\_100. Representa el porcentaje del territorio cubierto con fibra óptica de más de 100 megabytes de velocidad.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 29,823889.
+	
+	Desviación estándar: 39,173617.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 66.
+	
+	Valor máximo: 100.
+	
+	Variable continua.
+
+	\item cobertura\_3g. Representa el porcentaje del territorio cubierto con cobertura 3G HSPA.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 99,063675.
+	
+	Desviación estándar: 3,618573.
+	
+	Valor mínimo: 19.
+	
+	Percentil 25 \%: 99,860.
+	
+	Percentil 50 \%: 100.
+	
+	Percentil 75 \%: 100.
+	
+	Valor máximo: 100.
+	
+	Variable continua.
+
+	\item cobertura\_4g. Representa el porcentaje del territorio cubierto con cobertura 4G LTE.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 95,432270.
+	
+	Desviación estándar: 13,464192.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 99.
+	
+	Percentil 50 \%: 100.
+	
+	Percentil 75 \%: 100.
+	
+	Valor máximo: 100.
+	
+	Variable continua.
+
+	\item sitios\_comercio. Representa la frecuencia de sitios comerciales en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,385192.
+	
+	Desviación estándar: 0,861474.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_turismo. Representa la frecuencia de sitios turísticos en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,461321.
+	
+	Desviación estándar: 0,972347.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_alojamiento. Representa la frecuencia de alojamientos en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,200959.
+	
+	Desviación estándar: 0,704024.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_ocio. Representa la frecuencia de sitios de ocio en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,968885.
+	
+	Desviación estándar: 1,134233.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_natural. Representa la frecuencia de sitios naturales en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,879966.
+	
+	Desviación estándar: 0,824654.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 1.
+	
+	Percentil 75 \%: 1.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_servicio. Representa la frecuencia de servicios en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,425040.
+	
+	Desviación estándar: 0,977298.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_actividad. Representa la frecuencia de lugares para practicar actividades en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,041446.
+	
+	Desviación estándar: 0,339856.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_entretenimiento. Representa la frecuencia de sitios de entretenimiento en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,022506.
+	
+	Desviación estándar: 0,250186.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_catering. Representa la frecuencia de sitios de hostelería en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,661050.
+	
+	Desviación estándar: 1,103603.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 1.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_sport. Representa la frecuencia de sitios deportivos en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 1,021769.
+	
+	Desviación estándar: 1,125198.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 1.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_edificio. Representa la frecuencia de edificios en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,423933.
+	
+	Desviación estándar: 0,960839.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_acceso\_limitado. Representa la frecuencia de lugares de acceso limitado en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,147706.
+	
+	Desviación estándar: 0,565903.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_artificial. Representa la frecuencia de construcciones artificiales en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,018325.
+	
+	Desviación estándar: 0,221332.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_acceso. Representa la frecuencia de lugares de acceso libre en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,039602.
+	
+	Desviación estándar: 0,323581.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_sin\_acceso. Representa la frecuencia de lugares de acceso privado en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,003690.
+	
+	Desviación estándar: 0,099129.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_patrimonio. Representa la frecuencia de lugares de patrimonio en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,007994.
+	
+	Desviación estándar: 0,148994.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_carretera. Representa la frecuencia de vías de comunicación por carretera en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,008363.
+	
+	Desviación estándar: 0,146056.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_cuota. Representa la frecuencia de lugares de acceso sujeto a una cuota en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,000615.
+	
+	Desviación estándar: 0,039983.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_comodidad. Representa la frecuencia de utilidades de conveniencia pública en el municipio.
+	
+	Número de valores: 8.131.
+	
+	Promedio: 0,001845.
+	
+	Desviación estándar: 0,074375.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+\end{enumerate}
+
+\section{Preparación de datos}
+
+Una vez la exploración de los datos cuantitativos, que alimentarán posteriormente el modelo, fue exitosa en todos los conjuntos de datos, dio comienzo la fase de preparación de los datos.
+
+En esta fase se eliminaron los marcadores de datos nulos o no encontrados (establecidos arbitrariamente como ``-''), y se sustituyeron por campos vacíos.
+
+\imagen{modelo1}{Datos geográficos y de lugares de interés de los municipios antes de su transformación.}
+
+Además, se convirtió la expresión de los lugares más frecuentes para un municipio de cualitativa, para la exploración de datos, a cuantitativa siguiendo la codificación \textit{one hot encoding}.
+
+\imagen{modelo2}{Datos geográficos y de lugares de interés de los municipios después de su transformación.}
+
+Antes de continuar, se creó una versión del modelo hasta el momento en formato JSON, mucho más conveniente a la hora de recuperar los datos de un municipio en particular para presentarlos al usuario, tanto por razones de comodidad como de rendimiento. Así, el sistema de recomendación devolverá el código INE del municipio, y sus datos se recuperarán de este archivo que, por este motivo, estará formado por un diccionario indexado por estos códigos.
+
+Posteriormente, se eliminaron las variables cualitativas (nombre codificado del municipio, nombre tradicional del municipio y comunidad autónoma), y las coordenadas (campos de latitud y longitud) de cada municipio, y se normalizaron los datos para disponer de ellos de forma agnóstica a las unidades empleadas en cada dimensión. La normalización se hizo basándose en diversas variables, como la renta bruta media o la tasa de empleo; sin embargo, la que mejores resultados arrojó fue el tamaño de la población. Así, se utilizó la regresión de Ridge –que reduce los coeficientes introduciendo un término de penalización igual a la suma de los coeficientes cuadrados por un coeficiente de penalización– para normalizar las variables sobre la clase, y se multiplicaron los coeficientes devueltos por la estructura de datos.
+
+Para todo ello se usan los archivos normalize.py y create-model.py.
+
+\section{Modelado}
+
+A la hora de hablar del modelo del trabajo, es necesario distinguir entre los dos enfoques que se han explorado:
+
+\subsubsection{Sistema de recomendación basado en contenido}
+
+Una vez se dispone del modelo normalizado, este puede tratarse para producir el sistema de recomendación basado en contenido. Aquí se ha optado por basarlo en el cálculo de la similitud coseno entre el municipio que constituirá la entrada y los restantes, con el objetivo de devolver el más cercano del espacio vectorial que forman los municipios representados por vectores según sus características.
+
+Tras calcular la similitud coseno se ordenarán los valores de forma descendente, para seleccionar a continuación el resultado de mayor similitud, que será el municipio presentado al usuario. Para ello, el código del municipio devuelto será usado para acceder a la base de datos de los municipios en formato JSON.
+
+\imagen{cosine}{Explicación de cómo la similitud coseno calcula la distancia entre vectores, devolviendo valores más altos cuanto más similares son; y más bajos cuanto más opuestos son \cite{US3}.}
+
+Así, se definió una función que toma un código INE como entrada y tras leer el CSV del modelo calcula la similitud coseno entre ese municipio y el resto, devolviendo el código del INE correspondiente al primer resultado. En la fase de despliegue, se preparó el sistema para recuperar la información del municipio a partir de su código INE y devolverla al usuario.
+
+\subsubsection{Sistema de recomendación de filtro colaborativo basado en usuarios}
+
+Además del sistema de recomendación basado en contenido, el autor deseaba construir un sistema de recomendación basado en un filtro colaborativo que se alimentara de las valoraciones (positivas o negativas de forma binaria, ``me gusta / no me gusta'') de los usuarios al recibir la recomendación de un municipio. La idea detrás de estos sistemas es recomendar elementos que han gustado a usuarios similares. Debido a la baja tasa de valoración habitual, suelen trabajar con matrices dispersas y necesitar grandes cantidades de valoraciones de usuarios para poder realizar recomendaciones adecuadas.
+
+Dado que el dominio del problema no dispone de conjuntos de datos con valoraciones de usuarios y, el propio sistema, aunque diseñado para recogerlas, no ha podido coleccionar las suficientes durante su creación por los limitados recursos de un trabajo académico como este, el autor consideró crear su propio conjunto de datos ficticio imitando usuarios reales.
+
+Para ello, creó 10 usuarios ficticios y valoró con cada uno a 100 municipios de forma positiva y a 100 municipios de forma negativa. Estos municipios estuvieron elegidos aleatoriamente aplicando los siguientes criterios para cada usuario, con la intención de crear perfiles de usuarios intuitivamente naturales:
+
+\begin{itemize}
+    \item El primer usuario muestra su valoración positiva por 100 municipios costeros aleatorios, y su valoración negativa por 100 municipios muy alejados de la costa aleatorios; es decir, representa a un usuario que prefiere los municipios costeros.
+
+    \item El segundo usuario muestra su valoración positiva por 100 municipios muy alejados de la costa aleatorios, y su valoración negativa por 100 municipios costeros aleatorios; es decir, representa a un usuario que prefiere los municipios alejados de la costa.
+
+    \item El tercer usuario muestra su valoración positiva por 100 municipios cercanos a la montaña aleatorios, y su valoración negativa por 100 municipios muy alejados de la montaña aleatorios; es decir, representa a un usuario que prefiere la montaña.
+    
+    \item El cuarto usuario muestra su valoración positiva por 100 municipios muy alejados de la montaña aleatorios, y su valoración negativa por 100 municipios de montaña aleatorios; es decir, representa a un usuario que prefiere los municipios alejados de la montaña.
+
+    \item El quinto usuario muestra su valoración positiva por 100 municipios de menos de 10.000 habitantes aleatorios, y su valoración negativa por 100 municipios de más de 10.000 habitantes aleatorios; es decir, representa a un usuario que prefiere los pueblos a las ciudades.
+
+    \item El sexto usuario muestra su valoración positiva por 100 municipios de más de 100.000 habitantes aleatorios, y su valoración negativa por 100 municipios de menos de 10.000 habitantes aleatorios; es decir, representa a un usuario que prefiere las ciudades a los pueblos.
+
+    \item El séptimo usuario muestra su valoración positiva por 100 municipios con lugares naturales aleatorios, y su valoración negativa por 100 municipios sin lugares naturales aleatorios; es decir, representa a un usuario que prefiere la naturaleza.
+
+    \item El octavo usuario muestra su valoración positiva por 100 municipios con lugares de comercios aleatorios, y su valoración negativa por 100 municipios sin lugares de comercio aleatorios; es decir, representa a un usuario que prefiere las zonas comerciales.
+
+    \item El noveno usuario muestra su valoración positiva por 100 municipios con menos de un 50 \% de conectividad de fibra óptica a más de 100 megabytes aleatorios, y su valoración negativa por 100 municipios con más de un 50 \% de dicha conectividad aleatorios; es decir, representa a un usuario que prefiere zonas poco conectadas a Internet.
+
+    \item El décimo usuario muestra su valoración positiva por 100 municipios con más de un 50 \% de conectividad de fibra óptica a más de 100 megabytes aleatorios, y su valoración negativa por 100 municipios con menos de un 50 \% de dicha conectividad aleatorios; es decir, representa a un usuario que prefiere zonas conectadas a Internet.
+
+\end{itemize}
+
+Este proceso se realizó a través del \textit{script} create\_ratings.py. A continuación, una vez creados los usuarios anteriores y las 2.000 valoraciones iniciales, se usó la librería surprise, de scikit-learn, para tratar con ellos. Tras especificarle la escala de las opiniones (valores enteros entre el 0 y el 1), y especificar las columnas del conjunto (identificador del elemento, identificador del usuario y valoración), se usó primeramente KNNWithMeans como algoritmo de filtrado colaborativo básico, que tiene en cuenta las valoraciones promedio de cada usuario.
+
+Tras separar el conjunto en las particiones de entrenamiento (80 \% del conjunto) y prueba (20 \% restante), y entrenar el modelo y predecir con este algoritmo, se usó ALS (mínimos cuadrados alternos, por sus siglas en inglés) para después evaluar la precisión a través del RMSE (error cuadrático medio, por sus siglas en inglés), como se describirá en la fase de evaluación.
+
+A partir de aquí, el sistema funciona de forma análoga al sistema basado en contenido, devolviendo identificadores de municipios recomendados para uno dado.
+
+Todo ello se realizó en el archivo users\_recommendations.py.
+
+Sin embargo, y como se abordará en el apartado de evaluación, este enfoque no dio los resultados deseados, teniendo un rendimiento inferior al esperado –quizás debido a la generación artificial de los usuarios–. Por este motivo, se decidió explorar el segundo tipo de sistemas de recomendación de filtro colaborativo.
+
+\subsubsection{Sistema de recomendación de filtro colaborativo basado en ítems}
+
+En estos sistemas, las recomendaciones se hacen teniendo en cuenta la similitud de los elementos valorados por otros usuarios con respecto a las valoraciones del usuario interesado. Se buscan elementos similares a los gustos comunes de usuarios cercanos. Si bien este método puede funcionar peor para usuarios con gustos muy específicos (nichos, pocos usuarios con gustos comunes), el filtro colaborativo basado en ítems habitualmente ofrece recomendaciones mejores y más rápidas \cite{filtro_colaborativo_2}. En el caso de este trabajo, se consideró que los municipios españoles reúnen las suficientes características como para poder ser divididos en un número relativamente pequeño de grupos, lo que favorece la ausencia de usuarios de nicho, por lo que se consideró un enfoque apropiado.
+
+Así, para predecir la valoración (uno en caso de que la valoración sea positiva; es decir, el usuario expresa que le gusta el municipio, y cero en caso de que este exprese su rechazo) de un lugar para un determinado usuario, calcularemos la predicción de la valoración de un municipio $i$ por un usuario $u$ de la siguiente manera:
+
+$$pred(u, i) = \frac{\sum_{v \in usuarios \ que \ han \ valorado \ i} sim(u, v) \cdot r(v, i)}{\sum_{v \in usuarios \ que \ han \ valorado \ i} |sim(u, v)|}$$
+
+Donde:
+
+$pred(u, i)$: es la predicción de la puntuación del usuario $u$ para el municipio $i$.
+
+$sim(u, v)$: es la similitud entre los usuarios $u$ y $v$, medida por su similitud coseno.
+
+$r(v, i)$: es la evaluación del municipio $i$ por el usuario $v$, que toma 1 si le ha gustado, y 0 en caso contrario.
+
+Este procedimiento es análogo a la frase ``la gente a la que le gusta el elemento X, como el usuario actual, también tiende a valorar positivamente el elemento Y, que el usuario aún no ha valorado, por lo que debería probarlo''. El filtrado colaborativo basado en ítems tiene menos errores que el filtrado colaborativo basado en usuarios y, como su modelo menos dinámico se calcula con menos frecuencia, se puede representar en una matriz de menor tamaño, por lo que su rendimiento es superior al de los sistemas de filtrado colaborativo basados en usuarios \cite{filtro_colaborativo_3}.
+
+Además, para ofrecer la mayor cantidad de resultados posible y la mejor experiencia de usuario, al poder descubrir una elevada cantidad de municipios, se decidió hacer uso de una de las técnicas más usadas en recomendadores por su elevado éxito: Los sistemas de recomendación híbridos. De esta manera, a la lista de municipios sugerida según el cálculo anterior –es decir, según los gustos de otros usuarios similares–, se añadieron municipios similares por contenido a los ya valorados positivamente por el usuario. Como se detallará en la sección de despliegue, esta lista se computa una vez al día para todos los usuarios que alguna vez han valorado algún artículo en el sistema.
+
+\section{Evaluación}
+
+De nuevo, debemos hacer distinción entre los dos sistemas usados:
+
+\subsubsection{Sistema de recomendación basado en contenido}
+
+Se usaron diversas métricas para comprobar el funcionamiento de este sistema:
+
+En primer lugar, la puntuación de Ridge devuelve el coeficiente de determinación de la predicción, siendo mejor cuanto mayor es, y estando su límite superior en 1. Se basa en la creación de un modelo de regresión lineal mediante cuadrados mínimos con norma L2. Su valor no está acotado inferiormente y puede tomar valores negativos, ya que el modelo puede ser arbitrariamente malo. Entre esta fase y su habitual vuelta a la fase de modelado anterior, se probaron las siguientes clases como base del modelo: renta bruta media, que obtuvo una puntuación de 0,62; tasa de actividad, que obtuvo una puntuación de 0,85; tasa de empleo, que obtuvo una puntuación de 0,91; y población, que obtuvo una puntuación de 0,96, siendo por tanto la variable elegida.
+
+Por otra parte, se tomó un subconjunto de 1.000 municipios, que se dividieron tomando el 80 \% de ellos en un conjunto de entrenamiento, y un 20 \% en un conjunto de prueba. Tras realizar un etiquetado manual de municipios parecidos, se usó el conjunto de prueba para calcular su RMSE, obteniendo un valor de 0,19, dentro de los objetivos del trabajo.
+
+Además, se realizaron diversas pruebas para comprobar la fiabilidad del sistema de forma cualitativa, y ver si los resultados devueltos eran coherentes y se adecuaban a la expectativa del sistema: Se observó cómo, en todos los casos (100 pruebas formales), el sistema recomendó municipios de características similares; por ejemplo, municipios medianos - grandes como recomendación sugerida para otros municipios del mismo tamaño, municipios pequeños como recomendación sugerida para otros municipios del mismo tamaño, municipios costeros como recomendación sugerida para otros municipios costeros y municipios cercanos a la montaña para otros municipios cercanos a la montaña.
+
+En general, la calidad de las recomendaciones observadas fue muy satisfactoria, tanto para el autor como para los sujetos que evaluaron cualitativamente el sistema una vez desplegado, como se describe posteriormente.
+
+\subsubsection{Sistema de recomendación de filtro colaborativo basado en usuarios}
+
+Por otro lado, el sistema de recomendación de filtro colaborativo basado en usuarios no alcanzó una fiabilidad adecuada en sus predicciones. La estimación del error cuadrático medio tras aplicar el algoritmo KNNWithMeans basado en la similitud coseno era demasiado grande (0,44), por lo que se decidió volver a la fase anterior y usar como método BaselineOnly con ALS y 3 ciclos completos (\textit{epochs}). De esta manera, se obtuvo un RMSE mucho menor, de 0,04, por lo que en principio los resultados eran más prometedores.
+
+\imagen{als}{RMSE obtenido en la primera iteración del modelo de filtro colaborativo basado en usuarios.}
+
+Sin embargo, al realizar las predicciones del conjunto de evaluación, los resultados no fueron satisfactorios. Las probabilidades de recomendar o no un municipio para un usuario similar a otro no superaban el 52 \%, quedando demasiado cerca a criterio del autor de una recomendación puramente azarosa.
+
+Se pensó que podría deberse a un tamaño demasiado pequeño en el conjunto de muestra inicial (2.000 valoraciones), por lo que se optó por aumentar el número de valoraciones de cada usuario hasta las 1.000 por tipo de valoración, resultando en 20.000 valoraciones. Pese a ello, los resultados tras entrenar, probar y evaluar el modelo fueron similares, no alcanzando un 53 \% de precisión en las recomendaciones. Tras aumentar el conjunto de datos de nuevo por diez, creando 10 usuarios nuevos réplica de los anteriores y contar con 200.000 valoraciones, solo se aumentó el tiempo de cálculo necesario, obteniendo los mismos resultados en cuanto a su precisión, muy similar a la de recomendaciones aleatorias.
+
+Se consideró que este hecho puede haber estado relacionado con el tamaño de la muestra (pocos usuarios y pocas valoraciones) o con los criterios arbitrarios elegidos para separar a los usuarios, que no reflejen adecuadamente el comportamiento y valoraciones de usuarios reales.
+ 
+\subsubsection{Sistema de recomendación de filtro colaborativo basado en ítems}
+
+Por su parte, el sistema de filtrado colaborativo basado en artículos obtuvo un RMSE de 0,25 en el conjunto de prueba, generado con 100 valoraciones aleatorias sobre un conjunto de 300 municipios aleatorios, parecidos por pares, siguiendo una proporción 80-20 para cada conjunto de datos (entrenamiento y prueba, respectivamente).
+
+Para asegurar una calidad suficiente, las recomendaciones se tienen en cuenta si el valor de la predicción supera el umbral de 0,7. Además, al igual que en el recomendador de contenido, se realizó la misma evaluación cualitativa formal, consistiendo en 100 pruebas a 10 usuarios distintos (10 pruebas con cada usuario).
+
+Tras alimentar el sistema con sus valoraciones, debían juzgar si las predicciones les resultaban útiles o no. Todos ellos consideraron que las predicciones mostraban municipios similares a aquellos por los que habían expresado su preferencia en el pasado, considerando la prueba satisfactoria.
+
+\section{Despliegue}
+
+Siguiendo con los objetivos de este trabajo, se encuentra una forma de interacción cómoda, centrada en el usuario, que le permita descubrir municipios en base a sus gustos y a los de otros usuarios. Para ello, se considera crear un sitio Web público como la mejor forma de lograrlo. El sitio Web está disponible en www.dondeteesperan.es, y cuenta con las siguientes características:
+
+En primer lugar, el usuario dispondrá de dos formas para descubrir lugares en base a sus gustos: a través de un cuestionario, y a través de la introducción de una entrada para el sistema de recomendación basado en contenido.
+
+\subsubsection{Cuestionario}
+
+Con la intención de permitir a los usuarios encontrar municipios en base a una búsqueda de criterios que puedan ser de su interés, se diseñan las siguientes 14 cuestiones y filtros, todos ellos opcionales:
+
+\begin{itemize}
+    \item Filtrado por comunidad autónoma a la que pertenece el municipio.
+    \item Filtrado por provincia a la que pertenece el municipio.
+    \item Filtrado por cercanía a la playa del municipio, preguntado en escala de tipo Likert de 5 puntos, donde cada valor se corresponderá con un valor de línea de costa asignado según la heurística utilizada.
+    \item Filtrado por cercanía a la montaña del municipio, análogo al anterior.
+    \item Filtrado por servicios sanitarios en el municipio, en función de si se desean: centros de salud, centros de salud con servicios de urgencias, hospitales, o todo lo anterior.
+    \item Filtrado por servicios educativos en el municipio, en función de si se desean: colegios, universidades o ambos.
+    \item Filtrado por cantidad de población del municipio, en función de si el tamaño deseado entra en alguno de los siguientes intervalos: menos de 1.000 habitantes, entre 1.000 y 5.000 habitantes, entre 5.000 y 10.000 habitantes, entre 10.000 habitantes y 100.000 habitantes, entre 100.000 habitantes y 250.000 habitantes, y más de 250.000 habitantes.
+    \item Filtrado por temperatura media en invierno en el municipio, ofreciendo los siguientes intervalos: menos de 5º C, entre 5 y 10º C, entre 10 y 15º C, y más de 15º C.
+    \item Filtrado por temperatura media en verano en el municipio, análogo al anterior, con los siguientes intervalos: menos de 20º C, entre 20 y 22º C, entre 22 y 25º C, y más de 25º C.
+    \item Filtrado por altitud del municipio, incluyendo los siguientes intervalos: menos de 250 metros, entre 250 y 500 metros, entre 500 y 750 metros, y más de 750 metros.
+    \item Filtrado por distancia a la capital de provincia, con los intervalos: menos de 5 kilómetros, entre 5 y 15 kilómetros, entre 15 y 25 kilómetros, entre 25 y 35 kilómetros, entre 35 y 50 kilómetros, y más de 50 kilómetros.
+    \item Filtrado por renta per cápita anual del municipio, dando los intervalos: menos de 20.000 €, entre 20.000 y 25.000 €, entre 25.000 y 30.000 €, y más de 30.000 €.
+    \item Filtrado por cobertura de Internet disponible en el municipio, con las opciones: Cobertura móvil 3G en más de la mitad del territorio, cobertura móvil 4G en más de la mitad del territorio, cobertura de fibra óptica de 30 MB en más la mitad del territorio, cobertura de fibra óptica de 100 MB más de la mitad del territorio o cobertura móvil 4G y fibra óptica de 100 MB más de la mitad del territorio
+    \item Filtrado por preferencia del usuario entre naturaleza o servicios comerciales, que filtra por los lugares de tipo ``sitios\_actividad'', ``sitios\_ocio'' y ``sitios\_natural'' para la primera opción, y por municipios que tengan lugares de tipo ``sitios\_comercio'', ``sitios\_servicio'' y ``sitios\_catering'' para la segunda.
+\end{itemize}
+
+Además, se consideró necesario añadir una página de ``Metodología'' al sitio Web, que explica cómo se ha realizado este trabajo, y que incluye las siguientes notas en relación con el cuestionario anterior –además de asuntos ya descritos en esta memoria, como el cálculo de las heurísticas para las distancias o la toma de valores climáticos promedio en febrero y julio para representar el invierno y el verano, respectivamente–:
+
+\textit{En todos los rangos del cuestionario se incluye el/los extremo/s del intervalo correspondiente, por ejemplo: ``Municipios de menos de 10.000 habitantes'', incluye a los municipios que tienen 10.000 habitantes, de forma análoga con el ejemplo acotado inferiormente (``Municipios de más de 10.000 habitantes'')}.
+
+\textit{La denominación ``colegios'' incluye indistintamente a ``colegios e institutos'' (Centros de educación primaria y secundaria), dado que los datos del Ministerio de Educación no realizan esta distinción.}
+
+\subsubsection{Programación de la aplicación}
+
+La creación de la página Web que servirá como resultado final accesible de este trabajo ha conllevado la creación de los siguientes archivos y ficheros:
+
+\subsubsection{Directorio principal}
+
+\begin{itemize}
+	\item .env. Archivo de variables de entorno para el entorno local.
+	\item .gcloudignore. Especifica los archivos que no se subirán a la plataforma de Google, como los archivos de caché de Python o PHP.
+	\item api/. Directorio que contiene los archivos alojados en el servidor LAMP, que se detallarán posteriormente.
+	\item app.yaml. Archivo de configuración de la aplicación en Google App Engine. Especifica parámetros como el tipo de instancia en el que se ejecutará, el esquema de las URL y si siempre aplicará HTTPS.
+	\item database.csv. Base de datos del trabajo creada anteriormente, alojada en la plataforma Web para que los \textit{scripts} puedan acceder a ella fácilmente.
+	\item database.json. Base de datos creada anteriormente, en formato JSON para su acceso y manejo cómodo por diversos \textit{scripts}. Cabe destacar que, aunque se aloje en la plataforma, no se expone al público, dado que no está en el directorio público ``static'' ni es accesible de otra manera que a través de \textit{endpoints} (funciones del archivo enrutador) que exponen únicamente subconjuntos, como los nombres de los municipios para la función de autocompletado. Esto es así para evitar que un usuario malintencionado pueda acceder al conjunto de datos del sistema y pueda crear una réplica del sistema sin coste.
+	\item env.yaml. Archivo de variables de entorno para Google App Engine.
+	\item get\_municipalities\_list\_for\_autocomplete.py. Obtiene la lista de municipios y sus provincias con la que el cliente Web (\textit{frontend}) construye el autocompletado para el usuario.
+	\item get\_municipality.py. Por razones de eficiencia y comunicación, y aplicando principios vistos en las asignaturas ``Modelos de programación para el Big Data'', ``Infrastructuras Big Data'' y ``Arquitecturas Big Data'', cuando algún recurso necesita trabajar con municipios maneja únicamente la información imprescindible para identificarlos; esto es, su identificador únivoco del INE. De esta forma, se reduce enormemente la latencia de red y se acelera la velocidad de los cálculos, además de mejorar la eficiencia del sistema (consume menos recursos y, por tanto, el coste de la instancia de Google en ejecución es menor). Como último paso antes de mostrar la información al usuario, este archivo devuelve la información de un municipio dado su código identificativo.
+	\item main.py. Es el archivo enrutador de Flask y controlador del flujo de ejecución para las peticiones de los usuarios. Ante una petición concreta, llama a otras funciones para proveer al sitio Web de comportamiento dinámico.
+	\item make\_decimal\_numbers.py. Usado para convertir los números decimales en inglés (punto como separador decimal, ``.'') al español (coma como separador, ``,'').
+	\item model\_normalized.csv. Modelo normalizado creado anteriormente, alojado en la plataforma Web para que los \textit{scripts} puedan acceder a él.
+	\item random\_municipality.py. Devuelve un municipio aleatorio.
+	\item ratings\_manager.py. Gestiona el archivo de valoraciones de los usuarios, emitiendo una valoración positiva o negativa para un usuario y un municipio.
+	\item recommender.py. Constituye el motor del recomendador basado en contenido. Devuelve los 10 municipios más similares a aquel que se introduce.
+	\item requirements.txt. Archivo que especifica las librerías de las que depende el proyecto, y que permiten montarlo en Google App Engine.
+	\item sanitize\_names.py. Convierte el nombre de un municipio al nombre esperado en las URL del sistema. Esencialmente, sustituye tildes, eñes, preposiciones... De esta forma, devuelve que el municipio de Albacete ``Alcalá del Júcar'' se puede encontrar en ``albacete/alcala-del-jucar''.
+	\item sitemap.xml. Mapa del sitio para ayudar a los buscadores en su indexación, importante dado el número de municipios existentes con su propia página, a fin de tener un buen posicionamiento Web y facilitar la compartición de enlaces entre los usuarios.
+	\item static/. Directorio que contiene los archivos estáticos de las páginas Web, como se detallará posteriormente.
+	\item survey.py. Procesa las respuestas de los usuarios al cuestionario y filtra los municipios según los criterios especificados, devolviendo un elemento aleatorio del subconjunto final resultante.
+	\item templates/. Directorio que contiene plantillas de Jinja2 con los huecos necesarios para formar la vista final.
+	\item user\_suggestions.py. Constituye el motor del recomendador colaborativo basado en ítems.
+	\item users\_recommendations.py. Es el motor del recomendador colaborativo basado en usuarios.
+	\item wikipedia.json. Archivo con la información extraída de Wikipedia para cada municipio, en formato JSON para su fácil carga por el código JavaScript.
+
+\end{itemize}
+
+\subsubsection{Directorio ``api''}
+
+\begin{itemize}
+	\item .env. Archivo de variables de entorno para el servidor LAMP.
+	\item .htaccess. Protege los ficheros del directorio para que ningún usuario a excepción del propietario pueda acceder a los archivos alojados en el directorio ``storage''; y que únicamente puedan hacerlo archivos PHP alojados en el mismo servidor.
+	\item DotEnv.php. Biblioteca externa usada para la gestión de variables de entorno en PHP.
+	\item generate-user-id.php. Genera un identificador único aleatorio de 32 caracteres para el usuario que no tiene la \textit{cookie} con él instalada y que ha dado su consentimiento, como se explicará posteriormente. 
+	\item get-ratings.php. Previa compartición de una clave única segura con ella, expone a la aplicación el archivo de valoraciones de usuarios.
+	\item get-suggestions.php. Previa compartición de una clave única segura con ella, expone a la aplicación el archivo de sugerencias calculado cada día.
+	\item rate.php. Previa compartición de una clave única segura con ella, realiza la anotación de la valoración del usuario indicada por la aplicación.
+	\item storage/. Directorio de almacenaje, que resuelve la dificultad para almacenar y actualizar archivos de texto en aplicaciones como servicio como Google App Engine.
+	\item update-suggestions.php. Previa compartición de una clave única segura con ella, actualiza las recomendaciones de los usuarios del filtro colaborativo basado en ítems. 
+
+\end{itemize}
+
+\subsubsection{Directorio ``api/storage''}
+
+\begin{itemize}
+	\item ratings.csv. Archivo de valoraciones de los usuarios.
+	\item suggestions.json. Archivo de sugerencias para los usuarios, actualizado cada día.
+	\item users.csv. Base de datos de usuarios que permite la generación de identificadores únicos.
+
+\end{itemize}
+
+\subsubsection{Directorio ``static''}
+
+\begin{itemize}
+	\item css/. Directorio con los ficheros de estilo de las páginas Web.
+	\item images/. Directorio con las imágenes de fondos aleatorios descargadas, u otros recursos, como logotipos o iconos.
+	\item js/. Directorio con los ficheros de JavaScript para permitir la interacción del usuario y enriquecer su experiencia.
+	\item robots.txt. Archivo con información para los buscadores de Internet, referenciando el mapa del sitio, y pidiendo la no indexación de las páginas de error.
+    \item municipios/. Contiene las páginas de información para los 8.131 de España, agrupados en 52 subcarpetas según su provincia.
+
+\end{itemize}
+
+\subsubsection{Directorio ``templates''}
+
+\begin{itemize}
+	\item 404.html. Página de error para una solicitud de un recurso no encontrado.
+	\item base.html. Página plantilla para todas las demás, conteniendo el esqueleto de todas: encabezado, contenido a reemplazar y pie.
+	\item metodologia.html. Página usada para explicar cómo se ha realizado el ejecutable, las fuentes del trabajo y cómo contactar si se desea obtener más información.
+	\item privacidad.html. Política de privacidad en función del uso de datos de los usuarios, generada con la herramienta de Zimrre \& Freelance \cite{privacidad}.
+	\item soon.html. Página de muestra utilizada desde que se adquirió el dominio, para garantizar su disponibilidad, y hasta que el desarrollo del sistema estuvo completado.
+	\item 500.html. Página de error para un fallo del servidor.
+	\item home.html. Página de inicio.
+	\item municipality.html. Página de plantilla para cada municipio, a partir de las que se generan localmente las propias para cada uno, que se guardan y se suben a la plataforma para que estén disponibles de forma estática, por los motivos de posicionamiento, visibilidad y compartición mencionados anteriormente. Además de la información recolectada durante la elaboración del modelo, en los municipios de Castilla y León se muestra también la agenda cultural para los próximos días en un radio de 10 kilómetros, utilizando los datos abiertos de la Junta de Castilla y León \cite{agenda}, para probar el grado de adaptabilidad del sistema a nuevos requisitos.
+	\item similar.html. Página para la introducción del municipio para el que se genera la recomendación basada en contenido.
+	\item survey.html. Página del cuestionario.
+\end{itemize}
+
+\subsubsection{Infraestructura}
+
+Muchos de los retos del sistema han venido dados por el uso de una plataforma como servicio para desplegar la aplicación para usuarios finales. Si bien esto fue elegido por aportar muchas ventajas (como la ausencia de la gestión de la infraestructura, o el pago de los recursos únicamente usados y no por adelantado o por tarifas con cuotas mínimas), es cierto que a cambio se pierde control de configuración y de acceso al sistema.
+
+En particular, como una plataforma como servicio abstrae la infraestructura subyacente, no es posible conseguir que los archivos de Python lean y escriban en ficheros de texto, como sí lo hacían en el entorno local. La alternativa es usar otras APIs de Google para la persistencia de datos, algo que se descartó por desviarse del objetivo fundamental de este trabajo, y por perder la adaptabilidad que brinda usar archivos de texto multipropósito (como texto plano, CSV o JSON) como medios de persistencia de bajo tamaño. Además, no se consideró deseable acoplar la persistencia de datos a la infraestructura de Google, ya que una gran ventaja del \textit{Cloud Computing} es la capacidad de migrar de un proveedor a otro con mínimos cambios en la configuración del despliegue.
+
+Así, se relegó la persistencia al servidor de pila LAMP, del que ya disponía el alumno, y del que tiene pleno control para poder escribir código PHP que lea y actualice los ficheros de texto. De esta manera, este segundo servidor ejerce de base de datos distribuida y es la única fuente de verdad, intercambiando las operaciones a realizar y sus resultados mediante la API HTTP creada a tal fin y usada por la aplicación de Python. Este es uno de los principios de las arquitecturas diseñadas como microservicios, que favorecen el desacoplamiento entre sistemas su operación distribuida de forma transparente para el usuario.
+
+Otro aspecto relevante a destacar tiene que ver con los recursos del sistema. Por defecto, las aplicaciones desplegadas en App Engine se alojan en instancias de tipo ``F1'', que tienen un límite de 256 MB de memoria RAM y 600 MHz de CPU. Pese a que el funcionamiento era totalmente correcto y rápido en el entorno local, a la hora de desplegarlo a producción (el entorno de App Engine), la aplicación se mostraba lenta y errática, no pudiendo completar en torno al 40 \% de las peticiones. Tras inspeccionar los archivos de registro de errores de App Engine, se llegó a la conclusión de que el rendimiento de Python manejando los ficheros de gran tamaño de la base de datos de municipios era el causante de los problemas, ya que agotaban los recursos de la instancia y provocaban que Google la abortara, resultando en un error HTTP 500, error del servidor.
+
+Este aspecto quedó totalmente subsanado cuando, desde el archivo ``app.yaml'' se escaló el sistema, especificando ``F4\_1G'' como instancia a ser desplegada, que ofrece 2.048 MB de memoria RAM y 2,4 GHz de CPU.
+
+Además, las principales plataformas de \textit{Cloud Computing} abaratan los costes para el desarrollador ofreciendo pago por uso, por lo que cuando el servicio no está siendo accedido se destruye su instancia para que no consuma recursos. La contrapartida de esto es el mayor tiempo que toma la primera petición cuando no hay una instancia creada, lo que también puede impactar en la facturación: como cada instancia está activa unos minutos desde que se crea, y se factura por unidad de tiempo con recursos activos, recibir peticiones periódicas es perjudicial para los costos del sistema. A pesar de ello, como cuando la instancia está destruida la petición lleva un tiempo considerable (varios segundos, afectando a la imagen del producto), se ha aprovechado el segundo servidor de pila LAMP para programar unos trabajos periódicos (\textit{cron jobs}) que realicen unas peticiones a la máquina de App Engine cada hora durante parte de la mañana y parte de la tarde de cada día, a fin de que los usuarios que puedan visitar el sistema en esa franja tengan una mejor experiencia de uso. Dado que el tráfico del sistema es muy bajo, el coste adicional de esta medida se ha considerado despreciable para los beneficios que puede conllevar.
+
+\subsubsection{Aspectos de seguridad técnica y jurídica}
+
+Además de garantizar el correcto funcionamiento de la aplicación Web, se han querido también aplicar los conocimientos de las asignaturas ``Fundamentos de Ciberseguridad'' y ``Derecho en Seguridad de Datos'' para garantizar la seguridad técnica y jurídica del proyecto. Además de las medidas técnicas ya señaladas (establecimiento de los permisos mínimos imprescindibles para realizar las operaciones, contraseñas y credenciales seguras no expuestas en el código, uso de claves renovables o sistemas de copias de seguridad automáticos –activados en los dos servidores y disponible en el código a través del control de versiones del repositorio–), se desean comentar también las medidas tomadas desde un punto de vista de la seguridad jurídica.
+
+Es importante señalar que el sitio Web está configurado para redireccionar siempre a la versión HTTPS, cifrando el tráfico intercambiado como medida de seguridad, y convirtiendo las URL sin ``WWW'' a URLs con ellas para facilitar la uniformidad de los recursos y garantizar la seguridad de los usuarios.
+
+Por otra parte, para identificar a los usuarios y sus acciones –estas son, las valoraciones con las que se alimenta el sistema de recomendación colaborativo basado en ítems–, es necesario utilizar una \textit{cookie}. Esto es un pequeño fichero de texto que se almacena en el navegador Web del usuario, y que almacena el identificador único asignado a ese usuario. Sin embargo, dado que el sistema está orientado hacia usuarios europeos, es de aplicación el Reglamento General de Protección de Datos, transpuesto a la legislación española por la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y Garantía de los Derechos Digitales, que, entre otras cosas, establece la obligación de los prestadores de servicio de recabar el consentimiento informado explícito del usuario antes de realizar operaciones de este tipo \cite{GDPR_ESP}.
+
+Así, el identificador de usuario –y, por lo tanto, el almacenamiento de la \textit{cookie} en su navegador– solo ocurre cuando este ha dado su consentimiento en una ventana emergente que aparece cuando el sitio carga por primera vez. Esta ventana está gestionada por TermsFeed \cite{TermsFeed}, y para no volver a mostrarse una vez el usuario ya ha respondido, almacena una \textit{cookie} de tipo técnico con las preferencias manifestadas por el usuario. Solo en el caso de que el usuario otorgue su consentimiento de seguimiento para fines de personalización, se recogerán sus valoraciones y se almacenará la \textit{cookie} propia en su navegador. Además, si el usuario permite el seguimiento para fines analíticos, también se almacenarán \textit{cookies} de Google Analytics \cite{analytics}, para entender mejor el comportamiento de los usuarios por el sitio Web.
+
+Por su parte, también es necesario disponer de una política de privacidad y \textit{cookies}, que explique transparentemente cómo el sitio Web y su responsable manejan la información de los usuarios. Para ello, se ha contado con el apoyo de la herramienta de Zimrre \& Freelance \cite{privacidad}.
+
+\subsubsection{Evaluación de la aplicación}
+
+Para evaluar la actividad de despliegue se llevaron a cabo entrevistas con 10 personas de diferente perfil técnico y social, a las que se pidió utilizar el sitio Web sin indicaciones mientras se observa su comportamiento e impresiones. Todos los participantes mostraron su interés en el sistema, y apreciaron su utilidad y facilidad de uso. En particular, el 100 \% de ellos completó las tareas que deseaban realizar cuando conocieron el sistema, y el 85 \% de ellos las completó en menos de 5 minutos cada una.
+
+Además, gracias a su retroalimentación cualitativa y a su observación, se pudieron extraer las siguientes ideas de mejora:
+
+\begin{itemize}
+    \item Mejorar el rendimiento del sistema en App Engine, dado que muchas tareas exigían de reintentos por los comentados fallos en el servidor.
+    \item Bloquear el desplazamiento lateral en dispositivos táctiles, como tabletas, en el cuestionario para mejorar la navegación.
+    \item Reformular preguntas y opciones del cuestionario que presentaron más dudas.
+    \item Aclarar el funcionamiento de los controles de desplazamiento para facilitar su uso.
+    \item Mejorar la experiencia de usuario en dispositivos móviles.
+    \item Modificar las reglas de exclusión de imágenes extraídas automáticamente de Wikipedia para evitar mapas como fondo de página en algunos municipios.
+\end{itemize}
+
+Todas ellas fueron incluidas posteriormente en el sistema y se encuentran actualmente publicadas.
