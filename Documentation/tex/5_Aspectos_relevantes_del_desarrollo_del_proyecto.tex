@@ -2,8 +2,6 @@
 
 En este apartado se recogen los hechos más significativos del desarrollo del proyecto.
 
-\section{Ciclo de vida}
-
 Como se ha comentado en el capítulo anterior, la metodología de trabajo elegida ha sido CRISP-DM, que se ha usado como hilo conductor del trabajo. A continuación, se procede a comentar lo más representativo de cada etapa, junto con el trabajo que se ha llevado a cabo en cada una:
 
 \section{Entendimiento de negocio}
@@ -17,7 +15,7 @@ Como parte de esta etapa, se definieron los ocho objetivos detallados en la segu
     \item Se recogerá también el gusto o no de los usuarios por el resultado ofrecido, de manera que se puedan tener datos para construir un sistema de recomendación basado en filtro colaborativo.
     \item Se explorará un sistema de recomendación basado en filtro colaborativo.
     \item Se recopilarán datos significativos basándose en otros trabajos relacionados y en los que el autor considere relevantes, que permitan crear perfiles detallados para cada municipio, de entre los conjuntos y extracciones de datos disponibles para el ámbito del proyecto. En particular, siempre que sea posible se incluirán datos de: nombre completo del municipio, provincia y comunidad autónoma a las que pertenece, número de habitantes, superficie, densidad de población, disponibilidad de servicios educativos (colegios y universidades), disponibilidad de servicios sanitarios (centros de salud y hospitales), datos climáticos históricos básicos, datos de renta y empleo básicos, datos de venta y alquiler de viviendas en el municipio y en su provincia, cercanía a la capital de provincia, cercanía a la costa y a la montaña, altitud, datos de cobertura de Internet en el municipio o en su provincia, principales servicios de los que dispone, ubicación y extractos de información textual y fotográfica.
-    \item El sistema contará con, al menos, un 70 \% de bondad en las métricas elegidas, de forma que se pueda alcanzar una fiabilidad adecuada.
+    \item El sistema será capaz de arrojar recomendaciones para un 70 \% de los casos probados, y su rendimiento se medirá por métricas ajustadas a la naturaleza de su modelo, buscando alcanzar una fiabilidad adecuada.
     \item Se diseñará el sistema de forma escalable; es decir, se considerará desde su diseño en posibles repeticiones automáticas del proceso de extracción, transformación y limpieza de datos, posibles adiciones o supresiones de la base de datos de municipios españoles, posibles incorporaciones, modificaciones o supresiones de datos para uno o varios municipios, posibles traducciones o posibles casos de uso similares a los existentes y potencialmente deseables.
     \item Se asignará responsabilidad única a los componentes informáticos que formen el trabajo.
     \item Se presentará un resumen de los datos de cada municipio al usuario.
@@ -26,7 +24,7 @@ Como parte de esta etapa, se definieron los ocho objetivos detallados en la segu
     \item Se realizará una evaluación de la utilidad, usabilidad y rendimiento del sistema por parte de usuarios potenciales reales, a fin de detectar puntos de mejora y evaluar las decisiones de diseño e implementación adoptadas.
 \end{enumerate}
 
-Como criterios de éxito, además del valor de bondad establecido anteriormente, se requerirá una evaluación positiva, de al menos un 70 \% de satisfacción y un 50 \% de expectativa de uso por parte de los usuarios potenciales con los que se probará el sistema.
+Como criterios de éxito, además del valor de capacidad para obtener resultados establecido anteriormente, se requerirá una evaluación positiva, de al menos un 70 \% de satisfacción y un 50 \% de expectativa de uso por parte de los usuarios potenciales con los que se probará el sistema.
 
 Para desarrollar el sistema se contará con dos ordenadores a disposición del alumno, el servidor personal mencionado anteriormente –con pila de tecnologías LAMP: Linux, Apache, MySQL y PHP–, y la infraestructura propia de Google –con entorno preparado para ejecutar aplicaciones Web de Python– donde se desplegará el resultado final del proyecto.
 
@@ -37,35 +35,35 @@ El desarrollo del trabajo tiene una duración estimada de alrededor de dos meses
 Una vez completado el análisis de viabilidad con éxito, gracias al descubrimiento de trabajos relativamente relacionados y de los conocimientos del autor en aplicaciones Web y su compatibilidad con otros sistemas basados en Python, se procedió a llevar a cabo la recolección y exploración inicial de datos. Para explicarla, se procede a detallar la función y contenido de cada componente software usado en el proceso de extracción. Nótese que, por fines de compartición de conocimiento y adecuación a los estándares del mundo académico y profesional, los nombres de archivos, variables y otros literales ajenos al modelo se expresan en inglés; mientras que los nombres de las columnas o variables propias de las fuentes de datos mantienen su nombre original en español. Por otra parte, en el caso de nombres escritos en idiomas co-oficiales se ha procurado mantener la convención del Instituto Nacional de Estadística, o la usada mayoritariamente entre las fuentes, en caso de conflicto entre varios nombres alternativos procedentes de diversas fuentes. Es importante recordar que se parte de la base de datos de municipios del INE en formato XLSX, que ha sido convertida a CSV y cuenta con las siguientes columnas: código numérico del municipio, nombre del municipio y provincia a la que pertenece. A continuación, se exponen en orden alfabético los componentes software usados en esta fase. En todos ellos se pasan como parámetros las ubicaciones de los ficheros con los que trabajan:
 
 \begin{enumerate}
-    \item \textbf{.env.} Archivo que contiene las credenciales para las APIs de PositionStack, OpenWeather y GeoApify, cuyo uso se detallará en los ficheros correspondientes, y que permite inyectarlas como variables de entorno para que su valor no figure en el repositorio.
+    \item \texttt{.env.} Archivo que contiene las credenciales para las APIs de PositionStack, OpenWeather y GeoApify, cuyo uso se detallará en los ficheros correspondientes, y que permite inyectarlas como variables de entorno para que su valor no figure en el repositorio.
     
-    \item \textbf{add-coast-mountain-line-to-municipality.py.} Añade a cada municipio la línea en la que se encuentra hasta la costa y la montaña. Con las siguientes particularidades:
+    \item \texttt{add-coast-mountain-line-to-municipality.py.} Añade a cada municipio la línea en la que se encuentra hasta la costa y la montaña. Con las siguientes particularidades:
 
-    Se ha empleado la heurística detallada en la tercera sección, ``Conceptos teóricos'', de esta memoria, por la que los municipios de las provincias costeras presentan la menor distancia a la costa posible (1), y que esta aumenta conforme aumenta la distancia a las provincias costeras desde las provincias a las que pertenecen los municipios, tomando los valores 2 y 3; 2 para los municipios que se encuentran en provincias limítrofes con provincias costeras; y 3 para los limítrofes con estas provincias. En los casos restantes –es decir; en aquellos en los que la distancia a una provincia costera española es superior a dos provincias, o la dificultad para llegar en línea recta es grande, se toma el valor arbitrario 0 para indicar la máxima lejanía. Es el caso de Ávila, Cáceres, Guadalajara, Salamanca y Toledo. Como excepciones, a La Rioja, Soria y Huesca se les asignó la segunda línea costera a pesar de corresponderles la tercera por su facilidad para llegar por carretera, al tratarse de provincias limítrofes a otras de pequeño tamaño.
+    Se ha empleado la heurística detallada en la tercera sección, \guillemotleft Conceptos teóricos\guillemotright, de esta memoria, por la que los municipios de las provincias costeras presentan la menor distancia a la costa posible (1), y que esta aumenta conforme aumenta la distancia a las provincias costeras desde las provincias a las que pertenecen los municipios, tomando los valores 2 y 3; 2 para los municipios que se encuentran en provincias limítrofes con provincias costeras; y 3 para los limítrofes con estas provincias. En los casos restantes –es decir; en aquellos en los que la distancia a una provincia costera española es superior a dos provincias, o la dificultad para llegar en línea recta es grande, se toma el valor arbitrario 0 para indicar la máxima lejanía. Es el caso de Ávila, Cáceres, Guadalajara, Salamanca y Toledo. Como excepciones, a La Rioja, Soria y Huesca se les asignó la segunda línea costera a pesar de corresponderles la tercera por su facilidad para llegar por carretera, al tratarse de provincias limítrofes a otras de pequeño tamaño.
 
-    De forma similar, se ha considerado que un municipio está lo más próximo posible a la montaña (valor 1) si en su provincia se encuentran los principales sistemas montañosos españoles: Cordilleras Béticas, Cordillera Cantábrica, Cordillera Costero-Catalana, Islas Canarias, Macizo Galaico, Meseta Central, Pirineos, Sistema Central y Sistema Ibérico. Los municipios en cuyas provincias se encuentran sistemas montañosos significativos pero no contenidos en la lista anterior, o cuyas provincias son limítrofes con las anteriores, se relacionan con el valor 2; mientras que el valor 3 queda reservado para los municipios de provincias colindantes con las anteriores. De nuevo, el valor 0 se usa en provincias especialmente planas de acuerdo con el informe de rugosidad anteriormente mencionado, y otros datos del relieve español \cite{relieve}. En particular, estas provincias son las de Badajoz, Cádiz, Huelva, Sevilla, Valencia, Valladolid y la ciudad autónoma de Ceuta.
+    De forma similar, se ha considerado que un municipio está lo más próximo posible a la montaña (valor 1) si en su provincia se encuentran los principales sistemas montañosos españoles: Cordilleras Béticas, Cordillera Cantábrica, Cordillera Costero-Catalana, Islas Canarias, Macizo Galaico, Meseta Central, Pirineos, Sistema Central y Sistema Ibérico. Los municipios en cuyas provincias se encuentran sistemas montañosos significativos pero no contenidos en la lista anterior, o cuyas provincias son limítrofes con las anteriores, se relacionan con el valor 2; mientras que el valor 3 queda reservado para los municipios de provincias colindantes con las anteriores. De nuevo, el valor 0 se usa en provincias especialmente planas de acuerdo con el informe de rugosidad anteriormente mencionado, y otros datos del relieve español~\cite{relieve}. En particular, estas provincias son las de Badajoz, Cádiz, Huelva, Sevilla, Valencia, Valladolid y la ciudad autónoma de Ceuta.
     
-    \item \textbf{add-income-to-municipality.py.} Este archivo añade los datos de renta per cápita (procedentes de los CSV y XLSX –convertidos a CSV previamente–) de la Agencia Tributaria para todos los municipios excepto los pertenecientes a las comunidades de País Vasco y Comunidad Foral de Navarra, donde los datos se toman de los organismos Eustat y Hacienda Foral, respectivamente.
+    \item \texttt{add-income-to-municipality.py.} Este archivo añade los datos de renta per cápita (procedentes de los CSV y XLSX –convertidos a CSV previamente–) de la Agencia Tributaria para todos los municipios excepto los pertenecientes a las comunidades de País Vasco y Comunidad Foral de Navarra, donde los datos se toman de los organismos Eustat y Hacienda Foral, respectivamente.
 
-    Es importante mencionar que, para los municipios de menos de 1.000 habitantes, la Agencia Tributaria facilita datos agregados en vez de individuales, utilizando la denominación ``Agrupación municipios pequeños''. Como se detallará posteriormente, para los municipios que encajan con este tamaño se tomará este valor como su renta per cápita.
+    Es importante mencionar que, para los municipios de menos de 1000 habitantes, la Agencia Tributaria facilita datos agregados en vez de individuales, utilizando la denominación \guillemotleft Agrupación municipios pequeños\guillemotright. Como se detallará posteriormente, para los municipios que encajan con este tamaño se tomará este valor como su renta per cápita.
 
     Para el municipio navarro Castillonuevo, Hacienda Foral no facilitó datos por secreto estadístico, al tratarse de un municipio con 18 habitantes según el padrón de 2021. Por este motivo, se tomaron los datos del municipio más cercano: Bigüézal, de 56 habitantes según el mismo padrón.
 
-    \item \textbf{add-province-employment-to-municipality.py.} Añade a cada municipio los datos de empleo (tasa de actividad, tasa de empleo, tasa de desempleo y número de empleos disponibles) de la provincia a la que pertenece cada uno.
+    \item \texttt{add-province-employment-to-municipality.py.} Añade a cada municipio los datos de empleo (tasa de actividad, tasa de empleo, tasa de desempleo y número de empleos disponibles) de la provincia a la que pertenece cada uno.
     
-    \item \textbf{add-province-prices-to-municipality.py.} Añade a cada municipio los datos de viviendas (precio medio del metro cuadrado a la venta, precio medio de las viviendas a la venta, precio medio del metro cuadrado en alquiler y precio medio de las viviendas en alquiler) de las provincias a los que pertenecen.
+    \item \texttt{add-province-prices-to-municipality.py.} Añade a cada municipio los datos de viviendas (precio medio del metro cuadrado a la venta, precio medio de las viviendas a la venta, precio medio del metro cuadrado en alquiler y precio medio de las viviendas en alquiler) de las provincias a los que pertenecen.
     
-    \item \textbf{add-region-to-municipality.py.} Añade a cada municipio la comunidad autónoma a la que pertenece.
+    \item \texttt{add-region-to-municipality.py.} Añade a cada municipio la comunidad autónoma a la que pertenece.
     
-    \item \textbf{build-municipality-human-name.py.} Construye para cada municipio su nombre común; es decir, convierte las partes separadas por comas o paréntesis (\textit{Coruña, A}; \textit{Hospitalet de Llobregat, L'}) en la parte inicial del nombre (\textit{A Coruña}; \textit{L' Hospitalet de Llobregat}). Es necesario para poder establecer comparaciones entre distintas fuentes de datos, ya que casi ninguna utiliza el código numérico identificativo del INE.
+    \item \texttt{build-municipality-human-name.py.} Construye para cada municipio su nombre común; es decir, convierte las partes separadas por comas o paréntesis (\textit{Coruña, A}; \textit{Hospitalet de Llobregat, L'}) en la parte inicial del nombre (\textit{A Coruña}; \textit{L' Hospitalet de Llobregat}). Es necesario para poder establecer comparaciones entre distintas fuentes de datos, ya que casi ninguna utiliza el código numérico identificativo del INE.
     
-    \item \textbf{clean-schools-municipality.py.} Dado que los datos de centros de educación primaria y secundaria que facilita el Ministerio de Educación corresponden a entidades singulares de población y provincia, y no a municipios, una vez se ha realizado la asociación de cada entidad singular al municipio correspondiente, este archivo limpia el fichero CSV para eliminar las entidades singulares y contar solo con municipio, número de colegios y provincia a la que pertenece.
+    \item \texttt{clean-schools-municipality.py.} Dado que los datos de centros de educación primaria y secundaria que facilita el Ministerio de Educación corresponden a entidades singulares de población y provincia, y no a municipios, una vez se ha realizado la asociación de cada entidad singular al municipio correspondiente, este archivo limpia el fichero CSV para eliminar las entidades singulares y contar solo con municipio, número de colegios y provincia a la que pertenece.
     
-    \item \textbf{complete-nsi-codes.py.} Añade los ceros iniciales a los códigos del INE de menos de cinco cifras, que pueden perderse en algún tratamiento que opera con ellos tratándolos como enteros en vez de como cadenas de texto. El nivel de cinco cifras es el asociado a municipios en la jerarquía del código de 11 cifras del INE.
+    \item \texttt{complete-nsi-codes.py.} Añade los ceros iniciales a los códigos del INE de menos de cinco cifras, que pueden perderse en algún tratamiento que opera con ellos tratándolos como enteros en vez de como cadenas de texto. El nivel de cinco cifras es el asociado a municipios en la jerarquía del código de 11 cifras del INE.
     
-    \item \textbf{complete\_municipalities\_codes.py.} Relacionado con estos códigos, este archivo recibe un fichero CSV y completa los códigos de municipio ausentes con un fichero de referencia que los contenga, basándose en el nombre del municipio y en la provincia a la que pertenece. Ha permitido homogeneizar los datos cuando estos proceden de diversas administraciones o de entidades privadas que no usan los códigos identificativos.
+    \item \texttt{complete\_municipalities\_codes.py.} Relacionado con estos códigos, este archivo recibe un fichero CSV y completa los códigos de municipio ausentes con un fichero de referencia que los contenga, basándose en el nombre del municipio y en la provincia a la que pertenece. Ha permitido homogeneizar los datos cuando estos proceden de diversas administraciones o de entidades privadas que no usan los códigos identificativos.
     
-    \item \textbf{corsnavigator.php}. Archivo pensado para evadir las restricciones de origen en el control de acceso a sitios Web. El archivo fue subido al servidor personal, y únicamente declara las siguientes cabeceras y carga el contenido de la Web pasada como argumento ``url'' de tipo POST:
+    \item \texttt{corsnavigator.php}. Archivo pensado para evadir las restricciones de origen en el control de acceso a sitios Web. El archivo fue subido al servidor personal, y únicamente declara las siguientes cabeceras y carga el contenido de la Web pasada como argumento \texttt{url} de tipo POST:
     \begin{verbatim}
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
@@ -73,35 +71,33 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
     
     De esta manera, se consigue poder cargar contenido de fuentes externas haciendo una llamada al servidor propio, lo que ha permitido las labores de extracción Web en varias ocasiones.
 
-    \item \textbf{discard-fields.py.} Descarta las columnas especificadas de un archivo CSV, dado que en algunas ocasiones ha sido necesario prescindir de algunos datos de los conjuntos manejados (número de declarantes o posicionamiento del municipio a nivel autonómico en cuanto a su renta bruta media, por ejemplo).
+    \item \texttt{discard-fields.py.} Descarta las columnas especificadas de un archivo CSV, dado que en algunas ocasiones ha sido necesario prescindir de algunos datos de los conjuntos manejados (número de declarantes o posicionamiento del municipio a nivel autonómico en cuanto a su renta bruta media, por ejemplo).
        
-    \item \textbf{encode-places.py.} Codifica los sitios más repetidos en un municipio (separados por punto y coma, puede haber hasta tres, según el proveedor de API geográfica usado) como valores binarios en tantas columnas como posibles categorías hay; es decir, en notación \textit{one hot encoding}.
+    \item \texttt{encode-places.py.} Codifica los sitios más repetidos en un municipio (separados por punto y coma, puede haber hasta tres, según el proveedor de API geográfica usado) como valores binarios en tantas columnas como posibles categorías hay; es decir, en notación \textit{one hot encoding}.
     
-    \item \textbf{extract-universities.html}. Extrae el número de centros de educación superior presentes en cada municipio del portal del Ministerio de Educación. A diferencia del resto de extracciones Web, se realizó mediante código JavaScript en un archivo HTML –por tanto, ejecutándose desde el navegador en vez de desde la línea de comandos– por ser el primer caso de Web \textit{scraping} que se llevó a cabo y disponer de mayor familiaridad con las técnicas frente a Python. Sin embargo, esta tecnología fue rápidamente descartada para el resto de casos debido a la mayor comodidad, facilidad de depuración y rendimiento que ofrece la segunda tecnología, que puede ser lanzada desde la línea de comandos y no bloquea el navegador Web.
+    \item \texttt{extract-universities.html}. Extrae el número de centros de educación superior presentes en cada municipio del portal del Ministerio de Educación. A diferencia del resto de extracciones Web, se realizó mediante código JavaScript en un archivo HTML –por tanto, ejecutándose desde el navegador en vez de desde la línea de comandos– por ser el primer caso de Web \textit{scraping} que se llevó a cabo y disponer de mayor familiaridad con las técnicas frente a Python. Sin embargo, esta tecnología fue rápidamente descartada para el resto de casos debido a la mayor comodidad, facilidad de depuración y rendimiento que ofrece la segunda tecnología, que puede ser lanzada desde la línea de comandos y no bloquea el navegador Web.
 
     El proceso para extraer el número de municipios fue el siguiente: En primer lugar, se debe acceder al Registro de Universidades, Centros y Títulos (RUCT) del Ministerio de Educación, en particular, a la sección que contiene todos los centros, sabiendo que están paginados en 198 páginas.
-
-    \imagen{unis2}{Listado de centros universitarios del RUCT.}
 
     Posteriormente, y conociendo la URL de cada página del anterior listado, se extrae el código de universidad y el código de centro de cada fila, para finalmente componer la URL de cada centro, que usa ambos códigos. Desde esta dirección es posible saber en qué municipio está cada centro y a qué universidad pertenece, de forma que posteriormente es trivial agruparlos por universidades y municipios, y realizar su sumatorio para devolver el número de universidades (centros de educación superior) por municipio.
 
     \imagen{unis4}{Página de detalle de cada centro, compuesta a partir de los códigos de universidad y centro anteriores.}
     
-    \item \textbf{fix-incomes.py.} Inicialmente se cometió un error en la asignación de rentas de municipios pertenecientes al País Vasco, dado que se confundió renta per cápita con renta familiar, resultando en valores anómalamente superiores que fueron detectados en la parte de exploración de esta fase. Como consecuencia, fue necesario recopilar los datos correctos de renta per cápita de la oficina de estadística vasca, y crear este guión para sustituirlos en el fichero correspondiente.
+    \item \texttt{fix-incomes.py.} Inicialmente se cometió un error en la asignación de rentas de municipios pertenecientes al País Vasco, dado que se confundió renta per cápita con renta familiar, resultando en valores anómalamente superiores que fueron detectados en la parte de exploración de esta fase. Como consecuencia, fue necesario recopilar los datos correctos de renta per cápita de la oficina de estadística vasca, y crear este guión para sustituirlos en el fichero correspondiente.
 
-    \item \textbf{geocode-municipalities.py.} Emplea la API de PositionStack para devolver la latitud y longitud dados un nombre de un municipio y su provincia. Se ha empleado este servicio dado que, tras realizar el análisis de costes de varias alternativas, ofrecía una cuota gratuita considerablemente más generosa que otras alternativas comerciales más conocidas.
+    \item \texttt{geocode-municipalities.py.} Emplea la API de PositionStack para devolver la latitud y longitud dados un nombre de un municipio y su provincia. Se ha empleado este servicio dado que, tras realizar el análisis de costes de varias alternativas, ofrecía una cuota gratuita considerablemente más generosa que otras alternativas comerciales más conocidas.
     
-    Cabe destacar que fueron necesarias dos iteraciones, dado que en la primera se omitió añadir ``, España'' como parte final de la dirección física a geolocalizar, lo que provocó que se devolvieran resultados de otras partes del mundo, como América Latina, Estados Unidos u otros territorios.
+    Cabe destacar que fueron necesarias dos iteraciones, dado que en la primera se omitió añadir \guillemotleft , España\guillemotright\space como parte final de la dirección física a geolocalizar, lo que provocó que se devolvieran resultados de otras partes del mundo, como América Latina, Estados Unidos u otros territorios.
 
     \imagen{darrinward}{Exploración de los datos de geolocalización tras la primera iteración.}
 
     De nuevo, estos valores incorrectos fueron detectados en la exploración de los datos gracias a la herramienta citada anteriormente, lo que permitió su corrección en la segunda pasada.
     
-    \item \textbf{get-distance-province-capital.py.} Este fichero calcula la distancia por carretera desde un municipio (sus coordenadas de latitud y longitud) hasta su capital de provincia (también geolocalizada). El cálculo se realiza por medio de OpenTripPlanner, y en los casos en los que no es posible obtener un resultado (por ejemplo, territorios insulares), se toma la distancia geodésica a través de GeoPy.
+    \item \texttt{get-distance-province-capital.py.} Este fichero calcula la distancia por carretera desde un municipio (sus coordenadas de latitud y longitud) hasta su capital de provincia (también geolocalizada). El cálculo se realiza por medio de OpenTripPlanner (OTP), y en los casos en los que no es posible obtener un resultado (por ejemplo, territorios insulares), se toma la distancia geodésica a través de GeoPy.
 
-    Para realizar estos cálculos se llevó a cabo el siguiente proceso: En primer lugar, es necesario tener geolocalizados todos los municipios, y conocer la provincia a la que pertenecen y su capital. Posteriormente, se descargó la última versión de OTP, distribuida como un fichero JAR (\textit{Java Archive}, por sus siglas en inglés), junto con el mapa de España suministrado por Geofabrik \cite{spain_map} en formato OSM PBF (\textit{OpenStretMap Protocolbuffer Binary Format}, formato binario de ProtocolBuffer –formato de compresión muy eficiente, como se vio en la asignatura ``Infraestructura para el Big Data''– de OpenStreetMap).
+    Para realizar estos cálculos se llevó a cabo el siguiente proceso: En primer lugar, es necesario tener geolocalizados todos los municipios, y conocer la provincia a la que pertenecen y su capital. Posteriormente, se descargó la última versión de OTP, distribuida como un fichero JAR (\textit{Java Archive}, por sus siglas en inglés), junto con el mapa de España suministrado por Geofabrik~\cite{spain_map} en formato OSM PBF (\textit{OpenStretMap Protocolbuffer Binary Format}, formato binario de ProtocolBuffer –formato de compresión muy eficiente, como se vio en la asignatura \guillemotleft Infraestructura para el Big Data\guillemotright\space– de OpenStreetMap).
 
-    Acto seguido se utilizó la herramienta BoundingBox, de Klokan Technologies \cite{klokan}, para obtener las coordenadas geográficas de la caja que rodea al mapa de España, para convertir el mapa a formato PBF con el siguiente comando de la utilidad de Unix osmconvert, indicando que queremos todas las vías que puedan quedar cortadas por los bordes de la caja:
+    Acto seguido se utilizó la herramienta BoundingBox, de Klokan Technologies~\cite{klokan}, para obtener las coordenadas geográficas de la caja que rodea al mapa de España, para convertir el mapa a formato PBF con el siguiente comando de la utilidad de Unix osmconvert, indicando que queremos todas las vías que puedan quedar cortadas por los bordes de la caja:
 
     \begin{verbatim}
 osmconvert spain-latest.osm.pbf -b=-18.39,27.43,4.59,43.99
@@ -124,17 +120,17 @@ java -Xmx28G -jar otp.jar
 
     En el caso de los municipios cuya distancia por carretera no fue posible calcular, fue trivial obtener el cálculo de la distancia geodésica que los separa a través de la biblioteca GeoPy.    
     
-    \item \textbf{get-elevation.py.} Dado un fichero con coordenadas geográficas, recupera la altitud sobre el nivel del mar de ese punto a través de la API de OpenElevation.
+    \item \texttt{get-elevation.py.} Dado un fichero con coordenadas geográficas, recupera la altitud sobre el nivel del mar de ese punto a través de la API de OpenElevation.
     
-    \item \textbf{get-failed-properties.py.} En el proceso de extracción de datos sobre propiedades inmobiliarias (venta y alquiler de viviendas en municipios y provincias) fallaron municipios de nombre compuesto, por ejemplo ``Alicante/Alacant'', por lo que se usó este archivo para realizar subconjuntos de estos nombres, con la intención de repetir el proceso con el primer nombre (``Alicante''), o con el segundo (``Alacant''), para obtener el mayor número posible de datos. Esto es así ya que no existe consenso sobre qué nombre debe escribirse primero, y depende del criterio –muchas veces arbitrario– de la fuente de datos elegida.
+    \item \texttt{get-failed-properties.py.} En el proceso de extracción de datos sobre propiedades inmobiliarias (venta y alquiler de viviendas en municipios y provincias) fallaron municipios de nombre compuesto, por ejemplo \guillemotleft Alicante/Alacant\guillemotright, por lo que se usó este archivo para realizar subconjuntos de estos nombres, con la intención de repetir el proceso con el primer nombre (\guillemotleft Alicante\guillemotright\space), o con el segundo (\guillemotleft Alacant\guillemotright\space), para obtener el mayor número posible de datos. Esto es así ya que no existe consenso sobre qué nombre debe escribirse primero, y depende del criterio –muchas veces arbitrario– de la fuente de datos elegida.
     
-    \item \textbf{get-first-name.py.} Relacionado con el propósito anterior, en algunos momentos ha sido necesario extraer el primer nombre en los municipios con varios nombres.
+    \item \texttt{get-first-name.py.} Relacionado con el propósito anterior, en algunos momentos ha sido necesario extraer el primer nombre en los municipios con varios nombres.
     
-    \item \textbf{get-missing-fields.py.} Añade campos de un subconjunto de datos a otros. Se ha usado para unir subconjuntos de datos intermedios sin claves comunes.
+    \item \texttt{get-missing-fields.py.} Añade campos de un subconjunto de datos a otros. Se ha usado para unir subconjuntos de datos intermedios sin claves comunes.
     
-    \item \textbf{get-municipality-from-singular-entity.py.} Devuelve el municipio asociado a una entidad singular de población, necesario para algunos conjuntos de datos, como los de centros de educación primaria y secundaria del Ministerio de Educación.
+    \item \texttt{get-municipality-from-singular-entity.py.} Devuelve el municipio asociado a una entidad singular de población, necesario para algunos conjuntos de datos, como los de centros de educación primaria y secundaria del Ministerio de Educación.
     
-    \item \textbf{get-places.py.} Devuelve los tres tipos de lugares de interés más frecuentes y el primero de ellos en otra columna, por razones de comodidad y para facilitar su posterior exploración de datos, a través de la API de GeoApify.
+    \item \texttt{get-places.py.} Devuelve los tres tipos de lugares de interés más frecuentes y el primero de ellos en otra columna, por razones de comodidad y para facilitar su posterior exploración de datos, a través de la API de GeoApify.
 
     Para ello, se solicita al proveedor los 20 (valor por defecto e involucrado en la facturación del servicio) lugares de interés en un radio de 5 kilómetros alrededor de las coordenadas especificadas de entre las siguientes categorías: comercios, turismo, alojamientos, ocio, naturaleza, servicios, actividades, entretenimiento, hostelería y deporte.
 
@@ -158,41 +154,41 @@ java -Xmx28G -jar otp.jar
 
     Finalmente, estos diccionarios se agrupan y ordenan por valor de forma descendente para devolver los tipos más recurrentes.
 
-    \item \textbf{get-properties-for-rent.py.} Extrae el precio medio del metro cuadrado en las viviendas en alquiler, el precio medio del alquiler y el número de viviendas en alquiler para los municipios consultados del portal inmobiliario Web Idealista.
+    \item \texttt{get-properties-for-rent.py.} Extrae el precio medio del metro cuadrado en las viviendas en alquiler, el precio medio del alquiler y el número de viviendas en alquiler para los municipios consultados del portal inmobiliario Web Idealista.
 
     Para ello, construye la URL según el convenio usado por Idealista (nombre del municipio y provincia), y realiza una petición idéntica a la que realizaría un navegador Web humano. Esto es debido a las medidas de seguridad de Idealista para evitar tráfico automático, que exigen enviar datos como una \textit{cookie} de sesión o un identificador único de usuario. Estos datos se tomaron realizando una primera petición desde el navegador de forma manual e inspeccionando el contenido intercambiado en las cabeceras de los paquetes de red.
 
     Posteriormente, extrae los datos mencionados leyendo el contenido de la página y utilizando los selectores HTML adecuados a través de beautifulsoup4. Los valores promedio por superficie se calculan diviendo el precio entre el número de metros cuadrados de cada vivienda, para después realizar su media aritmética; mientras que el precio medio del alquiler se calcula sumando los valores encontrados en la página inicial y diviéndolos entre el número de viviendas encontradas en dicha página. Por otra parte, el número de viviendas viene dado como literal y su extracción es trivial.
 
-    Cabe señalar que, con la intención de evitar causar molestias, disrupciones de servicio o violar los términos y condiciones de este tercero, entre petición y petición el programa realiza una pausa de 2 segundos para asemejarse lo máximo posible a un visitante humano cuyo tráfico pueda manejar el servidor fácilmente.
+    Cabe señalar que, con la intención de evitar causar molestias, disrupciones de servicio o violar los términos y condiciones de este tercero, entre petición y petición el programa realiza una pausa de dos segundos para asemejarse lo máximo posible a un visitante humano cuyo tráfico pueda manejar el servidor fácilmente.
 
-    Sin embargo, cuando se habían realizado algo más de 4.000 peticiones (el 50 \% de todas las necesarias, dado que se necesita una por municipio) el servicio comenzó a bloquear el tráfico desde la IP del alumno, devolviendo un error HTTP 429, indicando la realización de demasiadas peticiones.
+    Sin embargo, cuando se habían realizado algo más de 4000 peticiones (el 50 \% de todas las necesarias, dado que se necesita una por municipio) el servicio comenzó a bloquear el tráfico desde la IP del alumno, devolviendo un error HTTP 429, indicando la realización de demasiadas peticiones.
 
     Por este motivo fue necesario repetir la búsqueda con el subconjunto fallido, dejando pasar un tiempo prudencial tras el que se eliminó la restricción de llamadas.
 
     \imagen{idealista}{Error HTTP 429 del portal Idealista a partir del 50 \% del proceso durante la primera iteración.}
 
-    Se recalca que esta no es la manera favorita de realizar extracciones de datos para el autor, pero lamentablemente el portal no dispone de una API pública, y fueron varias las opiniones negativas encontradas sobre la elevada dificultad e incertidumbre en el uso de la API privada (previa aprobación del portal), dado que tampoco se encuentra documentada. En cualquier caso, se enfatiza el uso de estos datos para fines exclusivamente educativos, como es la realización de este trabajo académico, y se recomienda la opción de contactar con este tipo de portales de cara a buscar la solución que mejor se adapte a las necesidades del interesado, como comprar los informes de datos del mercado inmobiliario que ellos mismos venden si se desea explotar este aspecto comercialmente.
+    Se recalca que esta no es la manera idónea de realizar extracciones de datos para el autor, pero lamentablemente el portal no dispone de una API pública, y fueron varias las opiniones negativas encontradas sobre la elevada dificultad e incertidumbre en el uso de la API privada (previa aprobación del portal), dado que tampoco se encuentra documentada. En cualquier caso, se enfatiza el uso de estos datos para fines exclusivamente educativos, como es la realización de este trabajo académico, y se recomienda la opción de contactar con este tipo de portales de cara a buscar la solución que mejor se adapte a las necesidades del interesado, como comprar los informes de datos del mercado inmobiliario que ellos mismos venden si se desea explotar este aspecto comercialmente.
 
     La extracción de estos datos se realizó gracias a este programa de forma automática en 10 horas no consecutivas (considerando las dos pasadas necesarias).
 
-    \item \textbf{get-properties-for-rent-fotocasa.py.} De forma análoga al programa anterior, este fichero realiza la extracción de datos del alquiler para municipios usando el servicio de Fotocasa.
+    \item \texttt{get-properties-for-rent-fotocasa.py.} De forma análoga al programa anterior, este fichero realiza la extracción de datos del alquiler para municipios usando el servicio de Fotocasa.
 
     Se usó de forma auxiliar cuando no fue posible recuperar algún dato con Idealista y a modo de prueba comparativa, dado que el coste de crearlo fue considerado residual frente a los beneficios de probar otro proveedor. La formación de la URL del municipio y la extracción de sus datos es prácticamente idéntica, y este portal –aunque con menores datos que el anterior– se comportó mejor a nivel de rendimiento, no limitando las peticiones del alumno en ningún momento (que también estuvieron pausadas, esta vez con un segundo entre ellas, por los mismos motivos anteriores).
 
-    \item \textbf{get-properties-for-sale.py.} Este archivo contiene el mecanismo equivalente al descrito anteriormente para extraer los datos de propiedades inmobiliarias en venta del portal Idealista, tomando los precios medios por metro cuadrado, el precio promedio de las viviendas a la venta y el número total de ellas disponibles por municipio.
+    \item \texttt{get-properties-for-sale.py.} Este archivo contiene el mecanismo equivalente al descrito anteriormente para extraer los datos de propiedades inmobiliarias en venta del portal Idealista, tomando los precios medios por metro cuadrado, el precio promedio de las viviendas a la venta y el número total de ellas disponibles por municipio.
 
-    \item \textbf{get-properties-for-sale-fotocasa.py.} Este programa realiza la misma extracción anterior, pero usando el portal Web inmobiliario Fotocasa.
+    \item \texttt{get-properties-for-sale-fotocasa.py.} Este programa realiza la misma extracción anterior, pero usando el portal Web inmobiliario Fotocasa.
 
-    \item \textbf{get-province-sales-rent-prices.py.} Extrae los precios medios y los precios medios por metro cuadrado de las viviendas en venta y en alquiler de cada provincia a través de las páginas provinciales de Fotocasa. Sigue la misma lógica descrita en los casos anteriores, pero con mucha menos complejidad, ya que únicamente existen 52 provincias frente a los 8.131 municipios españoles.
+    \item \texttt{get-province-sales-rent-prices.py.} Extrae los precios medios y los precios medios por metro cuadrado de las viviendas en venta y en alquiler de cada provincia a través de las páginas provinciales de Fotocasa. Sigue la misma lógica descrita en los casos anteriores, pero con mucha menos complejidad, ya que únicamente existen 52 provincias frente a los 8131 municipios españoles.
 
-    \item \textbf{get-weather.py.} Extrae los datos climáticos considerados como más representativos dado un municipio geolocalizado, a través del servicio de OpenWeather.
+    \item \texttt{get-weather.py.} Extrae los datos climáticos considerados como más representativos dado un municipio geolocalizado, a través del servicio de OpenWeather.
 
     Tras considerar varias alternativas, se optó por este servicio por el recuerdo de buenas experiencias pasadas con la cantidad y calidad de los datos, y con la facturación. El análisis de viabilidad previo al comienzo de esta extracción confirmó que era posible obtener los datos deseados gratuitamente con la licencia de estudiantes de esta plataforma. Tras solicitarla por seis meses, se exploró la API, que devuelve los datos climáticos históricos de los que dispone OpenWeather (referente en  observación y predicción meteorológica) para una latitud y una longitud concreta en un día, mes o año concretos.
     
     Las opciones de día (el tiempo histórico para un día dado) o año (el tiempo durante un año concreto) no parecen muy significativas para este proyecto, a diferencia de la opción mensual, que devuelve el tiempo histórico registrado en un lugar durante dicho mes.
     
-    Sin embargo, el plan mediano de datos históricos incluido en la licencia de estudiante de este servicio, limita el número de llamadas diarias a 50.000, lo que imposibilita recoger datos de todos los meses para cada municipio y procesarlos después –dado que serían necesarias 12 llamadas por cada municipio, unas 97.572–. Por este motivo y debido a las restricciones de recursos de este trabajo, se optó por recoger datos de dos de los meses más significativos del año en nuestro país: febrero y julio, con el objetivo de representar los datos de invierno y verano de forma acusada.
+    Sin embargo, el plan mediano de datos históricos incluido en la licencia de estudiante de este servicio, limita el número de llamadas diarias a 50 000, lo que imposibilita recoger datos de todos los meses para cada municipio y procesarlos después –dado que serían necesarias 12 llamadas por cada municipio, unas 97 572–. Por este motivo y debido a las restricciones de recursos de este trabajo, se optó por recoger datos de dos de los meses más significativos del año en nuestro país: febrero y julio, con el objetivo de representar los datos de invierno y verano de forma acusada.
     
     Usando su API, se recogieron los siguientes datos:
     
@@ -223,21 +219,21 @@ java -Xmx28G -jar otp.jar
     
     Cabe señalar que el servicio devuelve los datos de temperaturas en Kelvin y los datos de velocidad del viento en metros por segundo. Ambos se convierten a las unidades habituales en España (grados centígrados y kilómetros por hora, respectivamente) para poder realizar adecuadamente las tareas de exploración de los datos.
     
-    \item \textbf{get-wikipedia.py.} Recupera para cada municipio un extracto de texto e imágenes representativas de su entrada en Wikipedia. Esta información no se usa en el modelo pero sí en la presentación e interpretación de los resultados para el usuario.
+    \item \texttt{get-wikipedia.py.} Recupera para cada municipio un extracto de texto e imágenes representativas de su entrada en Wikipedia. Esta información no se usa en el modelo pero sí en la presentación e interpretación de los resultados para el usuario.
 
-    Para ello, toma el nombre ``humano'' del municipio (sin comas ni paréntesis, como se ha comentado anteriormente) y lo busca junto con el nombre de su provincia en la Wikipedia en español, tomando el primer resultado.
+    Para ello, toma el nombre \guillemotleft humano\guillemotright\space del municipio (sin comas ni paréntesis, como se ha comentado anteriormente) y lo busca junto con el nombre de su provincia en la Wikipedia en español, tomando el primer resultado.
     
     A partir de ahí, extrae el resumen del artículo y las fotografías que aparecen en él, con algunas particularidades: Con el objetivo de mostrar imágenes útiles y visualmente atractivas, descarta aquellas que contienen los siguientes términos en su nombre, sin distinción de mayúsculas o minúsculas: \textit{flag, coat, bandera, escudo, icon, logo, svg}, omitiendo muchas imágenes de escudos, banderas o mapas. Posteriormente, y por razones de rendimiento, toma las primeras 10 imágenes.
     
-    En algunos casos es necesario tomar el nombre de la provincia en castellano (``Islas Baleares'', en vez del uso muy extendido ``Illes Balears''), ya que los segundos provocaron mayor número de resultados incorrectos (dado que la enciclopedia devolvía entradas no relacionadas con los municipios, sino con personas, instituciones o empresas).
+    En algunos casos es necesario tomar el nombre de la provincia en castellano (\guillemotleft Islas Baleares\guillemotright, en vez del uso muy extendido \guillemotleft Illes Balears\guillemotright\space), ya que los segundos provocaron mayor número de resultados incorrectos (dado que la enciclopedia devolvía entradas no relacionadas con los municipios, sino con personas, instituciones o empresas).
     
-    Dado que, debido al volumen de datos, es un contenido no supervisado y ampliamente cualitativo, su exploración automática ha sido más complicada. Por este motivo, en la sección de ``Metodología'' del resultado final –en la que también se explica en líneas generales cómo se ha realizado el proyecto– se indica este hecho, así como la posibilidad de contactar con el autor para informar de información errónea que no haya podido ser detectada antes.
+    Dado que, debido al volumen de datos, es un contenido no supervisado y ampliamente cualitativo, su exploración automática ha sido más complicada. Por este motivo, en la sección de \guillemotleft Metodología\guillemotright\space del resultado final –en la que también se explica en líneas generales cómo se ha realizado el proyecto– se indica este hecho, así como la posibilidad de contactar con el autor para informar de información errónea que no haya podido ser detectada antes.
     
     Los resultados se exportan a un fichero en formato JSON.
 
-    \item \textbf{group-clinics-by-municipality.py.} Toma los datos de centros sanitarios del Ministerio de Sanidad y los agrupa por municipio y provincia, ya que estos vienen desglosados por localidad, haciendo referencia a la entidad singular de población. Posteriormente, descarta las columnas no relevantes, como dirección, código postal o área de salud, para realizar el sumatorio del número de centros de salud por municipio.
+    \item \texttt{group-clinics-by-municipality.py.} Toma los datos de centros sanitarios del Ministerio de Sanidad y los agrupa por municipio y provincia, ya que estos vienen desglosados por localidad, haciendo referencia a la entidad singular de población. Posteriormente, descarta las columnas no relevantes, como dirección, código postal o área de salud, para realizar el sumatorio del número de centros de salud por municipio.
 
-    \item \textbf{group-connectivity-by-municipality.py.} Toma los datos de conectividad del Ministerio de Asuntos Económicos y Transformación Digital y los agrupa por municipio y provincia, ya que estos vienen desglosados por entidades singular de población.
+    \item \texttt{group-connectivity-by-municipality.py.} Toma los datos de conectividad del Ministerio de Asuntos Económicos y Transformación Digital y los agrupa por municipio y provincia, ya que estos vienen desglosados por entidades singular de población.
 
     \imagen{cobertura}{Archivo Excel con los datos de cobertura de Internet de banda ancha por entidades singulares de población del Ministerio de Asuntos Económicos y Transición Digital.}
     
@@ -247,28 +243,28 @@ java -Xmx28G -jar otp.jar
     
     A continuación, realiza el promedio de los valores porcentuales del territorio de cada municipio cubierto por una determinada cobertura, para las siguientes conectividades: fibra óptica de 30 megabytes de velocidad o superiores, fibra óptica de 100 megabytes de velocidad o superiores, red móvil de tercera generación (3G HSPA) y red móvil de cuarta generación (4G LTE).
 
-    \item \textbf{group-emergencies-by-municipality.py.} Toma los datos del Ministerio de Sanidad y los agrupa por municipio y provincia, ya que estos vienen desglosados por localidad, haciendo referencia a la entidad singular de población. Posteriormente, realiza el sumatorio del número de centros de salud con servicio de urgencias extrahospitalarias por municipio.
+    \item \texttt{group-emergencies-by-municipality.py.} Toma los datos del Ministerio de Sanidad y los agrupa por municipio y provincia, ya que estos vienen desglosados por localidad, haciendo referencia a la entidad singular de población. Posteriormente, realiza el sumatorio del número de centros de salud con servicio de urgencias extrahospitalarias por municipio.
 
-    \item \textbf{group-hospitals-by-municipality.py.} Toma los datos de centros sanitarios del Ministerio de Sanidad y los agrupa por municipio y provincia, ya que estos vienen desglosados por localidad, haciendo referencia a la entidad singular de población. Posteriormente, descarta las columnas no relevantes, como dirección, código postal o área de salud, para realizar el sumatorio del número de hospitales de gestión pública o privada por municipio.
+    \item \texttt{group-hospitals-by-municipality.py.} Toma los datos de centros sanitarios del Ministerio de Sanidad y los agrupa por municipio y provincia, ya que estos vienen desglosados por localidad, haciendo referencia a la entidad singular de población. Posteriormente, descarta las columnas no relevantes, como dirección, código postal o área de salud, para realizar el sumatorio del número de hospitales de gestión pública o privada por municipio.
     
-    \item \textbf{group-schools-by-municipality.py.} Toma los datos de centros educativos del Ministerio de Educación y los agrupa por municipio para realizar el sumatorio del número de centros educativos por municipio.
+    \item \texttt{group-schools-by-municipality.py.} Toma los datos de centros educativos del Ministerio de Educación y los agrupa por municipio para realizar el sumatorio del número de centros educativos por municipio.
     
     \imagen{entidades1}{Archivo Excel con los datos de centros educativos por entidades singulares de población del Ministerio de Educación.}
     
-    \item \textbf{merge-properties.py.} Fusiona los datos de las distintas iteraciones necesarias para recuperar los datos de propiedades inmobiliarias de los portales Idealista y Fotocasa.
+    \item \texttt{merge-properties.py.} Fusiona los datos de las distintas iteraciones necesarias para recuperar los datos de propiedades inmobiliarias de los portales Idealista y Fotocasa.
     
-    \item \textbf{merge.py.} Fusiona los ficheros con los resultados parciales obtenidos de las distintas extracciones anteriores para formar un fichero que los agrupe a todos y que constituirá el modelo posterior.
+    \item \texttt{merge.py.} Fusiona los ficheros con los resultados parciales obtenidos de las distintas extracciones anteriores para formar un fichero que los agrupe a todos y que constituirá el modelo posterior.
     
-    \item \textbf{random-sample-csv.py.} Extrae una muestra aleatoria de tamaño variable de un fichero de municipios pasado como argumento, de forma que pueda usarse para probar y depurar las distintas funciones de extracción.
+    \item \texttt{random-sample-csv.py.} Extrae una muestra aleatoria de tamaño variable de un fichero de municipios pasado como argumento, de forma que pueda usarse para probar y depurar las distintas funciones de extracción.
 \end{enumerate}
 
-Los archivos descritos se pueden encontrar en el directorio ``Scripts/ETL'' del repositorio entregado, y además de los mismos, también se quiere hacer mención a los siguientes ficheros auxiliares usados durante este proceso y que se subieron al servidor personal del alumno para poder realizar labores de depuración sin incurrir en costes adicionales en los servicios de terceros:
+Los archivos descritos se pueden encontrar en el directorio \texttt{Scripts/ETL} del repositorio entregado, y además de los mismos, también se quiere hacer mención a los siguientes ficheros auxiliares usados durante este proceso y que se subieron al servidor personal del alumno para poder realizar labores de depuración sin incurrir en costes adicionales en los servicios de terceros:
 
 \begin{itemize}
-    \item \textbf{geocoder-mock.php.} Contiene un ejemplo de respuesta para un municipio del servicio usado como proveedor de geocodificación, de forma que se pudiera probar la lógica que extrae la latitud y longitud del municipio sin llamar al servicio real.
-    \item \textbf{places-mock.php.} Muestra un ejemplo de respuesta para los lugares de interés encontrados en un municipio por el proveedor de servicios de localización, para probar y depurar la lógica relacionada sin alcanzar el servidor de GeoApify, evitando gastos innecesarios.
-    \item \textbf{planner-mock.php.} Constituye un ejemplo de respuesta del servicio OpenTripPlanner para el cálculo de ruta entre dos coordenadas geográficas, de forma que se pudiera probar la lógica que calcula la distancia entre un municipio y su capital de provincia sin usar el servicio real.
-    \item \textbf{villares.html.} Página de un municipio del resultado software final, utilizada para probar desde un navegador real cómo se visualizaría la página desde Internet –y no desde \textit{localhost}– antes de iniciar la fase de despliegue.
+    \item \texttt{geocoder-mock.php.} Contiene un ejemplo de respuesta para un municipio del servicio usado como proveedor de geocodificación, de forma que se pudiera probar la lógica que extrae la latitud y longitud del municipio sin llamar al servicio real.
+    \item \texttt{places-mock.php.} Muestra un ejemplo de respuesta para los lugares de interés encontrados en un municipio por el proveedor de servicios de localización, para probar y depurar la lógica relacionada sin alcanzar el servidor de GeoApify, evitando gastos innecesarios.
+    \item \texttt{planner-mock.php.} Constituye un ejemplo de respuesta del servicio OpenTripPlanner para el cálculo de ruta entre dos coordenadas geográficas, de forma que se pudiera probar la lógica que calcula la distancia entre un municipio y su capital de provincia sin usar el servicio real.
+    \item \texttt{villares.html.} Página de un municipio del resultado software final, utilizada para probar desde un navegador real cómo se visualizaría la página desde Internet –y no desde \textit{localhost}– antes de iniciar la fase de despliegue.
 \end{itemize}
 
 Todos los datos han sido recogidos en diciembre de 2022, y hacen referencia a los datos más recientes disponibles a esa fecha, siendo las fechas más distintas a la fecha de recogida las de los datos:
@@ -283,15 +279,15 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 \begin{enumerate}
     	\item codigo\_ine. Representa el código del Instituto Nacional de Estadística para el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Variable categórica.
 
 	\item municipio. Representa el nombre del municipio como figura en el INE.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
-	Valores únicos: 8.114.
+	Valores únicos: 8114.
 	
 	Primer valor más repetido: Molar (El).
 	
@@ -301,7 +297,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item provincia. Representa el nombre de la provincia como figura en el INE.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Valores únicos: 52.
 	
@@ -313,7 +309,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item comunidad\_autonoma. Representa el nombre de la comunidad o ciudad autónoma como figura en el INE.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Valores únicos: 19.
 	
@@ -325,9 +321,9 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item municipio\_nombre\_humano. Representa el nombre habitual del municipio construido según se ha descrito anteriormente.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
-	Valores únicos: 8.114.
+	Valores únicos: 8114.
 	
 	Primer valor más repetido: El Molar.
 	
@@ -337,7 +333,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item num\_centros\_salud. Representa el número de centros de salud encontrados en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 1,608535.
 	
@@ -357,7 +353,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item num\_centros\_urgencias. Representa el número de centros con urgencias extrahospitalarias encontrados en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,244865.
 	
@@ -377,7 +373,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item num\_hospitales. Representa el número de hospitales encontrados en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,102570.
 	
@@ -397,7 +393,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item num\_colegios. Representa el número de centros de educación primaria o secundaria encontrados en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 3,808757.
 	
@@ -411,13 +407,13 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 2.
 	
-	Valor máximo: 1.673.
+	Valor máximo: 1673.
 	
 	Variable discreta.
 
 	\item num\_universidades. Representa el número de instituciones de educación superior encontradas en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,036650.
 	
@@ -437,7 +433,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item linea\_costa\_provincia. Representa el valor de la distancia a la costa según la heurística seguida.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 1,519739.
 	
@@ -457,7 +453,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item linea\_montana\_provincia. Representa el valor de la distancia a la montaña según la heurística seguida.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 1,515927.
 	
@@ -477,7 +473,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item poblacion. Representa el número de habitantes del municipio según el CNIG.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 5,827710e+03.
 	
@@ -497,7 +493,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item superficie. Representa la superficie en kilómetros cuadrados del municipio según el CNIG.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 62,082519.
 	
@@ -511,13 +507,13 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 68,865.
 	
-	Valor máximo: 1.750,230.
+	Valor máximo: 1750,230.
 	
 	Variable continua.
 
 	\item densidad\_poblacion. Representa el cociente entre el número de habitantes y la superficie del municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 179,066256.
 	
@@ -531,13 +527,13 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 55,740.
 	
-	Valor máximo: 27.054,260.
+	Valor máximo: 27 054,260.
 	
 	Variable continua.
 
 	\item lat. Representa la coordenada de latitud del municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 40,724022.
 	
@@ -557,7 +553,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item lon. Representa la coordenada de longitud del municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: -3,107545.
 	
@@ -577,7 +573,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_min\_temp. Representa el promedio de las temperaturas mínimas históricas en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: -1,860926.
 	
@@ -597,7 +593,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_max\_temp. Representa el promedio de las temperaturas máximas históricas en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 18,807847.
 	
@@ -617,7 +613,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_temp. Representa el promedio de las temperaturas históricas en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 8,168821.
 	
@@ -637,7 +633,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_humidity. Representa el promedio de la humedad histórica en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 75,260264.
 	
@@ -657,13 +653,13 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_wind. Representa el promedio de las velocidades del viento históricas en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 12,790082.
 	
 	Desviación estándar: 2,582472.
 	
-	Valor mínimo: 6,340.
+	Valor mínimo: 6340.
 	
 	Percentil 25 \%: 11,270.
 	
@@ -671,13 +667,13 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 15,160.
 	
-	Valor máximo: 23,470.
+	Valor máximo: 23 470.
 	
 	Variable continua.
 
 	\item feb\_avg\_min\_rain. Representa el promedio de las precipitaciones mínimas históricas en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,0.
 	
@@ -697,7 +693,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_max\_rain. Representa el promedio de las precipitaciones máximas históricas en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 4,795019.
 	
@@ -717,7 +713,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_rain. Representa el promedio de las precipitaciones históricas en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,087018.
 	
@@ -737,7 +733,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_clouds. Representa el promedio de la nubosidad histórica en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 34,776345.
 	
@@ -757,7 +753,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item feb\_avg\_sunshine\_hours. Representa el promedio de las horas de sol históricas en febrero.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 103,220244.
 	
@@ -777,7 +773,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_min\_temp. Representa el promedio de las temperaturas mínimas históricas en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 12,677091.
 	
@@ -797,7 +793,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_max\_temp. Representa el promedio de las temperaturas máximas históricas en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 36,420878.
 	
@@ -817,7 +813,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_temp. Representa el promedio de las temperaturas históricas en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 24,135807.
 	
@@ -837,7 +833,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_humidity. Representa el promedio de la humedad histórica en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 56,174483.
 	
@@ -857,7 +853,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_wind. Representa el promedio de las velocidades del viento históricas en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 11,068964.
 	
@@ -877,7 +873,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_min\_rain. Representa el promedio de las precipitaciones mínimas históricas en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,0.
 	
@@ -897,7 +893,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_max\_rain. Representa el promedio de las precipitaciones máximas históricas en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 7,446280.
 	
@@ -917,7 +913,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_rain. Representa el promedio de las precipitaciones históricas en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,023540.
 	
@@ -937,7 +933,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_clouds. Representa el promedio de la nubosidad histórica en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 16,040075.
 	
@@ -957,7 +953,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item jul\_avg\_sunshine\_hours. Representa el promedio de las horas de sol históricas en julio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 267,176473.
 	
@@ -977,7 +973,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item kms\_capital\_provincia. Representa la distancia del municipio a su capital de provincia en kilómetros.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 62,383328.
 	
@@ -997,7 +993,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item altitud. Representa la altitud sobre el nivel del mar del municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 619,578773.
 	
@@ -1011,37 +1007,37 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 864.
 	
-	Valor máximo: 2.196.
+	Valor máximo: 2196.
 	
 	Variable continua.
 
 	\item renta\_bruta\_media. Representa la renta bruta media anual per cápita del municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
-	Promedio: 21.626,313492.
+	Promedio: 21 626,313492.
 	
-	Desviación estándar: 10.722,167104.
+	Desviación estándar: 10 722,167104.
 	
-	Valor mínimo: 10.353.
+	Valor mínimo: 10 353.
 	
-	Percentil 25 \%: 17.879.
+	Percentil 25 \%: 17 879.
 	
-	Percentil 50 \%: 19.808.
+	Percentil 50 \%: 19 808.
 	
-	Percentil 75 \%: 22.933.
+	Percentil 75 \%: 22 933.
 	
-	Valor máximo: 53.0327.
+	Valor máximo: 53 0327.
 	
 	Variable continua.
 
 	\item precio\_m2\_venta. Representa el precio del metro cuadrado promedio de las viviendas a la venta.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 806,118989.
 	
-	Desviación estándar: 9.908,827660.
+	Desviación estándar: 9 908,827660.
 	
 	Valor mínimo: 0.
 	
@@ -1051,15 +1047,15 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 896,080.
 	
-	Valor máximo: 850.000.
+	Valor máximo: 850 000.
 	
 	Variable continua.
 
 	\item num\_casas\_venta. Representa el número de viviendas a la venta.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
-	Promedio: 87.066044.
+	Promedio: 87,066044.
 	
 	Desviación estándar: 961,542442.
 	
@@ -1071,7 +1067,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 28.
 	
-	Valor máximo: 72.396.
+	Valor máximo: 72 396.
 	
 	Variable discreta.
 
@@ -1089,13 +1085,13 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 3,510.
 	
-	Valor máximo: 17.094,020.
+	Valor máximo: 17 094,020.
 	
 	Variable continua.
 
 	\item num\_casas\_alquiler. Representa el número de viviendas en alquiler.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 21,695732.
 	
@@ -1109,13 +1105,13 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 1.
 	
-	Valor máximo: 55.212.
+	Valor máximo: 55 212.
 	
 	Variable discreta.
 
 	\item precio\_m2\_venta\_provincia. Representa el precio del metro cuadrado promedio de las viviendas en venta en la provincia.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 1576,911573.
 	
@@ -1123,39 +1119,39 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Valor mínimo: 936.
 	
-	Percentil 25 \%: 1.159.
+	Percentil 25 \%: 1159.
 	
-	Percentil 50 \%: 1.445.
+	Percentil 50 \%: 1445.
 	
-	Percentil 75 \%: 1.674.
+	Percentil 75 \%: 1674.
 	
-	Valor máximo: 3.314.
+	Valor máximo: 3314.
 	
 	Variable continua.
 
 	\item precio\_medio\_venta\_provincia. Representa el precio medio de venta de las viviendas en la provincia.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
-	Promedio: 156.122,501537.
+	Promedio: 156 122,501537.
 	
-	Desviación estándar: 55.720,425875.
+	Desviación estándar: 55 720,425875.
 	
-	Valor mínimo: 96.893.
+	Valor mínimo: 96 893.
 	
-	Percentil 25 \%: 119.586.
+	Percentil 25 \%: 119 586.
 	
-	Percentil 50 \%: 141.657.
+	Percentil 50 \%: 141 657.
 	
-	Percentil 75 \%: 163.450.
+	Percentil 75 \%: 163 450.
 	
-	Valor máximo: 358.810.
+	Valor máximo: 358 810.
 	
 	Variable continua.
 
 	\item precio\_m2\_alquiler\_provincia. Representa el precio del metro cuadrado promedio de las viviendas en alquiler en la provincia.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 8,731275.
 	
@@ -1175,7 +1171,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item precio\_medio\_alquiler\_provincia. Representa el precio medio de alquiler de las viviendas en la provincia.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 751,893125.
 	
@@ -1189,13 +1185,13 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 75 \%: 821.
 	
-	Valor máximo: 1.414.
+	Valor máximo: 1414.
 	
 	Variable continua.
 
 	\item tasa\_actividad\_provincia. Representa la tasa de actividad de la provincia.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 57,589041.
 	
@@ -1215,7 +1211,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item tasa\_paro\_provincia. Representa la tasa de desempleo de la provincia.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 11,675691.
 	
@@ -1235,7 +1231,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item tasa\_empleo\_provincia. Representa la tasa de empleo de la provincia.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 50,893220.
 	
@@ -1255,11 +1251,11 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item num\_empleos\_provincia. Representa el número de empleos disponibles en la provincia.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
-	Promedio: 1.543,535236.
+	Promedio: 1543,535236.
 	
-	Desviación estándar: 2.677,706433.
+	Desviación estándar: 2677,706433.
 	
 	Valor mínimo: 329.
 	
@@ -1267,15 +1263,15 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 	
 	Percentil 50 \%: 677.
 	
-	Percentil 75 \%: 1.234.
+	Percentil 75 \%: 1234.
 	
-	Valor máximo: 13.139.
+	Valor máximo: 13 139.
 	
 	Variable discreta.
 
 	\item cobertura\_30. Representa el porcentaje del territorio cubierto con fibra óptica de más de 30 megabytes de velocidad.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 70,299592.
 	
@@ -1295,7 +1291,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item cobertura\_100. Representa el porcentaje del territorio cubierto con fibra óptica de más de 100 megabytes de velocidad.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 29,823889.
 	
@@ -1315,7 +1311,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item cobertura\_3g. Representa el porcentaje del territorio cubierto con cobertura 3G HSPA.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 99,063675.
 	
@@ -1335,7 +1331,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item cobertura\_4g. Representa el porcentaje del territorio cubierto con cobertura 4G LTE.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 95,432270.
 	
@@ -1355,7 +1351,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_comercio. Representa la frecuencia de sitios comerciales en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,385192.
 	
@@ -1375,7 +1371,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_turismo. Representa la frecuencia de sitios turísticos en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,461321.
 	
@@ -1395,7 +1391,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_alojamiento. Representa la frecuencia de alojamientos en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,200959.
 	
@@ -1415,7 +1411,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_ocio. Representa la frecuencia de sitios de ocio en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,968885.
 	
@@ -1435,7 +1431,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_natural. Representa la frecuencia de sitios naturales en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,879966.
 	
@@ -1455,7 +1451,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_servicio. Representa la frecuencia de servicios en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,425040.
 	
@@ -1475,7 +1471,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_actividad. Representa la frecuencia de lugares para practicar actividades en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,041446.
 	
@@ -1495,7 +1491,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_entretenimiento. Representa la frecuencia de sitios de entretenimiento en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,022506.
 	
@@ -1515,7 +1511,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_catering. Representa la frecuencia de sitios de hostelería en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,661050.
 	
@@ -1535,7 +1531,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_sport. Representa la frecuencia de sitios deportivos en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 1,021769.
 	
@@ -1555,7 +1551,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_edificio. Representa la frecuencia de edificios en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,423933.
 	
@@ -1575,7 +1571,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_acceso\_limitado. Representa la frecuencia de lugares de acceso limitado en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,147706.
 	
@@ -1595,7 +1591,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_artificial. Representa la frecuencia de construcciones artificiales en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,018325.
 	
@@ -1615,7 +1611,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_acceso. Representa la frecuencia de lugares de acceso libre en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,039602.
 	
@@ -1635,7 +1631,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_sin\_acceso. Representa la frecuencia de lugares de acceso privado en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,003690.
 	
@@ -1655,7 +1651,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_patrimonio. Representa la frecuencia de lugares de patrimonio en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,007994.
 	
@@ -1675,7 +1671,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_carretera. Representa la frecuencia de vías de comunicación por carretera en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,008363.
 	
@@ -1695,7 +1691,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_cuota. Representa la frecuencia de lugares de acceso sujeto a una cuota en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,000615.
 	
@@ -1715,7 +1711,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 	\item sitios\_comodidad. Representa la frecuencia de utilidades de conveniencia pública en el municipio.
 	
-	Número de valores: 8.131.
+	Número de valores: 8131.
 	
 	Promedio: 0,001845.
 	
@@ -1738,7 +1734,7 @@ Finalmente, el perfil estadístico de los datos que compondrán el modelo es el 
 
 Una vez la exploración de los datos cuantitativos, que alimentarán posteriormente el modelo, fue exitosa en todos los conjuntos de datos, dio comienzo la fase de preparación de los datos.
 
-En esta fase se eliminaron los marcadores de datos nulos o no encontrados (establecidos arbitrariamente como ``-''), y se sustituyeron por campos vacíos.
+En esta fase se eliminaron los marcadores de datos nulos o no encontrados (establecidos arbitrariamente como \guillemotleft -\guillemotright\space), y se sustituyeron por campos vacíos.
 
 \imagen{modelo1}{Datos geográficos y de lugares de interés de los municipios antes de su transformación.}
 
@@ -1762,13 +1758,13 @@ Una vez se dispone del modelo normalizado, este puede tratarse para producir el 
 
 Tras calcular la similitud coseno se ordenarán los valores de forma descendente, para seleccionar a continuación el resultado de mayor similitud, que será el municipio presentado al usuario. Para ello, el código del municipio devuelto será usado para acceder a la base de datos de los municipios en formato JSON.
 
-\imagen{cosine}{Explicación de cómo la similitud coseno calcula la distancia entre vectores, devolviendo valores más altos cuanto más similares son; y más bajos cuanto más opuestos son \cite{US3}.}
+\imagen{cosine}{Explicación de cómo la similitud coseno calcula la distancia entre vectores, devolviendo valores más altos cuanto más similares son; y más bajos cuanto más opuestos son~\cite{US3}.}
 
 Así, se definió una función que toma un código INE como entrada y tras leer el CSV del modelo calcula la similitud coseno entre ese municipio y el resto, devolviendo el código del INE correspondiente al primer resultado. En la fase de despliegue, se preparó el sistema para recuperar la información del municipio a partir de su código INE y devolverla al usuario.
 
 \subsubsection{Sistema de recomendación de filtro colaborativo basado en usuarios}
 
-Además del sistema de recomendación basado en contenido, el autor deseaba construir un sistema de recomendación basado en un filtro colaborativo que se alimentara de las valoraciones (positivas o negativas de forma binaria, ``me gusta / no me gusta'') de los usuarios al recibir la recomendación de un municipio. La idea detrás de estos sistemas es recomendar elementos que han gustado a usuarios similares. Debido a la baja tasa de valoración habitual, suelen trabajar con matrices dispersas y necesitar grandes cantidades de valoraciones de usuarios para poder realizar recomendaciones adecuadas.
+Además del sistema de recomendación basado en contenido, el autor deseaba construir un sistema de recomendación basado en un filtro colaborativo que se alimentara de las valoraciones (positivas o negativas de forma binaria, \guillemotleft me gusta / no me gusta\guillemotright\space) de los usuarios al recibir la recomendación de un municipio. La idea detrás de estos sistemas es recomendar elementos que han gustado a usuarios similares. Debido a la baja tasa de valoración habitual, suelen trabajar con matrices dispersas y necesitar grandes cantidades de valoraciones de usuarios para poder realizar recomendaciones adecuadas.
 
 Dado que el dominio del problema no dispone de conjuntos de datos con valoraciones de usuarios y, el propio sistema, aunque diseñado para recogerlas, no ha podido coleccionar las suficientes durante su creación por los limitados recursos de un trabajo académico como este, el autor consideró crear su propio conjunto de datos ficticio imitando usuarios reales.
 
@@ -1783,9 +1779,9 @@ Para ello, creó 10 usuarios ficticios y valoró con cada uno a 100 municipios d
     
     \item El cuarto usuario muestra su valoración positiva por 100 municipios muy alejados de la montaña aleatorios, y su valoración negativa por 100 municipios de montaña aleatorios; es decir, representa a un usuario que prefiere los municipios alejados de la montaña.
 
-    \item El quinto usuario muestra su valoración positiva por 100 municipios de menos de 10.000 habitantes aleatorios, y su valoración negativa por 100 municipios de más de 10.000 habitantes aleatorios; es decir, representa a un usuario que prefiere los pueblos a las ciudades.
+    \item El quinto usuario muestra su valoración positiva por 100 municipios de menos de 10 000 habitantes aleatorios, y su valoración negativa por 100 municipios de más de 10 000 habitantes aleatorios; es decir, representa a un usuario que prefiere los pueblos a las ciudades.
 
-    \item El sexto usuario muestra su valoración positiva por 100 municipios de más de 100.000 habitantes aleatorios, y su valoración negativa por 100 municipios de menos de 10.000 habitantes aleatorios; es decir, representa a un usuario que prefiere las ciudades a los pueblos.
+    \item El sexto usuario muestra su valoración positiva por 100 municipios de más de 100 000 habitantes aleatorios, y su valoración negativa por 100 municipios de menos de 10 000 habitantes aleatorios; es decir, representa a un usuario que prefiere las ciudades a los pueblos.
 
     \item El séptimo usuario muestra su valoración positiva por 100 municipios con lugares naturales aleatorios, y su valoración negativa por 100 municipios sin lugares naturales aleatorios; es decir, representa a un usuario que prefiere la naturaleza.
 
@@ -1797,7 +1793,7 @@ Para ello, creó 10 usuarios ficticios y valoró con cada uno a 100 municipios d
 
 \end{itemize}
 
-Este proceso se realizó a través del \textit{script} create\_ratings.py. A continuación, una vez creados los usuarios anteriores y las 2.000 valoraciones iniciales, se usó la librería surprise, de scikit-learn, para tratar con ellos. Tras especificarle la escala de las opiniones (valores enteros entre el 0 y el 1), y especificar las columnas del conjunto (identificador del elemento, identificador del usuario y valoración), se usó primeramente KNNWithMeans como algoritmo de filtrado colaborativo básico, que tiene en cuenta las valoraciones promedio de cada usuario.
+Este proceso se realizó a través del \textit{script} create\_ratings.py. A continuación, una vez creados los usuarios anteriores y las 2000 valoraciones iniciales, se usó la librería surprise, de scikit-learn, para tratar con ellos. Tras especificarle la escala de las opiniones (valores enteros entre el 0 y el 1), y especificar las columnas del conjunto (identificador del elemento, identificador del usuario y valoración), se usó primeramente KNNWithMeans como algoritmo de filtrado colaborativo básico, que tiene en cuenta las valoraciones promedio de cada usuario.
 
 Tras separar el conjunto en las particiones de entrenamiento (80 \% del conjunto) y prueba (20 \% restante), y entrenar el modelo y predecir con este algoritmo, se usó ALS (mínimos cuadrados alternos, por sus siglas en inglés) para después evaluar la precisión a través del RMSE (error cuadrático medio, por sus siglas en inglés), como se describirá en la fase de evaluación.
 
@@ -1809,7 +1805,7 @@ Sin embargo, y como se abordará en el apartado de evaluación, este enfoque no 
 
 \subsubsection{Sistema de recomendación de filtro colaborativo basado en ítems}
 
-En estos sistemas, las recomendaciones se hacen teniendo en cuenta la similitud de los elementos valorados por otros usuarios con respecto a las valoraciones del usuario interesado. Se buscan elementos similares a los gustos comunes de usuarios cercanos. Si bien este método puede funcionar peor para usuarios con gustos muy específicos (nichos, pocos usuarios con gustos comunes), el filtro colaborativo basado en ítems habitualmente ofrece recomendaciones mejores y más rápidas \cite{filtro_colaborativo_2}. En el caso de este trabajo, se consideró que los municipios españoles reúnen las suficientes características como para poder ser divididos en un número relativamente pequeño de grupos, lo que favorece la ausencia de usuarios de nicho, por lo que se consideró un enfoque apropiado.
+En estos sistemas, las recomendaciones se hacen teniendo en cuenta la similitud de los elementos valorados por otros usuarios con respecto a las valoraciones del usuario interesado. Se buscan elementos similares a los gustos comunes de usuarios cercanos. Si bien este método puede funcionar peor para usuarios con gustos muy específicos (nichos, pocos usuarios con gustos comunes), el filtro colaborativo basado en ítems habitualmente ofrece recomendaciones mejores y más rápidas~\cite{filtro_colaborativo_2}. En el caso de este trabajo, se consideró que los municipios españoles reúnen las suficientes características como para poder ser divididos en un número relativamente pequeño de grupos, lo que favorece la ausencia de usuarios de nicho, por lo que se consideró un enfoque apropiado.
 
 Así, para predecir la valoración (uno en caso de que la valoración sea positiva; es decir, el usuario expresa que le gusta el municipio, y cero en caso de que este exprese su rechazo) de un lugar para un determinado usuario, calcularemos la predicción de la valoración de un municipio $i$ por un usuario $u$ de la siguiente manera:
 
@@ -1823,7 +1819,7 @@ $sim(u, v)$: es la similitud entre los usuarios $u$ y $v$, medida por su similit
 
 $r(v, i)$: es la evaluación del municipio $i$ por el usuario $v$, que toma 1 si le ha gustado, y 0 en caso contrario.
 
-Este procedimiento es análogo a la frase ``la gente a la que le gusta el elemento X, como el usuario actual, también tiende a valorar positivamente el elemento Y, que el usuario aún no ha valorado, por lo que debería probarlo''. El filtrado colaborativo basado en ítems tiene menos errores que el filtrado colaborativo basado en usuarios y, como su modelo menos dinámico se calcula con menos frecuencia, se puede representar en una matriz de menor tamaño, por lo que su rendimiento es superior al de los sistemas de filtrado colaborativo basados en usuarios \cite{filtro_colaborativo_3}.
+Este procedimiento es análogo a la frase \guillemotleft la gente a la que le gusta el elemento X, como el usuario actual, también tiende a valorar positivamente el elemento Y, que el usuario aún no ha valorado, por lo que debería probarlo\guillemotright. El filtrado colaborativo basado en ítems tiene menos errores que el filtrado colaborativo basado en usuarios y, como su modelo menos dinámico se calcula con menos frecuencia, se puede representar en una matriz de menor tamaño, por lo que su rendimiento es superior al de los sistemas de filtrado colaborativo basados en usuarios~\cite{filtro_colaborativo_3}.
 
 Además, para ofrecer la mayor cantidad de resultados posible y la mejor experiencia de usuario, al poder descubrir una elevada cantidad de municipios, se decidió hacer uso de una de las técnicas más usadas en recomendadores por su elevado éxito: Los sistemas de recomendación híbridos. De esta manera, a la lista de municipios sugerida según el cálculo anterior –es decir, según los gustos de otros usuarios similares–, se añadieron municipios similares por contenido a los ya valorados positivamente por el usuario. Como se detallará en la sección de despliegue, esta lista se computa una vez al día para todos los usuarios que alguna vez han valorado algún artículo en el sistema.
 
@@ -1837,7 +1833,7 @@ Se usaron diversas métricas para comprobar el funcionamiento de este sistema:
 
 En primer lugar, la puntuación de Ridge devuelve el coeficiente de determinación de la predicción, siendo mejor cuanto mayor es, y estando su límite superior en 1. Se basa en la creación de un modelo de regresión lineal mediante cuadrados mínimos con norma L2. Su valor no está acotado inferiormente y puede tomar valores negativos, ya que el modelo puede ser arbitrariamente malo. Entre esta fase y su habitual vuelta a la fase de modelado anterior, se probaron las siguientes clases como base del modelo: renta bruta media, que obtuvo una puntuación de 0,62; tasa de actividad, que obtuvo una puntuación de 0,85; tasa de empleo, que obtuvo una puntuación de 0,91; y población, que obtuvo una puntuación de 0,96, siendo por tanto la variable elegida.
 
-Por otra parte, se tomó un subconjunto de 1.000 municipios, que se dividieron tomando el 80 \% de ellos en un conjunto de entrenamiento, y un 20 \% en un conjunto de prueba. Tras realizar un etiquetado manual de municipios parecidos, se usó el conjunto de prueba para calcular su RMSE, obteniendo un valor de 0,19, dentro de los objetivos del trabajo.
+Por otra parte, se tomó un subconjunto de 1000 municipios, que se dividieron tomando el 80 \% de ellos en un conjunto de entrenamiento, y un 20 \% en un conjunto de prueba. Tras realizar un etiquetado manual de municipios parecidos, se usó el conjunto de prueba para calcular su RMSE, obteniendo un valor de 0,19, dentro de los objetivos del trabajo.
 
 Además, se realizaron diversas pruebas para comprobar la fiabilidad del sistema de forma cualitativa, y ver si los resultados devueltos eran coherentes y se adecuaban a la expectativa del sistema: Se observó cómo, en todos los casos (100 pruebas formales), el sistema recomendó municipios de características similares; por ejemplo, municipios medianos - grandes como recomendación sugerida para otros municipios del mismo tamaño, municipios pequeños como recomendación sugerida para otros municipios del mismo tamaño, municipios costeros como recomendación sugerida para otros municipios costeros y municipios cercanos a la montaña para otros municipios cercanos a la montaña.
 
@@ -1851,7 +1847,7 @@ Por otro lado, el sistema de recomendación de filtro colaborativo basado en usu
 
 Sin embargo, al realizar las predicciones del conjunto de evaluación, los resultados no fueron satisfactorios. Las probabilidades de recomendar o no un municipio para un usuario similar a otro no superaban el 52 \%, quedando demasiado cerca a criterio del autor de una recomendación puramente azarosa.
 
-Se pensó que podría deberse a un tamaño demasiado pequeño en el conjunto de muestra inicial (2.000 valoraciones), por lo que se optó por aumentar el número de valoraciones de cada usuario hasta las 1.000 por tipo de valoración, resultando en 20.000 valoraciones. Pese a ello, los resultados tras entrenar, probar y evaluar el modelo fueron similares, no alcanzando un 53 \% de precisión en las recomendaciones. Tras aumentar el conjunto de datos de nuevo por diez, creando 10 usuarios nuevos réplica de los anteriores y contar con 200.000 valoraciones, solo se aumentó el tiempo de cálculo necesario, obteniendo los mismos resultados en cuanto a su precisión, muy similar a la de recomendaciones aleatorias.
+Se pensó que podría deberse a un tamaño demasiado pequeño en el conjunto de muestra inicial (2000 valoraciones), por lo que se optó por aumentar el número de valoraciones de cada usuario hasta las 1000 por tipo de valoración, resultando en 20 000 valoraciones. Pese a ello, los resultados tras entrenar, probar y evaluar el modelo fueron similares, no alcanzando un 53 \% de precisión en las recomendaciones. Tras aumentar el conjunto de datos de nuevo por diez, creando 10 usuarios nuevos réplica de los anteriores y contar con 200 000 valoraciones, solo se aumentó el tiempo de cálculo necesario, obteniendo los mismos resultados en cuanto a su precisión, muy similar a la de recomendaciones aleatorias.
 
 Se consideró que este hecho puede haber estado relacionado con el tamaño de la muestra (pocos usuarios y pocas valoraciones) o con los criterios arbitrarios elegidos para separar a los usuarios, que no reflejen adecuadamente el comportamiento y valoraciones de usuarios reales.
  
@@ -1880,21 +1876,21 @@ Con la intención de permitir a los usuarios encontrar municipios en base a una 
     \item Filtrado por cercanía a la montaña del municipio, análogo al anterior.
     \item Filtrado por servicios sanitarios en el municipio, en función de si se desean: centros de salud, centros de salud con servicios de urgencias, hospitales, o todo lo anterior.
     \item Filtrado por servicios educativos en el municipio, en función de si se desean: colegios, universidades o ambos.
-    \item Filtrado por cantidad de población del municipio, en función de si el tamaño deseado entra en alguno de los siguientes intervalos: menos de 1.000 habitantes, entre 1.000 y 5.000 habitantes, entre 5.000 y 10.000 habitantes, entre 10.000 habitantes y 100.000 habitantes, entre 100.000 habitantes y 250.000 habitantes, y más de 250.000 habitantes.
+    \item Filtrado por cantidad de población del municipio, en función de si el tamaño deseado entra en alguno de los siguientes intervalos: menos de 1000 habitantes, entre 1000 y 5000 habitantes, entre 5000 y 10 000 habitantes, entre 10 000 habitantes y 100 000 habitantes, entre 100 000 habitantes y 250 000 habitantes, y más de 250 000 habitantes.
     \item Filtrado por temperatura media en invierno en el municipio, ofreciendo los siguientes intervalos: menos de 5º C, entre 5 y 10º C, entre 10 y 15º C, y más de 15º C.
     \item Filtrado por temperatura media en verano en el municipio, análogo al anterior, con los siguientes intervalos: menos de 20º C, entre 20 y 22º C, entre 22 y 25º C, y más de 25º C.
     \item Filtrado por altitud del municipio, incluyendo los siguientes intervalos: menos de 250 metros, entre 250 y 500 metros, entre 500 y 750 metros, y más de 750 metros.
     \item Filtrado por distancia a la capital de provincia, con los intervalos: menos de 5 kilómetros, entre 5 y 15 kilómetros, entre 15 y 25 kilómetros, entre 25 y 35 kilómetros, entre 35 y 50 kilómetros, y más de 50 kilómetros.
-    \item Filtrado por renta per cápita anual del municipio, dando los intervalos: menos de 20.000 €, entre 20.000 y 25.000 €, entre 25.000 y 30.000 €, y más de 30.000 €.
+    \item Filtrado por renta per cápita anual del municipio, dando los intervalos: menos de 20 000 €, entre 20 000 y 25 000 €, entre 25 000 y 30 000 €, y más de 30 000 €.
     \item Filtrado por cobertura de Internet disponible en el municipio, con las opciones: Cobertura móvil 3G en más de la mitad del territorio, cobertura móvil 4G en más de la mitad del territorio, cobertura de fibra óptica de 30 MB en más la mitad del territorio, cobertura de fibra óptica de 100 MB más de la mitad del territorio o cobertura móvil 4G y fibra óptica de 100 MB más de la mitad del territorio
-    \item Filtrado por preferencia del usuario entre naturaleza o servicios comerciales, que filtra por los lugares de tipo ``sitios\_actividad'', ``sitios\_ocio'' y ``sitios\_natural'' para la primera opción, y por municipios que tengan lugares de tipo ``sitios\_comercio'', ``sitios\_servicio'' y ``sitios\_catering'' para la segunda.
+    \item Filtrado por preferencia del usuario entre naturaleza o servicios comerciales, que filtra por los lugares de tipo \guillemotleft sitios\_actividad\guillemotright, \guillemotleft sitios\_ocio\guillemotright\space y \guillemotleft sitios\_natural\guillemotright\space para la primera opción, y por municipios que tengan lugares de tipo \guillemotleft sitios\_comercio\guillemotright, \guillemotleft sitios\_servicio\guillemotright\space y \guillemotleft sitios\_catering\guillemotright\space para la segunda.
 \end{itemize}
 
-Además, se consideró necesario añadir una página de ``Metodología'' al sitio Web, que explica cómo se ha realizado este trabajo, y que incluye las siguientes notas en relación con el cuestionario anterior –además de asuntos ya descritos en esta memoria, como el cálculo de las heurísticas para las distancias o la toma de valores climáticos promedio en febrero y julio para representar el invierno y el verano, respectivamente–:
+Además, se consideró necesario añadir una página de \guillemotleft Metodología\guillemotright\space al sitio Web, que explica cómo se ha realizado este trabajo, y que incluye las siguientes notas en relación con el cuestionario anterior –además de asuntos ya descritos en esta memoria, como el cálculo de las heurísticas para las distancias o la toma de valores climáticos promedio en febrero y julio para representar el invierno y el verano, respectivamente–:
 
-\textit{En todos los rangos del cuestionario se incluye el/los extremo/s del intervalo correspondiente, por ejemplo: ``Municipios de menos de 10.000 habitantes'', incluye a los municipios que tienen 10.000 habitantes, de forma análoga con el ejemplo acotado inferiormente (``Municipios de más de 10.000 habitantes'')}.
+\textit{En todos los rangos del cuestionario se incluye el/los extremo/s del intervalo correspondiente, por ejemplo: \guillemotleft Municipios de menos de 10 000 habitantes\guillemotright, incluye a los municipios que tienen 10 000 habitantes, de forma análoga con el ejemplo acotado inferiormente (\guillemotleft Municipios de más de 10 000 habitantes\guillemotright\space)}.
 
-\textit{La denominación ``colegios'' incluye indistintamente a ``colegios e institutos'' (Centros de educación primaria y secundaria), dado que los datos del Ministerio de Educación no realizan esta distinción.}
+\textit{La denominación \guillemotleft colegios\guillemotright\space incluye indistintamente a \guillemotleft colegios e institutos\guillemotright\space (Centros de educación primaria y secundaria), dado que los datos del Ministerio de Educación no realizan esta distinción.}
 
 \subsubsection{Programación de la aplicación}
 
@@ -1903,81 +1899,81 @@ La creación de la página Web que servirá como resultado final accesible de es
 \subsubsection{Directorio principal}
 
 \begin{itemize}
-	\item .env. Archivo de variables de entorno para el entorno local.
-	\item .gcloudignore. Especifica los archivos que no se subirán a la plataforma de Google, como los archivos de caché de Python o PHP.
-	\item api/. Directorio que contiene los archivos alojados en el servidor LAMP, que se detallarán posteriormente.
-	\item app.yaml. Archivo de configuración de la aplicación en Google App Engine. Especifica parámetros como el tipo de instancia en el que se ejecutará, el esquema de las URL y si siempre aplicará HTTPS.
-	\item database.csv. Base de datos del trabajo creada anteriormente, alojada en la plataforma Web para que los \textit{scripts} puedan acceder a ella fácilmente.
-	\item database.json. Base de datos creada anteriormente, en formato JSON para su acceso y manejo cómodo por diversos \textit{scripts}. Cabe destacar que, aunque se aloje en la plataforma, no se expone al público, dado que no está en el directorio público ``static'' ni es accesible de otra manera que a través de \textit{endpoints} (funciones del archivo enrutador) que exponen únicamente subconjuntos, como los nombres de los municipios para la función de autocompletado. Esto es así para evitar que un usuario malintencionado pueda acceder al conjunto de datos del sistema y pueda crear una réplica del sistema sin coste.
-	\item env.yaml. Archivo de variables de entorno para Google App Engine.
-	\item get\_municipalities\_list\_for\_autocomplete.py. Obtiene la lista de municipios y sus provincias con la que el cliente Web (\textit{frontend}) construye el autocompletado para el usuario.
-	\item get\_municipality.py. Por razones de eficiencia y comunicación, y aplicando principios vistos en las asignaturas ``Modelos de programación para el Big Data'', ``Infrastructuras Big Data'' y ``Arquitecturas Big Data'', cuando algún recurso necesita trabajar con municipios maneja únicamente la información imprescindible para identificarlos; esto es, su identificador únivoco del INE. De esta forma, se reduce enormemente la latencia de red y se acelera la velocidad de los cálculos, además de mejorar la eficiencia del sistema (consume menos recursos y, por tanto, el coste de la instancia de Google en ejecución es menor). Como último paso antes de mostrar la información al usuario, este archivo devuelve la información de un municipio dado su código identificativo.
-	\item main.py. Es el archivo enrutador de Flask y controlador del flujo de ejecución para las peticiones de los usuarios. Ante una petición concreta, llama a otras funciones para proveer al sitio Web de comportamiento dinámico.
-	\item make\_decimal\_numbers.py. Usado para convertir los números decimales en inglés (punto como separador decimal, ``.'') al español (coma como separador, ``,'').
-	\item model\_normalized.csv. Modelo normalizado creado anteriormente, alojado en la plataforma Web para que los \textit{scripts} puedan acceder a él.
-	\item random\_municipality.py. Devuelve un municipio aleatorio.
-	\item ratings\_manager.py. Gestiona el archivo de valoraciones de los usuarios, emitiendo una valoración positiva o negativa para un usuario y un municipio.
-	\item recommender.py. Constituye el motor del recomendador basado en contenido. Devuelve los 10 municipios más similares a aquel que se introduce.
-	\item requirements.txt. Archivo que especifica las librerías de las que depende el proyecto, y que permiten montarlo en Google App Engine.
-	\item sanitize\_names.py. Convierte el nombre de un municipio al nombre esperado en las URL del sistema. Esencialmente, sustituye tildes, eñes, preposiciones... De esta forma, devuelve que el municipio de Albacete ``Alcalá del Júcar'' se puede encontrar en ``albacete/alcala-del-jucar''.
-	\item sitemap.xml. Mapa del sitio para ayudar a los buscadores en su indexación, importante dado el número de municipios existentes con su propia página, a fin de tener un buen posicionamiento Web y facilitar la compartición de enlaces entre los usuarios.
-	\item static/. Directorio que contiene los archivos estáticos de las páginas Web, como se detallará posteriormente.
-	\item survey.py. Procesa las respuestas de los usuarios al cuestionario y filtra los municipios según los criterios especificados, devolviendo un elemento aleatorio del subconjunto final resultante.
-	\item templates/. Directorio que contiene plantillas de Jinja2 con los huecos necesarios para formar la vista final.
-	\item user\_suggestions.py. Constituye el motor del recomendador colaborativo basado en ítems.
-	\item users\_recommendations.py. Es el motor del recomendador colaborativo basado en usuarios.
-	\item wikipedia.json. Archivo con la información extraída de Wikipedia para cada municipio, en formato JSON para su fácil carga por el código JavaScript.
+	\item \texttt{.env}. Archivo de variables de entorno para el entorno local.
+	\item \texttt{.gcloudignore}. Especifica los archivos que no se subirán a la plataforma de Google, como los archivos de caché de Python o PHP.
+	\item \texttt{api/}. Directorio que contiene los archivos alojados en el servidor LAMP, que se detallarán posteriormente.
+	\item \texttt{app.yaml}. Archivo de configuración de la aplicación en Google App Engine. Especifica parámetros como el tipo de instancia en el que se ejecutará, el esquema de las URL y si siempre aplicará HTTPS.
+	\item \texttt{database.csv}. Base de datos del trabajo creada anteriormente, alojada en la plataforma Web para que los \textit{scripts} puedan acceder a ella fácilmente.
+	\item \texttt{database.json}. Base de datos creada anteriormente, en formato JSON para su acceso y manejo cómodo por diversos \textit{scripts}. Cabe destacar que, aunque se aloje en la plataforma, no se expone al público, dado que no está en el directorio público \guillemotleft static\guillemotright\space ni es accesible de otra manera que a través de \textit{endpoints} (funciones del archivo enrutador) que exponen únicamente subconjuntos, como los nombres de los municipios para la función de autocompletado. Esto es así para evitar que un usuario malintencionado pueda acceder al conjunto de datos del sistema y pueda crear una réplica del sistema sin coste.
+	\item \texttt{env.yaml}. Archivo de variables de entorno para Google App Engine.
+	\item \texttt{get\_municipalities\_list\_for\_autocomplete.py}. Obtiene la lista de municipios y sus provincias con la que el cliente Web (\textit{frontend}) construye el autocompletado para el usuario.
+	\item \texttt{get\_municipality.py. Por razones de eficiencia y comunicación, y aplicando principios vistos en las asignaturas \guillemotleft Modelos de programación para el Big Data\guillemotright, \guillemotleft Infrastructuras Big Data\guillemotright\space y \guillemotleft Arquitecturas Big Data\guillemotright, cuando algún recurso necesita trabajar con municipios maneja únicamente la información imprescindible para identificarlos; esto es, su identificador únivoco del INE. De esta forma, se reduce enormemente la latencia de red y se acelera la velocidad de los cálculos, además de mejorar la eficiencia del sistema (consume menos recursos y, por tanto, el coste de la instancia de Google en ejecución es menor). Como último paso antes de mostrar la información al usuario, este archivo devuelve la información de un municipio dado su código identificativo.
+	\item \texttt{main.py}. Es el archivo enrutador de Flask y controlador del flujo de ejecución para las peticiones de los usuarios. Ante una petición concreta, llama a otras funciones para proveer al sitio Web de comportamiento dinámico.
+	\item \texttt{make\_decimal\_numbers.py}. Usado para convertir los números decimales en inglés (punto como separador decimal, \guillemotleft .\guillemotright\space) al español (coma como separador, \guillemotleft ,\guillemotright\space).
+	\item \texttt{model\_normalized.csv}. Modelo normalizado creado anteriormente, alojado en la plataforma Web para que los \textit{scripts} puedan acceder a él.
+	\item \texttt{random\_municipality.py}. Devuelve un municipio aleatorio.
+	\item \texttt{ratings\_manager.py}. Gestiona el archivo de valoraciones de los usuarios, emitiendo una valoración positiva o negativa para un usuario y un municipio.
+	\item \texttt{recommender.py}. Constituye el motor del recomendador basado en contenido. Devuelve los 10 municipios más similares a aquel que se introduce.
+	\item \texttt{requirements.txt}. Archivo que especifica las librerías de las que depende el proyecto, y que permiten montarlo en Google App Engine.
+	\item \texttt{sanitize\_names.py}. Convierte el nombre de un municipio al nombre esperado en las URL del sistema. Esencialmente, sustituye tildes, eñes, preposiciones... De esta forma, devuelve que el municipio de Albacete \guillemotleft Alcalá del Júcar\guillemotright\space se puede encontrar en \guillemotleft albacete/alcala-del-jucar\guillemotright.
+	\item \texttt{sitemap.xml}. Mapa del sitio para ayudar a los buscadores en su indexación, importante dado el número de municipios existentes con su propia página, a fin de tener un buen posicionamiento Web y facilitar la compartición de enlaces entre los usuarios.
+	\item \texttt{static/}. Directorio que contiene los archivos estáticos de las páginas Web, como se detallará posteriormente.
+	\item \texttt{survey.py}. Procesa las respuestas de los usuarios al cuestionario y filtra los municipios según los criterios especificados, devolviendo un elemento aleatorio del subconjunto final resultante.
+	\item \texttt{templates/}. Directorio que contiene plantillas de Jinja2 con los huecos necesarios para formar la vista final.
+	\item \texttt{user\_suggestions.py}. Constituye el motor del recomendador colaborativo basado en ítems.
+	\item \texttt{users\_recommendations.py}. Es el motor del recomendador colaborativo basado en usuarios.
+	\item \texttt{wikipedia.json}. Archivo con la información extraída de Wikipedia para cada municipio, en formato JSON para su fácil carga por el código JavaScript.
 
 \end{itemize}
 
-\subsubsection{Directorio ``api''}
+\subsubsection{Directorio \guillemotleft api\guillemotright\space}
 
 \begin{itemize}
-	\item .env. Archivo de variables de entorno para el servidor LAMP.
-	\item .htaccess. Protege los ficheros del directorio para que ningún usuario a excepción del propietario pueda acceder a los archivos alojados en el directorio ``storage''; y que únicamente puedan hacerlo archivos PHP alojados en el mismo servidor.
-	\item DotEnv.php. Biblioteca externa usada para la gestión de variables de entorno en PHP.
-	\item generate-user-id.php. Genera un identificador único aleatorio de 32 caracteres para el usuario que no tiene la \textit{cookie} con él instalada y que ha dado su consentimiento, como se explicará posteriormente. 
-	\item get-ratings.php. Previa compartición de una clave única segura con ella, expone a la aplicación el archivo de valoraciones de usuarios.
-	\item get-suggestions.php. Previa compartición de una clave única segura con ella, expone a la aplicación el archivo de sugerencias calculado cada día.
-	\item rate.php. Previa compartición de una clave única segura con ella, realiza la anotación de la valoración del usuario indicada por la aplicación.
-	\item storage/. Directorio de almacenaje, que resuelve la dificultad para almacenar y actualizar archivos de texto en aplicaciones como servicio como Google App Engine.
-	\item update-suggestions.php. Previa compartición de una clave única segura con ella, actualiza las recomendaciones de los usuarios del filtro colaborativo basado en ítems. 
+	\item \texttt{.env}. Archivo de variables de entorno para el servidor LAMP.
+	\item \texttt{.htaccess}. Protege los ficheros del directorio para que ningún usuario a excepción del propietario pueda acceder a los archivos alojados en el directorio \guillemotleft storage\guillemotright\space; y que únicamente puedan hacerlo archivos PHP alojados en el mismo servidor.
+	\item \texttt{DotEnv.php}. Biblioteca externa usada para la gestión de variables de entorno en PHP.
+	\item \texttt{generate-user-id.php}. Genera un identificador único aleatorio de 32 caracteres para el usuario que no tiene la \textit{cookie} con él instalada y que ha dado su consentimiento, como se explicará posteriormente. 
+	\item \texttt{get-ratings.php}. Previa compartición de una clave única segura con ella, expone a la aplicación el archivo de valoraciones de usuarios.
+	\item \texttt{get-suggestions.php}. Previa compartición de una clave única segura con ella, expone a la aplicación el archivo de sugerencias calculado cada día.
+	\item \texttt{rate.php}. Previa compartición de una clave única segura con ella, realiza la anotación de la valoración del usuario indicada por la aplicación.
+	\item \texttt{storage/}. Directorio de almacenaje, que resuelve la dificultad para almacenar y actualizar archivos de texto en aplicaciones como servicio como Google App Engine.
+	\item \texttt{update-suggestions.php}. Previa compartición de una clave única segura con ella, actualiza las recomendaciones de los usuarios del filtro colaborativo basado en ítems. 
 
 \end{itemize}
 
-\subsubsection{Directorio ``api/storage''}
+\subsubsection{Directorio \guillemotleft api/storage\guillemotright\space}
 
 \begin{itemize}
-	\item ratings.csv. Archivo de valoraciones de los usuarios.
-	\item suggestions.json. Archivo de sugerencias para los usuarios, actualizado cada día.
-	\item users.csv. Base de datos de usuarios que permite la generación de identificadores únicos.
+	\item \texttt{ratings.csv}. Archivo de valoraciones de los usuarios.
+	\item \texttt{suggestions.json}. Archivo de sugerencias para los usuarios, actualizado cada día.
+	\item \texttt{users.csv}. Base de datos de usuarios que permite la generación de identificadores únicos.
 
 \end{itemize}
 
-\subsubsection{Directorio ``static''}
+\subsubsection{Directorio \guillemotleft static\guillemotright\space}
 
 \begin{itemize}
-	\item css/. Directorio con los ficheros de estilo de las páginas Web.
-	\item images/. Directorio con las imágenes de fondos aleatorios descargadas, u otros recursos, como logotipos o iconos.
-	\item js/. Directorio con los ficheros de JavaScript para permitir la interacción del usuario y enriquecer su experiencia.
-	\item robots.txt. Archivo con información para los buscadores de Internet, referenciando el mapa del sitio, y pidiendo la no indexación de las páginas de error.
-    \item municipios/. Contiene las páginas de información para los 8.131 de España, agrupados en 52 subcarpetas según su provincia.
+	\item \texttt{css/}. Directorio con los ficheros de estilo de las páginas Web.
+	\item \texttt{images/}. Directorio con las imágenes de fondos aleatorios descargadas, u otros recursos, como logotipos o iconos.
+	\item \texttt{js/}. Directorio con los ficheros de JavaScript para permitir la interacción del usuario y enriquecer su experiencia.
+	\item \texttt{robots.txt}. Archivo con información para los buscadores de Internet, referenciando el mapa del sitio, y pidiendo la no indexación de las páginas de error.
+    \item \texttt{municipios/}. Contiene las páginas de información para los 8131 de España, agrupados en 52 subcarpetas según su provincia.
 
 \end{itemize}
 
-\subsubsection{Directorio ``templates''}
+\subsubsection{Directorio \guillemotleft templates\guillemotright\space}
 
 \begin{itemize}
-	\item 404.html. Página de error para una solicitud de un recurso no encontrado.
-	\item base.html. Página plantilla para todas las demás, conteniendo el esqueleto de todas: encabezado, contenido a reemplazar y pie.
-	\item metodologia.html. Página usada para explicar cómo se ha realizado el ejecutable, las fuentes del trabajo y cómo contactar si se desea obtener más información.
-	\item privacidad.html. Política de privacidad en función del uso de datos de los usuarios, generada con la herramienta de Zimrre \& Freelance \cite{privacidad}.
-	\item soon.html. Página de muestra utilizada desde que se adquirió el dominio, para garantizar su disponibilidad, y hasta que el desarrollo del sistema estuvo completado.
-	\item 500.html. Página de error para un fallo del servidor.
-	\item home.html. Página de inicio.
-	\item municipality.html. Página de plantilla para cada municipio, a partir de las que se generan localmente las propias para cada uno, que se guardan y se suben a la plataforma para que estén disponibles de forma estática, por los motivos de posicionamiento, visibilidad y compartición mencionados anteriormente. Además de la información recolectada durante la elaboración del modelo, en los municipios de Castilla y León se muestra también la agenda cultural para los próximos días en un radio de 10 kilómetros, utilizando los datos abiertos de la Junta de Castilla y León \cite{agenda}, para probar el grado de adaptabilidad del sistema a nuevos requisitos.
-	\item similar.html. Página para la introducción del municipio para el que se genera la recomendación basada en contenido.
-	\item survey.html. Página del cuestionario.
+	\item \texttt{404.html}. Página de error para una solicitud de un recurso no encontrado.
+	\item \texttt{base.html}. Página plantilla para todas las demás, conteniendo el esqueleto de todas: encabezado, contenido a reemplazar y pie.
+	\item \texttt{metodologia.html}. Página usada para explicar cómo se ha realizado el ejecutable, las fuentes del trabajo y cómo contactar si se desea obtener más información.
+	\item \texttt{privacidad.html}. Política de privacidad en función del uso de datos de los usuarios, generada con la herramienta de Zimrre \& Freelance~\cite{privacidad}.
+	\item \texttt{soon.html}. Página de muestra utilizada desde que se adquirió el dominio, para garantizar su disponibilidad, y hasta que el desarrollo del sistema estuvo completado.
+	\item \texttt{500.html}. Página de error para un fallo del servidor.
+	\item \texttt{home.html}. Página de inicio.
+	\item \texttt{municipality.html}. Página de plantilla para cada municipio, a partir de las que se generan localmente las propias para cada uno, que se guardan y se suben a la plataforma para que estén disponibles de forma estática, por los motivos de posicionamiento, visibilidad y compartición mencionados anteriormente. Además de la información recolectada durante la elaboración del modelo, en los municipios de Castilla y León se muestra también la agenda cultural para los próximos días en un radio de 10 kilómetros, utilizando los datos abiertos de la Junta de Castilla y León~\cite{agenda}, para probar el grado de adaptabilidad del sistema a nuevos requisitos.
+	\item \texttt{similar.html}. Página para la introducción del municipio para el que se genera la recomendación basada en contenido.
+	\item \texttt{survey.html}. Página del cuestionario.
 \end{itemize}
 
 \subsubsection{Infraestructura}
@@ -1988,23 +1984,23 @@ En particular, como una plataforma como servicio abstrae la infraestructura suby
 
 Así, se relegó la persistencia al servidor de pila LAMP, del que ya disponía el alumno, y del que tiene pleno control para poder escribir código PHP que lea y actualice los ficheros de texto. De esta manera, este segundo servidor ejerce de base de datos distribuida y es la única fuente de verdad, intercambiando las operaciones a realizar y sus resultados mediante la API HTTP creada a tal fin y usada por la aplicación de Python. Este es uno de los principios de las arquitecturas diseñadas como microservicios, que favorecen el desacoplamiento entre sistemas su operación distribuida de forma transparente para el usuario.
 
-Otro aspecto relevante a destacar tiene que ver con los recursos del sistema. Por defecto, las aplicaciones desplegadas en App Engine se alojan en instancias de tipo ``F1'', que tienen un límite de 256 MB de memoria RAM y 600 MHz de CPU. Pese a que el funcionamiento era totalmente correcto y rápido en el entorno local, a la hora de desplegarlo a producción (el entorno de App Engine), la aplicación se mostraba lenta y errática, no pudiendo completar en torno al 40 \% de las peticiones. Tras inspeccionar los archivos de registro de errores de App Engine, se llegó a la conclusión de que el rendimiento de Python manejando los ficheros de gran tamaño de la base de datos de municipios era el causante de los problemas, ya que agotaban los recursos de la instancia y provocaban que Google la abortara, resultando en un error HTTP 500, error del servidor.
+Otro aspecto relevante a destacar tiene que ver con los recursos del sistema. Por defecto, las aplicaciones desplegadas en App Engine se alojan en instancias de tipo \guillemotleft F1\guillemotright, que tienen un límite de 256 MB de memoria RAM y 600 MHz de CPU. Pese a que el funcionamiento era totalmente correcto y rápido en el entorno local, a la hora de desplegarlo a producción (el entorno de App Engine), la aplicación se mostraba lenta y errática, no pudiendo completar en torno al 40 \% de las peticiones. Tras inspeccionar los archivos de registro de errores de App Engine, se llegó a la conclusión de que el rendimiento de Python manejando los ficheros de gran tamaño de la base de datos de municipios era el causante de los problemas, ya que agotaban los recursos de la instancia y provocaban que Google la abortara, resultando en un error HTTP 500, error del servidor.
 
-Este aspecto quedó totalmente subsanado cuando, desde el archivo ``app.yaml'' se escaló el sistema, especificando ``F4\_1G'' como instancia a ser desplegada, que ofrece 2.048 MB de memoria RAM y 2,4 GHz de CPU.
+Este aspecto quedó totalmente subsanado cuando, desde el archivo \guillemotleft app.yaml\guillemotright\space se escaló el sistema, especificando \guillemotleft F4\_1G\guillemotright\space como instancia a ser desplegada, que ofrece 2048 MB de memoria RAM y 2,4 GHz de CPU.
 
 Además, las principales plataformas de \textit{Cloud Computing} abaratan los costes para el desarrollador ofreciendo pago por uso, por lo que cuando el servicio no está siendo accedido se destruye su instancia para que no consuma recursos. La contrapartida de esto es el mayor tiempo que toma la primera petición cuando no hay una instancia creada, lo que también puede impactar en la facturación: como cada instancia está activa unos minutos desde que se crea, y se factura por unidad de tiempo con recursos activos, recibir peticiones periódicas es perjudicial para los costos del sistema. A pesar de ello, como cuando la instancia está destruida la petición lleva un tiempo considerable (varios segundos, afectando a la imagen del producto), se ha aprovechado el segundo servidor de pila LAMP para programar unos trabajos periódicos (\textit{cron jobs}) que realicen unas peticiones a la máquina de App Engine cada hora durante parte de la mañana y parte de la tarde de cada día, a fin de que los usuarios que puedan visitar el sistema en esa franja tengan una mejor experiencia de uso. Dado que el tráfico del sistema es muy bajo, el coste adicional de esta medida se ha considerado despreciable para los beneficios que puede conllevar.
 
 \subsubsection{Aspectos de seguridad técnica y jurídica}
 
-Además de garantizar el correcto funcionamiento de la aplicación Web, se han querido también aplicar los conocimientos de las asignaturas ``Fundamentos de Ciberseguridad'' y ``Derecho en Seguridad de Datos'' para garantizar la seguridad técnica y jurídica del proyecto. Además de las medidas técnicas ya señaladas (establecimiento de los permisos mínimos imprescindibles para realizar las operaciones, contraseñas y credenciales seguras no expuestas en el código, uso de claves renovables o sistemas de copias de seguridad automáticos –activados en los dos servidores y disponible en el código a través del control de versiones del repositorio–), se desean comentar también las medidas tomadas desde un punto de vista de la seguridad jurídica.
+Además de garantizar el correcto funcionamiento de la aplicación Web, se han querido también aplicar los conocimientos de las asignaturas \guillemotleft Fundamentos de Ciberseguridad\guillemotright\space y \guillemotleft Derecho en Seguridad de Datos\guillemotright\space para garantizar la seguridad técnica y jurídica del proyecto. Además de las medidas técnicas ya señaladas (establecimiento de los permisos mínimos imprescindibles para realizar las operaciones, contraseñas y credenciales seguras no expuestas en el código, uso de claves renovables o sistemas de copias de seguridad automáticos –activados en los dos servidores y disponible en el código a través del control de versiones del repositorio–), se desean comentar también las medidas tomadas desde un punto de vista de la seguridad jurídica.
 
-Es importante señalar que el sitio Web está configurado para redireccionar siempre a la versión HTTPS, cifrando el tráfico intercambiado como medida de seguridad, y convirtiendo las URL sin ``WWW'' a URLs con ellas para facilitar la uniformidad de los recursos y garantizar la seguridad de los usuarios.
+Es importante señalar que el sitio Web está configurado para redireccionar siempre a la versión HTTPS, cifrando el tráfico intercambiado como medida de seguridad, y convirtiendo las URL sin \guillemotleft WWW\guillemotright\space a URLs con ellas para facilitar la uniformidad de los recursos y garantizar la seguridad de los usuarios.
 
-Por otra parte, para identificar a los usuarios y sus acciones –estas son, las valoraciones con las que se alimenta el sistema de recomendación colaborativo basado en ítems–, es necesario utilizar una \textit{cookie}. Esto es un pequeño fichero de texto que se almacena en el navegador Web del usuario, y que almacena el identificador único asignado a ese usuario. Sin embargo, dado que el sistema está orientado hacia usuarios europeos, es de aplicación el Reglamento General de Protección de Datos, transpuesto a la legislación española por la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y Garantía de los Derechos Digitales, que, entre otras cosas, establece la obligación de los prestadores de servicio de recabar el consentimiento informado explícito del usuario antes de realizar operaciones de este tipo \cite{GDPR_ESP}.
+Por otra parte, para identificar a los usuarios y sus acciones –estas son, las valoraciones con las que se alimenta el sistema de recomendación colaborativo basado en ítems–, es necesario utilizar una \textit{cookie}. Esto es un pequeño fichero de texto que se almacena en el navegador Web del usuario, y que almacena el identificador único asignado a ese usuario. Sin embargo, dado que el sistema está orientado hacia usuarios europeos, es de aplicación el Reglamento General de Protección de Datos, transpuesto a la legislación española por la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y Garantía de los Derechos Digitales, que, entre otras cosas, establece la obligación de los prestadores de servicio de recabar el consentimiento informado explícito del usuario antes de realizar operaciones de este tipo~\cite{GDPR_ESP}.
 
-Así, el identificador de usuario –y, por lo tanto, el almacenamiento de la \textit{cookie} en su navegador– solo ocurre cuando este ha dado su consentimiento en una ventana emergente que aparece cuando el sitio carga por primera vez. Esta ventana está gestionada por TermsFeed \cite{TermsFeed}, y para no volver a mostrarse una vez el usuario ya ha respondido, almacena una \textit{cookie} de tipo técnico con las preferencias manifestadas por el usuario. Solo en el caso de que el usuario otorgue su consentimiento de seguimiento para fines de personalización, se recogerán sus valoraciones y se almacenará la \textit{cookie} propia en su navegador. Además, si el usuario permite el seguimiento para fines analíticos, también se almacenarán \textit{cookies} de Google Analytics \cite{analytics}, para entender mejor el comportamiento de los usuarios por el sitio Web.
+Así, el identificador de usuario –y, por lo tanto, el almacenamiento de la \textit{cookie} en su navegador– solo ocurre cuando este ha dado su consentimiento en una ventana emergente que aparece cuando el sitio carga por primera vez. Esta ventana está gestionada por TermsFeed~\cite{TermsFeed}, y para no volver a mostrarse una vez el usuario ya ha respondido, almacena una \textit{cookie} de tipo técnico con las preferencias manifestadas por el usuario. Solo en el caso de que el usuario otorgue su consentimiento de seguimiento para fines de personalización, se recogerán sus valoraciones y se almacenará la \textit{cookie} propia en su navegador. Además, si el usuario permite el seguimiento para fines analíticos, también se almacenarán \textit{cookies} de Google Analytics~\cite{analytics}, para entender mejor el comportamiento de los usuarios por el sitio Web.
 
-Por su parte, también es necesario disponer de una política de privacidad y \textit{cookies}, que explique transparentemente cómo el sitio Web y su responsable manejan la información de los usuarios. Para ello, se ha contado con el apoyo de la herramienta de Zimrre \& Freelance \cite{privacidad}.
+Por su parte, también es necesario disponer de una política de privacidad y \textit{cookies}, que explique transparentemente cómo el sitio Web y su responsable manejan la información de los usuarios. Para ello, se ha contado con el apoyo de la herramienta de Zimrre \& Freelance~\cite{privacidad}.
 
 \subsubsection{Evaluación de la aplicación}
 
