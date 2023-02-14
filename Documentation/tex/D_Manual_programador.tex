@@ -1,2 +1,46 @@
 \apendice{Documentación técnica de programación}
 
+\section{Introducción}
+
+En el presente anexo se detalla la información necesaria para mantener el sistema por otros programadores.
+
+\section{Estructura de directorios}
+
+Tras clonar el repositorio, se pueden encontrar las carpetas \texttt{Scripts}, \texttt{Data} y \texttt{Web}.
+
+La primera contiene, dentro del directorio \texttt{ETL} (siglas de \texttt{Extracción, transformación y limpieza}) los archivos de Python y PHP con los que se realiza la extracción de datos vía APIs y \textit{Web scraping} y las operaciones de tratamiento de los conjuntos de datos descargados directamente. A su vez, se encuentran también en el directorio \texttt{Scripts} los programas para crear y normalizar el modelo.
+
+Los resultados de las extracciones y procesamientos se encuentran en formato CSV en la carpeta \texttt{Data}. Dentro de esta carpeta están los directorios \texttt{others} y \texttt{support}. En el primero se encuentra la base de datos (el modelo no normalizado) y la base de datos de información extraída de Wikipedia, ambos en formato JSON. Por otra parte, en el segundo directorio se encuentran archivos CSV intermedios o archivos en formato XLSX procedentes de diversos conjuntos de datos.
+
+El directorio \texttt{Web} contiene todo lo relacionado con el producto desplegado. Destacan las carpetas \texttt{api}, con los archivos usados en el servidor secundario de pila LAMP; \texttt{templates}, con las plantillas de Jinja2 usadas por Flask; y \texttt{static}, que contiene las páginas estáticas del sistema y los archivos necesarios para interpretarlas en el navegador. Esto incluye las páginas de cada municipio, presentes en la subcarpeta de su provincia dentro de la carpeta \texttt{municipios}, los archivos de estilo CSS y de JavaScript necesarios para la interacción enriquecida con el sitio Web y las imágenes mostradas alojadas directamente en el servidor.
+
+\section{Manual del programador}
+
+Para ejecutar el servidor local se necesita tener instalado en Python 3 y contar con 2 Gigabytes de espacio libre en disco y en memoria RAM.
+
+Todos los \textit{scripts} están acompañados de un texto que indica cómo usarlos, y que se muestra si se ejecuta el archivo sin especificar ningún parámetro adicional. Además, es posible encontrar comentarios y nombres descriptivos que ilustran el cometido del archivo.
+
+Por razones de universalidad en el acceso al conocimiento, pragmatismo y eficiencia, y con la intención de que el código pueda ser leído, entendido, mantenido o contribuido por personas de cualquier parte del mundo, todos los archivos de programación están escritos en inglés, al igual que las fichas que describen las funciones del sistema (\textit{issues}) en GitHub.
+
+\section{Compilación, instalación y ejecución del proyecto}
+
+Para ejecutar el proyecto localmente se ejecutarán los siguientes comandos desde el directorio \texttt{Web}:
+
+\begin{verbatim}
+pip install -r requirements.txt
+python3 main.py mode=debug
+\end{verbatim}
+
+El primer comando usa el gestor de paquetes Pip de Python para instalar todas las dependencias necesarias del sistema; mientras que el segundo inicia la aplicación localmente (modo \texttt{debug}). Esto es necesario ya que, de lo contrario, la aplicación estaría apuntando hacia el dominio real, por lo que, en realidad, sería equivalente a acceder al sitio en Internet. Para usar la aplicación localmente tan solo se debe acceder a la URL de Flask desde el dispositivo en el que se han ejecutado los comandos anteriores: localhost:5000.
+
+Ejecutar \texttt{python3 main.py mode=production} es equivalente a ejecutar \texttt{python3 main.py}, que es la orden ejecutada automáticamente por App Engine durante el despliegue del sistema.
+
+Las páginas de los municipios se generan accediendo, únicamente desde el modo \texttt{debug}, a localhost:5000/generate-municipalities-pages. En el ordenador del autor, un MacBook Pro de 13 pulgadas de 2016 con macOS 12.6 Monterey, un procesador de 3,1 GHz Intel Core i5 de doble núcleo, 16 Gigabytes de memoria RAM LPDDR3 a 2133 MHz y una tarjeta gráfica Intel Iris Graphics 550 1536 MB, este proceso lleva aproximadamente una hora y media.
+
+Para desplegar el sistema en App Engine tan solo es necesario ejecutar el GitHub Action \texttt{Deploy to GAE}, como se muestra a continuación:
+
+\imagen{deploy}{GitHub Action de despliegue a Google App Engine.}
+
+\section{Pruebas del sistema}
+
+Las pruebas manuales del sistema se pueden realizar accediendo al sitio en \texttt{localhost} e interactuando con él. Se puede obtener una vista de prueba dinámica de la página de municipio –sin necesidad de recrear todas las páginas de forma estática– entrando, únicamente desde el modo \texttt{debug}, a localhost:5000/test-municipality-page.

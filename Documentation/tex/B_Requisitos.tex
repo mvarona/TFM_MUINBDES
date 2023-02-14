@@ -1,2 +1,87 @@
 \apendice{Especificación de Requisitos}
 
+\section{Introducción}
+
+A continuación, se procede a detallar la especificación de requisitos del sistema desarrollado.
+
+\section{Objetivos generales}
+
+Los objetivos generales del sistema son:
+
+\begin{enumerate}
+    \item Ofrecer recomendaciones de municipios basadas en otros.
+    \item Mostrar la información recogida de un municipio de forma comprensible e intuitiva.
+    \item Ofrecer recomendaciones de municipios similares a aquellos que han sido valorados positivamente por el usuario.
+    \item Ofrecer un sistema que pueda ser puesto en producción fácilmente.
+    \item Crear el sistema velando por las mejores prácticas que permitan su escalado y mejora continua.
+    \item Garantizar un adecuado nivel de seguridad jurídica y técnica en cuanto a la puesta en marcha se refiere.
+\end{enumerate}
+
+Siguiendo la definición de~\cite{rombach} y~\cite{brackett}, los requerimientos de software se pueden dividir en requisitos de tipo \guillemotleft C\guillemotright\space (también llamados \textit{C-requirements} o requisitos-C), si están orientados al cliente o usuario del producto; y en requisitos de tipo \guillemotleft D\guillemotright\space (\textit{D-requirements} o requisitos-D), si son propios de los desarrolladores.
+
+Aplicando su metodología~\cite{usal_inso_i}, en el \guillemotleft Catálogo de requisitos\guillemotright\space se abordarán los primeros, mientras que en la \guillemotleft Especificación de requisitos\guillemotright\space se detallarán los segundos.
+
+\section{Catálogo de requisitos}
+
+En primer lugar, comenzamos definiendo los requisitos de información, todos ellos relacionados con los objetivos número 1, 2 y 3:
+
+\begin{enumerate}
+    \item Altitud por municipio en metros. Fuente: OpenElevation~\cite{openelevation}. 
+    \item Número de centros de atención primaria, centros hospitalarios y centros de atención urgente extrahospitalaria por municipio. Fuente: Ministerio de Sanidad~\cite{salud}.
+    \item Cobertura de banda ancha por municipio, expresada como porcentaje del territorio con cobertura 3G, 4G, fibra óptica de 30 Megabytes/segundo o fibra óptica de 100 Megabytes/segundo o superior. Fuente: Ministerio de Asuntos Económicos y Transformación Digital~\cite{cobertura}.
+    \item Datos climáticos mínimos, máximos y promedios de temperatura, precipitaciones, horas de sol, viento y precipitaciones históricas para los meses de febrero y julio por municipio. Fuente: OpenWeather~\cite{openweather}.
+    \item Distancias a las capitales de provincias en kilómetros. Fuente: Cálculos por carretera de OpenTripPlanner~\cite{otp}, y en línea recta a través de la distancia geodésica de GeoPy~\cite{GeoPy} cuando la primera no exista.
+    \item Extracto de información del municipio e imágenes del municipio. Fuente: Wikipedia~\cite{wikipedia_api}.
+    \item Geoposicionamiento por municipio. Fuente: PositionStack~\cite{positionstack}.
+    \item Tipos de lugares más significativos por municipio. Fuente: GeoApify~\cite{geoapify}.
+    \item Relación de entidades singulares del INE, y municipio de pertenencia asociado. Fuente: INE~\cite{municipios_ine}, Francisco Ruiz~\cite{entidades}, y Centro Nacional de Información Geográfica~\cite{nomenclator}.
+    \item Número de centros de educación primaria o secundaria por municipio. Fuente: Ministerio de Educación~\cite{colegios}.
+    \item Número de ofertas de empleo disponibles por provincia. Fuente: Infojobs~\cite{infojobs}.
+    \item Número de centros de educación superior por municipio. Fuente: Ministerio de Educación~\cite{universidades}.
+    \item Precios medios de viviendas en venta, y precios medios de viviendas en alquiler por provincia. Fuente: Fotocasa~\cite{fotocasa}.
+    \item Precios y número de viviendas en venta, y precios y número de viviendas en alquiler por municipio. Fuente: Idealista~\cite{idealista}, y Fotocasa~\cite{fotocasa}, usada en los casos en los que la primera falle.
+    \item Provincias de España y sus capitales. Fuente: Libretilla~\cite{provincias}.
+    \item Principales sistemas montañosos de España. Fuente: El Orden Mundial~\cite{relieve} y Fundación BBVA~\cite{rugosidad}.
+    \item Rentas brutas medias per cápita por municipio de la Comunidad Foral de Navarra. Fuente: Hacienda Foral~\cite{renta_navarra}.
+    \item Rentas brutas medias per cápita por municipio de País Vasco. Fuente: Eustat~\cite{renta_euskadi},~\cite{PIB_pais_vasco}.
+    \item Rentas brutas medias per cápita por municipio. Fuente: Agencia Tributaria para todos los territorios excepto País Vasco~\cite{renta}, y la Comunidad Foral de Navarra~\cite{renta_navarra}.
+    \item Tasa de actividad, paro y empleo por provincia y sexo. Fuente: INE~\cite{INE_empleo}.
+    \item Identificador de usuario. Será generado aleatoriamente para cada navegador que no tenga una \textit{cookie} técnica propia del sistema, verificando antes que no exista en la base de datos.
+\end{enumerate}
+
+A continuación, encontramos los siguientes actores:
+
+\begin{enumerate}
+    \item Sistema. Representa al sistema; es decir, realiza acciones autónomas sin intervención del usuario, como eventos periódicos, actualización de información o envío de notificaciones.
+    \item Usuario. Representa a un visitante del producto desplegado, que interactuará con el sistema para obtener recomendaciones de municipios personalizadas.
+\end{enumerate}
+
+Estos actores realizarán los siguientes casos de uso:
+
+\begin{enumerate}
+    \item Obtener recomendación de municipio aplicando filtros. Realizado por el usuario, quien debe ser capaz de filtrar el conjunto de municipios por filtros que operen sobre las variables más significativas de la información recogida, descritos en los Aspectos Relevantes de esta Memoria.
+    \item Obtener recomendación de municipio parecido a otro. Realizado por el usuario, quien debe ser capaz de obtener una recomendación basada en contenido introduciendo el nombre de un municipio similar.
+    \item Obtener recomendación de municipio aleatorio. Ejecutado por el usuario, quien debe ser capaz de obtener una sugerencia de municipio aleatoria.
+    \item Ver visualmente la información de un municipio. Llevado a cabo por el usuario, quien debe poder visualizar la información más relevante del municipio presentado. Esta es: principales datos del mercado inmobiliario del municipio (o, en su defecto, de su provincia), principales datos del mercado de trabajo de la provincia del municipio, principales datos sanitarios y educativos del municipio, altitud a la que se encuentra, principales datos demográficos y climáticos históricos del municipio, renta bruta media anual per cápita, distancia a su capital de provincia, cobertura de Internet disponible, extracto de información e imágenes de la zona si están disponibles y etiquetas con características del municipio.
+    \item Localizar el municipio en un mapa. Realizado por el usuario, quien debe poder visualizar en un mapa la localización del municipio en base a sus coordenadas.
+    \item Valorar positivamente o negativamente un municipio. Ejecutado por el usuario, quien debe poder valorar con un \guillemotleft Me gusta\guillemotright\space o un \guillemotleft No me gusta\guillemotright\space el municipio mostrado, alimentando de esta manera el recomendador basado en gustos de los usuarios, si así lo desea.
+    \item Obtener recomendación personalizada para el usuario si le ha gustado el municipio mostrado. Realizado por el usuario, quien debe ser capaz de obtener una recomendación basada en sus gustos si indica que le ha gustado el municipio mostrado.
+    \item Conocer cómo funciona el sistema. Llevado a cabo por el usuario, quien debe poder conocer cómo funciona el sistema conociendo la metodología con la que se ha diseñado y construido.
+    \item Generar recomendaciones de municipios para cada usuario. Realizado por el sistema, que debe generar una lista de recomendaciones personalizadas para cada usuario cada día, que serán leídas cuando valore positivamente el municipio mostrado.
+\end{enumerate}
+
+Estos casos de uso se pueden observar en el siguiente diagrama de casos de uso:
+
+
+\imagen{casos_de_uso}{Diagrama de casos de uso del sistema.}
+
+\section{Especificación de requisitos}
+
+El sistema está caracterizado por los siguientes requisitos de tipo \guillemotleft D\guillemotright:
+
+\begin{enumerate}
+    \item No depender de la infraestructura desplegada. Está relacionado con los requisitos número 4 y 5.
+    \item Añadir nuevas funcionalidades fácilmente. Se corresponde con el requisito número 5.
+    \item Cumplir la legislación vigente en materia de privacidad y respetar las opciones de seguimiento de los usuarios. Se corresponde con el requisito número 6.
+    \item Cumplir las mejores prácticas en materia de seguridad, en particular, en la protección de claves y secretos usados por el sistema. Relacionado con el requisito número 6.
+\end{enumerate}

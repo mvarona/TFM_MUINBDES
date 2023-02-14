@@ -1,2 +1,105 @@
 \apendice{Documentación de usuario}
 
+\section{Introducción}
+
+En el presente anexo se detalla la información relevante para el manejo del sistema por el usuario.
+
+\section{Requisitos de usuarios}
+
+En principio, los usuarios pueden interactuar con el sistema a través de una dirección de Internet, por lo que los requisitos de su dispositivo son mínimos: La aplicación funciona correctamente en ordenadores y dispositivos móviles, aunque se aconseja su uso en dispositivos con pantalla igual o superior a 8 pulgadas para una mejor experiencia.
+
+Si desean ejecutar la aplicación en modo local, los usuarios necesitarán tener instalado en su sistema Python 3 y contar con 2 Gigabytes de espacio libre en disco y en memoria RAM.
+
+\section{Instalación}
+
+Si desean usar el sistema sin necesidad de instalación, tan solo tienen que entrar en el dominio habilitado para ello: www.dondeteesperan.es. Es importante señalar que el sitio Web está configurado para redireccionar las URL sin \guillemotleft www\guillemotright\space a sus equivalentes con el prefijo para facilitar la uniformidad de los recursos y la comodidad de los usuarios.
+
+Si desean usar el sistema localmente, deben clonar el repositorio disponible en github.com/mvarona/TFM\_MUINBDES, abrir un ventana de línea de comandos, colocarse en la carpeta \guillemotleft Web\guillemotright\space y ejecutar los siguientes comandos:
+
+\begin{verbatim}
+pip install -r requirements.txt
+python3 main.py mode=debug
+\end{verbatim}
+
+El primer comando usa el gestor de paquetes Pip de Python para instalar todas las dependencias necesarias del sistema; mientras que el segundo inicia la aplicación localmente (modo \texttt{debug}). Esto es necesario ya que, de lo contrario, la aplicación estaría apuntando hacia el dominio real, por lo que, en realidad, sería equivalente a acceder al sitio en Internet. Para usar la aplicación localmente tan solo se debe acceder a la URL de Flask desde el dispositivo en el que se han ejecutado los comandos anteriores: localhost:5000.
+
+\section{Manual del usuario}
+
+\subsection{Página principal}
+
+Una vez el usuario accede al sistema puede ver la página principal, que muestra una imagen aleatoria de entre los cinco fondos aleatorios. En la página principal se destacan tres funciones principales del sistema: búsqueda según los gustos del usuario de acuerdo con sus respuestas a un formulario, búsqueda según el parecido con otro municipio, y municipio aleatorio o sorpresa.
+
+En el pie de todas las páginas del sitio se encuentra la referencia de la fotografía utilizada en la vista actual y el enlace a la página donde se explica la metodología usada.
+
+Desde cualquier página del sitio Web se puede volver a la principal pulsando en el nombre del dominio de la esquina superior izquierda.
+
+A través de la pancarta emergente inferior para la gestión de las \textit{cookies} es posible acceder a la política de privacidad y \textit{cookies} del sitio Web. Una vez se haya manifestado el consentimiento mediante los botones de aceptar o renunciar, es posible acceder a dicha política, así como al detalle de las \textit{cookies} usadas, desde dondeteesperan.es/privacidad.
+
+\imagen{home}{Página principal.}
+
+\subsection{Cuestionario}
+
+Desde la función \guillemotleft Lugar solo para mí\guillemotright\space el usuario puede filtrar por diversos criterios a través de catorce preguntas de diversa índole y forma de respuesta. En algunas preguntas será necesario elegir una respuesta de un selector vertical pulsando sobre él y después sobre la opción deseada. En otras, se deberá ajustar el selector horizontal al nivel deseado; para ello, se debe presionar en el indicador y arrastrar hacia un lado u otro para soltar sobre el nivel elegido. La apariencia o comportamiento específico de estos controles varía según el sistema operativo, el navegador u otros ajustes del usuario.
+
+\imagen{survey1}{Ejemplo de pregunta mediante selector vertical del cuestionario.}
+
+El usuario se puede desplazar a lo largo de las preguntas mediante las flechas que aparecen en el lado izquierdo y derecho del formulario. El desplazamiento es circular, por lo que después de la última pregunta se pasará a la primera. Unos indicadores rectangulares muestran en qué pregunta se encuentra el usuario con respecto al total, destacando la posición de la pregunta actual en gris y dejando los demás en blanco claro.
+
+\imagen{survey2}{Ejemplo de pregunta mediante selector deslizante del cuestionario.}
+
+Si no se desea filtrar por ninguna opción basta con pasar todas las preguntas sin utilizar ningún selector y dejando las opciones de los controles por defecto.
+
+\imagen{survey3}{Pregunta final del cuestionario.}
+
+En la última pregunta se pulsará en \guillemotleft ¡Vamos!\guillemotright\space para obtener el resultado del filtrado. A continuación, aparecerá la pantalla de carga del resultado sugerido.
+
+\imagen{survey4}{Pantalla de carga del cuestionario.}
+
+Si ha sido posible encontrar un subconjunto resultante de aplicar todas las opciones elegidas anteriormente se mostrará uno de los municipios de dicho grupo. En caso contrario, se mostrará un mensaje al usuario indicando que su selección contiene criterios que excluyen a todos los municipios, por lo que debe ajustarlos de nuevo para poder recomendarle municipios en base a sus criterios.
+
+\imagen{survey5}{Pantalla de ausencia de resultados al aplicar los filtros.}
+
+\subsection{Búsqueda de municipios similares}
+
+A través de la función \guillemotleft Lugar parecido a otro\guillemotright\space el usuario puede obtener el municipio más parecido a uno dado. Para ello, solo tiene que empezar a introducir el nombre del municipio y su provincia, separados por coma, en la caja de texto que aparece en la página. Para elegir el municipio, se debe pulsar en el municipio deseado de los que aparecen en el desplegable de auto-completado, pensado para eliminar errores y facilitar la experiencia de usuario. Si el resultao deseado no aparece, tan solo escriba algunos caracteres más del nombre y provincia del municipio.
+
+Una vez se pulse en la localidad deseada, se mostrará la pantalla de carga y, tras ella, será redirigido a la página del municipio resultante.
+
+\imagen{similar1}{Pantalla para introducir el municipio en base al que se desea obtener la recomendación.}
+
+\subsection{Página de municipio}
+
+La página de municipio contiene la principal información para hacerse una idea del municipio sugerido. Siempre que sea posible, la página cargará una de las imágenes de Wikipedia como fondo de la página. En caso contrario, se cargará una de las imágenes aleatorias del sitio Web.
+
+\imagen{similar2}{Primera mitad de la página de municipio.}
+
+En la primera mitad superior izquierda se observa, si es posible, un extracto de la página del municipio en Wikipedia, junto con un enlace a dicho artículo y a la búsqueda del municipio en Google. Justo debajo se puede encontrar una lista de las etiquetas extraídas automáticamente para ese municipio.
+
+A continuación, se encuentra el panel de valoración del municipio, que permite expresar una valoración positiva o negativa para el municipio mostrado. Es importante señalar que la valoración solo irá asociada al identificador del usuario (generado aleatoriamente en base a su navegador) en caso de que se hayan aceptado las \textit{cookies} para fines estadísticos.
+
+Tras pulsar en \guillemotleft Me gusta\guillemotright, se obtiene una recomendación personalizada para el usuario en base al sistema de recomendación híbrida que agrupa resultados del sistema de recomendación basado en contenido y del sistema de recomendación de filtro colaborativo basado en ítems. Dicha recomendación viene en forma de enlace que, cuando se pulsa, carga la página del municipio sugerido.
+
+\imagen{municipality2-1}{Recomendación ofrecida tras valoración positiva de un municipio sugerido.}
+
+Los dos paneles contiguos inferiores señalan la ubicación del municipio en un mapa de España y muestran una vista del mismo a pie de calle mediante Google Maps y Google Street View.
+
+\imagen{similar3}{Segunda mitad de la página de municipio.}
+
+Paralelamente, en la parte derecha se dispone las principales características del municipio, como datos relacionados con el mercado inmobilario y de trabajo, los servicios sanitarios y educativos, el clima, la altitud, la distancia a la capital de provincia, la renta anual bruta \textit{per cápita}, las horas de sol promedio a lo largo del año o la conectividad a Internet de la que dispone.
+
+A continuación, se muestra una galería de fotos extraídas de su página en Wikipedia, si dispone de ellas.
+
+La página de municipio está especialmente optimizada para dispositivos móviles, donde ajusta la disposición de elementos para fusionar las columnas y obtener una navegación vertical más cómoda.
+
+\imagen{mobile1}{Ejemplo de la primera mitad de la página de municipio adaptada a pantallas móviles.}
+\imagen{mobile2}{Ejemplo de la segunda mitad de la página de municipio adaptada a pantallas móviles.}
+
+\subsection{Municipio sorpresa}
+
+La función \guillemotleft Lugar sorpresa\guillemotright\space carga un municipio aleatorio de la base de datos, yendo directamente a su página de municipio.
+
+\subsection{Metodología}
+
+La página de \guillemotleft Metodología\guillemotright\space explica las principales características del producto publicado, haciendo hincapié en que se trata del resultado de este trabajo Fin de Máster, indicando las fuentes de los datos, el proceso llevado a cabo y otra información útil, como diversos criterios de las respuestas del formulario o que la extracción de datos se ha realizado de forma automática no supervisada. Además, se incluyen diversas formas para contactar con el autor para poder obtener más información o reportar algún error.
+
+\imagen{metodologia}{Página de descripción de la metodología usada.}

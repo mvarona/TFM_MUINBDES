@@ -1,2 +1,51 @@
 \apendice{Plan de Proyecto Software}
+\section{Introducción}
 
+A continuación, se explica el plan seguido para desarrollar este proyecto desde varios puntos de vista. 
+
+\section{Planificación temporal}
+
+El proyecto se ha realizado siguiendo la metodología CRISP-DM y combinándola con un desarrollo ágil, caracterizado por ciclos de desarrollo cortos que permiten la iteración continua y la modificación de requisitos de forma natural, y que busca aportar valor al usuario frecuentemente. Para ello, el desarrollo funcional se ha partido en pedazos denominados \textit{user stories}, que siguen el formato habitual \textit{As a, I want to, so that...} para dejar claro quién es el beneficiario principal de la funcionalidad (idealmente el usuario) y expresar qué debe ser construido en términos estándar y sencillos.
+
+\imagen{issue}{Ficha de desarrollo funcional (\textit{issue}) en GitHub siguiendo el formato de \textit{user story}.}
+
+En cuanto a los ciclos de desarrollo, se ha procurado realizar \textit{sprints} (periodos de trabajo que culminan con un hito significativo) de unas dos semanas de duración aproximada, ya que el autor ha compaginado su trabajo a tiempo completo y no siempre ha sido posible avanzar entre semana.
+
+En particular, los hitos de cada iteración han sido los siguientes:
+
+\begin{itemize}
+    \item Primera iteración: Del 10 al 25 de diciembre de 2022. Se marcó el objetivo de extraer todos los datos, tanto los procedentes de APIs públicas, como de conjuntos abiertos y \textit{Web scraping}.
+    \item Segunda iteración: Del 26 de diciembre de 2022 al 10 de enero de 2023. Durante este periodo la meta marcada fue crear el modelo y la página Web con la que interactuarán los usuarios.
+    \item Tercera iteración: Del 11 de enero al 26 de enero de 2023. El objetivo de esta iteración fue comenzar la documentación y avanzarla significativamente.
+    \item Cuarta iteración. Del 27 de enero al 12 de febrero de 2023. El objetivo marcado consistió en terminar todo el trabajo, incluyendo la documentación y la presentación.
+\end{itemize}
+
+Cada iteración ha estado caracterizada por una reunión y la compartición continua de los artefactos creados con el tutor, que ha actuado de interesado o \textit{stakeholder} en el marco de metodologías ágiles, facilitando el intercambio de información y promoviendo la mejora continua del producto y de los procesos.
+
+\section{Estudio de viabilidad}
+
+La viabilidad del proyecto se analizó desde diversas perspectivas.
+
+\subsection{Viabilidad técnica}
+
+Se estudiaron a fondo los sistemas de recomendación basados en contenido y con filtro colaborativo, tanto basados en usuarios como en artículos. En particular, fue crucial descubrir el trabajo de Elias Melul~(\cite{US1, US2, US3}) con ciudades estadounidenses, ya que confirmó que era posible realizar el trabajo y permitió establecer una búsqueda de conjuntos de datos similares para cubrir las carencias en cuanto a la cantidad y calidad de los datos por el diferente dominio del problema.
+
+A continuación, se realizó un análisis de las fuentes de datos que se podían encontrar para cada municipio y que se correspondiera de alguna manera con los conjuntos de datos utilizados por E. Melul. Fue determinante explorar satisfactoriamente la viabilidad de poder ejecutar código Python desde un servicio Web, algo que, tras un poco de investigación, resultó ser muy fácil mediante un \textit{framework} Web basado en Python, como Flask~\cite{flask_so}.
+
+Por último, y dado que se quería desplegar el sistema en una plataforma como servicio para aprovechar las ventajas de tarificación a bajo coste que ofrece el \textit{Cloud Computing}, se exploró la posibilidad de desplegar una aplicación basada en Flask en una opción comercial como es Google App Engine. Cuando se vio que era factible de una forma sencilla~\cite{flask_app_engine}, se completó la fase de evaluación de viabilidad técnica.
+
+\subsection{Viabilidad económica}
+
+Debido a las necesidades del proyecto, la viabilidad económica se consiguió de forma inmediata al considerar que el tráfico que soportaría la aplicación sería mínimo, junto a sus necesidades de espacio y procesamiento. Por ello, y haciendo uso de la calculadora de costes de Google Cloud~\cite{calculadora_app_engine}, se estimó que el coste no debería superar los pocos euros al año.
+
+Además, al poder aprovechar un servidor de pila LAMP propiedad del alumno, los costes permanecieron estables mientras se ganó mucha versatilidad y funcionalidad.
+
+\subsection{Viabilidad legal}
+
+Aplicando los conocimientos de las asignaturas de la rama de derecho del grado en Ingeniería Informática y de este máster, fue posible conocer los requisitos legales que debía satisfacer este proyecto.
+
+Se debía garantizar la recolección de datos de los usuarios siempre de forma informada y con su previo consentimiento expreso, y ofrecer unas garantías de transparencia que se expresan habitualmente en las políticas de privacidad.
+
+Además, se debe garantizar que se cumplen los términos de uso y atribución de todas las licencias y bibliotecas de terceros de las que se hace uso en el sistema, tanto si son comerciales como si son de código abierto. En particular, la gran mayoría de bibliotecas usadas están licenciadas bajo la licencia MIT o Apache 2.0, que son de las más permisivas en cuanto a sus obligaciones~\cite{MIT},~\cite{Apache2}. Esencialmente, tan solo imponen el requisito de conservar los avisos de las licencias en todas las copias distribuidas del software, no considerando a tal efecto la distribución online de una aplicación Web. Esta es la principal diferencia con AGPL 3.0, una de las licencias más restrictivas que, como parte de la familia de licencias GPL (\textit{GNU General Public License}), exige que el software que las usa se distribuya con la misma licencia (incluyendo la liberación del código fuente, algo referido a veces como \guillemotleft el caracter vírico de la GPL\guillemotright\space por su impacto nocivo en software comercial~\cite{licencia_virica}, ~\cite{GPL}), y además considera el software online como software distribuido~\cite{AGPL}.
+
+Por otro lado, el proyecto hace uso de extracción automática de datos, con lo que era importante confirmar que se podía hacer. Si bien es cierto que hay ciertas lagunas, parece que siempre que no medie interés comercial o que pueda suponer un hecho de competencia desleal, la extracción automática es posible~\cite{scraping_legal}. Como en este caso se trata de un proyecto académico sin fines comerciales, y que no busca establecer ninguna relación de competencia frente a ningún actor cuyos datos se hayan usado, parecía claro que el proyecto era viable legalmente y se dio término a esta fase.

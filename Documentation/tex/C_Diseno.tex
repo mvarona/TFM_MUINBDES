@@ -1,2 +1,46 @@
 \apendice{Especificación de diseño}
 
+\section{Introducción}
+
+A continuación, se detalla la especificación de diseño del sistema a través de varias perspectivas distintas.
+
+\section{Diseño de datos}
+
+Siguiendo los principios aprendidos en la asignatura \guillemotleft Procesamiento de Datos para la Inteligencia de Negocio\guillemotright, se adjunta el diseño de datos para cada fuente de datos extraída que conforma la base de datos de cada municipio.
+
+\imagen{datos}{Diseño de datos del sistema.}
+
+Nótese que, por eficiencia y capacidad de representación de los datos más complejos, los datos de Wikipedia se representan en archivos de notación de JavaScript (JSON), en vez de en archivos separados por comas (CSV). Esto permite trabajar mucho más eficientemente desde el navegador, accediendo a la información de cada municipio de forma inmediata al utilizar un diccionario con el código INE de cada municipio como clave primaria. Además, también permite trabajar con listas de imágenes, donde cada imagen es la URL a la misma en Wikipedia.
+
+\section{Diseño procedimental}
+
+El diseño procedimental del sistema puede ser resumido mediante el siguiente diagrama:
+
+\imagen{procedimental}{Diseño procedimental del sistema.}
+
+En él se aprecian los distintos flujos que siguen los usuarios según las acciones que realizan a lo largo del sistema. En particular, se observan diversas vertientes condicionales en función de: si son nuevos en el sistema o no (y, por lo tanto, se debe obtener el consentimiento de seguimiento –almacenado en una \textit{cookie} técnica); si aceptan o no \textit{cookies} con fines analíticos y de personalización (que influye en si sus valoraciones serán anónimas o no); la página que visiten de las disponibles; y según valoren (positiva o negativamente) o no el municipio mostrado.
+
+\section{Diseño arquitectónico}
+
+El diseño arquitectónico del sistema a nivel físico es como sigue:
+
+\imagen{arquitectura_hardware}{Diseño arquitectónico a nivel físico del sistema.}
+
+Se observa cómo toda la lógica excepto la de escritura y almacenamiento de datos, y la de activación de eventos periódicos está en el servidor de Google App Engine; relegando la restante al servidor de pila LAMP por los motivos detallados anteriormente.
+
+A nivel de software, se distinguen los siguientes módulos:
+
+\imagen{arquitectura_software}{Diseño arquitectónico a nivel lógico del sistema.}
+
+Se observa cómo el diseño modular favorece la comprensión de las partes del sistema y su escalabilidad, siguiendo el principio de responsabilidad única.
+
+\section{Diseño de la interfaz}
+
+Por último, se adjuntan los bocetos iniciales o \textit{wireframes} usados para diseñar la interfaz gráfica con la que interactúa el usuario.
+
+\imagen{wireframes1}{Boceto de la página principal.}
+\imagen{wireframes2}{Boceto de pregunta del cuestionario (I).}
+\imagen{wireframes3}{Boceto de pregunta del cuestionario (II).}
+\imagen{wireframes4}{Boceto de página de introducción de municipio.}
+\imagen{wireframes5}{Boceto de página de carga.}
+\imagen{wireframes6}{Boceto de página de municipio.}
