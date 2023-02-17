@@ -274,9 +274,31 @@
 			</div>
 		</main>
 	</div>
-	<script type="text/javascript">
+	<script type="text/javascript" cookie-consent="functionality">
+
+
+		$('#carousel').on('slid', '', checkitem);
+		$('#carousel').on('slid.bs.carousel', '', checkitem);
+
+		function checkitem()
+		{
+		    var $this = $('#carousel');
+		    if($('.carousel-inner .carousel-item:first').hasClass('active')) {
+		        $('.carousel-control-prev').hide();
+		        $('.carousel-control-next').show();
+		    } else if($('.carousel-inner .carousel-item:last').hasClass('active')) {
+		        $('.carousel-control-prev').show();
+		        $('.carousel-control-next').hide();
+		    } else {
+		        $('.carousel-control-prev').show();
+		        $('.carousel-control-next').show();
+		    } 
+		}
+
 		$(document).ready(function(){
 			$("#carousel").carousel({ interval: false });
+
+			checkitem();
 			
 			setTimeout(function() {
   				var screenHeight = $(window).height();
