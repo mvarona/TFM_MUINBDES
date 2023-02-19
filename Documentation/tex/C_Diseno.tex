@@ -1,4 +1,4 @@
-\apendice{Especificación de diseño}
+\apendice{Especificación de diseño}\label{diseno}
 
 \section{Introducción}
 
@@ -11,6 +11,1462 @@ Siguiendo los principios aprendidos en la asignatura \guillemotleft Procesamient
 \imagen{datos}{Diseño de datos del sistema.}
 
 Nótese que, por eficiencia y capacidad de representación de los datos más complejos, los datos de Wikipedia se representan en archivos de notación de JavaScript (JSON), en vez de en archivos separados por comas (CSV). Esto permite trabajar mucho más eficientemente desde el navegador, accediendo a la información de cada municipio de forma inmediata al utilizar un diccionario con el código INE de cada municipio como clave primaria. Además, también permite trabajar con listas de imágenes, donde cada imagen es la URL a la misma en Wikipedia.
+
+El perfil estadístico de los datos que componen el modelo es el siguiente:
+
+\begin{enumerate}
+    	\item codigo\_ine. Representa el código del Instituto Nacional de Estadística para el municipio.
+	
+	Número de valores: 8131.
+	
+	Variable categórica.
+
+	\item municipio. Representa el nombre del municipio como figura en el INE.
+	
+	Número de valores: 8131.
+	
+	Valores únicos: 8114.
+	
+	Primer valor más repetido: Molar (El).
+	
+	Frecuencia del primer valor más repetido: 2.
+	
+	Variable categórica.
+
+	\item provincia. Representa el nombre de la provincia como figura en el INE.
+	
+	Número de valores: 8131.
+	
+	Valores únicos: 52.
+	
+	Primer valor más repetido: Burgos.
+	
+	Frecuencia del primer valor más repetido: 371.
+	
+	Variable categórica.
+
+	\item comunidad\_autonoma. Representa el nombre de la comunidad o ciudad autónoma como figura en el INE.
+	
+	Número de valores: 8131.
+	
+	Valores únicos: 19.
+	
+	Primer valor más repetido: Castilla y León.
+	
+	Frecuencia del primer valor más repetido: 2248.
+	
+	Variable categórica.
+
+	\item municipio\_nombre\_humano. Representa el nombre habitual del municipio construido según se ha descrito anteriormente.
+	
+	Número de valores: 8131.
+	
+	Valores únicos: 8114.
+	
+	Primer valor más repetido: El Molar.
+	
+	Frecuencia del primer valor más repetido: 2.
+	
+	Variable categórica.
+
+	\item num\_centros\_salud. Representa el número de centros de salud encontrados en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 1,608535.
+	
+	Desviación estándar: 2,627955.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 1.
+	
+	Percentil 50 \%: 1.
+	
+	Percentil 75 \%: 1.
+	
+	Valor máximo: 128.
+	
+	Variable discreta.
+
+	\item num\_centros\_urgencias. Representa el número de centros con urgencias extrahospitalarias encontrados en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,244865.
+	
+	Desviación estándar: 0,687748.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 29.
+	
+	Variable discreta.
+
+	\item num\_hospitales. Representa el número de hospitales encontrados en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,102570.
+	
+	Desviación estándar: 1,122314.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 62.
+	
+	Variable discreta.
+
+	\item num\_colegios. Representa el número de centros de educación primaria o secundaria encontrados en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 3,808757.
+	
+	Desviación estándar: 26,754116.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 1673.
+	
+	Variable discreta.
+
+	\item num\_universidades. Representa el número de instituciones de educación superior encontradas en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,036650.
+	
+	Desviación estándar: 0,439316.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 27.
+	
+	Variable discreta.
+
+	\item linea\_costa\_provincia. Representa el valor de la distancia a la costa según la heurística seguida.
+	
+	Número de valores: 8131.
+	
+	Promedio: 1,519739.
+	
+	Desviación estándar: 0,947683.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 1.
+	
+	Percentil 50 \%: 2.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item linea\_montana\_provincia. Representa el valor de la distancia a la montaña según la heurística seguida.
+	
+	Número de valores: 8131.
+	
+	Promedio: 1,515927.
+	
+	Desviación estándar: 0,771947.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 1.
+	
+	Percentil 50 \%: 2.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item poblacion. Representa el número de habitantes del municipio según el Centro Nacional de Información Geográfica.
+	
+	Número de valores: 8131.
+	
+	Promedio: 5,827710e+03.
+	
+	Desviación estándar: 4,784572e+04.
+	
+	Valor mínimo: 3e+00.
+	
+	Percentil 25 \%: 1,530000e+02.
+	
+	Percentil 50 \%: 5,230000e+02.
+	
+	Percentil 75 \%: 2,416000e+03.
+	
+	Valor máximo: 3,305408e+06.
+	
+	Variable discreta.
+
+	\item superficie. Representa la superficie en kilómetros cuadrados del municipio según el CNIG.
+	
+	Número de valores: 8131.
+	
+	Promedio: 62,082519.
+	
+	Desviación estándar: 92,027746.
+	
+	Valor mínimo: 0,030.
+	
+	Percentil 25 \%: 18,430.
+	
+	Percentil 50 \%: 34,890.
+	
+	Percentil 75 \%: 68,865.
+	
+	Valor máximo: 1750,230.
+	
+	Variable continua.
+
+	\item densidad\_poblacion. Representa el cociente entre el número de habitantes y la superficie del municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 179,066256.
+	
+	Desviación estándar: 917,030223.
+	
+	Valor mínimo: 0,190.
+	
+	Percentil 25 \%: 4,640.
+	
+	Percentil 50 \%: 13,430.
+	
+	Percentil 75 \%: 55,740.
+	
+	Valor máximo: 27 054,260.
+	
+	Variable continua.
+
+	\item lat. Representa la coordenada de latitud del municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 40,724022.
+	
+	Desviación estándar: 2,122406.
+	
+	Valor mínimo: 27,705214.
+	
+	Percentil 25 \%: 39,861447.
+	
+	Percentil 50 \%: 41,183650.
+	
+	Percentil 75 \%: 42,130990.
+	
+	Valor máximo: 43,733580.
+	
+	Variable continua.
+
+	\item lon. Representa la coordenada de longitud del municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: -3,107545.
+	
+	Desviación estándar: 3,027364.
+	
+	Valor mínimo: -18,003670.
+	
+	Percentil 25 \%: -5,116445.
+	
+	Percentil 50 \%: -3,233750.
+	
+	Percentil 75 \%: -1,123423.
+	
+	Valor máximo: 4,289900.
+	
+	Variable continua.
+
+	\item feb\_avg\_min\_temp. Representa el promedio de las temperaturas mínimas históricas en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: -1,860926.
+	
+	Desviación estándar: 3,426865.
+	
+	Valor mínimo: -6,820.
+	
+	Percentil 25 \%: -4,280.
+	
+	Percentil 50 \%: -2,490.
+	
+	Percentil 75 \%: 0,110.
+	
+	Valor máximo: 12,910.
+	
+	Variable continua.
+
+	\item feb\_avg\_max\_temp. Representa el promedio de las temperaturas máximas históricas en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 18,807847.
+	
+	Desviación estándar: 2,398942.
+	
+	Valor mínimo: 15,050.
+	
+	Percentil 25 \%: 17,050.
+	
+	Percentil 50 \%: 18,820.
+	
+	Percentil 75 \%: 19,730.
+	
+	Valor máximo: 30,040.
+	
+	Variable continua.
+
+	\item feb\_avg\_temp. Representa el promedio de las temperaturas históricas en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 8,168821.
+	
+	Desviación estándar: 2,732125.
+	
+	Valor mínimo: 4,060.
+	
+	Percentil 25 \%: 6,370.
+	
+	Percentil 50 \%: 7,720.
+	
+	Percentil 75 \%: 9,800.
+	
+	Valor máximo: 18,160.
+	
+	Variable continua.
+
+	\item feb\_avg\_humidity. Representa el promedio de la humedad histórica en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 75,260264.
+	
+	Desviación estándar: 5,426036.
+	
+	Valor mínimo: 60,380.
+	
+	Percentil 25 \%: 71,470.
+	
+	Percentil 50 \%: 76,110.
+	
+	Percentil 75 \%: 79,310.
+	
+	Valor máximo: 84,100.
+	
+	Variable continua.
+
+	\item feb\_avg\_wind. Representa el promedio de las velocidades del viento históricas en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 12,790082.
+	
+	Desviación estándar: 2,582472.
+	
+	Valor mínimo: 6340.
+	
+	Percentil 25 \%: 11,270.
+	
+	Percentil 50 \%: 11,990.
+	
+	Percentil 75 \%: 15,160.
+	
+	Valor máximo: 23 470.
+	
+	Variable continua.
+
+	\item feb\_avg\_min\_rain. Representa el promedio de las precipitaciones mínimas históricas en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,0.
+	
+	Desviación estándar: 0,0.
+	
+	Valor mínimo: 0,0.
+	
+	Percentil 25 \%: 0,0.
+	
+	Percentil 50 \%: 0,0.
+	
+	Percentil 75 \%: 0,0.
+	
+	Valor máximo: 0,0.
+	
+	Variable continua.
+
+	\item feb\_avg\_max\_rain. Representa el promedio de las precipitaciones máximas históricas en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 4,795019.
+	
+	Desviación estándar: 3,736073.
+	
+	Valor mínimo: 0,900.
+	
+	Percentil 25 \%: 3.
+	
+	Percentil 50 \%: 3.
+	
+	Percentil 75 \%: 3.
+	
+	Valor máximo: 12.
+	
+	Variable continua.
+
+	\item feb\_avg\_rain. Representa el promedio de las precipitaciones históricas en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,087018.
+	
+	Desviación estándar: 0,103658.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0,030.
+	
+	Percentil 50 \%: 0,050.
+	
+	Percentil 75 \%: 0,120.
+	
+	Valor máximo: 0,580.
+	
+	Variable continua.
+
+	\item feb\_avg\_clouds. Representa el promedio de la nubosidad histórica en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 34,776345.
+	
+	Desviación estándar: 8,348728.
+	
+	Valor mínimo: 20,510.
+	
+	Percentil 25 \%: 28,220.
+	
+	Percentil 50 \%: 34,200.
+	
+	Percentil 75 \%: 38,190.
+	
+	Valor máximo: 55,810.
+	
+	Variable continua.
+
+	\item feb\_avg\_sunshine\_hours. Representa el promedio de las horas de sol históricas en febrero.
+	
+	Número de valores: 8131.
+	
+	Promedio: 103,220244.
+	
+	Desviación estándar: 25,362799.
+	
+	Valor mínimo: 44,400.
+	
+	Percentil 25 \%: 92,100.
+	
+	Percentil 50 \%: 101,700.
+	
+	Percentil 75 \%: 124,800.
+	
+	Valor máximo: 160,400.
+	
+	Variable continua.
+
+	\item jul\_avg\_min\_temp. Representa el promedio de las temperaturas mínimas históricas en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 12,677091.
+	
+	Desviación estándar: 3,667269.
+	
+	Valor mínimo: 5,680.
+	
+	Percentil 25 \%: 9,620.
+	
+	Percentil 50 \%: 13,480.
+	
+	Percentil 75 \%: 15,150.
+	
+	Valor máximo: 19,420.
+	
+	Variable continua.
+
+	\item jul\_avg\_max\_temp. Representa el promedio de las temperaturas máximas históricas en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 36,420878.
+	
+	Desviación estándar: 2,460139.
+	
+	Valor mínimo: 28,110.
+	
+	Percentil 25 \%: 34,630.
+	
+	Percentil 50 \%: 36,180.
+	
+	Percentil 75 \%: 38,490.
+	
+	Valor máximo: 41,330.
+	
+	Variable continua.
+
+	\item jul\_avg\_temp. Representa el promedio de las temperaturas históricas en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 24,135807.
+	
+	Desviación estándar: 2,657738.
+	
+	Valor mínimo: 19,090.
+	
+	Percentil 25 \%: 21,970.
+	
+	Percentil 50 \%: 25,310.
+	
+	Percentil 75 \%: 26,260.
+	
+	Valor máximo: 28,730.
+	
+	Variable continua.
+
+	\item jul\_avg\_humidity. Representa el promedio de la humedad histórica en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 56,174483.
+	
+	Desviación estándar: 12,792079.
+	
+	Valor mínimo: 35,390.
+	
+	Percentil 25 \%: 49,070.
+	
+	Percentil 50 \%: 56,780.
+	
+	Percentil 75 \%: 65,050.
+	
+	Valor máximo: 86,730.
+	
+	Variable continua.
+
+	\item jul\_avg\_wind. Representa el promedio de las velocidades del viento históricas en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 11,068964.
+	
+	Desviación estándar: 3,225845.
+	
+	Valor mínimo: 6,620.
+	
+	Percentil 25 \%: 8,930.
+	
+	Percentil 50 \%: 10,330.
+	
+	Percentil 75 \%: 12,460.
+	
+	Valor máximo: 38,880.
+	
+	Variable continua.
+
+	\item jul\_avg\_min\_rain. Representa el promedio de las precipitaciones mínimas históricas en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,0.
+	
+	Desviación estándar: 0,0.
+	
+	Valor mínimo: 0,0.
+	
+	Percentil 25 \%: 0,0.
+	
+	Percentil 50 \%: 0,0.
+	
+	Percentil 75 \%: 0,0.
+	
+	Valor máximo: 0,0.
+	
+	Variable continua.
+
+	\item jul\_avg\_max\_rain. Representa el promedio de las precipitaciones máximas históricas en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 7,446280.
+	
+	Desviación estándar: 4,802844.
+	
+	Valor mínimo: 0,300.
+	
+	Percentil 25 \%: 3.
+	
+	Percentil 50 \%: 12.
+	
+	Percentil 75 \%: 12.
+	
+	Valor máximo: 12.
+	
+	Variable continua.
+
+	\item jul\_avg\_rain. Representa el promedio de las precipitaciones históricas en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,023540.
+	
+	Desviación estándar: 0,022075.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0,010.
+	
+	Percentil 50 \%: 0,020.
+	
+	Percentil 75 \%: 0,030.
+	
+	Valor máximo: 0,170.
+	
+	Variable continua.
+
+	\item jul\_avg\_clouds. Representa el promedio de la nubosidad histórica en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 16,040075.
+	
+	Desviación estándar: 10,766366.
+	
+	Valor mínimo: 4,510.
+	
+	Percentil 25 \%: 8,100.
+	
+	Percentil 50 \%: 12,690.
+	
+	Percentil 75 \%: 21,880.
+	
+	Valor máximo: 47,510.
+	
+	Variable continua.
+
+	\item jul\_avg\_sunshine\_hours. Representa el promedio de las horas de sol históricas en julio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 267,176473.
+	
+	Desviación estándar: 80,813302.
+	
+	Valor mínimo: 49,700.
+	
+	Percentil 25 \%: 214,800.
+	
+	Percentil 50 \%: 273,700.
+	
+	Percentil 75 \%: 343,300.
+	
+	Valor máximo: 388,400.
+	
+	Variable continua.
+
+	\item kms\_capital\_provincia. Representa la distancia del municipio a su capital de provincia en kilómetros.
+	
+	Número de valores: 8131.
+	
+	Promedio: 62,383328.
+	
+	Desviación estándar: 36,467612.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 35,635.
+	
+	Percentil 50 \%: 56,090.
+	
+	Percentil 75 \%: 83,270.
+	
+	Valor máximo: 227,120.
+	
+	Variable continua.
+
+	\item altitud. Representa la altitud sobre el nivel del mar del municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 619,578773.
+	
+	Desviación estándar: 348,438821.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 333.
+	
+	Percentil 50 \%: 673.
+	
+	Percentil 75 \%: 864.
+	
+	Valor máximo: 2196.
+	
+	Variable continua.
+
+	\item renta\_bruta\_media. Representa la renta bruta media anual per cápita del municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 21 626,313492.
+	
+	Desviación estándar: 10 722,167104.
+	
+	Valor mínimo: 10 353.
+	
+	Percentil 25 \%: 17 879.
+	
+	Percentil 50 \%: 19 808.
+	
+	Percentil 75 \%: 22 933.
+	
+	Valor máximo: 53 0327.
+	
+	Variable continua.
+
+	\item precio\_m2\_venta. Representa el precio del metro cuadrado promedio de las viviendas a la venta.
+	
+	Número de valores: 8131.
+	
+	Promedio: 806,118989.
+	
+	Desviación estándar: 9 908,827660.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 429,630.
+	
+	Percentil 75 \%: 896,080.
+	
+	Valor máximo: 850 000.
+	
+	Variable continua.
+
+	\item num\_casas\_venta. Representa el número de viviendas a la venta.
+	
+	Número de valores: 8131.
+	
+	Promedio: 87,066044.
+	
+	Desviación estándar: 961,542442.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 5.
+	
+	Percentil 75 \%: 28.
+	
+	Valor máximo: 72 396.
+	
+	Variable discreta.
+
+	\item precio\_m2\_alquiler. Representa el precio del metro cuadrado promedio de las viviendas en alquiler.
+	
+	Promedio: 4,141270.
+	
+	Desviación estándar: 189,638816.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 3,510.
+	
+	Valor máximo: 17 094,020.
+	
+	Variable continua.
+
+	\item num\_casas\_alquiler. Representa el número de viviendas en alquiler.
+	
+	Número de valores: 8131.
+	
+	Promedio: 21,695732.
+	
+	Desviación estándar: 880,894804.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 1.
+	
+	Valor máximo: 55 212.
+	
+	Variable discreta.
+
+	\item precio\_m2\_venta\_provincia. Representa el precio del metro cuadrado promedio de las viviendas en venta en la provincia.
+	
+	Número de valores: 8131.
+	
+	Promedio: 1576,911573.
+	
+	Desviación estándar: 569,065599.
+	
+	Valor mínimo: 936.
+	
+	Percentil 25 \%: 1159.
+	
+	Percentil 50 \%: 1445.
+	
+	Percentil 75 \%: 1674.
+	
+	Valor máximo: 3314.
+	
+	Variable continua.
+
+	\item precio\_medio\_venta\_provincia. Representa el precio medio de venta de las viviendas en la provincia.
+	
+	Número de valores: 8131.
+	
+	Promedio: 156 122,501537.
+	
+	Desviación estándar: 55 720,425875.
+	
+	Valor mínimo: 96 893.
+	
+	Percentil 25 \%: 119 586.
+	
+	Percentil 50 \%: 141 657.
+	
+	Percentil 75 \%: 163 450.
+	
+	Valor máximo: 358 810.
+	
+	Variable continua.
+
+	\item precio\_m2\_alquiler\_provincia. Representa el precio del metro cuadrado promedio de las viviendas en alquiler en la provincia.
+	
+	Número de valores: 8131.
+	
+	Promedio: 8,731275.
+	
+	Desviación estándar: 2,658687.
+	
+	Valor mínimo: 5.
+	
+	Percentil 25 \%: 7.
+	
+	Percentil 50 \%: 8.
+	
+	Percentil 75 \%: 10.
+	
+	Valor máximo: 16.
+	
+	Variable continua.
+
+	\item precio\_medio\_alquiler\_provincia. Representa el precio medio de alquiler de las viviendas en la provincia.
+	
+	Número de valores: 8131.
+	
+	Promedio: 751,893125.
+	
+	Desviación estándar: 238,788464.
+	
+	Valor mínimo: 461.
+	
+	Percentil 25 \%: 588.
+	
+	Percentil 50 \%: 672.
+	
+	Percentil 75 \%: 821.
+	
+	Valor máximo: 1414.
+	
+	Variable continua.
+
+	\item tasa\_actividad\_provincia. Representa la tasa de actividad de la provincia.
+	
+	Número de valores: 8131.
+	
+	Promedio: 57,589041.
+	
+	Desviación estándar: 3,485300.
+	
+	Valor mínimo: 48,860.
+	
+	Percentil 25 \%: 55,640.
+	
+	Percentil 50 \%: 57,780.
+	
+	Percentil 75 \%: 59,930.
+	
+	Valor máximo: 65,420.
+	
+	Variable continua.
+
+	\item tasa\_paro\_provincia. Representa la tasa de desempleo de la provincia.
+	
+	Número de valores: 8131.
+	
+	Promedio: 11,675691.
+	
+	Desviación estándar: 3,468686.
+	
+	Valor mínimo: 7,320.
+	
+	Percentil 25 \%: 9,280.
+	
+	Percentil 50 \%: 10,550.
+	
+	Percentil 75 \%: 12,360.
+	
+	Valor máximo: 24,660.
+	
+	Variable continua.
+
+	\item tasa\_empleo\_provincia. Representa la tasa de empleo de la provincia.
+	
+	Número de valores: 8131.
+	
+	Promedio: 50,893220.
+	
+	Desviación estándar: 4,030124.
+	
+	Valor mínimo: 42,010.
+	
+	Percentil 25 \%: 47,620.
+	
+	Percentil 50 \%: 51,310.
+	
+	Percentil 75 \%: 54,130.
+	
+	Valor máximo: 59,340.
+	
+	Variable continua.
+
+	\item num\_empleos\_provincia. Representa el número de empleos disponibles en la provincia.
+	
+	Número de valores: 8131.
+	
+	Promedio: 1543,535236.
+	
+	Desviación estándar: 2677,706433.
+	
+	Valor mínimo: 329.
+	
+	Percentil 25 \%: 479.
+	
+	Percentil 50 \%: 677.
+	
+	Percentil 75 \%: 1234.
+	
+	Valor máximo: 13 139.
+	
+	Variable discreta.
+
+	\item cobertura\_30. Representa el porcentaje del territorio cubierto con fibra óptica de más de 30 megabytes de velocidad.
+	
+	Número de valores: 8131.
+	
+	Promedio: 70,299592.
+	
+	Desviación estándar: 35,226801.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 48,500.
+	
+	Percentil 50 \%: 89.
+	
+	Percentil 75 \%: 99,890.
+	
+	Valor máximo: 100.
+	
+	Variable continua.
+
+	\item cobertura\_100. Representa el porcentaje del territorio cubierto con fibra óptica de más de 100 megabytes de velocidad.
+	
+	Número de valores: 8131.
+	
+	Promedio: 29,823889.
+	
+	Desviación estándar: 39,173617.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 66.
+	
+	Valor máximo: 100.
+	
+	Variable continua.
+
+	\item cobertura\_3g. Representa el porcentaje del territorio cubierto con cobertura 3G HSPA.
+	
+	Número de valores: 8131.
+	
+	Promedio: 99,063675.
+	
+	Desviación estándar: 3,618573.
+	
+	Valor mínimo: 19.
+	
+	Percentil 25 \%: 99,860.
+	
+	Percentil 50 \%: 100.
+	
+	Percentil 75 \%: 100.
+	
+	Valor máximo: 100.
+	
+	Variable continua.
+
+	\item cobertura\_4g. Representa el porcentaje del territorio cubierto con cobertura 4G LTE.
+	
+	Número de valores: 8131.
+	
+	Promedio: 95,432270.
+	
+	Desviación estándar: 13,464192.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 99.
+	
+	Percentil 50 \%: 100.
+	
+	Percentil 75 \%: 100.
+	
+	Valor máximo: 100.
+	
+	Variable continua.
+
+	\item sitios\_comercio. Representa la frecuencia de sitios comerciales en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,385192.
+	
+	Desviación estándar: 0,861474.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_turismo. Representa la frecuencia de sitios turísticos en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,461321.
+	
+	Desviación estándar: 0,972347.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_alojamiento. Representa la frecuencia de alojamientos en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,200959.
+	
+	Desviación estándar: 0,704024.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_ocio. Representa la frecuencia de sitios de ocio en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,968885.
+	
+	Desviación estándar: 1,134233.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_natural. Representa la frecuencia de sitios naturales en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,879966.
+	
+	Desviación estándar: 0,824654.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 1.
+	
+	Percentil 75 \%: 1.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_servicio. Representa la frecuencia de servicios en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,425040.
+	
+	Desviación estándar: 0,977298.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_actividad. Representa la frecuencia de lugares para practicar actividades en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,041446.
+	
+	Desviación estándar: 0,339856.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_entretenimiento. Representa la frecuencia de sitios de entretenimiento en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,022506.
+	
+	Desviación estándar: 0,250186.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_catering. Representa la frecuencia de sitios de hostelería en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,661050.
+	
+	Desviación estándar: 1,103603.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 1.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_sport. Representa la frecuencia de sitios deportivos en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 1,021769.
+	
+	Desviación estándar: 1,125198.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 1.
+	
+	Percentil 75 \%: 2.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_edificio. Representa la frecuencia de edificios en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,423933.
+	
+	Desviación estándar: 0,960839.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_acceso\_limitado. Representa la frecuencia de lugares de acceso limitado en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,147706.
+	
+	Desviación estándar: 0,565903.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_artificial. Representa la frecuencia de construcciones artificiales en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,018325.
+	
+	Desviación estándar: 0,221332.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_acceso. Representa la frecuencia de lugares de acceso libre en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,039602.
+	
+	Desviación estándar: 0,323581.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_sin\_acceso. Representa la frecuencia de lugares de acceso privado en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,003690.
+	
+	Desviación estándar: 0,099129.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_patrimonio. Representa la frecuencia de lugares de patrimonio en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,007994.
+	
+	Desviación estándar: 0,148994.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_carretera. Representa la frecuencia de vías de comunicación por carretera en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,008363.
+	
+	Desviación estándar: 0,146056.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_cuota. Representa la frecuencia de lugares de acceso sujeto a una cuota en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,000615.
+	
+	Desviación estándar: 0,039983.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+
+	\item sitios\_comodidad. Representa la frecuencia de utilidades de conveniencia pública en el municipio.
+	
+	Número de valores: 8131.
+	
+	Promedio: 0,001845.
+	
+	Desviación estándar: 0,074375.
+	
+	Valor mínimo: 0.
+	
+	Percentil 25 \%: 0.
+	
+	Percentil 50 \%: 0.
+	
+	Percentil 75 \%: 0.
+	
+	Valor máximo: 3.
+	
+	Variable discreta.
+\end{enumerate}
 
 \section{Diseño procedimental}
 
@@ -29,7 +1485,6 @@ El diseño arquitectónico del sistema a nivel físico es como sigue:
 Se observa cómo toda la lógica excepto la de escritura y almacenamiento de datos, y la de activación de eventos periódicos está en el servidor de Google App Engine; relegando la restante al servidor de pila LAMP por los motivos detallados anteriormente.
 
 A nivel de software, se distinguen los siguientes módulos:
-
 \imagen{arquitectura_software}{Diseño arquitectónico a nivel lógico del sistema.}
 
 Se observa cómo el diseño modular favorece la comprensión de las partes del sistema y su escalabilidad, siguiendo el principio de responsabilidad única.
