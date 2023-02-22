@@ -43,7 +43,7 @@ Desde la función \guillemotleft Lugar solo para mí\guillemotright\space el usu
 
 \imagen{survey1}{Ejemplo de pregunta mediante selector vertical del cuestionario.}
 
-El usuario se puede desplazar a lo largo de las preguntas mediante las flechas que aparecen en el lado izquierdo y derecho del formulario. El desplazamiento es circular, por lo que después de la última pregunta se pasará a la primera. Unos indicadores rectangulares muestran en qué pregunta se encuentra el usuario con respecto al total, destacando la posición de la pregunta actual en gris y dejando los demás en blanco claro.
+El usuario se puede desplazar a lo largo de las preguntas mediante las flechas que aparecen en el lado izquierdo y derecho del formulario. Unos indicadores rectangulares muestran en qué pregunta se encuentra el usuario con respecto al total, destacando la posición de la pregunta actual en gris y dejando los demás en blanco claro.
 
 \imagen{survey2}{Ejemplo de pregunta mediante selector deslizante del cuestionario.}
 
@@ -61,7 +61,7 @@ Si ha sido posible encontrar un subconjunto resultante de aplicar todas las opci
 
 \subsection{Búsqueda de municipios similares}
 
-A través de la función \guillemotleft Lugar parecido a otro\guillemotright\space el usuario puede obtener el municipio más parecido a uno dado. Para ello, solo tiene que empezar a introducir el nombre del municipio y su provincia, separados por coma, en la caja de texto que aparece en la página. Para elegir el municipio, se debe pulsar en el municipio deseado de los que aparecen en el desplegable de auto-completado, pensado para eliminar errores y facilitar la experiencia de usuario. Si el resultado deseado no aparece, tan solo escriba algunos caracteres más del nombre y provincia del municipio.
+A través de la función \guillemotleft Lugar parecido a otro\guillemotright\space el usuario puede obtener el municipio más parecido a uno dado. Para ello, solo tiene que empezar a introducir el nombre del municipio y su provincia, separados por coma, en la caja de texto que aparece en la página. Para elegir el municipio, se debe pulsar en el municipio deseado de los que aparecen en el desplegable de auto-completado, pensado para eliminar errores y facilitar la experiencia de usuario. Si el resultado deseado no aparece, tan solo se debe escribir algunos caracteres más del nombre y provincia del municipio.
 
 Una vez se pulse en la localidad deseada, se mostrará la pantalla de carga y, tras ella, será redirigido a la página del municipio resultante.
 
@@ -77,9 +77,11 @@ En la primera mitad superior izquierda se observa, si es posible, un extracto de
 
 A continuación, se encuentra el panel de valoración del municipio, que permite expresar una valoración positiva o negativa para el municipio mostrado. Es importante señalar que la valoración solo irá asociada al identificador del usuario (generado aleatoriamente en base a su navegador) en caso de que se hayan aceptado las \textit{cookies} para fines estadísticos.
 
-Tras pulsar en \guillemotleft Me gusta\guillemotright, se obtiene una recomendación personalizada para el usuario en base al sistema de recomendación híbrida que agrupa resultados del sistema de recomendación basado en contenido y del sistema de recomendación de filtro colaborativo basado en ítems. Dicha recomendación viene en forma de enlace que, cuando se pulsa, carga la página del municipio sugerido.
+Tras pulsar en \guillemotleft Me gusta\guillemotright, se obtiene una recomendación basada en contenido, obteniendo una localidad similar al municipio presentado. Por otra parte, tras pulsar en \guillemotleft No me gusta\guillemotright, se muestra una sugerencia en base al sistema de recomendación híbrida, que agrupa resultados del sistema de recomendación basado en contenido y del sistema de recomendación de filtro colaborativo basado en ítems. Ambas recomendaciones vienen en forma de enlace que, cuando se pulsa, carga la página del municipio sugerido.
 
 \imagen{municipality2-1}{Recomendación ofrecida tras valoración positiva de un municipio sugerido.}
+
+\imagen{municipality2-2}{Recomendación ofrecida tras valoración negativa de un municipio sugerido.}
 
 Los dos paneles contiguos inferiores señalan la ubicación del municipio en un mapa de España y muestran una vista del mismo a pie de calle mediante Google Maps y Google Street View.
 

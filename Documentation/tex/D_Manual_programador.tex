@@ -180,7 +180,7 @@ java -Xmx28G -jar otp.jar
     
     A partir de ahí, extrae el resumen del artículo y las fotografías que aparecen en él, con algunas particularidades: Con el objetivo de mostrar imágenes útiles y visualmente atractivas, descarta aquellas que contienen los siguientes términos en su nombre, sin distinción de mayúsculas o minúsculas: \textit{flag, coat, bandera, escudo, icon, logo, svg}, omitiendo muchas imágenes de escudos, banderas o mapas. Posteriormente, y por razones de rendimiento, toma las primeras 10 imágenes.
     
-    En algunos casos es necesario tomar el nombre de la provincia en castellano (\guillemotleft Islas Baleares\guillemotright, en vez del uso muy extendido \guillemotleft Illes Balears\guillemotright\space), ya que los segundos provocaron mayor número de resultados incorrectos (dado que la enciclopedia devolvía entradas no relacionadas con los municipios, sino con personas, instituciones o empresas).
+    En algunos casos es necesario tomar el nombre de la provincia en castellano (\guillemotleft Islas Baleares\guillemotright, en vez del uso muy extendido \guillemotleft Illes Balears\guillemotright), ya que los segundos provocaron mayor número de resultados incorrectos (dado que la enciclopedia devolvía entradas no relacionadas con los municipios, sino con personas, instituciones o empresas).
     
     Dado que, debido al volumen de datos, es un contenido no supervisado y ampliamente cualitativo, su exploración automática ha sido más complicada. Por este motivo, en la sección de \guillemotleft Metodología\guillemotright\space del resultado final –en la que también se explica en líneas generales cómo se ha realizado el proyecto– se indica este hecho, así como la posibilidad de contactar con el autor para informar de información errónea que no haya podido ser detectada antes.
     
@@ -237,7 +237,7 @@ El directorio \texttt{Web} contiene todo lo relacionado con el producto desplega
 	\item \texttt{get\_municipalities\_list\_for\_autocomplete.py}. Obtiene la lista de municipios y sus provincias con la que el cliente Web (\textit{frontend}) construye el autocompletado para el usuario.
 	\item \texttt{get\_municipality.py}. Por razones de eficiencia y comunicación, y aplicando principios vistos en las asignaturas \guillemotleft Modelos de programación para el Big Data\guillemotright, \guillemotleft Infrastructuras Big Data\guillemotright\space y \guillemotleft Arquitecturas Big Data\guillemotright, cuando algún recurso necesita trabajar con municipios maneja únicamente la información imprescindible para identificarlos; esto es, su identificador únivoco del INE. De esta forma, se reduce enormemente la latencia de red y se acelera la velocidad de los cálculos, además de mejorar la eficiencia del sistema (consume menos recursos y, por tanto, el coste de la instancia de Google en ejecución es menor). Como último paso antes de mostrar la información al usuario, este archivo devuelve la información de un municipio dado su código identificativo.
 	\item \texttt{main.py}. Es el archivo enrutador de Flask y controlador del flujo de ejecución para las peticiones de los usuarios. Ante una petición concreta, llama a otras funciones para proveer al sitio Web de comportamiento dinámico.
-	\item \texttt{make\_decimal\_numbers.py}. Usado para convertir los números decimales en inglés (punto como separador decimal, \guillemotleft .\guillemotright\space) al español (coma como separador, \guillemotleft ,\guillemotright\space).
+	\item \texttt{make\_decimal\_numbers.py}. Usado para convertir los números decimales en inglés (punto como separador decimal, \guillemotleft .\guillemotright) al español (coma como separador, \guillemotleft ,\guillemotright).
 	\item \texttt{model\_normalized.csv}. Modelo normalizado creado anteriormente, alojado en la plataforma Web para que los \textit{scripts} puedan acceder a él.
 	\item \texttt{random\_municipality.py}. Devuelve un municipio aleatorio.
 	\item \texttt{ratings\_manager.py}. Gestiona el archivo de valoraciones de los usuarios, emitiendo una valoración positiva o negativa para un usuario y un municipio.
@@ -258,7 +258,7 @@ El directorio \texttt{Web} contiene todo lo relacionado con el producto desplega
 
 \begin{itemize}
 	\item \texttt{.env}. Archivo de variables de entorno para el servidor LAMP.
-	\item \texttt{.htaccess}. Protege los ficheros del directorio para que ningún usuario a excepción del propietario pueda acceder a los archivos alojados en el directorio \guillemotleft storage\guillemotright\space; y que únicamente puedan hacerlo archivos PHP alojados en el mismo servidor.
+	\item \texttt{.htaccess}. Protege los ficheros del directorio para que ningún usuario a excepción del propietario pueda acceder a los archivos alojados en el directorio \guillemotleft storage\guillemotright; y que únicamente puedan hacerlo archivos PHP alojados en el mismo servidor.
 	\item \texttt{DotEnv.php}. Biblioteca externa usada para la gestión de variables de entorno en PHP.
 	\item \texttt{generate-user-id.php}. Genera un identificador único aleatorio de 32 caracteres para el usuario que no tiene la \textit{cookie} con él instalada y que ha dado su consentimiento, como se explicará posteriormente. 
 	\item \texttt{get-ratings.php}. Previa compartición de una clave única segura con ella, expone a la aplicación el archivo de valoraciones de usuarios.
